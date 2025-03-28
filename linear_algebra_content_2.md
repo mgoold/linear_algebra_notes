@@ -1277,18 +1277,10 @@ Anyway, with transposition and row elimination, you have:
 $$
 \text{A = }
 \left[{\begin{array}{cc}
-<<<<<<< HEAD
 1 & 1 & 0 & 2 \\
 1 & 2 & 1 & 3 \\
 -2 & 0 & 3 & 0 \\
 0 & -4 & -3 & -2 \\
--1 & 1 & 2 & 0 \\
-=======
-1 & 1 & 2 & 0 & -1 \\
-1 & 2 & 0 & -4 & 1 \\
-0 & 1 & 3 & -3 & 2  \\
-2 & 3 & 0 & -2 & 0 \\
->>>>>>> parent of 7dd1508 (Update linear_algebra_content_2.md)
 \end{array}}\right]
 $$
 
@@ -1300,7 +1292,6 @@ $$
 1 & 1 & 0 & 2 \\
 0 & 1 & 1 & 1 \\
 0 & 0 & 1 & 2 \\
-0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 \\
 \end{array}}\right]
 $$
