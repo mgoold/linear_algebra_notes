@@ -4,4 +4,6 @@ These are my notes-to-self on linear algebra concepts and lectures, almost relat
 
 By all means reach out with corrections as you encounter inevitable mistakes in understanding, markdown code, etc.
 
+I will continue to add content as I learn, but anticipate quitting with regrets after determinants and eigenvectors (with regrets) because of time constraints.
+
 HTH
