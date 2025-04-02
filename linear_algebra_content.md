@@ -888,7 +888,7 @@ $$B\left(AC\right)\text{ = }\left(BA\right)C\text{ = }BI\text{ = }IC\text{; ther
 
 #### Note 2: If A is invertible, then the only solution to [x in] $Ax\text{ = }b$ is $x = A^{-1}Ax\text{ = }A^{-1}b$ .
 
-To see the sense of this statement, remember that the values for matrix A and vector b are fixed, and we are solving for x.  Also remember that a matrix can only have 1 unique inverse, if it has one at all.  Now consider that since we are solving for x, we will want to isolated it.  In regular algebra with 2 scalar variables you would isolate x by multiplying Ax=b on both sides by "$\frac{1}{A}$, but there is no such thing as fractions in linear algebra.  Instead you multiply both sides by $A^{-1}$.  On the left side of the equation, $A^{-1}Ax$ will reduce to $Ix$ will will just leave you with vector x.  On the ride side, you'll be left with $A^{-1}b$.  Strang lists whole setup as:
+To see the sense of this statement, remember that the values for matrix A and vector b are fixed, and we are solving for x.  Also remember that a matrix can only have 1 unique inverse, if it has one at all.  Now consider that since we are solving for x, we will want to isolated it.  In regular algebra with 2 scalar variables you would isolate x by multiplying Ax=b on both sides by $\frac{1}{A}$, but there is no such thing as fractions in linear algebra.  Instead you multiply both sides by $A^{-1}$.  On the left side of the equation, $A^{-1}Ax$ will reduce to $Ix$ will will just leave you with vector x.  On the ride side, you'll be left with $A^{-1}b$.  Strang lists whole setup as:
 
 $$\text{Multiply }Ax = b\text{ by }A^{-1}\text{.  Then }x\text{ = }A^{-1}Ax\text{ = }A^{-1}b.$$
 
