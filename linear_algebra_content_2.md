@@ -1668,6 +1668,152 @@ $$
 
 C($A^T$) can also be called R(A).  
 
+## Matrix Determinants
+
+Sources:
+* USF: https://usfca.instructure.com/courses/1627052/pages/matrix-determinant-video-10?module_item_id=18611412
+* Huggingface chat.
+
+Suppose we have 2 linearly independent vectors:
+
+$$
+v\text{ = }
+\left[{\begin{array}{cc}
+1 \\
+2 \\
+\end{array}}\right]
+\text{, }w\text{ = }
+\left[{\begin{array}{cc}
+0 \\
+1 \\
+\end{array}}\right]
+$$
+
+... and we arrange them in a matrix A:
+
+$$
+A\text{ = }
+\left[{\begin{array}{cc}
+1 & 0\\
+2 & 1\\
+\end{array}}\right]
+$$
+
+You can immediately see that there are underlying basis vectors, so they're going to be linearly independent.  Plotting them, they look like:
+
+```
+# Create a new figure
+fig, ax = plt.subplots()
+
+# Plot x and y axis lines
+ax.axhline(y=0, color='black', linestyle='--')
+ax.axvline(x=0, color='black', linestyle='--')
+
+# Define the vectors to plot
+vectors = [(1, 2), (0, 1)]
+
+# Plot the vectors as arrows
+for vector in vectors:
+    ax.arrow(0, 0, vector[0], vector[1], head_width=0.2, head_length=0.3, color='blue')
+
+# Set axis limits
+ax.set_xlim(-1, 7)
+ax.set_ylim(-1, 7)
+
+# Set axis labels
+ax.set_xlabel('X-axis')
+ax.set_ylabel('Y-axis')
+
+# Show the plot
+plt.show()
+```
+
+<img width="593" alt="Screenshot 2025-04-01 at 22 16 11" src="https://github.com/user-attachments/assets/b4a105a2-07e4-4498-9eeb-a1b4af678a64" />
+
+You can also see that the vectors could make a parallelogram.  This would happen either by duplicating them, or as shown here by adding and subtrtracting them.  A diagonal of the parallelogram is shown in red:
+
+```
+# Create a new figure
+fig, ax = plt.subplots()
+
+# Plot x and y axis lines
+ax.axhline(y=0, color='black', linestyle='--')
+ax.axvline(x=0, color='black', linestyle='--')
+
+# Define the vectors to plot
+# vectors = [(0, 0),(1, 2),(1, 3),(0, 1),(0, 0)]
+vectors = [[0, 0,1, 2],[1, 2,0, 1],[1, 2,0, 1],[1, 3,-1, -2],[0, 1,-0, -1]]
+
+# Plot the vectors as arrows
+for i in range(0,len(vectors)):
+    vec=vectors[i]
+    ax.arrow(vec[0], vec[1], vec[2], vec[3], head_width=0.1, head_length=0.1, color='blue')
+
+ax.arrow(0, 0, 1, 3, head_width=0.1, head_length=0.1, color='red',linestyle='dotted')
+
+# Set axis limits
+ax.set_xlim(-1, 7)
+ax.set_ylim(-1, 7)
+
+# Set axis labels
+ax.set_xlabel('X-axis')
+ax.set_ylabel('Y-axis')
+
+# Show the plot
+plt.show()
+```
+
+<img width="601" alt="Screenshot 2025-04-02 at 07 17 25" src="https://github.com/user-attachments/assets/8835ca11-14b0-4e4d-b5a4-994012cfbbd1" />
+
+
+Remember that we index the components of a vector from top to bottom.  The area of this parallelogram is then given by the formula $\left\|v_{1}w_{2}\text{ - }v_{2}w_{1}\right\|$ .  In this case, the area = 1 [note: I believe the instructor here is in error; he asserts that abs(1*1-2*0)=2].
+
+What if the vectors in the matrix are linearly dependent instead?  Suppose we had two vectors extending from the origin to (-1,-1) and (-2,2):
+
+```
+# Create a new figure
+fig, ax = plt.subplots()
+
+# Plot x and y axis lines
+ax.axhline(y=0, color='black', linestyle='--')
+ax.axvline(x=0, color='black', linestyle='--')
+
+# Define the vectors to plot
+vectors = [[0, 0,-1, -1],[0, 0,-2, -2]]
+
+# Plot the vectors as arrows
+for i in range(0,len(vectors)):
+    vec=vectors[i]
+    ax.arrow(vec[0], vec[1], vec[2], vec[3], head_width=0.1, head_length=0.1, color='green')
+
+
+# Set axis limits
+ax.set_xlim(-3, 5)
+ax.set_ylim(-3, 5)
+
+# Set axis labels
+ax.set_xlabel('X-axis')
+ax.set_ylabel('Y-axis')
+
+# Show the plot
+plt.show()
+```
+
+<img width="602" alt="Screenshot 2025-04-02 at 07 41 30" src="https://github.com/user-attachments/assets/e8a49308-c72b-44df-b3ee-2967681b4760" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
