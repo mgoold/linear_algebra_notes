@@ -1308,5 +1308,368 @@ Considering all this, as best I can tell, the good approach for analyzing the ba
 
 Note that the two approaches will give you 2 different versions for the same vector space.  This is fine -- in fact you should be able to get an infinite number of bases via arbitrary multiplication of the row values during the elimination process.
 
+## The Four Fundamental Subspaces
+
+### Sources:
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/the-four-fundamental-subspaces/
+* Strang, p184ff.
+
+### Column Space C(A)
+
+The column space is C(A) is a subspace of Rm.  That is, a given column in A has m components.
+
+### Null Space N(A)
+
+The null space is N(A) is a subspace of Rn.  Because x in Ax = 0 is a column, it's easy to confuse this and think that it should be in Rm.  But if you consider it, you see that the number of components in x is set by the number of columns n in A.
+
+### Row Space R(A)
+
+#### Sources:
+* Strang, p171.
+
+The rowspace is C($A^T$), and is a subspace of Rn.  That is, a given row of A is n components wide.
+
+* The row space of A is all combinations of its rows.  In other words, the rows "span" the rowspace.
+* The rows may or may not be a basis for R(A) -- they may or may not be independent. 
+* What is in R(A)?  All combinations of the rows of A.
+* To work with the rows as column vectors, we can transpose the matrix A.  Then we say that R(A) is all combinations of $A^T$.  Further, we can say that R(A) = C($A^T$).  
+
+### Null Space A Transpose N($A^T$)
+
+Aka "the left nullspace of A".  By Ursula K LeGuin.
+
+The left nullspace N($A^T$) is in Rm.  The reasoning here corresponds to why x is in Rn, except that N($A^T$) is on the left-hand side of A. 
+
+### Summary: Locating the Four Fundamental Sub-spaces
+
+When A is an mxn matrix, what is the location of each of these subspaces?
+
+* Null space of A N(A) is in $R^n$.
+* Column space of A C(A) is in $R^m$.
+* R(A) = Column Space of C($A^T$) is in $R^n$.
+* Null space of A N($A^T$) is in $R^m$.
+
+Note: there is an obvious symmetry here, but I failed to see it on the first reading.  For columns, you have the column space and null space: C($A^T$) and N($A^T$) are just the corresponding concepts for rows (treated as columns via transposition).  
+
+### Bases for the Four Fundamental Sub-spaces 
+
+* Column Space: The columns of the original matrix A corresponding to the pivot columns from the matrix in RR form.
+* Null Space: the count of special solutions = n-r
+* Row Space:
+
+The answer for the basis of Row Space is more involved.  Suppose that we had a matrix A of form:
+
+$$
+\text{A = }
+\left[{\begin{array}{cc}
+1 & 2 & 3 & 1 \\
+1 & 1 & 2 & 1 \\
+1 & 2 & 3 & 1 \\
+\end{array}}\right]
+$$
+
+Under row reduction, A becomes:
+
+$$
+\text{R = }
+\left[{\begin{array}{cc}
+1 & 0 & 1 & 1 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 0 & 0 \\
+\end{array}}\right]
+$$
+
+Notice that R is comprised of a block I in the upper left, a block F in the upper right, and a zero row on the bottom.
+
+Notice that the **column space** changed: C(A) does not equal C(R).  For example (1 1 1) is in C(A) but not C(R).  -- I find this assertion that the column space changed (materially) a bit hard to digest, but I think it helps to remember the definition of column space **is**, namely the set of all results obtainable via linear combinations of the columns in A.  So Strang says you can't get the same column space from A as from R.  Related to this C(A) vs C(R) disparity: if you think about it, row reduction kind of preserves information as it zeros out or alters rows, because the alterations are done to **one row in terms of another** .  For example, if you zero out a row, you can do so because the zeroed row was a transformation of another row that was subtracted from it.  So you prove, in the zeroing process, that all essential info was lost in the remaining non-zeroed rows.  A similar thing is **not** happening w/r/t column-to-column comparisons, even while their values are being changed.  
+
+Row operations have preserved the same row space from A to R.  They have "exactly the same vectors in them".  --After the remarks on changed column vectors, Strang much surely mean that the "row vectors" are the same, even though "row vector" seems like a contraction to earlier methods (see chapter one) for rows into matrices.  He notes that the vectors still have the same number of components, and are still combinations of the same essential (non-zero) rows.  Another way to say that the rows "have exactly the same vectors in them" is that you can get an identical span by taking all lin combos of the rows in either matrix.  --If this is true, it means that whatever is a basis for the row space of R will be a basis for the row space of A.  
+
+In the above example matrix R, it is clear that the first two rows will be the basis for R (or by extension A).  -- Counting the pivots in the RRE form, we can say that the basis is the first "r" rows in R.  This is true because we have reduced the rows via RR to just those which are independent.  Note that depending on A, it may sometimes be true that that the basis in R's r rows may be the same for A, but not necessarily.  
+
+Why are these two vectors in the row space? (Notice he's calling them "vectors"; hurts my head.)  Because they are in the most essential form post-RRE. 
+
+Note that when we have the rows reduced to RRE, they are then by definition a **basis** for the row space.  We can also say that they span the entire row space of A, because you can demonstrate that one form of the rowspace (A) reduces to the other (R) by simply reversing the steps of row reduction.  
+
+* Left Null Space N($A^T$): 
+
+Say we have a matrix A with vectors y such that $A^T$y = 0.  If $A^T$y = 0, then y is in the null space of $A^T$, that is, y is the set of values such that the 0 vector is yielded when $A^T$ acts on or is multiplied times y.  We can consider $A^T$y = 0 as a matrix times a column equaling 0.  In this situation, we want to solve for y, so we will isolate it on the left.  In order to do this, we can take the transpose of both sides of $A^T$y = 0.  On the right side of the equation , the 0 vector is changed from vertical to horizontal orientation.  On the left, we get $y^{T}A^{TT}$ or "y transpose times A transpose transpose".  Remember that the order of multiplications is changed when you take the transpose, so Y comes first.  Althogether: $y^{T}A^{TT}\text{ = }\left[\text{ 0 }\right]$.  Of course, $A^{TT}$ reduces to just "A".  So we are left with $y^{T}A\text{ = }\left[\text{ 0 }\right]$ .  
+
+Considering this result, we can see that $y^{T}$ is now a row vector multiplying A **from the left** to get a 0 row vector on the right.  This multiplication from the left side is why it is called a "left null space".  However, Strang actually dislikes this arrangement, which obliges us to turn the row vector y into a column vector, so he usually avoids this procedure, and stays with $A^Ty=0$.  But anyway, the above note explains the "left null space" description.
+
+**How do we get a basis for this left null space?**
+
+Returning to this example:
+
+$$
+\text{A = }
+\left[{\begin{array}{cc}
+1 & 2 & 3 & 1 \\
+1 & 1 & 2 & 1 \\
+1 & 2 & 3 & 1 \\
+\end{array}}\right]
+$$
+
+Under row reduction, A becomes:
+
+$$
+\text{R = }
+\left[{\begin{array}{cc}
+1 & 0 & 1 & 1 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 0 & 0 \\
+\end{array}}\right]
+$$
+
+We can see columns (3 and 4) in R hold the special solutions, but those are special solutions to Ax = 0.  Now however we're looking at A transpose.
+
+Suppose we take again the mxn matrix $\left[A_{mxn}\right]$.  Consider again the Gauss-Jordan example.  In that example, we first had a square identity matrix, and we were finding its inverse.  Now the matrix A isn't square, but we can still add on an identity matrix of proportions mxn:
+
+$\left[A_{mxn}I_{mxm}\right]$ .  Note that matrix I must be by definition square.  Now we take the RRE form of this augmented AI matrix, and we get: 
+
+$\left[A_{mxn}I_{mxm}\right]\rightarrow\left[R_{mxn}E_{mxm}\right]$ , where A is turned into R as usual, and E signifies some as-yet-to-be qualified matrix that I turns into, and which has the same proportions as I.  
+
+Given the nature of I, and of the Gauss-Jordan process, it is clear that matrix "E" will just contain a record of the transformation steps done to turn A --> R.  Consequently, this process amounts to multiplying AI by E: $E\left[A_{mxn}I_{mxm}\right]$ .  --This last fact is a little hard to verbalize, but you can see it by contemplating the transformation $\left[A_{mxn}I_{mxm}\right]\rightarrow\left[R_{mxn}E_{mxm}\right]$.
+
+Thus, having obtained E, we can say that EA = R.  In words, this means that the row reduction steps that we took to turn A to R are captured in the I --> E transformation.  
+
+Reviewing the invertible square case, we remember that:
+  * when A was square and invertible, we could take AI, do row elimination, and the R that resulted was in fact I.  That is, with 2 square matrices AI undergoing RRE, AI --> IA , and we consider I as the R matrix in this case.
+  * Remember that by definition, the inverse of a matrix A is the matrix which multiplies A to give I.  In the equation EA = R, if R is I, then we know E must be A inverse since EA = I in this square matrix case.
+
+Considering the rectangular case for A, we see that there is still a matrix E that can be calculated and multiplied to act on A.  
+
+Suppose that we had used the G-J approach on our initial matrix A attaching a square matrix I so that it recorded the changes to A, and itself became E.  Then we would have EA = R:
+
+$$
+\left[{\begin{array}{cc}
+-1 & 2 & 0 \\
+1 & -1 & 0 \\
+-1 & 0 & 1 \\
+\end{array}}\right]
+\left[{\begin{array}{cc}
+1 & 2 & 3 & 1 \\
+1 & 1 & 2 & 1 \\
+1 & 2 & 3 & 1 \\
+\end{array}}\right]
+\text{ = }
+\left[{\begin{array}{cc}
+1 & 0 & 1 & 1 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 0 & 0 \\
+\end{array}}\right]
+$$
+
+At this point, we know the dimension of the left null space: A has dimension m, and right side R has r pivots, and we know that left null space should have dimension m-r, or 3-2 = 1.  So in this example E should be one dimensional.  That is, there should be a basis for the **left null space** that only has one vector in it.  What is that vector?  It is the last row of E, because that row (-1 0 1) times A would give a 0 row.  In fact, row indices of 0 rows in R will be indices for the rows in E that are the basis of the left null space.    
+
+#### Algorithm for Finding Basis of N($A^T$).
+
+**The above process illustrates the whole algorithm for analysing the basis for $N\left$A^T\right)$:**
+
+1. To the right of matrix $A_{mxn}$, add $I_{mxm}$ .
+2. Using row elimination, transform AI to RE; that is A will be updated to R, and I will be updated to E.
+3. As noted above, EA = R, but you can keep the AI --> RE format, since the insight will be the same.
+4. Find the row indices of zero rows in R.
+5. These zero row indices in R will be the indices of the basis in E of the left null space.
+
+### Dimensions for the Four Fundamental Sub-spaces 
+
+Sources:
+* Strang, p184
+
+**Notice that the rank of a matrix A shows the dimension of all four fundamental subspaces related to that matrix.**
+
+* Column Space: the rank r of the column space (the number of its pivot variables).  = Number of independent vectors in matrix.
+* Null space: number of special solutions  = n-r
+* Row Space: also r, same as column space.  Dim of C($A^T$) = Dim C(A)
+* Left Null Space N($A^T$):  m-r; note that m is the number of columns in $A^T$ .
+
+
+### Review of Four Fundamental Sub-spaces:
+
+* The row space and null space are in $R^n$, and their dimension add to n.
+* The column space and left null space are in $R^m$, and their dimensions add to m.
+
+### Recitation: Computing the Four Fundamental Sub-Spaces
+
+Sources:
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/computing-the-four-fundamental-subspaces/
+
+Problem:
+
+Suppose a matrix B was as follows:
+
+$$
+B\text{ = }
+\left[{\begin{array}{cc}
+1 & { } & { } \\
+2 & 1 & { } \\
+-1 & 0 & 1 \\
+\end{array}}\right]
+\left[{\begin{array}{cc}
+5 & 0 & 3 \\
+0 & 1 & 1 \\
+0 & 0 & 0 \\
+\end{array}}\right]
+$$
+
+Find a basis for and compute the dimension of each of the four fundamental sub-spaces for the product of this graph.
+
+We can reduce B to a product of the two matrices, and then apply row reduction to it:
+
+#### Dimensions:
+
+Note that I assumed you first had to multiply the two matrices, then do RRE on the product.  But none of that was necessary.  Instead, the TA indicates that one of the matrices or the other is adequate to answer the question, without indicating why.
+
+For reference, we can refer to the above lower triangular matrix as L and the right upper triangular matrix as U.
+
+* C(A): from the lecture, we know that the dimension of C(A) is the number of its pivots.  In this case the second upper triangular matrix has 2 pivots.
+* N(A): we also know that the dimension of N(A) will be columns-pivots = 3-2 = 1.
+* R(A): we know that the dimension of the row space will be the same as C(A), so 2.
+* N($A^T$): we know that the dimension of N($A^T$) is m-r, so 1.
+
+#### Bases:
+
+* C(A): in the lecture, we learned to do RRE and then take the pivot columns from the original matrix.  I would have thought the "original" matrix here was the product of the lower and upper triangular matrices, but the TA laconically said that the pivots columns could be taken from the lower triangular matrix.  I think the idea was that taking the columns of the left hand matrix that will act on the right hand matrix was the same as taking the pivot columns of their product.  --Actually, you can see that's true when you consider that the pivot columns in the product of LU times RU are (5 10 -5), and (0 1 0).  Clearly you could reduce the first of these vectors to (1 2 -1).
+* N(A): for this, the TA selects the upper triangular matrix and takes the 3rd column (corresponding to the free variable).  1 is plugged into the vector for the free variable, and by substitution the other variables are (-3/5 -1 1) .  
+* R(A): since elimination doesn't change the row space, we can use the two pivot **rows** of the upper triangular matrix: (5 0 3) and (0 1 1). 
+* N($A^T$):
+
+The first step is to invert L to change it to E, and set it equal to U:
+
+$$
+L^{-1}\text{ = }E\text{ = }
+\left[{\begin{array}{cc}
+1 & { } & { } \\
+-2 & 1 & { } \\
+1 & 0 & 1 \\
+\end{array}}\right]
+B\text{ = }
+\left[{\begin{array}{cc}
+5 & 0 & 3 \\
+0 & 1 & 1 \\
+0 & 0 & 0 \\
+\end{array}}\right]
+$$
+
+.
+
+Now we can see that the 3rd row of E corresponds to the 3rd row of U.  When this 3rd row in E is multiplied on B, the 3rd row of 0s in U results.  Thus the 3rd row (1 0 1) in E is in the left null space.  
+
+
+### Additional Recitation 1 on Calculating Dimension and Basis for N($A^T$):
+
+Sources:
+* Khan Academy: https://www.youtube.com/watch?v=qBfc57x_RSg
+
+Suppose we have a matrix A:
+
+$$
+A\text{ = }
+\left[{\begin{array}{cc}
+2 & -1 & -3 \\
+-4 & 2 & 6 \\
+\end{array}}\right]
+$$
+
+$A^T$ is then:
+
+$$
+A^T\text{ = }
+\left[{\begin{array}{cc}
+2 & -4 \\
+-1 & 2 \\
+-3 & 6 \\
+\end{array}}\right]
+$$
+
+This is R(A), since R(A) = C(A^T).
+
+... and $R^T$ is:
+
+$$
+A^T\text{ = }
+\left[{\begin{array}{cc}
+1 & -2 \\
+-1 & 2 \\
+-1 & 2 \\
+\end{array}}\right]
+\rightarrow
+\left[{\begin{array}{cc}
+1 & -2 \\
+0 & 0 \\
+0 & 0 \\
+\end{array}}\right]
+\text{ = }R^T
+$$
+
+Then "left nullspace", or $N\left(A^T\right)\text{ = }\\{\overrightarrow{x}\in\mathbb{R}^{2}\text{ | }A^{T}\text{ }\overrightarrow{x}\text{ = }\left[0\right]\\}$  .  In words: the null space of $A^T$ is a vector x in R2, such that $A^T$ times x = a zero vector."  The zero vector result will be in R3 (the space n of the rows before transposition).
+
+The nullspace of R^T will be the same as that of A^T.  That is:
+
+$$
+\left[{\begin{array}{cc}
+1 & -2 \\
+0 & 0 \\
+0 & 0 \\
+\end{array}}\right]
+\left[{\begin{array}{cc}
+x_1 \\
+x_2 \\
+\end{array}}\right]
+\text{ = }
+\left[{\begin{array}{cc}
+0 \\
+0 \\
+0 \\
+\end{array}}\right]
+$$
+
+The first column in R is the pivot column, so $x_1$ will be a pivot variable, and $x_2$ will be a free variable.  Matching the pivot column in $R^T$ back to the corresponding column in $A^T$, the pivot column (2 -1 -3) in $A^T$ should span its column space.  
+
+Returning to $R^T$ and multiplying it by [x], we have that $x_1$ - 2$x_2$ = 0 , or $x_1$ = 2$x_2$ .  So all the vectors that satisfy these conditions will be in the nullspace of $A^T$ .  
+
+We can write this as:
+
+$$
+N\left(A\right)\text{ = }
+\left\\{
+\left[{\begin{array}{cc}
+x_1 \\
+x_2 \\
+\end{array}}\right]\|
+\left[{\begin{array}{cc}
+x_1 \\
+x_2 \\
+\end{array}}\right]
+\text{ = }
+x_{2}
+\left[{\begin{array}{cc}
+1 \\
+2 \\
+\end{array}}\right]
+\right\\}
+$$
+
+and correspondingly, 
+
+$$
+C\left(A\right)\text{ = span}
+\left\(
+\left[{\begin{array}{cc}
+1 \\
+-1 \\
+-3 \\
+\end{array}}\right]
+\right\)
+$$
+
+.  
+
+C($A^T$) can also be called R(A).  
+
+
+
+
 
 
