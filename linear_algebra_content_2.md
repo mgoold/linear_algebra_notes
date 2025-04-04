@@ -1969,8 +1969,7 @@ $$
 
 **Property 10 tells us that if a column is 0, the determinant will also be 0.**  Because via transposition, a column can become a row.  So whatever determinant properties apply to rows, also apply to columns.
 
-
-### Determinants Considered Geometrically
+### Determinants in 2D Space
 
 Suppose we have 2 linearly independent vectors:
 
@@ -2185,16 +2184,202 @@ plt.show()
 
 <img width="539" alt="Screenshot 2025-04-03 at 17 28 49" src="https://github.com/user-attachments/assets/d2ea6f02-d1c0-4505-8df7-0153b89d3148" />
 
-
-
-
 Note that, by implication, the "volume taken" by these vectors must be different than the "space they span", which would be all linear combinations.  
 
 If the vectors are linearly *dependent*, the volume of the 3d space will again be 0.  
 
+## Determinant Formulas and Cofactors
+
+### Determinant Formula for a 2x2 Matrix
+
+We can use properties 1-3 of determinants to create a formula for a 2x2 matrix.  Property 1 tells us that the det I = 1.  Property tells us to change the sign of the determinant when we exchange rows.  Property 3 tells us that if we keep the other rows the same, we're allowed to use linearity in the first row (or in any single row).  
+
+Thus by property 3 we can say that:
+
+$$
+\left\|{\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}}\right\|
+\text{ = }
+\left\|{\begin{array}{cc}
+a & 0 \\
+c & d \\
+\end{array}}\right\|
+\text{ + }
+\left\|{\begin{array}{cc}
+0 & b \\
+c & d \\
+\end{array}}\right\|
+$$
+
+... because we only operated on one row.  
+
+We can further use property 3 to decompose these determinants further:
+
+$$
+\text{... = }
+\left\|{\begin{array}{cc}
+a & 0 \\
+c & 0 \\
+\end{array}}\right\|
+\text{ + }
+\left\|{\begin{array}{cc}
+a & 0 \\
+0 & d \\
+\end{array}}\right\|
+\text{ + }
+\left\|{\begin{array}{cc}
+0 & b \\
+c & 0 \\
+\end{array}}\right\|
+\text{ + }
+\left\|{\begin{array}{cc}
+0 & b \\
+0 & d \\
+\end{array}}\right\|
+$$
+
+... one of the properties (9?)  states that the determinant of a matrix with a 0 column is 0, so 2 of these matrices can now be zeroed out.  That leaves us with 
+
+$$
+\text{... = }
+\left\|{\begin{array}{cc}
+a & 0 \\
+0 & d \\
+\end{array}}\right\|
+\text{ + }
+\left\|{\begin{array}{cc}
+0 & b \\
+c & 0 \\
+\end{array}}\right\|
+$$
+
+... continuing to use the properties, we know that the first matrix, now in diagonal form, will have the product of its diagonals for its determinant.  The second matrix will first require a row-swap, causing its sign to reverse before its diagonal can be multiplied.  Thus, using fundamental properties of matrices, we finally get to the familar 2x2 determinant formula ad - bc.
+
+### Determinant Formula for a 3x3 Matrix
+
+Suppose we had to do this process for 3x3 matrices.  We would again have to operate on one row at a time, so that for the components of row 1 we would have 3 matrices, each isolating a separate row one component.  You might think this would lead to 9 total steps, but it actually ends up being 27 because each of these separate row items requires further decomposition.  To see that this is so, review the 2x2 scenario above.  Just as with the 2x2 process, in a 3x3 determinant "decomposition" many of the matrixes would have 0 columns and be zeroed out.  This means we only need to pay attention to those matrices that will not be zeroed out.
+
+Note: when you "decompose" a matrix as with the 2x2 process above, you repeat the *entire* matrix, zeroing out this or that element to isolate others, in various permutations.  You do NOT create sub matrices out of the larger matrix, as one would do with "i,j minor" matrices in a "Laplacian Expansion" approach (this other approach is detailed elsewhere).
+
+To understand which decomposed items will not be zeroed out, we can consider this matrix:
+
+$$
+\left\|{\begin{array}{cc}
+a_{11} & a_{12} & a_{12} \\
+a_{21} & a_{22} & a_{22} \\
+a_{31} & a_{32} & a_{33} \\
+\end{array}}\right\|
+$$
+
+We know that the following matrix will not zero out, because it has no 0 columns:
+
+$$
+\left\|{\begin{array}{cc}
+a_{11} & 0 & 0 \\
+0 & a_{22} & 0 \\
+0 & 0 & a_{33} \\
+\end{array}}\right\|
+$$
+
+... and this example will also not zero out.
+
+$$
+\left\|{\begin{array}{cc}
+a_{11} & 0 & 0 \\
+0 & 0 & a_{23} \\
+0 & a_{32} & 0 \\
+\end{array}}\right\|
+$$
+
+... in general, the "sub matrices" that are not zeroed out will have one entry from each row and each column.  Finding all these different combinations of subscripted components is very like using a permutation matrix.  In fact it eventually ends up being a permutation matrix, in the sense that one factors out the actual numbers, leaving P matrices of 1s and 0s.  With this in mind, you can see that these two example matrices would end up being $a_{11}a_{22}a_{33}$ and - $a_{11}a_{32}a_{23}$ (see that the row swap on the second matrix imposes a sign change).  
+
+In these 2 examples of non-zeroed 3x3 matrices both contained a_{11}.  You can see that a similar process would be used for a_{12} and so on, and similarly for every component, eliminating those combinations that ended up being redundant. This would give you a formula for the determinant based solely on the first 3 properties of determinants.
+
+**Definition:** Note that each of these "sub-matrices" or matrices of non-redundant ombinations that survive being zeroed out, are formally called **terms**.  
+
+**Notes on determinant "terms":**
+* A given nxn matrix will have n! such terms.  The fact that there are always n! terms comes from the diminshing "degrees of freedom" that each successive row imposes on the next: as the permutations for original componennt positions in the top rows are used up, the possibilities for original combinations using the components in lower rows become fewer.
+* Half the terms, expressed as products of their non-zero components will have + sign, and the other half will have a minus sign.  
+
+Note that, depending on the dimensions of the nxn matrix, the sign of any given combination will be based on the direction of the diagonal it is on --downward left to right, or downward right to left.  
+
+### General Determinant Formula 
+
+Aka "the BIG FORMULA" for nxn determinants.
+
+${det A = }\sum\frac{+}{-}a_{1\alpha}a_{2\beta}a_{3\gamma}\text{...}a_{n\omega}$
+
+Where 1...n are the matrix rows, and alpha ...omega are the columns, and the overall permutation of rows and columns are unique for each term.  All the terms are summed, taking account of the sign +/- designated by the number of their row swaps.
+
+### Determinant Cofactors Formula
+
+Co-factors is a way to connect the large general formula from nxn matrices to ones which are n-1xn-1.
+
+Suppose we had a 3x3 matrix again:
+
+$$
+\text{det A =}
+\left\|{\begin{array}{cc}
+a_{11} & a_{12} & a_{12} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} \\
+\end{array}}\right\|
+$$
+
+It is clear that the "terms" of the determinant could be organized via the distributive property to extract out common multipliers.  So:
+
+$\text{det A = }a_{11}\left(a_{22}a_{33} - a_{23}a_{32}\right)\text{ + }a_{21}\left(\text{ ... }\right)\text{ + }a_{31}\left(\text{ ... }\right)\text{ +  ... etc.}$
+
+The components inside the parentheses are known as "co-factors".  In this example, you can see that the parenthetic co-factor expressions fit the "ad-bc" pattern of a 2x2 matrix determinant.  When using this co-factor approach, the convention is to always keep the sign of the factor (outside the parenthesis) positive, and use sign the appropriate items in the co-factor to track sign changes.  
+
+In general, we can say that the cofactor of any determinant component $a_{ij}$ is :
+
+$C_{ij}=\frac{+}{=}\text{ det }\left(\text{n-1matrix} with row i, column j erased\right)$ .  The sign for the cofactor is determined by whether i + j is odd or even.  Even --> + ; Odd --> - .  Before the sign is added, the co-factor is also known as a "minor".  
+
+Using the above, we can then say that the "cofactor formula" for a determinant is:
+
+$\text{det A = }a_{11}C_{11}+a_{12}C_{12}...a_{1n}C_{1n}...a_{nn}C_{nn}$ .
+
+What is the co-factor formulation of a 2x2 matrix?  Again if we have:
+
+$$
+\left\|{\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}}\right\|
+$$
+
+... and use the co-factor approach, we will get ad, then bc, which must use a row-swap to get in correct order, so that we end with ad - bc as expected.
+
+### Determinant Cofactors with Tri-diagonal Matrix
+
+Suppose we had the following tri-diagonal matrix "A4":
+
+$$
+A_4\text{ = }
+\left\|{\begin{array}{cc}
+1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 0 \\
+0 & 1 & 1 & 1 \\
+0 & 0 & 1 & 1 \\
+\end{array}}\right\|
+$$
+
+We could also designate "A1" as the top left 1x1 matrix containing 1, "A2" as the top left 2x2 matrix, and "A3" as the top left 3x3 matrix.  Considering RR and sign changes for row swaps, the determinants would then be det A1 = 1, det A2 = 0, det A3 = -1, det A4 = 1 .  Using cofactors, the determinant of A4 is:
+
+co_factors of the first row (note: because the values are all one, zero, we will subscript the values to show their matrix position):
+
+$1_{11}$  \* (lower right 3x3 determinant), where the lower left 3x3 determinant, is the same as the upper left A3, which was -1, so 1\*-1 = 1.
++ $1_{12}$ \* cofactor of the column 1_{21} to $0_{41}$ 
 
 
+### The General Formula for Determinants: Laplace Expansion (LPE)
 
+For a square matrix of any size, where r = n, there is a method called LaPlace Expansion which will calculate the determinant.  LaPlace Expansion was also the name of a suburb I lived in as a child, but I'm sure that's just a coincidence.  For a matrix over size 3x3, I would guess LPE might be less efficient then just doing RRE and multiplying the diagonals.  Anyway ...
+
+LPE starts with a definition.  The "i,j minor of a matrix" is the determinant of the matrix $M_{i,j}$ obtained by deleting row i and column j .  
 
 
 
