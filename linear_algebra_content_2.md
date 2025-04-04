@@ -2332,11 +2332,11 @@ It is clear that the "terms" of the determinant could be organized via the distr
 
 $\text{det A = }a_{11}\left(a_{22}a_{33} - a_{23}a_{32}\right)\text{ + }a_{21}\left(\text{ ... }\right)\text{ + }a_{31}\left(\text{ ... }\right)\text{ +  ... etc.}$
 
-The components inside the parentheses are known as "co-factors".  In this example, you can see that the parenthetic co-factor expressions fit the "ad-bc" pattern of a 2x2 matrix determinant.  When using this co-factor approach, the convention is to always keep the sign of the factor (outside the parenthesis) positive, and use sign the appropriate items in the co-factor to track sign changes.  
+The components inside the parentheses are known as "co-factors".  In this example, you can see that the parenthetic co-factor expressions fit the "ad-bc" pattern of a 2x2 matrix determinant.  When using this co-factor approach, the convention is to always keep the sign of the factor (outside the parenthesis) positive, and use sign in the appropriate items in the co-factor to track sign changes.  
 
 In general, we can say that the cofactor of any determinant component $a_{ij}$ is :
 
-$C_{ij}=\frac{+}{=}\text{ det }\left(\text{n-1matrix} with row i, column j erased\right)$ .  The sign for the cofactor is determined by whether i + j is odd or even.  Even --> + ; Odd --> - .  Before the sign is added, the co-factor is also known as a "minor".  
+$C_{ij}=\frac{+}{-}\text{ det }\left(\text{n-1 matrix} with row i, column j erased\right)$ .  The sign for the cofactor is determined by whether i + j is odd or even.  Even --> + ; Odd --> - .  Before the sign is added, the co-factor is also known as a "minor".  
 
 Using the above, we can then say that the "cofactor formula" for a determinant is:
 
@@ -2369,17 +2369,55 @@ $$
 
 We could also designate "A1" as the top left 1x1 matrix containing 1, "A2" as the top left 2x2 matrix, and "A3" as the top left 3x3 matrix.  Considering RR and sign changes for row swaps, the determinants would then be det A1 = 1, det A2 = 0, det A3 = -1, det A4 = 1 .  Using cofactors, the determinant of A4 is:
 
-co_factors of the first row (note: because the values are all one, zero, we will subscript the values to show their matrix position):
+det A3 - det A2.  An in general the determinant for an nxn matrix is det $A_n$ = det $A_{n-1}$ - det $A_{n-2}$ .  The relevance of this is: it puts you in a position to assess calculation in the least possible steps, and also provides some cross-checks.  
 
-$1_{11}$  \* (lower right 3x3 determinant), where the lower left 3x3 determinant, is the same as the upper left A3, which was -1, so 1\*-1 = 1.
-+ $1_{12}$ \* cofactor of the column 1_{21} to $0_{41}$ 
-
-
-### The General Formula for Determinants: Laplace Expansion (LPE)
+### The General Formula for Determinants: Laplace Expansion (LE)
 
 For a square matrix of any size, where r = n, there is a method called LaPlace Expansion which will calculate the determinant.  LaPlace Expansion was also the name of a suburb I lived in as a child, but I'm sure that's just a coincidence.  For a matrix over size 3x3, I would guess LPE might be less efficient then just doing RRE and multiplying the diagonals.  Anyway ...
 
-LPE starts with a definition.  The "i,j minor of a matrix" is the determinant of the matrix $M_{i,j}$ obtained by deleting row i and column j .  
+LE starts with a definition.  **The "i,j minor of a matrix" is the determinant of the matrix $M_{i,j}$ obtained by deleting row i and column j .  **  This is the same as a co-factor.  
+
+Thus, for a matrix:
+
+$$
+\left[{\begin{array}{cc}
+1 & 3 & 7 \\
+0 & 2 & 0 \\
+-2 & 0 & -7 \\
+\end{array}}\right]
+$$
+
+... the minor $M_{1,2}$ would be the matrix obtained by deleting the first row and the second column.  It isn't explicit in this definition, but the minor is the determinant for all of the matrix not covered by the deleted row and column.  So for example, if this had been a 4x4 matrix, $M_{ij}$, or $C_{ij}$ in cofactor terms, would be the determinant for a matrix comprised of components in column one from $a_{21}$ to $a_{41}$ and the square area from $a_{32}$ to $a_{44}$ taken all together.  
+
+So for Laplace Expansion, for an nxn matrix, we can compute the determinant in terms of its minors, which will be n-1xn-1 matrices.  For any fixed row i, 
+
+$$\text{det A = }\sum_{j = 1}{N}\left(-1\right )^{i + j}a_{ij}\text{det }M_{ij}$$  -- This is effectibely the same thing as Strang's "big formula".
+
+Mapping this formula to the a 3x3 matrix with generic components:
+
+$$
+\text{det A =}
+\left\|{\begin{array}{cc}
+a_{11} & a_{12} & a_{12} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} \\
+\end{array}}\right\|
+$$
+
+... say we fix i = 1, j =1 to begin.  Then we would multiply $a_{11}$ by $M_{ij}$, where $M_{ij}$ is the determinant of the matrix remaining when row 1 and column 1 are deleted.  The sign of this product is ${-1}^{1 + 1}$, or equivalently we use "+ if i + j is even; - if i + j is odd ".  Next, we would multiply $a_{12}$ by $M_{12}$ and give it a minus sign, and so on.  
+
+### Finding the Inverse Matrix Using Determinants
+
+We can explicitly calculate the inverse of a matrix in terms of determinants.  This is done using a co-factor matrix.  This section relates to [property 9](#property-9) under "properties of determinants" above.  That property is used to compute the deterimant of $A^{-1}$, althout that is not the same as using the determinant of A to compute $A^{-1}$
+
+The cofactor matrix is a matrix of minors.  A co-factor is the determinant that is multiplied by a given component $a_{ij}$ .  If all the cofactors of the determinant of A, denoted as C or sometimes "Adj(A)" are transposed to $C^T$, then this can be used in the formula
+
+$$A^{-1}\text{ = }\frac{1}{det \left(A\right)}\text{Adj}\left(A\right)$$ 
+
+to calculate A transpose.
+
+
+
 
 
 
