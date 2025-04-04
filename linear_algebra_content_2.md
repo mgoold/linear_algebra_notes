@@ -1910,7 +1910,7 @@ a & b \\
 \text{ = R}
 $$
 
-... and multiplying $a \* \left(d-{\frac{c}{a}b\right)$ will yield ad - bc with is the other method.  This shows that multiplying the diagonals and using the traditional formula are equivalent.
+... and multiplying $a\text{ * }\left(d-{\frac{c}{a}b}\right)$ will yield ad - bc with is the other method.  This shows that multiplying the diagonals and using the traditional formula are equivalent.
 
 #### Property 8
 
