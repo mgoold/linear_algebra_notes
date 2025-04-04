@@ -1672,7 +1672,305 @@ C($A^T$) can also be called R(A).
 
 Sources:
 * USF: https://usfca.instructure.com/courses/1627052/pages/matrix-determinant-video-10?module_item_id=18611412
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/lecture-18-properties-of-determinants/
 * Huggingface chat.
+
+### Meaning and Significance of the Determinant
+
+It's challenging to get a short, clear expression of the meaning or signficance of a determinant, but here are some notes:
+* the absolute value of a determinant is the volume of the vectors in its matrix, when the rank r of that matrix is equal to its columns n.  Note that a matrix in RRE form with r<n will have a determinant (and volume) of 0.
+* Strang states that the primary importance of determinants is their use in calculating eigenvectors.
+* The determinant serves as a test for invertibility: A square matrix is invertible i.o.i. it has a non-zero determinant.
+
+### Relation to a Square Matrix
+
+* Only certain square matrices have determinants.  
+* A matrix is singular when the determinant is 0.
+
+### Determinant Notation
+
+A determinant is typically noted as "det A" for determinant A, or sometimes as |A|, which means "the determinant of A", and not "the absolute value of A".  When discussing the determinant as an explit matrix where the components are shown, the determinant is noted like:
+
+$$
+\|A\|\text{ = }
+\left\|{\begin{array}{cc}
+1 & 0\\
+-2 & 1\\
+\end{array}}\right\|
+$$
+
+.  You actually have to pay attention to the presence of vertical bars, because it can be easy to mistake a determinant in this format for the square brackets of a matrix.
+
+### Properties of Determinants
+
+Sources:
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/lecture-18-properties-of-determinants/
+
+Strang begins the subject of determinants by listing their properties, rather than defining what a determinant *is*.  There are 10 properties of determinants.  The first 3 properties are the basis for all the higher-numbered properties:
+
+#### Property 1
+
+**det I = 1.  "The determinant of the identity is 1."**  Considering the 2x2 matrix determinant formula for
+
+$$
+\|A|\text{ = }
+\left\|{\begin{array}{cc}
+a & b\\
+c & d\\
+\end{array}}\right\|
+$$
+
+as $ad - bc$, you can immediately see that this would be so.  For a larger order square matrix, if you are familiar with the process of calculating the determinant by breaking it into recursive summed 2x2 matrices, you can see that I of any size would probably multiply out to 1 as well.  I believe this is what Strang has in mind when he says that this property "scales the identity matrix so that det|I| [always] = 1."
+
+#### Property 2  
+
+**Exchanging rows of a matrix "flips" or reverses the sign of the determinant.**  Exchange Rows -- > Reverse the sign.  This means that:
+    * an odd number of row exchanges will reverse the sign
+    * an even number of row exhcnages will keep the original sign.  
+
+Notice that based on properties 1 and 2 alone we now know the determinant of all permutations matrices P.  Remember that a permutation matrix P is just I with reordered rows, so that when you multiply I times a matrix A, A's rows will be re-ordered.  Since P is a re-ordered I, we know that all matrices P will be in {-1,1}, depending on whether their count of row swaps is odd or even.
+
+#### Property 3
+
+Property 3 can be broken into 2 assertions:
+
+**3a:**
+
+$$
+\left\|{\begin{array}{cc}
+ta & tb\\
+c & d\\
+\end{array}}\right\|
+\text{ = t}
+\left\|{\begin{array}{cc}
+a & b\\
+c & d\\
+\end{array}}\right\|
+$$
+
+In words: if I multiply one of the rows by a scalar, I can extract that scalar as being multiplied times the determinant.  It is difficult to see why this is allowed, because there is not obvious way to reverse the arrangement: having extracted t as a multiplier of the determinant, no information is preserved to tell you by which row it should be multiplied to return it to the original (ta tb) row.  --To make this easier to digest, it is helpful to remember the || vs [] distinction: determinant operations always describe an algebraic interaction in a (recursive, algorithmically applied) formula, even if we can picture the components and vectors geometrically or arranged like a matrix.  It is easier to accept this operation (in this case, the distributibe property) applying to a subset of terms in an overall formula, than as an operation on a single row when the components are arranged like a matrix.
+
+**3b:**
+
+Suppose you have a determinant:
+
+$$
+\left\|{\begin{array}{cc}
+{a + a\`} & {b + b\`}\\
+c & d\\
+\end{array}}\right\|
+$$
+
+Then this can be broken into:
+
+$$
+\left\|{\begin{array}{cc}
+a & b\\
+c & d\\
+\end{array}}\right\|
+\text{ + }
+\left\|{\begin{array}{cc}
+a\` & b\`\\
+c & d\\
+\end{array}}\right\|
+$$
+
+You can see that properties 3a and 3b define *linear combinations for the first row.*  The other rows are somehow brought along unchanged.  Strang says that "the determinant behaves like a linear function, if [while?] all the other rows stay the same."  He is very keen to distinguish this from a statement like "det |A + B| = det |A| + det |B|".  I think he's emphasising that the non-first rows are kept *in common* while only the first row is decomposed, despite the visual suggestion that a matrix (it's not a matrix; it's a determinant), has been split into two matrices.  
+
+The linear combination operations that are done on the first row apply to all the other rows as well.  You can see this by considering that you could use P, and the oppositite of P, to move the row of interest to first row position, operate on it, and then move it back to its original position.  The key thing is that we only operate linearly one one row at a time.  
+
+From properties 1,2 & 3, all the other properties are derived.
+
+#### Property 4
+
+If 2 rows in a determinant matrix are equal then, then the determinant will be zero.  2 equal rows --> 0 determinant. 
+
+Suppose we have a 7x7 matrix with 2 identical rows.  If I exchange the 2 identical rows, the resultant matrix will be unchanged.  However, because the rows were exchanged, per property 2, the sign of the determinant must change.  
+
+This property corresponds to the fact that if a matrix has 2 equal rows it will not be invertible because the rank must necessarily be less than n when one of those rows zeroes out in RRE.  
+
+#### Property 5
+
+In row elimination, we multiply one row i by some scalar l and subtract it from another row k, in order to produce the result 0 in some off-diagonal position.  
+
+**Property 5 states that RRE does not change the determinant.**  If a determinant exists for a matrix A, it will not change from A --> U --> R.
+
+Suppose we have a determinant:
+
+$$
+\left\|{\begin{array}{cc}
+a & b\\
+c & d\\
+\end{array}}\right\|
+$$
+
+to zero out c, we will subtract:
+
+$$
+\left\|{\begin{array}{cc}
+a & b\\
+{c-la} & {d-lb}\\
+\end{array}}\right\|
+$$
+
+By property 3b, we can split this determinant into a sum of 2 determinants:
+
+$$
+\left\|{\begin{array}{cc}
+a & b \\
+{c-la} & {d-lb} \\
+\end{array}}\right\|
+\text{ = }
+\left\|{\begin{array}{cc}
+a & b \\
+c & c \\
+\end{array}}\right\|
+\text{ + }
+\left\|{\begin{array}{cc}
+a & b \\
+-la & -lb \\
+\end{array}}\right\|
+$$
+
+By property 3a, we can abstract out the - l:
+
+$$
+\text{ ... = }
+\left\|{\begin{array}{cc}
+a & b \\
+c & c \\
+\end{array}}\right\|
+\text{ -l }
+\left\|{\begin{array}{cc}
+a & b \\
+a & b \\
+\end{array}}\right\|
+$$
+
+Then by property four, 
+
+$$
+\text{ -l }
+\left\|{\begin{array}{cc}
+a & b \\
+a & b \\
+\end{array}}\right\|
+$$
+
+... must equal 0, leaving us with just the original determinant
+
+$$
+\left\|{\begin{array}{cc}
+a & b \\
+c & c \\
+\end{array}}\right\|
+$$
+
+.  This demonstrates that det A = det U = det R.  RRE does not change the determinant.
+
+#### Property 6
+
+A row of zeroes in A means that det A will equal 0.
+
+You can see that this is true based on property 3a.  For a row of 0s in det A, it is clear that you can abstract out a 0, which gives you 0 x det A which is 0.
+
+#### Property 7
+
+The determinant of an upper triangular matrix is the product of all its pivots.  
+
+* This also shows why a 0 for a matrix where r < n would mean the determinant must be 0.
+
+This fact is actually the efficient way to calculate a determinant (and determine if one exists).  All software uses this approach.
+Remember that if RRE involves an odd number of row exchanges, the original sign of the determinant will change.
+
+You can use property 3a to show that this is so.  For any matrix with r=n, it will be possible to reduce the matrix to having non-zero values only in the diagonal.  Having done this, you can use property 3a to factor out any non-zero values and reduce the diagonal value to 1.  Doing this for all diagonals, the matrix will be transformed to I, multiplied by all the abstracted diagonal values $d_1\text{ ... }d_n$ times the determinant of I.  But we know that det I = 1 (property 1).  Thus the determinant of any matrix with r = n will be the product of its diagonals.
+
+This calculation method can be checked against the common formula used to calculate the determinante of a 2x2 matrix, in order to show that the two approaches are equivalent.  If we have:
+
+$$
+\text{det A = }
+\left\|{\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}}\right\|
+$$
+
+we are saying that a*d is equivalent to ad - bc.  If we subject A to elimination as the first step in the "multiply the diagonals" method, we'll get:
+
+$$
+\left\|{\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}}\right\|
+\rightarrow
+\left\|{\begin{array}{cc}
+a & b \\
+{c-{\frac{c}{a}a}\text{ = }0} & {d-{\frac{c}{a}b}} \\
+\end{array}}\right\|
+\text{ = R}
+$$
+
+... and multiplying $a \* \left(d-{\frac{c}{a}b\right)$ will yield ad - bc with is the other method.  This shows that multiplying the diagonals and using the traditional formula are equivalent.
+
+#### Property 8
+
+The determinant of matrix A is 0 exactly when A is singular.  Therefore, the existence of a non-zero determinant verifies whether the matrix is invertible.
+
+#### Property 9
+
+The product of det AB = det A * det B .  This is somewhat surprising, because det A + det B is NOT the sum of its determinants.  
+
+Property 9 is useful for determining the determinate of A inverse:
+
+We know that $A^{-1}A=I$ .  We can then take determinants of both sides, so that  $\text{det }A^{-1}A\text{ = }1$ .  But this tells us that the determinate of $A^{-1}\text{ = }\frac{1}{\text{det }A}$ .  Notice that this reconciles with the rule that a non-singular (invertible matrix) cannot have a 0 determinant, because if it did, we would have $A^{-1}\text{ = }\frac{1}{0}$ .
+
+To give an example, suppose:
+
+$$
+A\text{ = }
+\left[{\begin{array}{cc}
+2 & 0 \\
+0 & 3 \\
+\end{array}}\right]
+\text{, then}A^{-1}\text{ = }
+\left[{\begin{array}{cc}
+\frac{1}{2} & 0 \\
+0 & \frac{1}{3} \\
+\end{array}}\right]
+$$
+
+And indeed the determinant of A would be 6, while the determinate of $A^{-1}$ = 1/6, which is just what $A^{-1}\text{ = }\frac{1}{\text{det }A}$ predicts.  
+
+We can also use this prroperty to understand the role of exponents.  What is the determinant of $A^2$ ?  What even is a squared matrix?  The determinant of $A^2$ per rule 9 should be det A * det A.  
+
+However, if we double the matrix, what happens to the determinant?  What is det 2A?  That is the same as det (A + A).  To make sense of this, consider that A must be a square nxn matrix.  We are proposing to double every entry in the matrix.  
+
+The answer is that det 2A = $2^n$ det A.  Why?  The reason is that, having doubled every entry in the matrix, we would then factor a 2 out of every row (property 3a), and there are n rows.  
+
+#### Property 10
+
+**The determinant of 1 transpose = determinant of A.  det $A^T$ = det A.**
+
+We can check this against the 2x2 ad - bc formula.
+
+$$
+\left\|{\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}}\right\|
+\text{ would give the same result as }
+\left\|{\begin{array}{cc}
+a & c \\
+b & d \\
+\end{array}}\right\|
+$$
+
+..because the diagonal would not change.  
+
+**Property 10 tells us that if a column is 0, the determinant will also be 0.**  Because via transposition, a column can become a row.  So whatever determinant properties apply to rows, also apply to columns.
+
+
+### Determinants Considered Geometrically
 
 Suppose we have 2 linearly independent vectors:
 
@@ -1802,10 +2100,97 @@ plt.show()
 <img width="602" alt="Screenshot 2025-04-02 at 07 41 30" src="https://github.com/user-attachments/assets/e8a49308-c72b-44df-b3ee-2967681b4760" />
 
 
+In this case, the vectors lie on the same line and the area of their parallelogram will be 0.  Again, applying the formula $\left\|v_{1}w_{2}\text{ - }v_{2}w_{1}\right\|$ , we get |-1*-2 - -1*-2|, which is clearly 0.
+
+The value given by $v_{1}w_{2}\text{ - }v_{2}w_{1}$ inside the absolute value brackets is called the **determinant**. In general, the 2x2 determinant for a matrix 
+
+$$
+v\text{ = }
+\left[{\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}}\right]
+$$
+
+is **ad - bc** .  And for any square nxn matrix, there is a function f on the matrix entries [aka components] which will return this scalar value called the determinant.  
+
+
+### A Determinant in 3D Space
+
+Suppose the dimension=rank of a column space C(A) of a 3x3 matrix A is 3 (they are linearly independent) .  In that case, the absolute value of a determinant for that 3x3 matrix will give the volume of the 3d space taken by those vectors.  
+
+In the below illustration, we show the 3d volume that could be spanned by three basis vectors if any 2 were held constant and multiplied by each other to make a square, and then multiplied by a 3rd which has a range on its non-zero value from 0 to 2.
+
+```
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from itertools import product, combinations
+
+axsrt=-5
+axend=5
+axendpls=axend*1.01
+
+# Create a 3D axes object
+fig = plt.figure(figsize=(10, 10))
+ax = fig.add_subplot(111, projection='3d')
+
+# Turn off the subplot backdrop
+ax.set_axis_off()
+
+# Set the axes limits
+ax.set_xlim(axsrt, axend)
+ax.set_ylim(axsrt, axend)
+ax.set_zlim(axsrt, axend)
+
+# x_data = xline.get_xdata()
+x_data = xline._verts3d
+y_data = yline._verts3d
+z_data = zline._verts3d
+
+# Print the coordinates
+# print("X coordinates:", x_data)
+# print("Y coordinates:", y_data)
+# print("Z coordinates:", z_data)
+
+# draw cube
+r = [0, 2]
+for s, e in combinations(np.array(list(product(r, r, r))), 2):
+    if np.sum(np.abs(s-e)) == r[1]-r[0]:
+        ax.plot3D(*zip(s, e), color="lightgrey", linewidth=1)
+
+# Draw the axes
+xline, = ax.plot([axsrt, axend], [0, 0], [0, 0], color='red', linestyle='-', linewidth=2)
+yline, = ax.plot([0, 0], [axsrt, axend], [0, 0], color='green', linestyle='-', linewidth=2)
+zline, = ax.plot([0, 0], [0, 0], [axsrt, axend], color='blue', linestyle='-', linewidth=2)
+
+# Plot the vectors
+ax.quiver(0, 0, 0, 2, 0, 0, color='black', linewidth=2, arrow_length_ratio=0.1)
+ax.quiver(0, 0, 0, 0, 2, 0, color='black', linewidth=2, arrow_length_ratio=0.1)
+ax.quiver(0, 0, 0, 0, 0, 2, color='black', linewidth=2, arrow_length_ratio=0.1)
+
+# Add labels to the axes
+ax.text(axendpls, 0, 0, 'x', color='red')
+ax.text(0, axendpls, 0, 'y', color='green')
+ax.text(0, 0, axendpls, 'z', color='blue')
+
+# Add labels to the vectors
+ax.text(2, 0, 0, '(2,0,0)', color='black')
+ax.text(0, 2, 0, '(0,2,0)', color='black')
+ax.text(0, 0, 2, '(0,0,2)', color='black')
+
+# Show the plot
+plt.show()
+```
+
+
+<img width="539" alt="Screenshot 2025-04-03 at 17 28 49" src="https://github.com/user-attachments/assets/d2ea6f02-d1c0-4505-8df7-0153b89d3148" />
 
 
 
 
+Note that, by implication, the "volume taken" by these vectors must be different than the "space they span", which would be all linear combinations.  
+
+If the vectors are linearly *dependent*, the volume of the 3d space will again be 0.  
 
 
 
