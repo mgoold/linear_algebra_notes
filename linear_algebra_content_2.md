@@ -1922,7 +1922,7 @@ The product of det AB = det A * det B .  This is somewhat surprising, because de
 
 Property 9 is useful for determining the determinate of A inverse:
 
-We know that $A^{-1}A=I$ .  We can then take determinants of both sides, so that  $\text{det }A^{-1}A\text{ = }1$ .  But this tells us that the determinate of $A^{-1}\text{ = }\frac{1}{\text{det }A}$ .  Notice that this reconciles with the rule that a non-singular (invertible matrix) cannot have a 0 determinant, because if it did, we would have $A^{-1}\text{ = }\frac{1}{0}$ .
+We know that $A^{-1}A=I$ .  We can then take determinants of both sides, so that  $\text{det }A^{-1}\text{det }A\text{ = }1$ (using property 1).  But this tells us that $\text{det }A^{-1}\text{ = }\frac{1}{\text{det }A}$ .  Notice that this reconciles with the rule that a non-singular (invertible matrix) cannot have a 0 determinant, because if it did, we would have $A^{-1}\text{ = }\frac{1}{0}$ .
 
 To give an example, suppose:
 
@@ -1968,6 +1968,20 @@ $$
 ..because the diagonal would not change.  
 
 **Property 10 tells us that if a column is 0, the determinant will also be 0.**  Because via transposition, a column can become a row.  So whatever determinant properties apply to rows, also apply to columns.
+
+## Determinants Considered Geometrically
+
+Sources:
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/lecture-20-cramers-rule-inverse-matrix-and-volume/
+* USF: https://usfca.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=18d6d01c-7f28-42ca-ade1-b01f0171e3cb&start=45.892811
+
+### General Claim: Determinant A = Volume of Box
+
+Assertion: det A is volume of a box.
+
+Suppose the dimension=rank of a column space C(A) of a 3x3 matrix A is 3 (they are linearly independent) .  In that case, the absolute value of a determinant for that 3x3 matrix will give the volume of the 3d space taken by those vectors.  The proper term for this 3d volume consisting of 3 independent vectors is a "parallelopiped".
+
+It is possible for the determinant to be negative.  In that case, it means that the box extends into a negatively signed space.  This is sometimes called "left handed".  This is why we take the absolute value of the determinant, but a negative value is not irrational.
 
 ### Determinants in 2D Space
 
@@ -2098,7 +2112,6 @@ plt.show()
 
 <img width="602" alt="Screenshot 2025-04-02 at 07 41 30" src="https://github.com/user-attachments/assets/e8a49308-c72b-44df-b3ee-2967681b4760" />
 
-
 In this case, the vectors lie on the same line and the area of their parallelogram will be 0.  Again, applying the formula $\left\|v_{1}w_{2}\text{ - }v_{2}w_{1}\right\|$ , we get |-1*-2 - -1*-2|, which is clearly 0.
 
 The value given by $v_{1}w_{2}\text{ - }v_{2}w_{1}$ inside the absolute value brackets is called the **determinant**. In general, the 2x2 determinant for a matrix 
@@ -2114,9 +2127,7 @@ $$
 is **ad - bc** .  And for any square nxn matrix, there is a function f on the matrix entries [aka components] which will return this scalar value called the determinant.  
 
 
-### A Determinant in 3D Space
-
-Suppose the dimension=rank of a column space C(A) of a 3x3 matrix A is 3 (they are linearly independent) .  In that case, the absolute value of a determinant for that 3x3 matrix will give the volume of the 3d space taken by those vectors.  
+### A Determinant in 3D Space: Cubes
 
 In the below illustration, we show the 3d volume that could be spanned by three basis vectors if any 2 were held constant and multiplied by each other to make a square, and then multiplied by a 3rd which has a range on its non-zero value from 0 to 2.
 
@@ -2187,6 +2198,108 @@ plt.show()
 Note that, by implication, the "volume taken" by these vectors must be different than the "space they span", which would be all linear combinations.  
 
 If the vectors are linearly *dependent*, the volume of the 3d space will again be 0.  
+
+You can see that the determinant will be the volume of a **cube** when the matrix consists of basis vectors, in other words **when A = I.**  In fact, this proves property 1, where we say that the determinant of I = 1.  Now we can see that we are also saying that **the volume of I = 1.**  This also demonstrates the reverse: that det I = 1 shows that the determiant of a matrix = the volume of that matrix.  Again remember that this is relative to the "potential space" of the matrix: a square matrix where r < m = n will have a volume of 0.
+
+Suppose we have an **orthognal** matrix Q, i.o.w. a matrix with **orthonormal** columns.  That is, each column vector in the matrix has a length of 1 (its columns are unit vectors) and is perpendicular (orthogonal) to all other column vectors in the matrix.  Note that by determinant property 10? the determinant of the matrix is also the determinant of the transpose, so we can say that the same results will come from the rows of an orthoganal matrix as well.  In the case of an **orthognal** matrix, the volume must again be a cube, since all the vectors are independent and perpendicular.  The difference is that now the cube may be rotated any which way, while its volume remains 1.  This means that the determinant must also be in {-1,1} . 
+
+For an orthoganal matrix, we know that multiplying it by its transpose must give the identity matrix: $Q^TQ\text{ = }I$ .  From this property, we can see that the determinant must be in {-1,1} :
+
+1. Take the determinant of both sides: $\|Q^T\|\|Q|\text{ = }|I|\rightarrow\|Q^T\|\|Q|\text{ = }1$ , by property 1 on the right, and property 9 on the left.
+2. The determinant of the transpose = the determinant, by property 10.  So $\|Q^T\|\|Q|$ is just $|Q|^2$.
+3. But the determinant of Q is 1, so  $|Q|^2$ must be in {-1,1} .
+
+So in general, for cubes, we have shown that determinant = volume.
+
+### Determinants for 3D Space: General Parallelograms
+
+Imagine that you take a cube, and stretch one edge [vector] of it so that it doubles the length.  By multiplication, the volume of the resultant 3d object must be doubled.  --This is also determinant property 3a in effect.  Property 3a was that if we had a determinant [not a matrix] with a factor t in one row, we could factor it out of that row.
+
+To generalize the proof that the determinant is the volume of a parallelogram, we have to show that it applies to non-cubes (non-orthogonal objects) .  --Doing this involves determinant property 3b, which said that a determinant could be decomposed into sums of determinants.  So we state that:
+
+|det A| = volume of a box, where the box has:
+* property 1 -- if the box is a unit cube, its volume is 1.
+* property 2 -- if we reverse rows in the box, it changes the sign, but not the volume
+* property 3a -- we can factor out a common factor from an individual row in the determinant
+
+Now we need to role of property 3b to complete the generalization that a determinant is the volume of any paralellogram (box).
+
+$$
+\left\|{\begin{array}{cc}
+\text{a + a'} & \text{b + b'} \\
+c & d \\
+\end{array}}\right\|
+\text{ = }
+\left\|{\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}}\right\|
+\text{ + }
+\left\|{\begin{array}{cc}
+{a'} & {b'} \\
+c & d \\
+\end{array}}\right\|
+$$
+
+Consider that in a parallelogram, the opposite corner's coordinates are the sum of its consituent vectors:
+
+```
+import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+
+# Create a new figure
+fig, ax = plt.subplots()
+
+# Plot x and y axis lines
+ax.axhline(y=0, color='black', linestyle='--')
+ax.axvline(x=0, color='black', linestyle='--')
+
+# Define the vectors to plot
+
+a=2
+b=1
+c=1
+d=2
+
+vectors = [[0, 0,a,b],[0,0,c,d],[a,b,c,d],[c,d,a,b]]
+
+# Plot the vectors as arrows
+for i in range(0,len(vectors)):
+    vec=vectors[i]
+    ax.arrow(vec[0], vec[1], vec[2], vec[3], head_width=0.1, head_length=0.1, color='blue')
+
+# Set axis limits
+ax.set_xlim(-1, 7)
+ax.set_ylim(-1, 7)
+
+# Set axis labels
+ax.set_xlabel('X-axis')
+ax.set_ylabel('Y-axis')
+
+# Add labels to the vectors
+ax.text(-.5, -.5, '(0,0)', color='black')
+ax.text(.8, 2.5, '(c,d)', color='black')
+ax.text(2.5, 1, '(a,b)', color='black')
+ax.text(3.5, 3, '(a+c,b+d)', color='black')
+
+# Show the plot
+plt.show()
+```
+
+<img width="598" alt="Screenshot 2025-04-05 at 09 44 50" src="https://github.com/user-attachments/assets/965b8553-6c9d-4a91-86f7-97defd829607" />
+
+You can see from this diagram that determinants reduce the task of finding a parallelograms area to a trivial excercise: ad - bc, so long as we can shift a corner to the origin.  A similar thing applies to triangles, which become 1/2 of that parallelogram:
+
+$$\text{ area of a triangle = }\frac{1}{2}
+\left\|{\begin{array}{cc}
+x_1 & y_1 & 1 \\
+x_2 & y_2 & 1 \\
+x_3 & y_3 & 1 \\
+\end{array}}\right\|
+$$
+
+...where the column of 1s is a trick to shift the corner to the origin.
 
 ## Determinant Formulas and Cofactors
 
@@ -2406,15 +2519,126 @@ $$
 
 ... say we fix i = 1, j =1 to begin.  Then we would multiply $a_{11}$ by $M_{ij}$, where $M_{ij}$ is the determinant of the matrix remaining when row 1 and column 1 are deleted.  The sign of this product is ${-1}^{1 + 1}$, or equivalently we use "+ if i + j is even; - if i + j is odd ".  Next, we would multiply $a_{12}$ by $M_{12}$ and give it a minus sign, and so on.  
 
-### Finding the Inverse Matrix Using Determinants
+## Applications of Determinants
 
-We can explicitly calculate the inverse of a matrix in terms of determinants.  This is done using a co-factor matrix.  This section relates to [property 9](#property-9) under "properties of determinants" above.  That property is used to compute the deterimant of $A^{-1}$, althout that is not the same as using the determinant of A to compute $A^{-1}$
+### Using Determinants To Find $A^{-1}$ 
 
-The cofactor matrix is a matrix of minors.  A co-factor is the determinant that is multiplied by a given component $a_{ij}$ .  If all the cofactors of the determinant of A, denoted as C or sometimes "Adj(A)" are transposed to $C^T$, then this can be used in the formula
+Sources:
+* https://usfca.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=18d6d01c-7f28-42ca-ade1-b01f0171e3cb&start=45.892811
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/lecture-20-cramers-rule-inverse-matrix-and-volume/
 
-$$A^{-1}\text{ = }\frac{1}{det \left(A\right)}\text{Adj}\left(A\right)$$ 
+The formula for calculating the inverse of a 2x2 matrix (taking this as given) is:
 
-to calculate A transpose.
+$$
+{\left[{\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}}\right]}^{-1}
+\text{ = }
+\frac{1}{ad - bc}
+\left[{\begin{array}{cc}
+d & -b \\
+-c & a \\
+\end{array}}\right]
+$$
+
+Now we want to extrapolate this to generalize to larger matrices.  Per [property 9](#property-9) , we understand why it makes sense to divide by the determinant, but we need to understand the pattern for the matrix it acts on.  This matrix is actually a matrix of cofactors.  You can see this using the co-factor elimination method: d is the cofactor of a, which is in position 11, and d is what you'd get if you struck out row 1 and column 1, would be d, and similarly with the other elements in this matrix.  Similarly -b is the cofactor of c, because c is in position 21, and striking out this respective row and column would get you -b (with negative sign because i + j is odd).
+
+From these observations, we can generalize to a formula for the inverse which incorporates the determinant:
+
+$$A^{-1}\text{ = }\frac{1}{det A}C^T$$ 
+
+, where C is the transposed matrix of cofactors.  Reviewing the above matrix C for the 2x2 example, you can see that these cofactors are in fact transposed when you look at their relation to A: a and d on the left side of the equation are matched in the same position as their corresponding co-factors, but the b and c are in the opposite corners to their corresponding cofactors.  This is due to transposition.
+
+We can continuing inspecting the formation of $C^T$ but looking at the 3x3 case.  Consider $A^{-1}$ as:
+
+$$
+{\left[{\begin{array}{cc}
+a & b & c \\
+d & e & f \\
+g & h & i \\
+\end{array}}\right]}^{-1}
+\text{ = } 
+\frac{1}{ det A }
+C^T
+$$
+
+We know that det A will be a sum of of 3! products, and each of these products will be use a combination of n entries, e.g. a\*e\*i.  The components $C^T$ will involve products of n-1 entries, e.g. ei - fh.  
+
+In order to check that 
+
+$$A^{-1}\text{ = }\frac{1}{det A}C^T$$ 
+
+is true, we can reformulate it as:
+
+$$AC^T\text{ = }{det A}I$$ 
+
+Which is to say that A times the transposed matrix of cofactors gives you the determinant of A.  If you contemplate this reformulation, you can see that we got it by multiplying both sides by A, so that $A^{-1}A$ became I on the left side, and det A $AC^T$ on the other side.  Then both sides were multiple by $\frac{1}{ det A}$, so that we end with $AC^T\text{ = }{det A}I$ .
+
+In more detail, this gives us A multiplied by the cofactor matrix C:
+
+$$
+\left[{\begin{array}{cc}
+a_{11} & {...} & a_{1n} \\
+{...} & {...} & {...} \\
+a_{n1} & {...} & a_{nn} \\
+\end{array}}\right]
+\left[{\begin{array}{cc}
+c_{11} & {...} & c_{n1} \\
+{...} & {...} & {...} \\
+c_{1n} & {...} & c_{nn} \\
+\end{array}}\right]
+$$
+
+Notice that for C, the row-column indices are reversed because of transposition.  Consider what we would get in the index 1,1 entry of the results from this multiplication.  This would give us a summation of $a_{11}c_{11} - a_{12}c_{12} ... + a_{nn}c_{nn}$, assuming the signs are correctly managed ... this is just exactly the [cofactor formula](#determinant-cofactors-formula) for the determinant of A.  Note that the result will NOT be a single determinant of A, but rather a matrix with sub-products of det A down the diagonal.  AND the rows and columns of A and C are matched so that any off-diagonal value will be C.  To illustrate this, return to the 2x2 matrix scenario, where:
+
+$$
+A^{-1}\text{ = }{\left[{\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}}\right]}^{-1}
+\text{,C = }
+\left[{\begin{array}{cc}
+d & -b \\
+-c & a \\
+\end{array}}\right]
+$$
+
+You can see that when you multiply $A^{-1}$ row (a b) times C column (-b a) you will get zero.  But further, in this mode of matrix multiplication with the matrices oriented as they are, the effect for the off diagonal cofactors (minor determinants) is that we're taking the determinant of matrices that have identical first and last rows, and which must therefore zero out.  -- Anyway, the right side of the equation ends up being a matrix of det A components down the diagonal, with all 0s off diagonal.  By property 8? this can then be turned into the product of the diagonals \* I \* I = det A * I.  
+
+### Using Determinants to Find Ax = b
+
+This means specifically to solve for x in Ax = b.
+
+We know that x = $A^{-1}b$ .  This means that $x\text{det = }A^{-1}b\text{ = }\frac{1}{ det A }C^Tb$ .
+
+#### Solving x in Ax = b: Cramer's Rule
+
+When solving for **x**, we can of course consider **x** as a vector of components $x_1$, $x_2$ etc.  We also know by the above formula that any solution for x will be multiplied by $\frac{1}{ det A }$ .  Thus, we can consider the series of vector x components as having a form like:
+
+$$x_1\text{ = }\frac{1}{ det A }{ some TBD element }b$$ .
+
+We can assume that the TBD element will be a corresponding component of C.  That is, we're multiplying some co-factor from C times a component of b.  Since we are multiplying a co-factor by a component of b, we assume we are getting a determinant of something.  We can call that "something" det $B_1$, updating our equation for $x_1$ as:
+
+$$x_1\text{ = }\frac{det B_1}{ det A , }x_2\text{ = }\frac{det B_2}{ det A }\text{ ... etc }$$ .
+
+The "B" matrices contain the vector b from "Ax = b" in the correct column, and n-1 columns of A otherwise.  That is:
+
+$$
+B_1\text{ = }\left[{\begin{array}{cc}
+b & {\text{n-1 columns of A} \\
+\end{array}}\right]
+$$
+
+What ever the index of B is, that column replaces the columns of A on the right hand side of this equation.  Doing this somehow gives the correct matrix multiplication excerpt from $C^Tb$ to solve for $x_1$ in $x_1\text{ = }\frac{det B_1}{ det A }$ .  The mechanism of the matrix B_1 such that b1 is multiplied by c11, b2 by c21, and so on.
+
+In general, $B_j$ is A with column j replaced by b.  The determinant of this matrix B_j is divided by det A to get x_j.  That is, $x_j\text{ = }\frac{ det B_j }{ det A}$ .
+
+### Determinants and Volume
+
+
+
+
 
 
 
