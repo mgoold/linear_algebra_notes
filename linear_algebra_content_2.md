@@ -2634,7 +2634,260 @@ What ever the index of B is, that column replaces the columns of A on the right 
 
 In general, $B_j$ is A with column j replaced by b.  The determinant of this matrix B_j is divided by det A to get x_j.  That is, $x_j\text{ = }\frac{ det B_j }{ det A}$ .
 
-### Determinants and Volume
+## Eigenvalues and Eigenvectors
+
+Sources:
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/lecture-21-eigenvalues-and-eigenvectors/
+
+### Definition of Eigenvector and Eigenvalue
+
+Remember that a matrix A "act on" a vector x to produce a new vector; analogous to a function, any appropriate length x can have A multiplied times it to produce an output vector.
+
+Of special interest are the result vectors that retain the same direction as the vector x .  Such vectors are atypical; a typical result points in a new direction from x.  Some result vectors are *parallel to x* [note that they need not be on the same line as x] .  These parallel result vectors are **eigenvectors** .
+
+What is meant by "parallel" in this context?  It is most clearly stated in an equation:
+
+$$Ax\text{ = }\lambda{x}$$ .  
+
+* In this equation, x alone is the **eigenvector** .  This makes nominal sense; x is the "vector" in eigenvector.  It is the right-side vector x by itself that has the parallelism to x on the left side.
+* $\lambda$ is a scalar that controls direction and extent of right side x. $\lambda$ is the **eigenvalue** . It's potential values include 0 and negative numbers.  A valid eigenvector can thus be 0 or negative (pointing in the opposite direction to left side x).
+
+#### 0 Eigenvectors
+
+The 0 eigenvectors include the 0 vector, but also an vector x that would be in the nullspace of A N(A).  Thus, if a matrix is singular, it means that A times some non-zero vector = 0, and that $\lambda$ = 0 is one of the eigenvalues. 
+
+#### Example: Eigenvectors and Eigenvalues for Projection Matrices
+
+We know that with a projection matrix P, if we have a vector b, it will map that vector onto the plane Pb.  Is the vector b in Pb then considered an eigenvector?  No, because Pb has been mapped into a different direction than the original b.  The vectors that would be eigenvectors would be in that plane already.  In that case, when we multiply or "project" a vector x in Px = b, it will be unchanged by P because it was already in the plane.  As such, thus by definition the result vector b will necessarily be parallel to x.  The eigenvalue will then be simply = 1.  
+
+Are there any other eigenvectors in these circumstances?  Because the projection plane P is in 3d space, we would expect to find eigenvectors in 3 dimensions -- 2 in the plane, and 1 not in the plane.  This 3rd eigenvector will be one that is perpendicular to the plane.  The projection of a vector that is perpendicular to the plane will be 0, so it is in the nullspace of N(P), which is to say that Px = 0x and the eigenvalue is 0 as well.  Thus, overall the eigenvalues for a projection matrix will be in {1,0}.
+
+#### Example: Eigenvectors and Eigenvalues for Permutation Matrices
+
+Consider the permutation matrix 
+
+$$
+A\text{ = }\left[{\begin{array}{cc} 
+0 & 1 \\ 
+1 & 0 \\ 
+\end{array}}\right] 
+$$
+
+.  the vector
+
+$$
+x\text{ = }\left[{\begin{array}{cc} 
+1 \\ 
+1 \\ \
+end{array}}\right] 
+$$  
+
+will be unchanged by A.  In this case x=(1,1) and $\lambda$ = 1.
+
+Because A is a 2x2 matrix, we expect at least 2 eigenvectors [by what principle?] to be valid.  We can expect at least that a vector point in the opposite direction of (1,1) will also be valid.  In fact x=(-1,1) also works. When multiplied by A, we get (0\*-1 + 1\*1) and (1\*-1 + 0\*1) = (1,-1) w$ case, x = (-1,1) and $\lambda$ = -1 .  Altogether, Ax is in {x,-x} .
+
+We said that because we had 2 matrices, we expected 2 eigenvalues.  In fact, an nxn matrix will always have n eigenvalues.  They are not necessarily easy to find.  However, the sum of the eigenvalues will always equal the sum down the matrix diagonal [assume: prior to or without regard to any row reduction] .  This diagonal sum across an nxn matrix is called the "trace".  This fact introduces an "n-1" type dynamic to solving for the eigenvalues: having found n-1 of them, the last one must be the sum of the diagonals - the sum of eigenvalues found so far.
+
+**Definition**
+
+Trace: the sum of diagonal values $\sum\text{ }a_{11}\text{,}a_{22}\text{...}a_{nn}$ in an nxn matrix, which is always equal to the sum of eigenvalues (the $\lambda$ ) for that matrix.  
+
+### General Solution for Eigenvectors, Eigenvalues
+
+We want to solve $Ax\text{ = }\lambda{x}$ when both x and $\lambda$ are unknown.
+
+We do this by re-writing the equation as $\left(A-\lambda{}I\right)x\text{ = }0$ .  
+
+Remember that if a matrix is not singular, that is if all its vectors are independent, then the only vector x that will make Ax = 0 is the 0 vector, **x = 0** .  Logically, this means that whatever $\left(A-\lambda{}I\right)$ is, it *must be singular* in order for x to *not* be 0 .
+
+Remember also that the determinant of singular matrices is 0.  That is, $\text{det }\left(A-\lambda{}I\right)\text{ = }0$ .  --Notice that this equation for this determinant has removed x from consideration, isolating lambda.  This temporary isolation allows us to solve the unknowns $\lambda$ and **x** one at a time.  This isolating equation for the determinant is known as the "eigenvalue equation" or the "characteristic equation" .  Returning to the above insight about their being r=n lambdas, we will actually find all the lambdas before returning to x.  Among all the n lambdas, some values may be repeated, which can be computationally troublesome.
+
+Looking ahead, after we have found lambda, we can find x by elimination in the regular way, because finding $\left(A-\lambda{}I\right)$ will yield a singular matrix.
+
+#### Example: Solving $\text{det }\left(A-\lambda{}I\right)\text{ = }0$
+
+Suppose we have a matrix:
+
+$$
+A\text{ = }\left[{\begin{array}{cc} 
+3 & 1 \\ 
+1 & 3 \\ 
+\end{array}}\right] 
+$$
+
+Symmetric matrices like this one will always yield real eigenvalues.  The eigenvectors that result from symmetric matrices will always be perpendicular to each other.  
+
+Finding the determinant looks like:
+
+$$
+\text{det }\left(A-\lambda{}I\right)\text{ = }
+\left\|{\begin{array}{cc} 
+{3-\lambda} & 1 \\ 
+1 & {3-\lambda} \\ 
+\end{array}}\right\|
+$$
+
+so that the diagonal matrix is shifted, and then we take the determinant.  Notice that you can see why the $\lambda{}I$ multiplication is used ; it has the effect of only subtracting lambda from the diagonal components of A, and 0 otherwise.
+
+Applyign the 2x2 matrix ad - bc formulat for determinants, the above determinant grid translates to $\left(3\text{ - }\lambda\right)^2\text{ - }1$ .  Now we set this transformed equation to 0 so that we can solve for lambda.  Simplifying $\left(3\text{ - }\lambda\right)^2\text{ - }1$ by multiplying it out will give us $\lambda^2\text{ - }6\lambda\text{ + }8$ .  This is what we will set to 0.
+
+Consider though the 6 in this equation.  It is the trace: 3 + 3 from the original matrix diagonal.  What is the 8?  It is the determinant.  In the specific case of a 2x2 matrix, the determinant is lambda squared, minus the trace, timex lambda, and the trace is the linear coefficent plus the determinant.
+
+So, in this example, solving for $\lambda^2\text{ - }6\lambda\text{ + }8\text{ = }0$ will, after factorization, yield $\left(\lambda\text{ - }4\right)$ , $\left(\lambda\text{ - }2\right)$ .  The lambda values are in {2,4}.
+
+Now we can solve for the **eigenvectors**.  Remember that the eigenvectors are the [x] values in the nullspace that compute to zero when acted on by A, where A has the vector of eigenvalues is subtracted from its diagonal values.
+
+**NOTE**: you might think that the eigenvalues are subtracted all at once from A.  --That's wrong.  Actually, you multiply the first eigen value times I, subtract it from A, get the first eigenvector, then do the next one, and so on serially.  
+
+With this in mind, we subtract our first eigenvalue, 4, from the diagonal of A:
+
+$$
+\left[{\begin{array}{cc} 
+3 & 1 \\ 
+1 & 3 \\ 
+\end{array}}\right]
+\rightarrow
+$$
+\left[{\begin{array}{cc} 
+-1 & 1 \\ 
+1 & -1 \\ 
+\end{array}}\right]
+$$
+
+... remember that this updated A should be **singular** , that is the major assumption of this eigenvalue formula.  With this being so, whatever we compute for x will be in then nullspace.  In the case if eigenvalue =4, the first x vector ** $x_1$ ** will be (1,1) .
+
+For the second eigenvalue = 2, we have
+
+$$
+\left[{\begin{array}{cc} 
+3 & 1 \\ 
+1 & 3 \\ 
+\end{array}}\right]
+\rightarrow
+$$
+\left[{\begin{array}{cc} 
+1 & 1 \\ 
+1 & 1 \\ 
+\end{array}}\right]
+$$
+
+... in which case the ** $x_2$ ** will be (1,-1) or (-1,1) .  In fact, an infinite number of matrices would satisfy the condition so long as Ax = 0.
+
+Notice in the above examples that 
+
+$$
+\left[{\begin{array}{cc} 
+3 & 1 \\ 
+1 & 3 \\ 
+\end{array}}\right]
+$$ 
+
+is simply 
+
+$$
+\left[{\begin{array}{cc} 
+0 & 1 \\ 
+1 & 0 \\ 
+\end{array}}\right]
+\text{ + }3I
+$$ 
+
+Foreby, notice that while the eigenvalues were increased by 3 between these two matrices (1 + 3, 1-3), the eigenvectors did not change at all.   You can see why this is so by considering: Again suppose we have $Ax\text{ = }\lambda{x}$, and we add 3I to this matrix.  Then if $Ax\text{ = }\lambda{x}$, we get $\left(A\text{ + }3I\right)x\text{ = }\lambda{x}\text{ + }3x\text{ = }\left(\lambda\text{ + }3\right)x .  This equation shows that x is unchanged across both matrices in this situation, and all you're doing is "nudging" the matrix A by lambda = 3.
+
+#### Example: A Difficult Matrix
+
+Suppose we have a matrix A with an eigenvector x and eigenvalue lambda: $Ax\text{ = }\lambda{x}$ .  Now suppose add on some other matrix B.  If we know the eigenvalues of A, and we know the eigevnalues of B are $\alpha_1} ,  what will A + B be?
+
+You might think that if $Ax\text{ = }\lambda{x}$ and $Bx\text{ = }\alpha{x}$, then (A + B)x = $\left(\lambda\text{ + }\alpha\right)x$, but this is wrong.
+
+In words, if you know the eigenvalues of A, and you know the eigenvalues of B, then you might think by adding lambda and alpha together you could get the eigenvalues of A + B .  But that is wrong.
+
+The reason this approach is wrong is that we have no believe that x is also an eigenvector of B. B has eigenvalues, but normally it will have different eigenvectors because it's a different matrix.  
+
+This same truth holds for AB as for A + B.  Eigenvalues are not linear (they don't add), and they don't multiply.  
+
+#### Example: A Rotation Matrix
+
+Suppose we have a rotation matrix that rotates every vector by $90\textdegree$ .  This is a matrix which is the cosigne of ninety degrees, which is 0, the sine of 90 degrees, which is 1, minus the sine of 90, and cosine of ninety:
+
+$$
+Q\text{ = }
+\left[{\begin{array}{cc} 
+0 & -1 \\ 
+1 & 0 \\ 
+\end{array}}\right]
+$$
+
+This Q is also an orthoganal matrix.  What are its eigenvalues and eigenvectors?  We know that the sum of the eigenvalues will be the sum of the diagonals, which = 0 here.  The trace was 0 + 0 = $\lambda_1$ + $\lambda_2$ .  
+
+The det of this matrix Q = 1 by the 2x2 formula ad - bc , which is $\lambda_1\lambda_2$ . [--Which is starting to seem impossible, since you'd need them to have the same value and opposite sign for +, and the same value and same sign for \* .]
+
+In this example, something goes wrong for rotations, because what vector can come out parallel to itself after a rotation?  If this matrix rotates every vector by 90 degrees, it becomes impossible to say what its eigenvector could be.  Eigenvectors must by definition come out the in the same direction having been acted on by A, but this becomes impossible for a matrix that deliberately rotates the vectors.  
+
+As we began to see, the eigenvalues also indicate the impossibility of a solution: they must both sum to 0, and multiply to 1.
+
+However, there is a solution.  Again, we take the same approach, solving for 
+
+$$
+\text{det }\left(Q-\lambda{}I\right)\text{ = }
+\left\|{\begin{array}{cc} 
+{-\lambda} & -1 \\ 
+1 & {-\lambda} \\ 
+\end{array}}\right\|
+\text{=}
+{\lambda^2\text{ + }1}
+$$
+
+.
+
+We set $\lambda^2\text{ + }1\text{ = }0$ .  Remember that "i" in mathematics is the imaginary square root of -1.  Then $\lambda_1\text{ = }i$ ; $\lambda_2\text{ = }-i$ .  These are the correct numbers: they both sum to 0, and multiply to 1 .  However, even though the matrix was real, the eigenvalues are by definition not real.  This can happen -- complex numbers (numbers involving i) are sometimes part of solving linear algebra.
+
+We should relate this to the above sections using symmetric matrices: these cases with imaginary numbers, and complex conjugates (pairs of complex numbers with identical values, except for having opposite signs on their imaginary portion), do not happen when computing the eigenvalues of symmetric matrices.  
+
+Notice that Q is anti-symmetric: Q transpose is actually minus Q, which is the opposite of symmetric.  When you flip the diagonal, all of the signs are reversed.  Matrices like these [always} have pure imaginary eigenvalues.
+
+In general, the matrices which are easy to solve have perpendicular eigenvectors, others have complex eigenvalues.  An even worse scenario is as follows: suppose we have the matrix:
+
+$$
+A\text{ = }
+\left[{\begin{array}{cc} 
+3 & 1 \\ 
+0 & 3 \\ 
+\end{array}}\right]
+$$
+
+Because the matrix is triangular, we can quickly assess its eigenvalues.  If a matrix is triangular, we can read the eigenvalues of the diagonal: 3,3 .  In this case, the eigenvalue is repeated.
+
+Again, the process of solving for eigenvalues looks as follows:
+
+$$
+\text{det }\left(A-\lambda{}I\right)\text{ = }
+\left\|{\begin{array}{cc} 
+{3-\lambda} & 1 \\ 
+0 & {3-\lambda} \\ 
+\end{array}}\right\|
+\text{=}
+\left(3-\lambda\right)^2\text{ - }0}
+$$
+
+by the 2x2 ad - bc equation.  Notice that because it was triangular, there is no "-bc" component; the solution is reduced to the product of the matrix' diagonals.  Thus lambda1 = 3; lambda2 = 3.
+
+Although the eigenvalues are easily computed, the eigenvectors become difficult when the eigenvalue is repeated.
+
+We try to solve $\left(A-\lambda{}I\right)x\text{ = }0$ . Subtracting the lambdas from A gives us:
+
+$$
+\left(A-\lambda{}I\right)x\text{ = }
+\left\|{\begin{array}{cc} 
+0 & 1 \\ 
+0 & 0 \\ 
+\end{array}}\right\|
+\left[x\right]\text{ = }\left[0\right]
+$$
+
+.  Remember that the updated matrix A here is supposed to be singular (it is).  The problem is that since it is a 2x2 matrix, we should have at least 2 eigenvectors, but can only produce (0,1) for x.  This tells us that A is a "degenerate matrix" meaning that it has an "insufficient" number of **independent** eigenvectors.
+
+
 
 
 
