@@ -2861,14 +2861,15 @@ Because the matrix is triangular, we can quickly assess its eigenvalues.  If a m
 Again, the process of solving for eigenvalues looks as follows:
 
 $$
-\text{det }\left(A-\lambda{}I\right)\text{ = }
+\text{det }{\left(A-\lambda{}I\right)}\text{ = }
 \left\|{\begin{array}{cc} 
 {3-\lambda} & 1 \\ 
 0 & {3-\lambda} \\ 
 \end{array}}\right\|
-\text{=}
-\left(3-\lambda\right)^2\text{ - }0}
+\text{ = }
+{\left({3-\lambda}\right)}^2\text{ -  }0
 $$
+
 
 by the 2x2 ad - bc equation.  Notice that because it was triangular, there is no "-bc" component; the solution is reduced to the product of the matrix' diagonals.  Thus lambda1 = 3; lambda2 = 3.
 
