@@ -138,7 +138,7 @@ Note:
 
 ## Special Solutions to Ax=0
 
-The following process is a complete algorithm for finding all the solutions to Ax=0.
+The following process is a complete algorithm for finding all the solutions to Ax=0.  
 
 Sources:
 *  Strang: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/solving-ax-0-pivot-variables-special-solutions/
