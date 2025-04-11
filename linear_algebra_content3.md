@@ -96,6 +96,7 @@ Since rank of A post rref = 1, the nullity must equal 1, since C(A) = 2.
 
 Sources:
 * USF: https://usfca.instructure.com/courses/1627052/pages/multivariate-calculus-with-matrices-video-15?module_item_id=18611421
+* Much clearer explanation of Jacobian: https://www.youtube.com/watch?v=AdV5w8CY3pw&t=4s
 
 ### The Derivative
 
@@ -254,6 +255,11 @@ Jacobian matrix functionality has 2 aspects or "sub functions":
 We can thus think of the Jacobian function as having n functions processing i...m values:
 $f\left(f_1\left(x_1\text{,...,}x_m\right)\text{,}f_2\left(x_1\text{,...,}x_m\right)\text{,...,}f_n\left(x_1\text{,...,}x_m\right)\right)$ .  With this in mind we can imagine taking partial derivatives of f1, f2 ... up to fn.  All such partial derivatives could be arranged in a matrix.  This matrix is called **the Jacobian** .
 
+#### Notes on Jacobian Explanation
+
+* A major contextual point about the Jacobian is that you're using it in situations where a vector of variables is being mapped to a vector of functions, each of which [I believe] must use all the variables (for reasons of matrix multiplication).  This wasn't super clear to me at first.  Anyway, that is why, if you have for example a vector of 2 variables, and a vector of 2 functions, you're going to end up with a 2x2 matrix of partial derivatives.
+* Note that a vector of variables might also be mapped to a single function which uses all the variables.  --I think that is a typical case in the context of neural networks, where at the end all the inputs and their respective weights are reduced to a single function.  
+
 #### Jacobian Matrix Definition
 
 The Jacobian of a function f is given by the following matrix:
@@ -296,7 +302,7 @@ To take the Jacobean of this function, we follow the mapping plan shown above.  
 Thus the Jacobean for this case:
 
 $$
-J_f
+f(x,y)
 \text{ = }
 \left[{\begin{array}{cc}
 {2xy\text{ + }2} & x^2 \\
@@ -309,7 +315,7 @@ $$
 In this case:
 
 $$
-J_{f}{v_1}
+J_{f}\left({1,2}\right)
 \text{ = }
 \left[{\begin{array}{cc}
 {2xy\text{ + }2} & x^2 \\
@@ -326,6 +332,8 @@ J_{f}{v_1}
 4 & 14 \\
 \end{array} }\right]
 $$
+
+The final output matrix of numbers represents the slope of the overall approximation of the function f(x,y) at the point (1,2).  
 
 
 
