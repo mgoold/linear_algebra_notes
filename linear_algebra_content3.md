@@ -97,6 +97,7 @@ Since rank of A post rref = 1, the nullity must equal 1, since C(A) = 2.
 Sources:
 * USF: https://usfca.instructure.com/courses/1627052/pages/multivariate-calculus-with-matrices-video-15?module_item_id=18611421
 * Much clearer explanation of Jacobian: https://www.youtube.com/watch?v=AdV5w8CY3pw&t=4s
+* Clearer explantion of meaning of Jacobian output: https://www.youtube.com/watch?v=bohL918kXQk
 
 ### The Derivative
 
@@ -335,8 +336,20 @@ $$
 
 The final output matrix of numbers represents the slope of the overall approximation of the function f(x,y) at the point (1,2).  
 
+**Notes on this explanation.**
 
+What the Jacobian actually is, for a given point or vector of input values, is a grid of the changes to the output of each function that is effected by a tiny change with respect to each input variable (that is df1/dx1, df1/dxy, etc).  It is in this sense that the grid represents a "slope", although for a large grid of functions and dimensions the idea of a slope would quickly become obsure.
 
+#### Jacobian Matrices: Connection to Other Concepts
+
+**Critical Points**
+
+In the context of the Jacobian, a point is a critical point if the rank of the Jacobian is not maximal (r<n).  For example, we had a 2x2 matrix in the above example.  If there are point values (x,y) that yield a result matrix with a rank of 1 or 0 (<2), these will be critical points for the function.  Obviously, the 0 vector for variables is one example.  But in the above example, having 0 in x or y would have done it as well.  
+
+#### Jacobian Matrices: Additional Properties
+
+* for square Jacobian matrices, full rank implies invertibility of the function f.  If the matrix is invertible, then the function is also invertible (locally).
+* crucially, **a series of Jacobians can be multiplied by each other** to yield a final output.  This matters in the context of neural networks, where each Jacobian represents a phase in the network's learning process, and the question is how a set of initial inputs, having an impact across successive phases, impacts the final prediction.  
 
 ## Gradient Descent
 
