@@ -98,6 +98,7 @@ Sources:
 * USF: https://usfca.instructure.com/courses/1627052/pages/multivariate-calculus-with-matrices-video-15?module_item_id=18611421
 * Much clearer explanation of Jacobian: https://www.youtube.com/watch?v=AdV5w8CY3pw&t=4s
 * Clearer explantion of meaning of Jacobian output: https://www.youtube.com/watch?v=bohL918kXQk
+* Good video on relation of linear map to Jacobian, especially illustrating conventions of ordering from inputs to Jacobian derivative ordering.
 
 ### The Derivative
 
@@ -258,8 +259,11 @@ $f\left(f_1\left(x_1\text{,...,}x_m\right)\text{,}f_2\left(x_1\text{,...,}x_m\ri
 
 #### Notes on Jacobian Explanation
 
-* A major contextual point about the Jacobian is that you're using it in situations where a vector of variables is being mapped to a vector of functions, each of which [I believe] must use all the variables (for reasons of matrix multiplication).  This wasn't super clear to me at first.  Anyway, that is why, if you have for example a vector of 2 variables, and a vector of 2 functions, you're going to end up with a 2x2 matrix of partial derivatives.
-* Note that a vector of variables might also be mapped to a single function which uses all the variables.  --I think that is a typical case in the context of neural networks, where at the end all the inputs and their respective weights are reduced to a single function.  
+* A major contextual point about the Jacobian is that you're using it in situations where a vector of input variables is being mapped to a vector of functions that give outputs.  The vectors need not be of equal length.  For example, inputs x and y could be mapped to a vector of 3 functions that each use x and y.  However, not every output function needs to use every input function.  When creating the Jacobian though, the derivative must be calculated for every input variable against every function.  Two things follow from these rules:
+ * The Jacobian need not be square, but it being a matrix it must be rectangular.
+   * If you have for example a vector of 2 variables, and a vector of 2 functions, you're going to end up with a **2x2** matrix of partial derivatives.  When I started learning about Jacobians, I anticipated that a set of 2 functions with 2 variables would for example be broken into a 2x2 matrix, that would act on a 2x1 input matrix and yield a 2x1 output matrix.  That's totally wrong.
+ * It is possible to have 0s in the Jacobian, if the derivative w.r.t. an input variable is taken for a function that does not use it.  
+* Note that a vector of variables might also be mapped to a **single function** which uses all the variables.  --I think that is a typical case in the context of neural networks, where at the end stage of calculations all the inputs and their respective weights are reduced to a single function that yields a single number.
 
 #### Jacobian Matrix Definition
 
@@ -338,7 +342,15 @@ The final output matrix of numbers represents the slope of the overall approxima
 
 **Notes on this explanation.**
 
-What the Jacobian actually is, for a given point or vector of input values, is a grid of the changes to the output of each function that is effected by a tiny change with respect to each input variable (that is df1/dx1, df1/dxy, etc).  It is in this sense that the grid represents a "slope", although for a large grid of functions and dimensions the idea of a slope would quickly become obsure.
+What the Jacobian actually is, for a given point or vector of input values, is a grid of the changes to the output of each function that is effected by a tiny change with respect to each input variable (that is df1/dx1, df1/dx2, etc).  It is in this sense that the grid represents a "slope", although for a large grid of functions and dimensions the notion of a slope would quickly become obsure. 
+
+* The map of changes across a single row of the Jacobian contains a single function's change  with respect to a change in each of its successive variables.  This makes straightforward, by-definition sense.
+* On the other hand, I got stuck on **why** it should be that the first number in $J_11$ should correspond to change in x for a change in x, $J_21$ must correspond to change in y for a change in x, and so on.  What was the source of logical necessity that drives this ordering and makes it reliable?
+ * The answer is one of those things that are so basic that people smarter than me don't even mention it, and assume that you'll understand the implicit step.  Consider this input-to-output example:
+
+  $$f\left(x,y\right\text{ = }\left(f_1\left(x,y\right),f_2\left(x,y\right)\right)\text{ = }\left(x^2\text{ - }y^2,3xy\right)$$
+
+  In this example, we would understand by convention that the input x maps to the output of f1, and y maps to the output of f2.  That is, f1 is what x becomes, and f2 is what y becomes.  Extending this custom to the conventions of linear algebra, when calculate a Jacobian (and I assume, do other similar operations), the output functions are translated from the above left-to-right presentation to a top-to-bottom ordered column, to facilitate creating the partial derivatives matrix.  This custom is the only reason why we can rely on $J_11$ to apply to change in x w.r.t. x, $J_21$ to apply to change in y w.r.t. x, etc.  
 
 #### Jacobian Matrices: Connection to Other Concepts
 
