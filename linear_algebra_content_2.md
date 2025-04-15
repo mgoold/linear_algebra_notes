@@ -2641,7 +2641,7 @@ Sources:
 
 ### Definition of Eigenvector and Eigenvalue
 
-Remember that a matrix A "act on" a vector x to produce a new vector; analogous to a function, any appropriate length x can have A multiplied times it to produce an output vector.
+Remember that a matrix A "acts on" a vector x to produce a new vector.  In a manner analogous to a function, any appropriate length x can have A multiplied times it to produce an output vector.
 
 Of special interest are the result vectors that retain the same direction as the vector x .  Such vectors are atypical; a typical result points in a new direction from x.  Some result vectors are *parallel to x* [note that they need not be on the same line as x] .  These parallel result vectors are **eigenvectors** .
 
