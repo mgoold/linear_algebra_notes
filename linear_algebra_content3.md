@@ -439,7 +439,7 @@ In this formulation, we know that since the dot product is = 0, the two vectors 
 
 #### A Gradient $\cdot$ Level Curve Dot Product is 0, So.
 
-The final step is to consider the first vector in the dot product: $\Large{\left(\frac{\partial{f}}{\partial{x}}\hat{i},\frac{\partial{f}}{\partial{y}}\hat{j}\right)$ .  You can see that this is a set of partial derivatives breaking down the output of function f in terms of its x and y directional components.  This is exactly the definition of the gradient of f.  The second vector is a tangent to the level line, which we have said is parallel to the x,y plane, and consequently the tangent is parallel to the x,y plane while also intersecting the slope at a constant height.
+The final step is to consider the first vector in the dot product: $\Large{\left(\frac{\partial{f}}{\partial{x}}\hat{i},\frac{\partial{f}}{\partial{y}}\hat{j}\right)}$ .  You can see that this is a set of partial derivatives breaking down the output of function f in terms of its x and y directional components.  This is exactly the definition of the gradient of f.  The second vector is a tangent to the level line, which we have said is parallel to the x,y plane, and consequently the tangent is parallel to the x,y plane while also intersecting the slope at a constant height.
 
 The formula can thus be given a final short form as:
 
@@ -449,8 +449,17 @@ Consequently, since the gradient itself is perpendicular to the tangent line, an
 
 **Additional Note** the negative or positive value of the gradient tells you whether the gradient is pointing "uphill or downhill".  In gradient descent algorithms, it is typical to pursue the negative values, since these are associated with minima, which in turn are associated with error minimization.
 
-
 A 0 gradient corresponds to a critical point, or "local peak/valley" on a surface.  Remember that for a Jacobian, a non-maximal rank corresponds to a critical point, so in the context of a gradient this critical point (non-maximal rank) will be a vector of 0s.  
+
+### Gradient Descent Recursive Algorithm
+
+When gradient descent is used to minimize error/approximate a value in machine learning, the gradient is calculated many times in such a way that as the gradient values get progressively smaller, the algorithm slows down and quits so as not to overshoot the peak or valley. 
+
+Formally, this approache looks like this recursive formula:
+
+$$\Large{a_N\text{ = }a_{N-1}-\gamma\nablaf\left(a_{N-1}right\)}$$
+
+In words, this is "The gradient at point N equals the gradient at the previous point - gamma * gradient at previous point..." .  Where gamma is the "step size", or  scaling parameter that can adjust the impact of learning thus farm, since a given gradient can be large.  This is also called the "learning rate".
 
 
 
