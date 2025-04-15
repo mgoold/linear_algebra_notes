@@ -413,27 +413,41 @@ Imagine that you had a simple slope such as a parabolic d3 space.  Imagine this 
 
 ![Screenshot 2025-04-14 at 16 33 21](https://github.com/user-attachments/assets/bdeee70b-06d3-4603-90c8-fed31368053d)
 
-You can think of the function for this constant line in a parametrized format, where a vector of value for t is consumed by a function that uses them in 2 separate functions to yield pairs of x and y coordinates for each value t.  That is: $\overrightarrow{r}\left(t\right)\text{ = }x\left{t}\hat{i}\text{ + }\y\left{t}\hat{j}$ such that f(x(t),y(t)) = k.  --In case it's not clear, this is saying that the f(x(t),y(t)) consumes the x,y pairs given by the parameterized function $\overrightarrow{r}\left(t\right)\$ .  In other words, $\overrightarrow{r}\left(t\right)\$ is nested in f(); f($\overrightarrow{r}\left(t\right)\$) = C.
+You can think of the function for this constant line in a parametrized format, where a vector of value for t is consumed by a function that uses them in 2 separate functions to yield pairs of x and y coordinates for each value t.  That is: 
+
+$$\Large{\overrightarrow{r}\left(t\right)\text{ = }x\left(t\right)\hat{i}\text{ + }y\left(t\right)\hat{j}}$$ 
+
+such that f(x(t),y(t)) = k.  
+
+In case it's not clear, this is saying that the f(x(t),y(t)) consumes the x,y pairs given by the parameterized function $\overrightarrow{r}\left(t\right)\$ .  In other words, 
+
+$$\Large{\overrightarrow{r}\left(t\right)\}$$ 
+
+is nested in f();  
+
+$$\Large{f\left(\overrightarrow{r}\left(t\right)\right)\text{ = }C}$$ .
 
 This nested arrangement puts us in place to take the derivative of this function via the chain rule.  When we do, we get a result like:
 
-$\frac{\partial{f}}{\partial{x}}\frac{dx}{dt}\text{ + }\partial{f}}{\partial{y}}\frac{dy}{dt}$ .  
+$$\Large{\frac{\partial{f}}{\partial{x}}\frac{dx}{dt}\text{ + }\frac{\partial{f}}{\partial{y}}\frac{dy}{dt}}$$ .  
 
 With some consideration, you can see that this could be considered as the result of taking a dot product of two vectors, which would have been multiplied like so:
 
-$$\left(\frac{\partial{f}}{\partial{x}}\hat{i},\frac{\partial{f}}{\partial{y}}\hat{j}\right)\cdot\left(\frac{dx}{dt}\hat{i},\frac{dy}{dt}\hat{j}\right)\text{ = }0$$ .
+$$\Large{\left(\frac{\partial{f}}{\partial{x}}\hat{i},\frac{\partial{f}}{\partial{y}}\hat{j}\right)\cdot\left(\frac{dx}{dt}\hat{i},\frac{dy}{dt}\hat{j}\right)\text{ = }0}$$ .
 
 In this formulation, we know that since the dot product is = 0, the two vectors must be orthoganal to each other.
 
-
-
-
 #### A Gradient $\cdot$ Level Curve Dot Product is 0, So.
 
+The final step is to consider the first vector in the dot product: $\Large{\left(\frac{\partial{f}}{\partial{x}}\hat{i},\frac{\partial{f}}{\partial{y}}\hat{j}\right)$ .  You can see that this is a set of partial derivatives breaking down the output of function f in terms of its x and y directional components.  This is exactly the definition of the gradient of f.  The second vector is a tangent to the level line, which we have said is parallel to the x,y plane, and consequently the tangent is parallel to the x,y plane while also intersecting the slope at a constant height.
 
+The formula can thus be given a final short form as:
 
+$$\Large{\nabla{f}\cdot\frac{d\overrightarrow{r}}{dt}\text{ = }0}$$
 
+Consequently, since the gradient itself is perpendicular to the tangent line, and is at its point on the slope, it must point straight "uphill" in the direction of greatest ascent|descent (change).  In fact, it is not actually on the slope, but it meets that tangent line at the corresponding point in the x,y plane.  
 
+**Additional Note** the negative or positive value of the gradient tells you whether the gradient is pointing "uphill or downhill".  In gradient descent algorithms, it is typical to pursue the negative values, since these are associated with minima, which in turn are associated with error minimization.
 
 
 A 0 gradient corresponds to a critical point, or "local peak/valley" on a surface.  Remember that for a Jacobian, a non-maximal rank corresponds to a critical point, so in the context of a gradient this critical point (non-maximal rank) will be a vector of 0s.  
