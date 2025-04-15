@@ -365,6 +365,105 @@ In the context of the Jacobian, a point is a critical point if the rank of the J
 
 ## Gradient Descent
 
+### Sources
+* USF: https://usfca.instructure.com/courses/1627052/pages/gradient-descent-video-16?module_item_id=18611423
+* Rundowns on why gradients are fastest route of ascent|descent:
+ * https://www.youtube.com/watch?v=_ZFiDtXOGhc
+ * https://www.youtube.com/watch?v=QQPz3eXXgQI&t=144s
+* Brief intro to parametric curves: https://www.youtube.com/watch?v=bb4bSCjlFAw
+
+**Gradient Notation**
+
+Gradients apply to a class of functions which take multiple outputs and output a single value.  A gradient function looks like : $f\left(x_1,x_2,x_3\text{,...,}x_n\right)$ .  We can collect all the partials of f in a column vector.  The gradient of f at point $left(a_1\text{,...,}a_n2\right)$ is then:
+
+$$
+\nabla{f\left(a\right)}\text{ = }
+\left[{\begin{array}{cc}
+\frac{\partial f}{\partial x_1}\left(a\right) \\
+\frac{\partial f}{\partial x_2}\left(a\right) \\
+\vdots \\
+\frac{\partial f}{\partial x_n}\left(a\right) \\
+\end{array} }\right]
+
+--In this notation, the partial derivative and the point value that is plugged into it are combined into a single component.  Remember that there is just one function, so all the components down the column are denoted with just "df" instead of "df1...dfn".  The derivative is taken of the same function over and over, but w.r.t. a different, successive input variable.  In this sense, I believe this column down is what would normally be the first row in an mxn Jacobian matrix, where m>1.   --In fact, the instructor goes on to say that we can think of this as the transpose $\left(J^{T}_f\right)$ for f.  The whole resultant vector is called the "gradient vector".
+
+Along with the derivative being given, I believe the notation means that the corresponding point value is plugged into it and the whole component being calculated. 
+
+### Excursus: Meaning of the Gradient of a Function
+
+The meaning of the gradient is that it is a vector on the tangent plane to a function "surface" showing the direction of fastest increase of that function.  OK.  **Why is it in the direction of the fastest rate of increase?** It turns out the answer is one of those "by definition things" where, when you understand how the gradient is positioned, it has to point in the "fastest rate change direction".  The shortest answer is that it always points "straight up|down the hill".  The detailed explantion breaks into several parts:
+
+#### Remember What the Chain Rule Is
+
+Formally, the chain rule is $\frac{d}{dx}\left[f\left(g\left(gleft(x\right)\right)\right]\text{ = }f'\left(g\left(gleft(x\right)\right)g'\left(x\right)$ .
+
+This says that the derivative of a nested function with respect to variable in the inner function is the derivative of the outer function, times the derivative of the inner function with respect to x.  Since this is multiplication, the order doesn't matter, so some descriptions reverse which derivativ is taken first.
+
+For example:
+
+$f\left(x\right)\text{ = }\left(2x\text{ + }3\right)^5)\text{; }f'\left(x\right)\text{ = }\left(5\left(2x\text{ + }3\right)-4\right)\*2\right)\text{=}10\left(2x+3\right)^4\right)$ .
+
+#### Dot Product Angles
+
+Remember that for 2 vectors, a 0 dot product means that they are "orthogonal" (at a right angle) to each other.   This is so because the dot product is also equal to the product of the lengths of the vectors times the cosine of the angle between them.  But when the angle between them is 90 degrees, the cosine will  = 0, and so $\overrightarrow{a}\cdot\overrightarrow{b}\text{ = }\|\overrightarrow{a}\|\|\overrightarrow{b}\|\left(0\right)\text{ = }0$.
+
+#### Understanding Level Curves
+
+Imagine that you had a simple slope such as a parabolic d3 space.  Imagine this is intersected by a plane parallel to the xy plane, so that the intersection with the slope will form a line that everywhere has a constant height z = k, as pictured here:
+
+![Screenshot 2025-04-14 at 16 33 21](https://github.com/user-attachments/assets/bdeee70b-06d3-4603-90c8-fed31368053d)
+
+You can think of the function for this constant line in a parametrized format, where a vector of value for t is consumed by a function that uses them in 2 separate functions to yield pairs of x and y coordinates for each value t.  That is: $\overrightarrow{r}\left(t\right)\text{ = }x\left{t}\hat{i}\text{ + }\y\left{t}\hat{j}$ such that f(x(t),y(t)) = k.  --In case it's not clear, this is saying that the f(x(t),y(t)) consumes the x,y pairs given by the parameterized function $\overrightarrow{r}\left(t\right)\$ .  In other words, $\overrightarrow{r}\left(t\right)\$ is nested in f(); f($\overrightarrow{r}\left(t\right)\$) = C.
+
+This nested arrangement puts us in place to take the derivative of this function via the chain rule.  When we do, we get a result like:
+
+$\frac{\partial{f}}{\partial{x}}\frac{dx}{dt}\text{ + }\partial{f}}{\partial{y}}\frac{dy}{dt}$ .  
+
+With some consideration, you can see that this could be considered as the result of taking a dot product of two vectors, which would have been multiplied like so:
+
+$$\left(\frac{\partial{f}}{\partial{x}}\hat{i},\frac{\partial{f}}{\partial{y}}\hat{j}\right)\cdot\left(\frac{dx}{dt}\hat{i},\frac{dy}{dt}\hat{j}\right)\text{ = }0$$ .
+
+In this formulation, we know that since the dot product is = 0, the two vectors must be orthoganal to each other.
+
+
+
+
+#### A Gradient $\cdot$ Level Curve Dot Product is 0, So.
+
+
+
+
+
+
+
+A 0 gradient corresponds to a critical point, or "local peak/valley" on a surface.  Remember that for a Jacobian, a non-maximal rank corresponds to a critical point, so in the context of a gradient this critical point (non-maximal rank) will be a vector of 0s.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Linear Regression
 
 ## Orthonormality
