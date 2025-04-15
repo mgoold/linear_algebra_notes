@@ -462,32 +462,21 @@ $$\Large{a_N\text{ = }a_{N-1}-\gamma\nablaf\left(a_{N-1}right\)}$$
 In words, this is "The gradient at point N equals the gradient at the previous point - gamma * gradient at previous point..." .  Where gamma is the "step size", or  scaling parameter that can adjust the impact of learning thus farm, since a given gradient can be large.  This is also called the "learning rate".
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Linear Regression
+
+Linear regression as matrix operation.
+Use of dot products.
+How is error minimized?  By finding critical point, where all partial derivatives are equal to 0.
+Use of TSS summation equation --> translate to matrix presentation.
+Starting at about 15.00
+The derivative of a summation is the summation of the derivatives.
+Application of chain rule, to obtain gradient of summation with respect to each beta.
+Remember that a gradient is just one column, i.e. "the first row of a Jacobian" transposed.  So just expect one column of partials.
+Understand the "2xT" thing at 17.44.
+
+
+
+
 
 ## Orthonormality
 
