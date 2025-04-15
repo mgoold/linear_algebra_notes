@@ -2649,8 +2649,10 @@ What is meant by "parallel" in this context?  It is most clearly stated in an eq
 
 $$Ax\text{ = }\lambda{x}$$ .  
 
-* In this equation, x alone is the **eigenvector** .  This makes nominal sense; x is the "vector" in eigenvector.  It is the right-side vector x by itself that has the parallelism to x on the left side.
-* $\lambda$ is a scalar that controls direction and extent of right side x. $\lambda$ is the **eigenvalue** . It's potential values include 0 and negative numbers.  A valid eigenvector can thus be 0 or negative (pointing in the opposite direction to left side x).
+There are 2 x's in this equation; they are not necessarily the same.  For clarification I will call them "left side" and "right side" x, depending on which side of the equal sign they lie.  The right side x is what you get after A has acted on the left side x.
+
+* In this equation, right side x is the **eigenvector** .  Right side x is the "vector" in eigenvector.  It is this vector x that may have the same parallel direction to left side x.
+* $\lambda$ is a scalar that controls direction and extent of right side x. $\lambda$ is the **eigenvalue** . Its potential values include 0 and negative numbers.  A valid eigenvector can thus be 0 or negative (pointing in the parallel, opposite direction to left side x).
 
 #### 0 Eigenvectors
 
