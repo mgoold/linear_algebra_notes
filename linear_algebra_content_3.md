@@ -464,21 +464,140 @@ In words, this is "The gradient at point N equals the gradient at the previous p
 
 ## Linear Regression
 
-Linear regression as matrix operation.
-Use of dot products.
-How is error minimized?  By finding critical point, where all partial derivatives are equal to 0.
-Use of TSS summation equation --> translate to matrix presentation.
-Starting at about 15.00
-The derivative of a summation is the summation of the derivatives.
-Application of chain rule, to obtain gradient of summation with respect to each beta.
-Remember that a gradient is just one column, i.e. "the first row of a Jacobian" transposed.  So just expect one column of partials.
-Understand the "2xT" thing at 17.44.
-
-
-
-
+* Linear regression as matrix operation.
+* Use of dot products.
+* How is error minimized?  By finding critical point, where all partial derivatives are equal to 0.
+* Use of TSS summation equation --> translate to matrix presentation.
+* Starting at about 15.00
+* The derivative of a summation is the summation of the derivatives.
+* Application of chain rule, to obtain gradient of summation with respect to each beta.
+* Remember that a gradient is just one column, i.e. "the first row of a Jacobian" transposed.  So just expect one column of partials.
+* Understand the "2xT" thing at 17.44.
 
 ## Orthonormality
+
+### Sources:
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/lecture-17-orthogonal-matrices-and-gram-schmidt/
+
+Note that we will use the letter Q to indicate orthogonal matrices.
+
+An orthonormal matrix need not be square.
+
+### Motivation
+
+The reason to make vectors orthonormal is it makes computation with them much easier.  I suppose that then you have to change them back via some reverse process, at the end of your calculations.
+
+### Orthogonality and Projection Matrices
+
+A projection matrix P equals a multiplication of 4 orthogonal matrices:
+
+$$\Large{P\text{ = }Q\left(Q^TQ\right)^{-1}Q^T}\text{ = }QQ^T\left(\text{ = I if Q is square}\right)$$
+
+**...this is true when we have an orthonormal basis for in the column space.**
+
+What makes this equation nice is that $\left(Q^TQ\right)^{-1}$ is the identity I .  Thus we don't need to do any inversion.  This means that a projection matrices ends up being simply $P=QQ^T$ 
+
+Remember the properties of a projection matrix:
+* a projection matrix is symmetric.  A square matrix Q is certainly symmetric.
+* if you apply a projection matrix 2x, the second application will not have an effect.  Therefore, $\left(QQ^T\right)\left(QQ^T\right)\text{ = }\left(QQ^T\right)$ .  You can see this right away, since 
+* This property should fall out right away, since $QQ^T\left(\text{ = I if Q is square}\right)$ .  In fact you can see $QQ^T$ in the middle of this identity, so it's clear that $\left(QQ^T\right)\left(QQ^T\right)\text{ = }\left(QQ^T\right)$ becomes $\left(QIQ^T\right)\text{ = }\left(QQ^T\right)$
+
+Suppose the matrix Q is square.  Then if the square matrix is full rank, and the columns are all orthonormal, then they span the full space of C(A). The projection matrix onto this whole space will then be the identity matrix (i.o.i. Q is square).  
+
+### The Orthonormal Basis
+
+Most of the difficulty in our matrix equations is eliminated when dealing with matrices that have an orthonormal basis.  Several examples of this resolution are given below.
+
+#### The "Normal" Equation
+
+Remember the normal equation: $A^TA\hat{x}\text{ = }A^Tb$ .  In an orthonormal setting, A is replaced by Q: $Q^TQ\hat{x}\text{ = }Q^Tb$ .  This reduces to $\hat{x}\text{ = }Q^Tb$, since the left side becomes $I\hat{x}$ .  What this equation is saying is that the ith component of x, $\hat{x}_i\$, is equal to the i-th basis vector times b.  This is one of the most important identities in some areas of math, as it states that if we have an orthonormal basis, then the projection on the ith basis vector is just $q^T_ib$ .  In other words, this number x we're seeking is just a dot product.  
+
+### Gram-Schmidt: Making Independent Vectors Orthonormal
+
+With the G-S approach, the goal is to make the columns of a matrix orthonormal.  Since it involves row manipulation, it may feel like the RREF process, but the goal is different.
+
+We begin with vectors a and b. They might be in a space of any number of dimensions.  What matters is that they are independent of each other.  The goal is to produce orthonormal vectors A and B out of them.  Then it is easy to get orthonormal vectors q1 and q2 from that.
+
+With 2 vectors, we only need to make the second, "B" orthogonal to the first.  So there's kind of an "n-1" thing with the vectors that you have.
+
+With this in mind, we consider b as projecting on a in one "x" dimension.  We then need to find the "y" dimension.  But in fact this missing y dimension IS the orthogonal vector B that we're seeking.  
+
+Considering b as a projection on a, we say that orthogonal vector B = b - its projection on A.  This is soft of obvious, since b's projection on a, and B, would make the non-hypotenuse legs of a right triangle to which b would be the hypotenuse.  We know that B won't be zero, because we stipulated that the vectors were independent of each other.
+
+The linear algebra approach (this is G-S's contribution) to subtracing the projection from b is: $\large{B\text{ = }b\text{ - }\frac{A^Tb}{A^TA}A}$ .  The result will give us B perp to A.  How would we know/check that this is true?  Of course, we know that the dot product of perpendicular vectors = 0, so we can take multiply B by $A^T$ and get 0 to check.
+
+**I don't understand why it has to be A transpose.** However, checking that  $A^TB\text{ = }0$ formulaically does show that it needs to be $A^T$ :
+
+$$\large{A^TB\text{ = }A^T\left(b\text{ - }\frac{A^Tb}{A^TA}A\right)\text{ = }0}$$ 
+
+.  You can see that multiplying the right side would give you $frac{A^TA}{A^TA}$, which would cancel and leave you with $A^Tb\text{ - }A^Tb$ , which indeed is 0.
+
+### Gram-Schmidt with 3 Vectors
+
+Suppose we have 3 independent vectors a,b,c.  What does making them into orthogonal vectors A,B,C look like?
+
+The first 2 steps look the same: take A as-is, and use G-S to find B as we did above.  
+
+Finding C is analogous, in that we subtract something from c: C = c - $\frac{A^Tc}{A^TA}A$ - $\frac{B^Tc}{B^TB}B$  .  This strips away the A and B components from an independent vector c, leaving only B. To imagine this geometrically, you can imagine 3 independent vectors in 3 space, in which vectors a and b are in the positive quadrant of the x, y plane.  Then imagine the positive quandrant of x,y,z , extending above the x,y plane.  You can see that from its end point would drop a line to the x,y plane.  This would be the short leg C of a right triangle, where c is the hypotenuse.  When the x and y contributions to c's position were subtracted, vector c would be left extending up the z axis from the origin, orthogonal to x and y.  (This assumes you've already done G-S on the other 2 vectors).
+
+### Gram-Schmidt with Real Numbers
+
+Suppose we have the vectors 
+
+$$
+a\text{ = }
+\left[{\begin{array}{cc}
+1 \\
+1 \\
+1 \\
+\end{array} }\right]
+\text{,  b = }
+\left[{\begin{array}{cc}
+1 \\
+0 \\
+2 \\
+\end{array} }\right]
+$$
+
+Again, we take A as is.  
+
+Note that $A^Tb$ = 3, and $A^TA$ = 3 .
+
+
+B is then 
+
+$$
+B\text{ = }
+\left[{\begin{array}{cc}
+1 \\
+0 \\
+2 \\
+\end{array} }\right]
+\text{ - }\frac{3}{3}
+\left[{\begin{array}{cc}
+1 \\
+1 \\
+1 \\
+\end{array} }\right]
+\text{ = }
+\left[{\begin{array}{cc}
+0 \\
+-1 \\
+1 \\
+\end{array} }\right]
+$$
+
+q1 and q2, the orthonormal forms of A and B, is then just the vectors divided by their respective lengths.  Remember that the length is the square root of the dot product of a vector with itself.  So each vector A, B, will have each of its respective component divided by this length, and that will be q1 and q2.
+
+Note that these orthonormal vectors, as modifications of the original vectors, will remain in the same column space as the original ones.  It's just that they've been optimized for calculations.
+
+### Gram-Schmidt Considered in Matrix Terms
+
+Just as the result of row elimination could be considered in LU matrix terms, G-S can be considered in matrix terms.
+
+By convention, people don't write out the G-S transformations.  Rather they say that "A=QR", as a way of saying that the matrix A's vectors can be put into orthonormal relations.
+
+
 
 ## Projection Matrices
 
