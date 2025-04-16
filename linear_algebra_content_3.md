@@ -474,10 +474,11 @@ In words, this is "The gradient at point N equals the gradient at the previous p
 * Remember that a gradient is just one column, i.e. "the first row of a Jacobian" transposed.  So just expect one column of partials.
 * Understand the "2xT" thing at 17.44.
 
-## Orthonormality
+## Orthogonality and Gram-Schmidt
 
 ### Sources:
 * MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/lecture-17-orthogonal-matrices-and-gram-schmidt/
+* [Graham Schmidt](https://www.linkedin.com/in/graham-schmidt-bb42543a?trk=people-guest_people_search-card)
 
 Note that we will use the letter Q to indicate orthogonal matrices.
 
@@ -563,7 +564,6 @@ Again, we take A as is.
 
 Note that $A^Tb$ = 3, and $A^TA$ = 3 .
 
-
 B is then 
 
 $$
@@ -596,8 +596,6 @@ Note that these orthonormal vectors, as modifications of the original vectors, w
 Just as the result of row elimination could be considered in LU matrix terms, G-S can be considered in matrix terms.
 
 By convention, people don't write out the G-S transformations.  Rather they say that "A=QR", as a way of saying that the matrix A's vectors can be put into orthonormal relations.
-
-
 
 ## Projection Matrices
 
