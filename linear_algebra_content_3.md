@@ -384,6 +384,7 @@ $$
 \vdots \\
 \frac{\partial f}{\partial x_n}\left(a\right) \\
 \end{array} }\right]
+$$
 
 --In this notation, the partial derivative and the point value that is plugged into it are combined into a single component.  Remember that there is just one function, so all the components down the column are denoted with just "df" instead of "df1...dfn".  The derivative is taken of the same function over and over, but w.r.t. a different, successive input variable.  In this sense, I believe this column down is what would normally be the first row in an mxn Jacobian matrix, where m>1.   --In fact, the instructor goes on to say that we can think of this as the transpose $\left(J^{T}_f\right)$ for f.  The whole resultant vector is called the "gradient vector".
 
@@ -473,6 +474,182 @@ In words, this is "The gradient at point N equals the gradient at the previous p
 * Application of chain rule, to obtain gradient of summation with respect to each beta.
 * Remember that a gradient is just one column, i.e. "the first row of a Jacobian" transposed.  So just expect one column of partials.
 * Understand the "2xT" thing at 17.44.
+
+## Orthogonal Vectors and Subspaces
+
+### Sources:
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/least-squares-determinants-and-eigenvalues/orthogonal-vectors-and-subspaces/
+
+### Vectors and Orthogonality
+
+To be orthogonal means that, in n-dimensional space, the angle between two vectors is 90 degrees.  Remember that for 2 orthogonal vectors, their sum will be the hypotenuse.  
+
+Remember that the test for orthogonality of 2 vectors is that their dot product is 0.  For some reason, Strang favors denoting the dot product as $x^Ty$, perhaps because it more straightforwardly implies the multiplication and summation that is to be done than the "dot" does.   Anyway, $x^Ty$ is the same thing as $x\cdot{y}$ and if the result is 0, then x and y are $\perp$ .
+
+Why is it the case that $x^Ty\text{ = }0$ then the vectors are orthognal? 
+
+We know that ${\|\|x\|\|}^2\text{ + }{\|\|y\|\|}^2\text{ = }{\|\|{x + y}\|\|}^2$ .  This is only true when the vectors x and y are orthogonal to each other.   
+
+Consider what length *is* .  What is length squared?  If we consider the vector:
+
+$$
+x\text{ = }
+\left[{\begin{array}{cc}
+1 \\
+2 \\
+3 \\
+\end{array} }\right]
+$$
+
+the dot product is sqrt(1 + 4 + 9) = sqrt(14), so the length squared is 14.  This is also the same thing as saying that the length squared is $x^Tx$ .  Suppose now we have 2 orthogonal vectors:
+
+$$
+x\text{ = }
+\left[{\begin{array}{cc}
+1 \\
+2 \\
+3 \\
+\end{array} }\right]
+\text{,  }x\text{y = }
+\left[{\begin{array}{cc}
+2 \\
+-1 \\
+0 \\
+\end{array} }\right]
+$$
+
+The (length of y) squared is then 4 + 1 + 0 = 5 .  And the (length of x + y) squared is then (3+1, 2+-1, 3+0) squared --> 4 + 1 + 9 = 19 .  And indeed 14 + 5 = 19.  **But also you can theck the orthogonality of 2 vectors by just the sum of their respective component products, which will sum to 0 if they are orthogonal.**  
+
+So far we've just checked that the Pythagorean theorem applies.  We haven't actually proven anything.  
+
+If we do the above process in notation, we get: $x^Tx\text{ + }y^Ty\text{ = }\left({x + y}\right)^T\left({x + y}\right)$  .  Again, remember that this is only true when the vectors are orthognal. 
+
+On the right side of this equation, we can simplify $\left({x + y}\right)^T\left({x + y}\right)\rightarrowx^Tx\text{ + }y^Ty\text{ + }x^Ty\text{ + }y^Tx$ .  Then on both sides of the equation, we can cancel $x^Tx$ and $y^Ty$.  Having done this, we can notice that there is no difference between $x^Ty\text{ and }y^Tx$ , so long as both vectors are real.  Thus we can say that they sum to $2x^Ty$ .  
+
+So in the end, the whole equation for lengths equalling the hypotenuse boiled down to:
+
+$$2x^Ty\text{ = }0$$ .  We can of course cancel the 2, so we are left with $x^Ty\text{ = }0$ , which confirms the proof w.r.t. for $\perp$ vectors, and incidentally the Pythagorean treatment of lengths above.
+
+What if one of the vectors is the 0 vector?  --They are still orthogonal.  **In fact, the 0 vector is orthogonal to all vectors.**
+
+### Subspaces and Orthogonality
+
+This linear algebra course sometimes features a picture of four 4 rectangles, each representing a sub-space, in relation to each other.  The picture finally makes sense in the context of orthogonality: the picture's only point is that the rowspace R(A) is orthogonal to the nullspace N(A), and the column space C(A) is orthogonal to the "left nullspace" of $N\left(A^T\right)$ .
+
+Reviewing the dimensions of each sub-space, we know that they are as follows:
+
+|Subspace|Dimension|
+| :---: | :---: |
+| R(A) | r |
+| N(A) | n-r |
+| C(A) | r |
+| $N\left(A^T\right)$ | m-r |
+
+Focusing on the "point" or "angle" where these pairs of subspaces (R(A) : N(A), C(A) : $N\left(A^T\right)$ ) meet, we can deal with what it means to say they're orthogonal.  It is critical to understand this in order further understand these subspaces.
+
+A subspace S is orthogonal to subspace T when every vector in S is to every vector in T.  To understand this, it helps to distinguish linear systems or representations of subspace from corresponding pictures.  2 planes intersecting at a right angle (say, a wall and the floor) would **not** be orthogonal, because vectors in those planess could go off at 40 degs and 35 degs respectively.  These would not be orthogonal.  What would be orthogonal would be a linear system such that one plane consists of all vertical vectors, and the other of all horizontal vectors, defined in such a way that they are at right angles to each other.  Note that the intersection line would be excluded from such orthogonal planes as it extends in a direction that is orthogonal to them both. **In fact, if 2 subspaces intersect at some vector, they will by definition be non-orthogonal, since they include that non-orthogonal vector** --The only exception to this stipulation is the 0 vector.  
+
+Non-intersection is not sufficient for non-orthogonality.  Obviously, 2 planes could be parallel, and non-orthogonal.  
+
+In the context of a plane, a line through the origin will never be orthogonal to that whole plane.  [I don't actually see why this is true.]  
+A line through the origin is always orthogonal to the zero subspace.
+A line through the origin is only orthogonal to another line through the origin if they meet at 90 degrees.
+
+These things are also true for R(A) and N(A).
+
+### R(A) and N(A) Orthogonality
+
+N(A) contains the vectors in x that solve Ax = 0.  So when x is in the nullspace, Ax = 0.  But why is N(A) orthogonal to the rows of A?  If we just write out Ax = 0, and think about it, you can see that based on what we know about 2 vectors having a 0 dot product when they are orthogonal, and the fact that x is kind of a column vector, then you can imagine that the rows of A would have to be like transposed columns that yield a 0 dot product with x.  
+
+This draws attention to something you might not normally consider: that to have A multiply x yields a "b column" of dot products -- in this case, 0.
+
+Beyond this self-evident appearance of orthogonality, we must also show that x is orthogonal to *every* vector in the rowspace, including the any combinations of those rows.  --To see that this is also true, start by considering that row already has a relation to the x's in N(A) such that the dot product is 0.  --This is a result not just of the values in x of N(A) but also the inner mathematical relationship of the components in the row.  --But this means that if you multiply the row by any scalar, every component will be multiplied in the same way, and therefore the inner relationship will not be changed.  Therefore, its dot product with x will be unchanged and still equal 0 .
+
+One additional point: 
+
+Suppose we are in R3 dimensions, and we have two lines that are perpendicular to each other.  They each constitute a trivial subspace.  However, they cannot constitute a rowspace and nullspace that are orthogonal to each other.  The reason is that the dimension relationships of R(A) and N(A) are r and n-r respectively, and these should add up to 3 in this case, but they only fill 2 dimensions.
+
+This highlights another property of orthogonality.  In a given specified space, say R3, the two subspaces that are orthogonal **must be complements to each other**  .  Here, orthogonal complements means that they fill out the full specified space.  So if you're in R3, and the matrix R(A) describes a line after RR (r=1), the dimension of N(A) must be n-r = 2 since it is in 3 space.
+
+
+### C(A) and Left Nullspace Orthogonality
+
+This is the same demonstration as for R(A) and N(A).
+
+### Orthogonality and Ax = b with No Solution
+
+Orthogonality relates to the practice of finding approximate solutions for Ax = b, when there is no exact solution.  --In other words, when b is not in the column space of A.  When this is the case, we try to find the closest approximate solution.
+
+It often happens when A is retangular (m<>r) that there is no solution for Ax = b.  When m>r, there will be many right hand sides (columns in b) that have no solution (are not in C(A)).  
+
+The basic problem is that so far we have the ability, using elimination, to tell **if there is a perfect solution or not** to Ax = b.
+
+We want to move beyond this **to an optimal, approximate solution** .  The key to realizing this goal is the use of the square matrix $A^A$ .  Here are some things we can anticipate about $A^TA$:
+
+### Properties of $A^TA$:
+
+*  Clearly, $A^TA$ is going to be square, because multiplying an nxm matrix times an mxn matrix is going to leave you with an nxn matrix.
+*  $A^TA$ will be symmetric.  Consider this $A^TA$ example:
+
+$$
+A^A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 \\
+3 & 4 \\
+\end{matrix} } 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 3 \\
+2 & 4 \\
+\end{matrix} } 
+\right]
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+5 & 11 \\
+11 & 25 \\
+\end{matrix} } 
+\right]
+$$
+
+$a_ij$ in A is always multiplied times $a_ji$ in $A^T$.  Strang's symbolic shorthand for this is $\left(A^TA\right)^T\text{ = }A^TA^{TT}\text{ = }A^TA$ .  In words, this says that if you transponse a symmetric matrix, you should get the same matrix again.  Since $A^TA$ after transposition ends up being $A^TA$, it must be symmmetric.
+
+Additional properties to clarify:
+* Is $A^TA$ invertible?
+
+Answer: it may be.  Consider the 3x2 matrix:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 \\
+1 & 2 \\
+1 & 5 \\
+\end{matrix} } 
+\right]
+$$
+
+It's rank is 2; r<m; m>n.  The columns are independent.
+
+Ax=b should be unsolvable; it is 3 equations in 2 unknowns.  One variable will always have to have 2 different values.  As ever, we can only solve b if b is in the column space C(A).  --Note: Strang says that the core of linear algebra is cv + dw = b, or that its the concept of subspaces, or their orthogonality, or ... whatever.  But I feel that the contemplation of this assertion that we can only solve b if b is in the column space C(A) , is the most remarkable statement in linear algebra so far. In algebra or calculus, the two sides of the equation are by definition said to be simultaneously equal.  In linear algebra, you move from left to right and say something like "all the things that can be are all the things that have already been".
+
+$A^TA$ in this case is invertible, but it won't always be, and neither will its nullspace.
+
+** In fact $A^TA$ is invertible i.o.i. its nullspace $N\left(A^TA\right)$ is only the 0 vector.  This only happens when A has independent columns. **
+
+* What is the null space of $A^TA$ ?  The nullspace of A^TA$ is equal to the null space of A.
+* What is the rank of $A^TA$ ?  The rank of $A^TA$ will always be the rank of A.
+* If $A^TA$ is not invertible, what is its null space?
+
+### $A^TA\hat{x}=A^b$ for Optimizing Ax = b 
+
+The central equation for optimizing a solution to Ax = b, when no perfect solution exists, is $A^TAx=A^b$ .  
+
+As a way of acknowledging that the x in $A^TAx=A^b$ is an estimate rather than the exact solution, we further modify the equation to be **$A^TA\hat{x}=A^b$** .
+
 
 ## Orthogonality and Gram-Schmidt
 
