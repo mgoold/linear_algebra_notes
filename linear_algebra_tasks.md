@@ -150,7 +150,6 @@ Steps:
    * Repeat this process for each free variable in succession.  The number of free variables will always be n-r.
   * The complete set of solutions is then the sum of each of these vectors in a linear combination, presented in a "cv + dw = 0" format:
 
-    
 $$
 c\left[ {\begin{array}{cc}
    -2 \\
@@ -173,6 +172,14 @@ $$
 ### Projection Matrices
 
 ### Facts: 
+
+## Assess Equations
+
+### Describe set of S Points for Equation System
+ * If equation is set equal to a value:
+  * Linear Combinations/Span can fill at most n-1 dimensions in specified $R^n$ space.
+   * Example: x - 5y + 2z = 9 can fill at most a 2d plane in 3d space.  Specifying the right side value has "n-1" d.f. type effect.
+  * Identical equations set to different values cannot be solved simultaneously, and describe a situation of parallelism.
 
 ## Finding Determinants
 
