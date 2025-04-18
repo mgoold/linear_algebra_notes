@@ -42,6 +42,7 @@ HTH
 
 * Evaluate whether any columns sum to 0.
 * Evaluate whether any rows sum to 0.
+ * IF a combination of rows of A gives a 0 row, then b must sum to 0 via the same combination.  This is a "condition of solvability".
 * Evaluate whether any columns are linear combinations of other columns.
   * If they are not:
     * The columns are independent.
@@ -114,15 +115,73 @@ HTH
 ##### Facts:
 * In order to multiply matrices AX, or A vector [x], A must have the same column count has X or [x] has rows.
 
-### Solving Matrices for Ax = b .
+### Solving Matrices for x in Ax = b .
 
 #### Steps:
-* If matrix is square and full rank, use regular Gauss elimination of full matrix.
- * Put matrix "augmented" form, with b as final column in matrix A.
- * Do row elimination to put the matrix in RRE form, changing the "b column" augments as well.
-   * If you end up with a 0 row (0 in the pivot) it means that back substitution will not work, and another approach is needed.
- * Restate the RRE form into equations, using the changed values and remaining variables.
- * Use back substitution to solve updated equations.
+
+* Assess matrix to develop intuitions.
+* Put matrix in augmented form and do Gaussian rre process.
+
+* Compare r, n, and m and select approach: 
+
+* **Full Column Rank: m=r=n:**
+ * Structure: R = I .
+ * all columns are independent
+ * the matrix will always be invertible
+ * its rref form will be I
+ * the matrix will have 1 solution x=b because its rref form is I.
+ 
+* **Full Column Rank: r=n<m:**
+ * Structure:
+
+$$
+R\text{ = }
+\left[ {\begin{array}{cc}
+   I \\
+   0 \\
+  \end{array} } \right]
+$$
+
+ * only x = 0 can be in N(A)
+ * probably no solution except trivial case of b explicitly in A, or x = [1]
+  * x in Ax = b will be one specific point.
+ * the matrix cannot be invertible (not square)
+ * there will be 1 or 0 solutions to x in Ax = b.
+   
+* **Full Row Rank: r=m<n:**
+ * Structure: $R\text{ = }\left[\text{IF or I and F interspersed; I must have first column.}\right]$
+ * You must have free variable(s), so there will be an infinite number of solutions.  There is no solvability constraint.
+ * Use general Ax = b solution process detailed for m>n; r<n, r<m .
+
+* **Not Full Column or Row Rank: r<n ; r<m**
+* Structure:
+
+$$
+R\text{ = }
+\left[ {\begin{matrix}{cc}
+  I & F \\
+  0 & 0 \\
+ \end{matrix} } \right]
+$$
+
+ * There will be 0 or infinite solutions.
+ * A 0 row is a solvability constraint; b must sum to 0 in the way specified for A rows via Gauss RRE process.
+ * Establish the particular point in x:
+  * Set free (non-pivot) variables to 0.
+  * Using back substitution, solve for specific values of pivot variables.
+  * Particular point then becomes vector containing resultant specific pivot variable values and 0s.
+ * Solve for special solution:
+  * Insert 1 into the first of the free variables in the equation system.
+   * Using back substitution, solve for the remaining values.
+   * Place values of all solved variables into a vector
+  * Repeat process, toggling each free variable to 1, and all others to 0, in succession, untill all special solutions are found.
+ * Complete solution is c * specific point + d \* special point + e \* special point ... n \* special point.
+
+
+
+
+
+
 
 #### Matrix Elimination: LU Decomposition
 
@@ -166,8 +225,6 @@ d\left[ {\begin{array}{cc}
   \end{array} } \right]
 \text{ = }0
 $$
-
-### Assess Vector Independence in Matrix
 
 ### Projection Matrices
 
