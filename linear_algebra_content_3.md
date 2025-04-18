@@ -650,6 +650,161 @@ The central equation for optimizing a solution to Ax = b, when no perfect soluti
 
 As a way of acknowledging that the x in $A^TAx=A^b$ is an estimate rather than the exact solution, we further modify the equation to be **$A^TA\hat{x}=A^b$** .
 
+## Projections onto Subspaces
+
+### Sources:
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/least-squares-determinants-and-eigenvalues/projections-onto-subspaces/
+
+Suppose we have a projection of b onto a:
+
+```import matplotlib.pyplot as plt
+import numpy as np
+
+# Define the vectors
+a = np.array([3, 1])
+b = np.array([2, 4])
+
+# Calculate the projection of b onto a
+projection = (np.dot(b, a) / np.dot(a, a)) * a
+
+# Create the figure and axis
+fig, ax = plt.subplots()
+
+# Plot the vectors
+ax.arrow(0, 0, projection[0], projection[1], head_width=0.2, head_length=0.2, color='red', label='Vector a')
+ax.arrow(0, 0, b[0], b[1], head_width=0.2, head_length=0.2, color='blue', label='Vector b')
+
+# Plot the vector from the projection to b
+ax.arrow(b[0],b[1],projection[0]-b[0],projection[1]-b[1], head_width=0.2, head_length=0.2, color='purple', label='Projection b onto a')
+
+# Set limits and aspect ratio
+ax.set_xlim(-6, 6)
+ax.set_ylim(-6, 6)
+ax.set_aspect('equal')
+
+# Add title and legend
+ax.set_title('Vector Projection')
+ax.legend()
+
+# Show the plot
+plt.show()
+```
+
+<img width="435" alt="Screenshot 2025-04-17 at 10 10 59" src="https://github.com/user-attachments/assets/5c72f19f-a9ff-4c24-84b6-e4669a88cd2f" />
+
+We can think of the purple projection a onto b as "e" for the error.  Because it is at a right angle to a, we can reliably calculate how far wrong b is from a.  --Consider this in the context of linear regression parameter estimation.--  Specifically consider a point p on a which is where e touches a.  This point is the **"projection".**  The distance from b to p is the extent of the error.
+
+The process that calculates this distance in linear algebra is computationally easier than trig-based approaches.  
+
+We know that p is some multiple of a; it is on the line a.  We will call this multiple x of a, or "xa".  x is the number we want to find.  The key to the process is the perpendicularity $e\perp{a}$ at the intersection p.  We can denote this relationship as $a^T\left(e\right)$, and e = b-xa , so we state the key relationship as  $a^T\left(b\text{ - }xa\right)=0$ .  This equation is saying that a is perpendicular to e, and this will tell us what x is.  
+
+This becomes clearer when we simplify the equation to: $xa^Ta\text{ = }a^Tb$ .  Then we can divide by $a^Ta$ to get $x\text{ = }\frac{a^Tb}{a^Ta}$ .  This is the right x to get the needed projection p .  
+
+This x value actually has $\cos{\theta}$ built into it, although we don't need to investigate the actual angles.  
+
+The value p is then given as p = xa (or ax) .  
+
+Reviewing the above, our crucial equations are:
+
+* $xa^Ta\text{ = }a^Tb$ , which leads us to
+* $x\text{ = }\frac{a^Tb}{a^Ta}$
+* p = ax to get our projection p .
+* $P=\frac{aa^T}{a^Ta}b$
+
+Consider p = ax reformulated as $p\text{ = }a\frac{a^Tb}{a^Ta}$ .  What would happen if we doubled b in this formula?  Thinking through the math, you could see that the whole value would exactly double.  Geometrically, you can imagine that b in the picture above would extend 2x as far as before.  The correct error or projection line p would then no longer extend from the tip of b to a, but as long as its length x doubled proportionally it would still be the right length to touch an imaginary extension of a in a perpendicular manner.
+
+What happens if we double a, the vector onto which we're projecting?  Again, the projection value is not changed.  The length of a extends, but the line extending to it perpendicularly does not move. 
+
+### The Projection Matrix
+
+This project can be considered as being carried out by a matrix, which we'll call "P".  It acts on a vector b to produce the propection p.  That is, p = Pb .  From the above formula $p\text{ = }a\frac{a^Tb}{a^Ta}$ , we see that $P=\frac{aa^T}{a^Ta}b$ . We have moved the parentheses for emphasis, without any mathematical impact.  The emphasis is to show the matrix P that acts on b.   Note that the --"aTa" terms in the fraction do not cancel.  Their ordering is different; the numerator is a column \* a row, while the denominator is a matrix (a row times a column).  
+
+What are the properties of the projection Matrix P?
+
+#### Properties of Projection Matrix P
+
+* The column space C(P) is the line through a.  
+* The rank of P is therefore always 1.
+ * You can see that this is so by considering its structure in the above formula -- the matrix consists of a column times a row.
+ * The columm that multiplies the row is the basis for the column space.
+* P is symmetric.  The denominator in $\frac{aa^T}{a^Ta}$ is a number, and the transpose of the numerator is again $aa^T$ .  Thus, $P^\text{ = }P$ .  **This is a key property of projection matrices.**
+* If we do the same projection twice, that is if we take $P^2$, we still get P.
+* **Thus, the 2 key properties that distinguish a projection matrix are:**
+ * $P^T\text{ = }P$ , and
+ * $P^2\text{ = }P$
+
+### Projection in Higher Dimensions
+
+Again, with projection, our goal is to find optimal approximations for Ax = b when the equation does not have precise solutions.  In such cases, the remedy is to solve the equation Ax = b that most closely resembles the true equation.
+
+The "closest resemblance" is defined by finding a vector p that:
+* *is* in the column space C(A), and
+* is closest in distance to b .
+
+So, we solve for Ax = p instead of Ax = b.  p is the projection of b onto C(A).    From here on out, we'll adopt the convention of denoting x in Ax = p with a "hat" to indicate that it is in the set of x that yield the p estimate when acted on by A, i.e. $A\hat{x}\text{ = }p$ .  
+
+Suppose we have a plane in 3 space, and a vector b that is not in that plane.  We want to project b down into the plane.  We begin to do this by positiving to vectors, a1 and a2, in that plane, which form a basis for it.  These vectors do not need to be perpendicular to anything, but they do need to be independent.  This is the plane of a1 & a2.  The plane is the column space of a1 and a2, and can be written as a matrix A that stores the columns a2 and a2.  So we have a matrix A with 2 columns (but it could be n columns).  
+
+We want to calculate e  = b - p, where e is the line down to the projection point p on a vector a in the plane.  By geometry, e must be perpendicular to the plane.  --Essentially what happens is that by subtracting p from b, I take away every dimension that is not perpendicular to the plane.
+
+This means we must calculate p.  As stated previously, p = xa, and in this case A consists of 2 basis vectors.  Therefore, p must equal x1a1 + x2a2 .  It is better however to think of this as ax or $a\hat{x}$ to indicate that x is a vector of estimates.  
+
+In an n-space, the projection p = $A\hat{x}$  and our problem is to find $\hat{x}$ .  The key is that e = b - $a\hat{x}$ .  Again, in n-space, x consists of as many components as you have basis vectors.  In this case, we have a plane, meaning 2 basis vectors, so we'll need to solve for $\hat{x}_1$ and $\hat{x}_2$ .  We know that e is perpendicular to the plane, so it must consist of :
+
+${a_1}^T\left(b\left{ - }A\hat{x}\right)\text{ = }0$ and ${a_2}^T\left(b\left{ - }A\hat{x}\right)\text{ = }0$ .
+
+These will be easier to process if we put them in matrix form:
+
+$$
+A\text{ = }
+\left[
+{\begin{array}{cc}
+{a_1}^T\ \\
+{a_1}^T\ \\
+\end{array} } 
+\right]
+left(b\left{ - }A\hat{x}\right)
+\text{ = }
+\left[
+{\begin{array}{cc}
+0 \\
+0 \\
+\end{array} } 
+\right]
+left(b\le
+$$
+
+This detailed breakout is the same as the formula $A^Tleft(b\left{ - }A\hat{x}\right)\text{ = }0$ . 
+
+Note that:
+* The matrix A in this equation is the n-space correspondence to the single line little "a" in our previous equation.  If you substituted that in, you would have the same equation as previously.
+* We should consider what subspace e is in.  Because it is multiplied times A, and is meant to yield the 0 vector, we know that it must be in the **nullspace of A^T** .  By extension, we know that the nullspace of A transpose, $N\left(A^T\right)$, is always orthogonal to the columnspace of A, C(A).
+ * Thus, saying that e is in the nullspace of A transpose means that it is perpendicular to the column space of A.
+
+Continuing in matix notation, we can write the equation as $A^TA\hat{x}\left{ = }A^Tb$ .  Then we solve for x.  
+
+### Solving for Matrix P in Final Form
+
+Coming back to our key 1 dimension equations, we can also re-write them in matrix n-space terms:
+
+* $\hat{x}\text{ = }\left(A^TA\right)^{-1}A^Tb$ --you can see that the inverse portion here is the way of making it a "fraction" as in the one dimension case.
+* p is then p = $A\hat{x}\text{ = }A\left(A^TA\right)^{-1}A^Tb$ .
+ * --Looking at this, you can see that the portion multiplying b to get P is in fact the projection matrix.  It must be, by definition, since mulitiplying b gives you p.
+ * Note: you cannot in this case use the rule for inverses to turn $A\left(A^TA\right)^{-1}A$ into $AA^{-1}\left(A^T\right)^{-1}A^T$ .  If you do, the last two terms $\left(A^T\right)^{-1}A^T$ become the identity I .  This seems mathematically like a glitch at first, but the reason applying the rule for inverses isn't allowed here is that **A is not a square matrix, and therefore does not have an inverse.** Thus, you mustn't apply the rule for inverses here (I don't know why you'd care to) because it won't always work.  [I don't get then why, if a matrix does not have an inverse, you're allowed to treat it as though it was one??]
+ * Anyway, remember that you're doing this Axhat = b stuff in general because A has more rows m than rank r, and so doesn't have a precise solution.
+  * If A was a square, invertible matrix, its C(A) would be the whole of R^n .  If were were projecting onto the whole space, P(A) would be the identity matrix.  You can kind of see this when you consider that yes, $A^TA$ is indeed I after row reduction.  Another way of thinking about it is that if I'm projecting b into the whole space, then b is already in the column space.
+
+### Properties of P in n-Space
+
+The projection matrix P will still have the same properties as it a projection did in the 1-d case:
+* It will be symmetric: $P^T\text{ = }P$.
+* $P^2\text{ = }P$ .  --If you were to multiply out the full function times itself: $A\left(A^TA\right)^{-1}\color{red}{A^TA\left(A^TA\right)^{-1}}A^T$, you'll see the left side of it (in red) has $A^TA$ multiplying it's inverse, which gives an identity matrix, so that the whole thing reduces to its original form  $A\left(A^TA\right)^{-1}A^T$ .
+
+### Common Applications of P
+
+The most common application of P is fitting points to a line.
+
+
 
 ## Orthogonality and Gram-Schmidt
 
