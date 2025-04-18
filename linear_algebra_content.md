@@ -1487,7 +1487,7 @@ An analogous thing can be done to exchange columns via multiplication.  **HOWEVE
 
 A permutation matrix is often designated with a P and a subscript indicating which rows (columns) are being swapped.
 
-### Gauss-Jordan "$AI=IA^{-1}$" Matrix Elimination.
+### Gauss-Jordan $AI=IA^{-1}$ Matrix Elimination.
 
 Sources:
 * https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/inverse-matrices/
