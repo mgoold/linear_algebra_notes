@@ -66,7 +66,10 @@ Again, the column space of A, or C(A) is the set of all linear combinations of A
 
 ## Column Spaces, (In)Dependence, and Subspaces
 
-Again, look at the matrix $A\text{ = }
+Again, look at the matrix 
+
+$$
+A\text{ = }
 \left[
   \begin{matrix}
   1 & 1 & 2 \\
@@ -75,7 +78,9 @@ Again, look at the matrix $A\text{ = }
   4 & 1 & 5 \\
   \end{matrix}
 \right]
-$.  Any one of these columns could be said to be a linear combination of the other two.  We could for example, throw out column 3 since it lies on the same plane as columns 1 and 2. This would leave us with 2 dimensions in the sense that we'd only have 2 unknowns.
+$$
+
+.  Any one of these columns could be said to be a linear combination of the other two.  We could for example, throw out column 3 since it lies on the same plane as columns 1 and 2. This would leave us with 2 dimensions in the sense that we'd only have 2 unknowns.
 
 **We can thus call this a "2 dimensional subspace of R4".** --This highlights important conventions:
 * "R4", the row count tells us the number of potential dimensions.
@@ -93,39 +98,50 @@ Looking again at this matrix:
 $$
 A\text{ = }
 \left[
-  \begin{matrix}
-  1 & 1 & 2 \\
-  2 & 1 & 3 \\
-  3 & 1 & 4 \\
-  4 & 1 & 5 \\
-  \end{matrix}
+\begin{matrix}
+1 & 1 & 2 \\
+2 & 1 & 3 \\
+3 & 1 & 4 \\
+4 & 1 & 5 \\
+\end{matrix}
 \right]
 $$
-,  you can see that the vector $\
-  \left[ {\begin{array}{cc}
-   1 \\
-   1 \\
-   -1 \\
-  \end{array} } \right]
-\$
 
-would cause b to be the zero vector.  In general any value c times $\left[ {\begin{array}{cc}
-   1 \\
-   1 \\
-   -1 \\
+,  you can see that the vector 
+
+$$
+\left[ {\begin{array}{cc}
+1 \\
+1 \\
+-1 \\
+\end{array} } \right]
+$$
+
+would cause b to be the zero vector.  In general any value c times 
+
+$$
+\left[ {\begin{array}{cc}
+1 \\
+1 \\
+-1 \\
   \end{array} } \right]
-\$
+$$
 
 will cause Ax=0.  Note that this includes negative numbers.  
 
 In this case, we have 3 values in **x**, so the solution (nullspace) is in $R^3$, although the column space C(A) was in $R^4$.  
 
-You can see that c$\left[ {\begin{array}{cc}
+You can see that
+
+$$
+c\left[ {\begin{array}{cc}
    1 \\
    1 \\
    -1 \\
   \end{array} } \right]
-\$ would make a line using all values of c, and that it would go through the origin where c=0.  This is one condition of the nullspace being a subspace.  
+$$
+
+would make a line using all values of c, and that it would go through the origin where c=0.  This is one condition of the nullspace being a subspace.  
 
 We can also see that the addtion requirement holds.  Suppose that v and w were two different results for different values of 0.  If Av is 0 and Aw is 0, then A(v + w) will also be 0. And A(v + w) = Av + Aw, which is 0 + 0 =0.
 Multiplication also holds: any value Av will = 0.  Suppose v was the vector (1,1,-1) and c some value like 12.  Then by association A(12v) = 12Av = 12*0 = 0.
