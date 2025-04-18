@@ -54,7 +54,6 @@ HTH
   * if n > m, the number of independent vectors will be less than the number of original columns.
   * if m > n, Ax = b will prob not have a precise solution, unless b is somehow in C(A), typically in a trivial manner.
 
-
 ### Matrix Facts:
  * The number of *potential* dimensions that a matrix can fill is its row count.
  * The maximum number of dimensions that a matrix can *actually* fill is the number of independent columns.
@@ -116,14 +115,17 @@ HTH
 
 ### Solving Matrices for Ax = b .
 
-Steps:
-* Put matrix "augmented" form, with b as final column in matrix A.
-* Do row elimination to put the matrix in RRE form, changing the "b column" augments as well.
-  * If you end up with a 0 row (0 in the pivot) it means that back substitution will not work, and another approach is needed.
-* Restate the RRE form into equations, using the changed values and remaining variables.
-* Use back substitution to solve updated equations.
+#### Steps:
+* If matrix is square and full rank, use regular Gauss elimination of full matrix.
+ * Put matrix "augmented" form, with b as final column in matrix A.
+ * Do row elimination to put the matrix in RRE form, changing the "b column" augments as well.
+   * If you end up with a 0 row (0 in the pivot) it means that back substitution will not work, and another approach is needed.
+ * Restate the RRE form into equations, using the changed values and remaining variables.
+ * Use back substitution to solve updated equations.
 
 #### Matrix Elimination: LU Decomposition
+
+Steps:
 
 #### Facts
 * Pivots can never be zero
@@ -132,6 +134,38 @@ Steps:
 * For a SQUARE matrix in RR form, the determinant = the result of multipling the pivots.
 * If you do get the SQUARE matrix into RRE form, its inverse will simply be the same, but with the signs reverse on the off-diagonal multipliers.
 * You can simultaneously divide ("pull out") a factor from every component in a matrix in order to simplify it.  This factor should then be show multiplying the matrix from its left-hand side.
+
+### Solving Matrices for Ax = 0
+
+#### Steps
+
+* If matrix is square and full rank in RREF, 0 vector should be only solution.
+* If matrix is not square and\|or has 0 in pivot in RREF Ax = 0 will require special solution.
+ * If n > m, there will be some solutions to Ax = 0.
+  * In this situation, you must not change N(A), but may change C(A).
+  * Divide the columns into those with non-zero pivot columns from the zero-pivot "free variable" columns.
+  * Set the value of the first free variable column to 1, and the other free variables to 0.
+   * Use back-substitution to solve the equations in the rows of the RRE form.
+   * Repeat this process for each free variable in succession.  The number of free variables will always be n-r.
+  * The complete set of solutions is then the sum of each of these vectors in a linear combination, presented in a "cv + dw = 0" format:
+
+    
+$$
+c\left[ {\begin{array}{cc}
+   -2 \\
+   1 \\
+   0 \\
+   0 \\
+  \end{array} } \right]
+\text{ + }
+d\left[ {\begin{array}{cc}
+   2 \\
+   0 \\
+   -2 \\
+   1 \\
+  \end{array} } \right]
+\text{ = }0
+$$
 
 ### Assess Vector Independence in Matrix
 
