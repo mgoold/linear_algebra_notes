@@ -432,17 +432,17 @@ $$
 ### Simplifying Rx=0 via RREF 
 
 How is the equation Rx=0 simplified in light of the above.
-Considering RN=0 as a system of equations Rx=0, we've said that R = [IF], and **x** is comprised of ($x_pivotvariables$, $x_freevariables$), and Rx = 0.  Remember that we multiply a single row matrix Ax like a1\*x1 + a2\*x2 ... + an\*xn.  So, 
+Considering RN=0 as a system of equations Rx=0, we've said that R = [IF], and **x** is comprised of ($x_{pivotvariables}$, $x_{freevariables}$), and Rx = 0.  Remember that we multiply a single row matrix Ax like a1\*x1 + a2\*x2 ... + an\*xn.  So, 
 
 $$
 \text{[IF]}
 \left[{\begin{array}{cc}
-   x_pivotvariables \\
-   x_freevariables \\
+   x_{pivotvariables} \\
+   x_{freevariables} \\
 \end{array} } \right]
 \text{ = }
-x_pivotvariables\text{ + }Fx_freevariables\text{ = 0; }
-x_pivotvariables\text{ = }-Fx_freevariables
+x_{pivotvariables}\text{ + }Fx_{freevariables}\text{ = 0; }
+x_{pivotvariables}\text{ = }-Fx_{freevariables}
 $$
 
 This is a simplified as the formula Rx=0 can be.
@@ -687,9 +687,9 @@ Ax = b does not always have a solution.  If it does have a solution, we want to 
 
 Consider the following equation system:
 
-$x_1\text{ + }2x_2\text{ + }2x_3\text{ + }2x_4\text{ = }b_1$
-$2x_1\text{ + }4x_2\text{ + }6x_3\text{ + }8x_4\text{ = }b_2$
-$3x_1\text{ + }6x_2\text{ + }8x_3\text{ + }10x_4\text{ = }b_3$
+$$x_1\text{ + }2x_2\text{ + }2x_3\text{ + }2x_4\text{ = }b_1$$
+$$2x_1\text{ + }4x_2\text{ + }6x_3\text{ + }8x_4\text{ = }b_2$$
+$$3x_1\text{ + }6x_2\text{ + }8x_3\text{ + }10x_4\text{ = }b_3$$
 
 Remember that equation 3 is the sum of equation 1 + 2, and column 2 is a multiple of column 1.
 
