@@ -53,6 +53,7 @@ HTH
   * if m <> n, you will need to find Ax = b (if it exists) some other way.
   * if n > m, the number of independent vectors will be less than the number of original columns.
   * if m > n, Ax = b will prob not have a precise solution, unless b is somehow in C(A), typically in a trivial manner.
+  * The number of pivot columns for A and A^T will always be identical.
 
 ### Matrix Facts:
  * The number of *potential* dimensions that a matrix can fill is its row count.
