@@ -49,12 +49,11 @@ HTH
     * The only vector in N(A) will be [0].  --The only value of x that sets Ax = 0 is the 0 vector.
   * If they are:
     * The maximum number of dimensions they matrix can fill is the number of independent columns.
-* Compare row count m to column count n:
-  * if m = n, you may be able to solve Ax = b using Gauss RREF process.
-  * if m <> n, you will need to find Ax = b (if it exists) some other way.
-  * if n > m, the number of independent vectors will be less than the number of original columns.
-  * if m > n, Ax = b will prob not have a precise solution, unless b is somehow in C(A), typically in a trivial manner.
-  * The number of pivot columns for A and A^T will always be identical.
+* Compare expected counts pre-RRE: r vs n vs m:
+  * if r = m = n, then 1 solution x = b.
+  * if r = n < m, then 0 or 1 solution, 0 vector is only vector in N(A)
+  * if r = m < n, then R = IF, infinite solutions.
+  * if r < m, r < n then 0 or infinite solutions.
 
 ### Matrix Facts:
  * The number of *potential* dimensions that a matrix can fill is its row count.
