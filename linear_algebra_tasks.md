@@ -12,34 +12,126 @@ HTH
 ### Facts:
 
 * True\|False: "If one scales a vector by a non-zero value, the resulting vector will lie along the same line." -- True.
-* Differences between point and vector.
+* Differences between point and vector:
+  * 
 
 ### Turn Equation System Into Vectors
 
+
 #### Count Equation System Solutions
 
+### Taking dot products
+
+* To take a dot product of 2 vectors, multiply each component in v by the corresponding component in w, and sum the products.  
+
+### Computing Vector Length
+
+* To compute the length of a vector, take the dot product of a vector with itself.  The square root of this dot product is the vector length.
+* The reverse of this is that the dot product of a vector is the length squared.
+  
 ### Unit Vectors
 
-### Compute Unit Vector Dot Products
+* A vector is a vector whose components sum to 1.
+* Create a unit vector by:
+  * computing its length
+  * dividing every component by that length, so that the components sum to 1.
+
+### Unit Vector Trigonometry
+
+## Matrix Assessment
+
+* Evaluate whether any columns sum to 0.
+* Evaluate whether any rows sum to 0.
+* Evaluate whether any columns are linear combinations of other columns.
+  * If they are not:
+    * The columns are independent.
+    * The only vector in N(A) will be [0].  --The only value of x that sets Ax = 0 is the 0 vector.
+  * If they are:
+    * The maximum number of dimensions they matrix can fill is the number of independent columns.
+* Compare row count m to column count n:
+  * if m = n, you may be able to solve Ax = b using Gauss RREF process.
+  * if m <> n, you will need to find Ax = b (if it exists) some other way.
+  * if n > m, the number of independent vectors will be less than the number of original columns.
+  * if m > n, Ax = b will prob not have a precise solution, unless b is somehow in C(A), typically in a trivial manner.
+
+
+### Matrix Facts:
+ * The number of *potential* dimensions that a matrix can fill is its row count.
+ * The maximum number of dimensions that a matrix can *actually* fill is the number of independent columns.
+ * The relationship of these two is summed by saying that the matrix has a "[# of columns]-dimensional subspace of [number of rows]".
+
+### Transposed Matrices
+
+#### Facts
+
+* Transposing a matrix swaps row placement for column placement, so that row 1 becomes column 1, row 2 becomes column 2, etc.
+* In general, we can say that that $A^T_{ij}=A_{ji}$ for row i and column j.
+
+* Note that:
+  * the transpose of the identity matrix I is necessarily I.
+  * a symmetric matrix is identical to its transpose: $A=A^T$.
+  * multiplying a retangular matrix by its tranpose will give you a symmetric matrix.  For example, with a 2x3 matrix this would cause the off diagonal sum A_11*B_12+A_12*B_22 to be calculated with an identical value from as A_21*B_11+A_22*B_12, so that all the off-diagonal values end up duplicated.
+  * When taking the transpose of a product of matrices like $R^{T}R$, the practice is to reverse the order of items in the parentheses, then transpose each term.  So $\left(R^{T}R\right)^T\text{ = }R^TR^{TT}$.
+  * Taking additional transposes of symmetric matrix products, e.g. $R^{T}R$, leaves them unchanged.
+  * If you take the inverse of a transpose you have to reverse the order: $AA^{-1}=I={A^{-1}}^TA^T$ .
+
+
+#### Assess Matrix Invertibility
+
+##### Facts
+
+* A matrix must be square to be invertible.
+* $A^{-1}$ does not mean $\frac{1}{A}$ .
+* An nxn matrix must have n independent columns to be invertible.
+* A matrix is invertible if $AA^T\text{ = }I$ .
+* If A is invertible, the one and only solution to Ax = b is $x\text{ = }A^{-1}b$ .
+* If there is a non-zero vector such that Ax = b, then A has dependent columns, and annot be invertible.
+* A 2x2 matrix is invertibile i.o.i. ad — bc is not zero .
+  *  A matrix is invertible i.o.i. its determinant is not equal to 0.
+* A triangular matrix is invertible if no diagonal entries are zero.
+* When matrices are multiplied, you must reverse their order if you take the inverse of their product: $\left(ABC\right)^{-1}\text{ = }C^{-1}B^{-1}A^{-1}$ .
+
+#### Find the Inverse of A 3x3 Matrix
+
+* We are unlikely to be asked to find the inverse of a matrix larger than 3x3.
+* Whatever the size, the fastest way to do it is always Gauss-Jordan $AI\text{ = }IA$ Elimination:
+  * Set the matrix A into an "AI --> IA" Equation:
+    * Set A (which must be square) and an equally sized I together side by side as if they were to be multiplied.
+    * Now set A into RRE form.  Every time you do something to a row of A, *do it to the entire row* , including the components of I in the same row.
+    * If you successfully set A into RRE, I will have been transformed into $A^{-1}$ .  If you can't set A into RRE, t means that A has no inverse even though it looked invertible.
+    * Check your work by multiplying $AA^{-1}$ .  You should get I.  If you don't, you have an error.
 
 ## Matrix Operations
 
 ### Matrix Multiplication
 
+![image](https://github.com/user-attachments/assets/c4cd6169-87f0-4e40-9722-9dd3a3722a23)
+
 ### Facts
 * Matrix dimensions are describe in rows x columns order.
 
-### Assess Matrix Invertibility
-
-#### Facts:
-* An invertible matrix can ONLY have a zero determinant.
-
-### Compute Inverse of Matrix
-
 #### Determine if Matrix Multiplication Is Possible
-
 ##### Facts:
 * In order to multiply matrices AX, or A vector [x], A must have the same column count has X or [x] has rows.
+
+### Solving Matrices for Ax = b .
+
+Steps:
+* Put matrix "augmented" form, with b as final column in matrix A.
+* Do row elimination to put the matrix in RRE form, changing the "b column" augments as well.
+  * If you end up with a 0 row (0 in the pivot) it means that back substitution will not work, and another approach is needed.
+* Restate the RRE form into equations, using the changed values and remaining variables.
+* Use back substitution to solve updated equations.
+
+#### Matrix Elimination: LU Decomposition
+
+#### Facts
+* Pivots can never be zero
+* You **can** multiply/divide a single row by anything.
+* In RR, swapping rows is allowed.  This is the same as if you multiplied the matrix by a permutation matrix.
+* For a SQUARE matrix in RR form, the determinant = the result of multipling the pivots.
+* If you do get the SQUARE matrix into RRE form, its inverse will simply be the same, but with the signs reverse on the off-diagonal multipliers.
+* You can simultaneously divide ("pull out") a factor from every component in a matrix in order to simplify it.  This factor should then be show multiplying the matrix from its left-hand side.
 
 ### Assess Vector Independence in Matrix
 
@@ -70,7 +162,37 @@ HTH
 ## Four Fundamental Subspaces
 
 ### Facts:
-* Matrix columns are in n space.  
+
+A vector "space" consists of a set of vectors that obey these math constraints:
+* the result of any addition of the vectors stays in the same space
+* the result of any multiplication of the vectors by a scalar stays in the same space
+  * in short, all of its linear combinations have to remain in the space.
+  * all subspaces must include the 0 vector
+* the union of 2 valid subspaces, a plane and a vector not in that plane will not be a subspace, because the adding a vector from each will yield a vector not in either of them.  It will be "outside the space".
+  * the intersection of them will be a valid subspace, since by definition it must be at the origin, and the 0 vector itself is always a valid subspace.
+
+* Definition of (Real) Vector Subspace:
+  * if a space obeys the math constraints whitin a larger space, then it is said to be a "subspace" of that larger space.  A plane through the origin is a subspace of R3.
+  * all subspaces include the 0 vector -- otherwise, it wouldn't be possible to multiply them by 0 and have them stay in the space
+
+### Column Space C(A)
+
+*  All linear combinations of columns in A.
+*  Ax = b is solveable i.o.i. b is in C(A)
+*  C(A) is a subspace of $R^m$ (not $R^n$ ).
+*  In Ax = b, x is in $R^n$ subspaces, while C(A) is in $R^m$ .
+  * N(A) is in $R^n$, while C(A) is in $R^m$ .  Thus is is possible to have C(A) and N(A) in spaces of different dimensions.
+
+### Nullspace N(A)
+
+* For Ax=b, the null space N(A) is the set of solutions x that cause Ax=0.
+* If A is square and has full rank, its columns will all be independent, and only 0 will be in the nullspace.
+* If any vector x causes Ax = 0, then any vector cx will also be in the nullspace, and N(A) will have infinitely many solutions.
+* N(A) is in $R^n$, while C(A) is in $R^m$ .  Thus is is possible to have C(A) and N(A) in spaces of different dimensions.
+* In the context of Ax = 0, a row in A is multiplied by x in N(A) to yield a dot product 0 component in the 0 vector.  This tells you that R(A) and N(A) are orthogonal to each other.
+* By common usage, Z is the letter used for a null space consisting of nothing but zeros.
+
+### 
 
 ## Left\|Right Inverse
 
