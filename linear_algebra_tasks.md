@@ -89,6 +89,7 @@ HTH
 * A 2x2 matrix is invertibile i.o.i. ad — bc is not zero .
   *  A matrix is invertible i.o.i. its determinant is not equal to 0.
 * A triangular matrix is invertible if no diagonal entries are zero.
+* B(AC) = (BA)C gives BI=IC or B=C. A left and right inverse matrices are identical.
 * When matrices are multiplied, you must reverse their order if you take the inverse of their product: $\left(ABC\right)^{-1}\text{ = }C^{-1}B^{-1}A^{-1}$ .
 
 #### Find the Inverse of A 3x3 Matrix
