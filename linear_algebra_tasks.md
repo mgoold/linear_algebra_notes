@@ -252,6 +252,35 @@ $$
 
 ### Compute Gradient of a Function
 
+## Assess Independence, Basis, Dimension
+
+### Facts:
+
+* The potential larges space A might occupy, prior to RRE, is its m rows.  C(A) is said to be in "m space".
+* Only vectors can be said to be "in|dependent". This term cannot applie to matrices.
+* Only vectors span a space.
+ * The fact that vectors span a space says nothing about their independence.  
+* Only vectors form a basis.
+* The dimension is always a number.
+  * we refer to the dimension of a column space C(A), not of a matrix
+* If post RRE, r=n, then the number of vectors is "correct".  If m<n, not all vectors will be independent.  If r < n, the vectors will not span the complete potential space.
+* A square matrix guarantees vector independence and therefore that the matrix is a basis for its m space.
+  
+
+### Assess Basis:
+
+Vectors are a basis for a space or subspace if they:
+* are independent (all the vectors in A must be independent to be a basis for anything)
+* span the space; their linear combinations completely fill the specified dimension space of A
+
+### Assess Dimension:
+
+* The dimension of an m space (row count) is simply the post RRE rank of C(A).
+  * we refer to the dimension of a column space C(A), not of a matrix
+* The dimension of a nullspace N(A) is the number of independent columns in N(A).
+  * Therefore, the dimension of N(A) is the number of its free variables.
+
+
 ## Four Fundamental Subspaces
 
 ### Facts:
@@ -275,19 +304,41 @@ A vector "space" consists of a set of vectors that obey these math constraints:
 *  C(A) is a subspace of $R^m$ (not $R^n$ ).
 *  In Ax = b, x is in $R^n$ subspaces, while C(A) is in $R^m$ .
   * N(A) is in $R^n$, while C(A) is in $R^m$ .  Thus is is possible to have C(A) and N(A) in spaces of different dimensions.
+* To get basis for C(A):
+  * put the matrix in RREF
+  * find the leading 1s
+    * the columns of the original matrix that correspond to the columns with leading 1s are the basis of C(A)
 
 ### Nullspace N(A)
 
 * For Ax=b, the null space N(A) is the set of solutions x that cause Ax=0.
+* The basis for N(A) is the set of independent vectors that span N(A).  
 * If A is square and has full rank, its columns will all be independent, and only 0 will be in the nullspace.
 * If any vector x causes Ax = 0, then any vector cx will also be in the nullspace, and N(A) will have infinitely many solutions.
 * N(A) is in $R^n$, while C(A) is in $R^m$ .  Thus is is possible to have C(A) and N(A) in spaces of different dimensions.
 * In the context of Ax = 0, a row in A is multiplied by x in N(A) to yield a dot product 0 component in the 0 vector.  This tells you that R(A) and N(A) are orthogonal to each other.
 * By common usage, Z is the letter used for a null space consisting of nothing but zeros.
 
-### 
+### Rowspace R(A) (or $C\left(A^T\right)$
+* The basis of a rowspace is whatever independent rows remain after RRE.  Present them as columns.
+  * In other words, R(A) = $C\left(A^T\right)$ .
+* The row space of A is all combinations of its rows. In other words, the rows "span" the rowspace.
+* The rows may or may not be a basis for R(A) -- they may or may not be independent.
+* What is in R(A)? All combinations of the rows of A.
+* To work with the rows as column vectors, we can transpose the matrix A. Then we say that R(A) is all combinations of A T . Further, we can say that R(A) = C( A T ).
+* The rowspace is orthogonal to the nullspace.
+
+### Leftnullspace aka Null Space A Transpose
+
+* The left nullspace N($A^T$) is in Rm.  The reasoning here corresponds to why x is in Rn, except that N($A^T$) is on the left-hand side of A.
+* C(A) and  N($A^T$ are orthogonal to each other.
+* The nullspace of $A^T$ is all of the vectors x in $A^Tx\text{ = 0}$ .  In this equation, the matrix A is transposed so that the rows can be treated as a column space, viz $C\left(A^T\right)$ .
+ * The nullspace is then $A^Tx\text{ = }0$ .  To treat it as rows again, we can transpose both sides: $\left(A^Tx)^T\text{ = }0^T$ .  As may be recalled, transposing a product like this requires reversing the order of their multiplication, so we get: $x^T\left{A^T\right)^T\text{ = }0^T$, which becomes $x^TA\text{ = }0^T$ .  In this formulation, x is a row "vector" which multiplies the columns of A to give a row vector of 0s. Because it acts on A from the left side, it is sometimes called the "left nullspace" .
+ * To obtain the left nullspace, you solve $C\left(A^T\right)\text{ = }0$ using rre and regular or special solutions as needed.  The remaining independent columns that span the space are then the nulls space of A transpose aka the left nullspace.
 
 ## Left\|Right Inverse
+
+
 
 ### Determine Whether Matrix Has Left Inverse
 
