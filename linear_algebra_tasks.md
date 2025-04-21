@@ -254,15 +254,22 @@ $$
     * Repeat this process until all output variables have been process w.r.t each input variable.
   * Plug the coordinates for the given point into the derivative functions and process the resultant math.  The result is then the slope of a line in a subspace of $R^n$ which points toward the local maxima of the function.
 
-## Find Value of Length of Difference Between 2 Vectors
+## Find Value of Length 2 Vectors Subtracted from Each Other
+
+### Steps
+* subract the components for one vector from the corresponding components of the other
+* take the dot product of the resulting vector of differences
+  * take the square of every component, and sum the components
+* take the square root of that dot product
 
 ### Find Length of Difference Between Orthoganal Vectors
-
-## Find Sum of Squares from Dot Product
+** Same process, except that the resultant difference vector will always be a vector of 1s.  Consequently, the dot product will be n, and the length will be sqrt(n).
 
 ## Compute Gradient
 
 ### Compute Gradient of a Function
+
+This is the same process as a Jacobian, except for one function -- thus it is the transpose of the first row of a Jacobian.
 
 ## Assess Independence, Basis, Dimension
 
@@ -278,7 +285,6 @@ $$
 * If post RRE, r=n, then the number of vectors is "correct".  If m<n, not all vectors will be independent.  If r < n, the vectors will not span the complete potential space.
 * A square matrix guarantees vector independence and therefore that the matrix is a basis for its m space.
   
-
 ### Assess Basis:
 
 Vectors are a basis for a space or subspace if they:
@@ -353,13 +359,11 @@ A vector "space" consists of a set of vectors that obey these math constraints:
 
 ## Left\|Right Inverse
 
-
-
 ### Determine Whether Matrix Has Left Inverse
 
-### Determine Left Inverse of Matrix
-
-## Bases
+* Facts:
+* If a matrix is square and full rank after RRE, it will have both a left and right inverse (the left and right are identical).  
+* Determining the "left or right" inverse of a matrix is thus the same as computing the inverse in general.
 
 ### Find Basis for $\mathbb{R}^n$
 
@@ -372,3 +376,5 @@ A vector "space" consists of a set of vectors that obey these math constraints:
 ## Functions --> Linear Algebra
 
 ### Assess Number of Parameters
+
+
