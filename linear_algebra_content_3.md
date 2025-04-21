@@ -963,6 +963,7 @@ In considering symmetric matrices, we focus on the special eigenvalues and eigen
 
 * the eigenvalues of a real symmetric matrix are:
   * also real.  Symmetric matrices to not have complex eigenvalues .
+    * 
 * the eigenvectors are:
   * also real.
   * orthogonal 
