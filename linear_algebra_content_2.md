@@ -2696,10 +2696,13 @@ $$
 .  the vector
 
 $$
-x\text{ = }\left[{\begin{array}{cc} 
+x\text{ = }
+\left[
+{\begin{array}{cc} 
 1 \\ 
-1 \\ \
-end{array}}\right] 
+1 \\
+\end{array}}
+\right] 
 $$  
 
 will be unchanged by A.  In this case x=(1,1) and $\lambda$ = 1.
