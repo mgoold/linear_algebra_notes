@@ -1354,7 +1354,9 @@ The rowspace is C($A^T$), and is a subspace of Rn.  That is, a given row of A is
 
 Aka "the left nullspace of A".  By Ursula K LeGuin.
 
-The left nullspace N($A^T$) is in Rm.  The reasoning here corresponds to why x is in Rn, except that N($A^T$) is on the left-hand side of A. 
+* The nullspace of $A^T$ is all of the vectors x in $A^Tx\text{ = 0}$ .  In this equation, the matrix A is is transposed, so that 
+* The left nullspace N($A^T$) is in Rm.  The reasoning here corresponds to why x is in Rn, except that N($A^T$) is on the left-hand side of A.
+* C(A) and  N($A^T$ are orthogonal to each other.
 
 ### Summary: Locating the Four Fundamental Sub-spaces
 
