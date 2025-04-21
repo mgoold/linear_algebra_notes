@@ -243,6 +243,17 @@ $$
 
 ## Compute Jacobian of Matrix
 
+### Steps:
+* Using a Jacobian begins with two elements:
+  * There will be a function that maps a column of inputs to a column of output functions.  Review which inputs map to which outputs.
+  * A specific point at which to plot the Jacobian.
+* Take partial derivatives:
+  * Creat the Jacobian:
+    * To create the first Jacobian row, take a partial derivative of the first output function w.r.t the first input variable.  Move across each column in the row, taking the derivative of the same output function w.r.t. each successive input variable.
+    * Repeat this process for the next Jacobian row, using the next output function in order after the first, w.r.t. each successive input variable.
+    * Repeat this process until all output variables have been process w.r.t each input variable.
+  * Plug the coordinates for the given point into the derivative functions and process the resultant math.  The result is then the slope of a line in a subspace of $R^n$ which points toward the local maxima of the function.
+
 ## Find Value of Length of Difference Between 2 Vectors
 
 ### Find Length of Difference Between Orthoganal Vectors
@@ -281,8 +292,11 @@ Vectors are a basis for a space or subspace if they:
 * The dimension of a nullspace N(A) is the number of independent columns in N(A).
   * Therefore, the dimension of N(A) is the number of its free variables.
 
-
 ## Four Fundamental Subspaces
+
+### For A Given Matrix:
+ * Assess the independence, rank, basis, and dimension.
+ * Find the solution for Ax = b, Ax = 0.
 
 ### Facts:
 
