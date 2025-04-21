@@ -959,4 +959,25 @@ By convention, people don't write out the G-S transformations.  Rather they say 
 
 ## Positive Semidefinite Matrices
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Singular Value Decomposition
