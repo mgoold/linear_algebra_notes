@@ -284,22 +284,28 @@ $$
 
 What this matrix stores or maps out is a multivariate version of a derivative.  When we have a function going from 1 d space to 1 d space, we have only one derivative.  But when we ahve many different outputs annd inputs, the matrix for collecting them is this Jacobean format.  It is in effect a derivative in an arbitrarily high dimension space.
 
-As with the plane example in 3d above, this derivative gives us a local approximation of our function.  But now, with its Jacobean arrangement allows us to do matrix multiplication.  So for example f(x) around a particular point p will be approximately the Jacobean of p, that is: $f\left(x\right)\approxJ_f\left(p\right)\left(\v{x}-\v{p}\right)\text{ + }f\left(p\right)$ .
+As with the plane example in 3d above, this derivative gives us a local approximation of our function.  But now, with its Jacobean arrangement allows us to do matrix multiplication.  So for example f(x) around a particular point p will be approximately the Jacobean of p, that is: $f\left(x\right)\approx{J_f}\left(p\right)\left(\overrightarrow{x}-\overrightarrow{p}\right)\text{ + }f\left(p\right)$ .
 
 #### Jacobian Matrix Example
 
 Suppose we have a function that maps x and y to two new values, using two "coordinate" functions:
 
 $$
-f\left(\left[{\begin{array}{cc}
+f\left(
+\left[
+{\begin{array}{cc}
 x \\
 y \\
-\end{array} }\right]\right)
+\end{array}}
+\right]
+\right)
 \text{ = }
-\left[{\begin{array}{cc}
+\left[
+{\begin{array}{cc}
 x^2y+2x \\
 y^3+2xy \\
-\end{array} }\right]
+\end{array}}
+\right]
 $$
 
 To take the Jacobean of this function, we follow the mapping plan shown above.  The first row will be partials with respect to the first function, and the second row will be partials with respect to the second function.  As we move from left to right across the row, we will first take the derivative w.r.t. x, then w.r.t y.
@@ -348,7 +354,7 @@ What the Jacobian actually is, for a given point or vector of input values, is a
 * On the other hand, I got stuck on **why** it should be that the first number in $J_11$ should correspond to change in x for a change in x, $J_21$ must correspond to change in y for a change in x, and so on.  What was the source of logical necessity that drives this ordering and makes it reliable?
  * The answer is one of those things that are so basic that people smarter than me don't even mention it, and assume that you'll understand the implicit step.  Consider this input-to-output example:
 
-  $$f\left(x,y\right\text{ = }\left(f_1\left(x,y\right),f_2\left(x,y\right)\right)\text{ = }\left(x^2\text{ - }y^2,3xy\right)$$
+  $$f\left(x,y\right)\text{ = }\left(f_1\left(x,y\right),f_2\left(x,y\right)\right)\text{ = }\left(x^2\text{ - }y^2,3xy\right)$$
 
   In this example, we would understand by convention that the input x maps to the output of f1, and y maps to the output of f2.  That is, f1 is what x becomes, and f2 is what y becomes.  Extending this custom to the conventions of linear algebra, when calculate a Jacobian (and I assume, do other similar operations), the output functions are translated from the above left-to-right presentation to a top-to-bottom ordered column, to facilitate creating the partial derivatives matrix.  This custom is the only reason why we can rely on $J_11$ to apply to change in x w.r.t. x, $J_21$ to apply to change in y w.r.t. x, etc.  
 
@@ -374,16 +380,18 @@ In the context of the Jacobian, a point is a critical point if the rank of the J
 
 **Gradient Notation**
 
-Gradients apply to a class of functions which take multiple outputs and output a single value.  A gradient function looks like : $f\left(x_1,x_2,x_3\text{,...,}x_n\right)$ .  We can collect all the partials of f in a column vector.  The gradient of f at point $left(a_1\text{,...,}a_n2\right)$ is then:
+Gradients apply to a class of functions which take multiple outputs and output a single value.  A gradient function looks like : $f\left(x_1,x_2,x_3\text{,...,}x_n\right)$ .  We can collect all the partials of f in a column vector.  The gradient of f at point $\left(a_{1}\text{,...,}a_{n2}\right)$ is then:
 
 $$
 \nabla{f\left(a\right)}\text{ = }
-\left[{\begin{array}{cc}
+\left[
+{\begin{array}{cc}
 \frac{\partial f}{\partial x_1}\left(a\right) \\
 \frac{\partial f}{\partial x_2}\left(a\right) \\
 \vdots \\
 \frac{\partial f}{\partial x_n}\left(a\right) \\
-\end{array} }\right]
+\end{array}}
+\right]
 $$
 
 --In this notation, the partial derivative and the point value that is plugged into it are combined into a single component.  Remember that there is just one function, so all the components down the column are denoted with just "df" instead of "df1...dfn".  The derivative is taken of the same function over and over, but w.r.t. a different, successive input variable.  In this sense, I believe this column down is what would normally be the first row in an mxn Jacobian matrix, where m>1.   --In fact, the instructor goes on to say that we can think of this as the transpose $\left(J^{T}_f\right)$ for f.  The whole resultant vector is called the "gradient vector".
@@ -396,7 +404,25 @@ The meaning of the gradient is that it is a vector on the tangent plane to a fun
 
 #### Remember What the Chain Rule Is
 
-Formally, the chain rule is $\frac{d}{dx}\left[f\left(g\left(gleft(x\right)\right)\right]\text{ = }f'\left(g\left(gleft(x\right)\right)g'\left(x\right)$ .
+Formally, the chain rule is 
+
+$$
+\frac{d}{dx}
+\left[
+  f\left(
+    g
+    \left(
+     g
+     \left(
+     x
+     \right)
+    \right)
+  \right)
+\right]
+\text{ = }
+$$   
+
+$f'\left(g\left(g\left(x\right)\right)g'\left(x\right)$ .
 
 This says that the derivative of a nested function with respect to variable in the inner function is the derivative of the outer function, times the derivative of the inner function with respect to x.  Since this is multiplication, the order doesn't matter, so some descriptions reverse which derivativ is taken first.
 
