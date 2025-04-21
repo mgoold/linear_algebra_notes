@@ -957,9 +957,15 @@ By convention, people don't write out the G-S transformations.  Rather they say 
 
 ## Projection Matrices
 
-## Positive Semidefinite Matrices
+## Symmetric Matrices and Positive Definiteness
 
+In considering symmetric matrices, we focus on the special eigenvalues and eigenvectors for this matrix type:
 
+* the eigenvalues of a real symmetric matrix are:
+  * also real.  Symmetric matrices to not have complex eigenvalues .
+* the eigenvectors are:
+  * also real.
+  * orthogonal 
 
 
 
