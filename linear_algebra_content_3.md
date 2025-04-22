@@ -830,8 +830,6 @@ The projection matrix P will still have the same properties as it a projection d
 
 The most common application of P is fitting points to a line.
 
-
-
 ## Orthogonality and Gram-Schmidt
 
 ### Sources:
@@ -957,34 +955,59 @@ By convention, people don't write out the G-S transformations.  Rather they say 
 
 ## Projection Matrices
 
+## Covariance Matrices
+
 ## Symmetric Matrices and Positive Definiteness
 
-In considering symmetric matrices, we focus on the special eigenvalues and eigenvectors for this matrix type:
+### Sources:
+* USF: https://usfca.instructure.com/courses/1627052/pages/positive-semidefinite-matrices-video-18?module_item_id=18611427
 
-* the eigenvalues of a real symmetric matrix are:
-  * also real.  Symmetric matrices to not have complex eigenvalues .
-    * 
-* the eigenvectors are:
-  * also real.
-  * orthogonal 
+### Motivation and Uses of PSD Evaluation
+* Covariance matrices are always positive semidefinite, or positive definite.
+* Optimization typically uses positive semidefinite matrices.
+  * this often involves a min or max of a function over several variables
+  * one of the conditions for verifying that a min/max is a true min/max (global min/max) is to review the Hessian matrix for a functions surface, and verify that its positive definite or negative definite.  
 
+### Positive Semidefiniteness Definition
 
+A matrix $A_{nxn}$ is positive semidefinite if for every vector x $\is\text{ = }\mathbb{R}^n$ , we have : $x^TAx\text{ }\geq{}\text{ }0$ .  This is true for all vectors x.  
 
+"Positive semidefinite" for matrices is thus analogous to "non-negative" for scalars.  
 
+Note that:
+* **Positive Definiteness** is the same thing, but where every vector x is always > 0 .
 
+### Intuition for Positive Semidefiniteness
 
+*  We know that $\is\text{ = }\mathbb{R}^n$ is non-negative if $a\text{ }\geq{}\text{ }0$ .  This is the same thing as saying tha for any $x\in\mathbb{R}^n$ , $ax^2\text{ }\geq{}\text{ }0$ , where a is > 0. Thus, we can re-write $ax^2\text{ }\geq{}\text{ }0$ as $xax\text{ }\geq{}\text{ }0$ .
+*  We can generalize the scalar-based equation $xax\text{ }\geq{}\text{ }0$ to a matrix form as $x^TAx\text{ }\geq{}\text{ }0$ .  In the matrix form, the first vector x is transposed, so that the vector $x^Tx$ in this inequality is squared.  Necessarily, since the inequality is $\geq{0}$ , A must be non-negative (aka "positive semidefinite").
+ *  The resultant value or quantity based on x, which we can call $q_A\left(x\right)\text{ = }x^Tx$, is also called the "quadratic form" of the matrix A.
 
+### Assessing Matrix Positiveness, Definiteness
 
+* Question: do we need to care about what RREF does to the matrix?
+* A must be symmetric and square.  Given a square matrix $A_{mxm}$ and a mx1 vector x, multiply $x^TAx$ . A quadratic form should result.
 
+If the matrix is <=2:
+  * Solve the quadratic form for the variables.  Because the parenthetic expression is squared, it should necessarily be non-negative and thus positive semi-definite.
+  * If it can be shown via the solution process that the result can never be 0, then the matrix is **positive definite** (always positive).
+  * This is easy when matrix is 2x2.  If the matrix is 
 
-
-
-
-
-
-
-
+If the matrix rank >2:
+* If the matrix is larger than 2x2, consult the following equivalent conditions:
+ * All eigenvalues are >= 0, OR
+ * If there is some matrix B such that $B^TB\text{ = }A$ where all components of B are >0.  The reason this makes sense is that $B^TB\text{ = }A$ has the effect of squaring every matrix component, thus ensuring that all A components are positive.
+ * The conditions for positive definiteness are similar, except that:
+  * All eigenvalues are > 0, OR
+  * If there is some matrix B such that $B^TB\text{ = }A$ where all components of B are >0, AND all columns of B are linearly independent.
+ * Mutatis mutandis, the same conditions apply for negative semidefinite, negative definite matrices.
 
 
 
 ## Singular Value Decomposition
+
+### Eigendecomposition
+
+* 
+
+### Computing SVD
