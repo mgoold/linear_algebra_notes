@@ -383,4 +383,4 @@ $\beta$ in $\hat{\beta}\text{ = }{\left(X^TX\right)}^{-1}X^TY$
 
 ### Assess Number of Parameters
 
-
+*  For a given linear regression formula, the number of parameters required should be the number of predictor variables, plus one parameter for the intercept.
