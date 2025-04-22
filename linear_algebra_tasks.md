@@ -371,7 +371,11 @@ A vector "space" consists of a set of vectors that obey these math constraints:
 
 ## Singular Value Decomposition
 
-### Using SVD: Calculate $\beta$ in $\hat{\beta}\text{ = }{\left(X^TX\right)}^{-1}X^TY$ .
+### Eigendecomposition
+
+### Using SVD
+
+$\beta$ in $\hat{\beta}\text{ = }{\left(X^TX\right)}^{-1}X^TY$
 
 ## Functions --> Linear Algebra
 
