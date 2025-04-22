@@ -28,7 +28,18 @@ HTH
 
 * To compute the length of a vector, take the dot product of a vector with itself.  The square root of this dot product is the vector length.
 * The reverse of this is that the dot product of a vector is the length squared.
-  
+
+## Find Value of Length 2 Vectors Subtracted from Each Other
+
+### Steps
+* subract the components for one vector from the corresponding components of the other
+* take the dot product of the resulting vector of differences
+  * take the square of every component, and sum the components
+* take the square root of that dot product
+
+### Find Length of Difference Between Orthoganal Vectors
+** Same process, except that the resultant difference vector will always be a vector of 1s.  Consequently, the dot product will be n, and the length will be sqrt(n).
+
 ### Unit Vectors
 
 * A vector is a vector whose components sum to 1.
@@ -178,7 +189,7 @@ $$
   * Complete solution is c * specific point + d \* special point + e \* special point ... n \* special point.
 
 
-#### Matrix Elimination: LU Decomposition
+#### Matrix Row Elimination
 
 Steps:
 
@@ -254,16 +265,7 @@ $$
     * Repeat this process until all output variables have been process w.r.t each input variable.
   * Plug the coordinates for the given point into the derivative functions and process the resultant math.  The result is then the slope of a line in a subspace of $R^n$ which points toward the local maxima of the function.
 
-## Find Value of Length 2 Vectors Subtracted from Each Other
-
-### Steps
-* subract the components for one vector from the corresponding components of the other
-* take the dot product of the resulting vector of differences
-  * take the square of every component, and sum the components
-* take the square root of that dot product
-
-### Find Length of Difference Between Orthoganal Vectors
-** Same process, except that the resultant difference vector will always be a vector of 1s.  Consequently, the dot product will be n, and the length will be sqrt(n).
+### Compute Eigenvectors
 
 ## Compute Gradient
 
