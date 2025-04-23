@@ -1001,13 +1001,118 @@ If the matrix rank >2:
   * All eigenvalues are > 0, OR
   * If there is some matrix B such that $B^TB\text{ = }A$ where all components of B are >0, AND all columns of B are linearly independent.
  * Mutatis mutandis, the same conditions apply for negative semidefinite, negative definite matrices.
-
+ * Assuming no row exchanges, the signs of the pivots of a symmetric matrix in rre form are the signs of its eigenvalues.  Consequently, you can use this criteria to assess positive (semi) definiteness, etc.
 
 
 ## Singular Value Decomposition
 
+### Sources:
+* Eigendecomposition: https://www.youtube.com/watch?v=KTKAp9Q3yWg&t=84s
+
 ### Eigendecomposition
 
-* 
+#### Motivation
+*  A primary reason for performing eigendecompositions is that they simplify the common data science task of computing a matrix taken to a power.
+  *  A basic of linear algebra is that a matrix is multiplied on a vector in order to map it to another vector, or equivalently, to map it into a new space.
+  *  In real life, this often involves applying this linear transformation at every step of an algorithm.  This often ends up being equivalent to multiplying a vector by a matrix taken to a power.  Without eigendecomposition, taking a matrix A to the power of p involves $log_2\left(p\right)$ such computations --this fact reflects the max number of pair-wise computational shortcuts you can take without eigendecomposition.
+  *  As shown below, eigendecomposition transforms (decomposes) A into $U\LambdaU^{-1}$ .  This can then be decomposed into p $u\lambda{u^T}$ computations multiplied times each other.  Any incidence of $uu^T$ can them be factor out as an identity I, leaving the simplification $u\Lambda^pu^{-1}$, which is much easier to compute.
+
+#### Definition
+*  For a square matrix (only square matrices have Eigenvectors|values), the eigendecomposition is a $U\LambdaU^{-1}$ which breaks A into p individual $u\lambda{u^T}$ matrices, requiring only 2 matrix multiplications, regardless of the complexity.
+
+#### Performing an Eigendecomposition:
+
+Suppose we have matrix A:
+
+$$
+A\text{ = }
+\left[{\begin{matrix}{cc}
+1 & 4 \\
+9 & 1 \\
+\end{matrix} }\right]
+$$
+
+*  Calculate the eigenvalues, in this case $\lambda_1\text{ = }7$ , $\lambda_2\text{ = }-5$ .
+*  Calculate the eigenvectors, in this case:
+
+$$
+v_1\text{ = }
+\left[{\begin{array}{cc}
+2 \\
+3 \\
+\end{array} }\right]
+\text{ corresponds to }\lambda_1\text{, and }
+v_2\text{ = }
+\left[{\begin{array}{cc}
+2 \\
+-3 \\
+\end{array} }\right]
+\text{ corresponds to }\lambda_2
+$$
+
+* Normalize the eigenvectors, meaning that they sum to 1:
+
+$$
+u_1\text{ = }
+\left[{\begin{array}{cc}
+\frac{2}{\sqrt{13} \\
+\frac{3}{\sqrt{13} \\
+\end{array} }\right]
+\text{ corresponds to }\lambda_1\text{, and }
+u_2\text{ = }
+\left[{\begin{array}{cc}
+\frac{2}{\sqrt{13} \\
+\frac{-3}{\sqrt{13} \\
+\end{array} }\right]
+\text{ corresponds to }\lambda_2
+$$
+
+* Put the above results into the following format:
+
+  *  $Au_1\text{ = }\lambda_1u_1$
+  *  $Au_1\text{ = }\lambda_1u_1$
+
+  * The left and right sides have different structures, so you need to put the right side into a matrix format, so that the equations are put into a matrix system like so:
+ 
+    * 
+      $$
+      A
+      \left[{\begin{array}{cc}
+      u_1 \\
+      u_2 \\
+      \end{array} }\right]
+      \text{ = }
+      \left[{\begin{array}{cc}
+      u_1 \\
+      u_2 \\
+      \end{array} }\right]
+      \left[{\begin{matrix}{cc}
+      \lambda_1 & 0 \\
+      0 & \lambda_2 \\
+      \end{matrix} }\right]      
+      $$
+
+    Note: in this construal, $u_1,u_2$ are both vectors comprising the matrix U.
+
+    * In matrix form, this formula is now: $AU\text{ = }U\Lambda$ , which can be re-written to isolate A as: $A\text{ = }U\LambdaU^{-1}$ .
+      * **This final formulation is what is known as the "eigendecomposition".**  It is so called because it breaks A into its component matrices in a way that isolates the eigenvalues.
+      * To see that this works, you can multiply out the above simple matrices.
 
 ### Computing SVD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
