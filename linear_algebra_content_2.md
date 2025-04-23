@@ -2656,12 +2656,19 @@ In general, $B_j$ is A with column j replaced by b.  The determinant of this mat
 
 Sources:
 * MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/lecture-21-eigenvalues-and-eigenvectors/
+* Ritvik: https://www.youtube.com/watch?v=glaiP222JWA
+
+### Motivation
+
+* Eigenvectors are often essential to in analyses involving dimension reduction or stability analysis (is it chaotic, stable, or periodic).  However, it is difficult to see the obvious connection to these analyses.
+* It is easier to note their use in eigendecomposition and singular value decomposition, both of which are used to find efficient computing methods by reducing the number of calculations required, and or by reducing the number of features involved in the calculations.
+* Finally, it is said that an eigenvector represents an axis of rotation geometrically.
 
 ### Definition of Eigenvector and Eigenvalue
 
-Remember that a matrix A "acts on" a vector x to produce a new vector.  In a manner analogous to a function, any appropriate length x can have A multiplied times it to produce an output vector.
+Remember that a matrix A "acts on" a vector x to produce a new vector.  In a manner analogous to a function, any appropriate length x can have A multiplied times it to produce an output vector.  We say that A transforms x into a new vector, or equivalently, it maps it into a new space.
 
-Of special interest are the result vectors that retain the same direction as the vector x .  Such vectors are atypical; a typical result points in a new direction from x.  Some result vectors are *parallel to x* [note that they need not be on the same line as x] .  These parallel result vectors are **eigenvectors** .
+Of special interest are the result vectors that retain the same direction as the vector x .  Such vectors are atypical; a typical result points in a new direction from x.  Some result vectors are *parallel to x* [note that they need not be on the same line or in same direction as x] .  These parallel result vectors are **eigenvectors** .  ** They must be non-zero. **.  Eigenvectors **exclude the 0 vector**, but include any vector x that would be in the nullspace of A N(A).  Thus, if a matrix is singular, it means that A times some non-zero vector = 0, and that $\lambda$ = 0 is one of the eigenvalues. 
 
 What is meant by "parallel" in this context?  It is most clearly stated in an equation:
 
@@ -2669,12 +2676,8 @@ $$Ax\text{ = }\lambda{x}$$ .
 
 There are 2 x's in this equation; they are not necessarily the same.  For clarification I will call them "left side" and "right side" x, depending on which side of the equal sign they lie.  The right side x is what you get after A has acted on the left side x.
 
-* In this equation, right side x is the **eigenvector** .  Right side x is the "vector" in eigenvector.  It is this vector x that may have the same parallel direction to left side x.
-* $\lambda$ is a scalar that controls direction and extent of right side x. $\lambda$ is the **eigenvalue** . Its potential values include 0 and negative numbers.  A valid eigenvector can thus be 0 or negative (pointing in the parallel, opposite direction to left side x).
-
-#### 0 Eigenvectors
-
-The 0 eigenvectors include the 0 vector, but also an vector x that would be in the nullspace of A N(A).  Thus, if a matrix is singular, it means that A times some non-zero vector = 0, and that $\lambda$ = 0 is one of the eigenvalues. 
+* In this equation, right side x is the **eigenvector** .  It is the "vector" in eigenvector that has the same parallel direction to left side x.
+* $\lambda$ is the **eigenvalue** .  It is a scalar that controls the extent of right side x.  
 
 #### Example: Eigenvectors and Eigenvalues for Projection Matrices
 
@@ -2713,7 +2716,82 @@ We said that because we had 2 matrices, we expected 2 eigenvalues.  In fact, an 
 
 **Definition**
 
-Trace: the sum of diagonal values $\sum\text{ }a_{11}\text{,}a_{22}\text{...}a_{nn}$ in an nxn matrix, which is always equal to the sum of eigenvalues (the $\lambda$ ) for that matrix.  
+**Trace**: the sum of diagonal values $\sum\text{ }a_{11}\text{,}a_{22}\text{...}a_{nn}$ in an nxn matrix, which is always equal to the sum of eigenvalues (the $\lambda$ ) for that matrix.  
+
+### How to Compute Eigenvectors and Eigenvalues
+
+#### Calculate Eigenvalues
+
+Suppose we have the matrix A:
+
+$$
+A\text{ = }
+\left[{\begin{matrix}{cc} 
+0 & 1 \\ 
+-2 & -3 \\ 
+\end{array}}\right]
+$$
+
+*  We start with the equation $Ax\text{ = }\lambda{x}$ , which we re-write as $Ax\text{ = }\lambda{I}x$  We can do this since I wouldn't change x.  Now we set the whole thing equal to 0:
+
+$$Ax\text{ = }\lambda{I}x\text{ = }0$$ ,
+
+...which we can re-factor as $\left(A\text{ - }\lambda{I}\right)x\text{ = }0$ .  We can think of $\left(A\text{ - }\lambda{I}\right)x$ as a matrix M .  Remember that $x\neq{0}$ .  This means that:
+* whatever M is, it must be perpendicular to x to produce the vector 0 .
+* the matrix M must have some non-zero vector X in its nullspace.
+* the matrix M **cannot be invertible** .  A matrix with a non-zero vector in its nullspace cannot be invertible.
+  * consequently, its determinant must be = 0.  Non-invertible matrices only have 0 as their determinant.
+
+* With this in mind, we take the determinant $text{det }\left(A\text{ - }\lambda{I}\right)\text{ = }0$ .  We prepare to calculate this determinant, first by fully writing out all the components
+
+$$
+A\text{ = }
+\left[{\begin{matrix}{cc} 
+0 & 1 \\ 
+-2 & -3 \\ 
+\end{matrix}}\right]
+\text{ - }
+\left[{\begin{matrix}{cc} 
+\lambda & 0 \\ 
+0 & \lambda \\ 
+\end{matrix}}\right]
+\text{ = }
+\left[{\begin{matrix}{cc} 
+-\lambda & 1 \\ 
+-2 & -3-\lambda \\ 
+\end{matrix}}\right]
+$$
+
+* ... then we take the determinant of this matrix using the ad-bc formula to get $3\lambda+\lambda^2+2$ .  Originally, we had set this determinant to 0 and now we solve the expression = 0:  $\left(\lambda+2\right)\left(\lambda+1\right)\text{ = }0$ , so the roots of this polynomial = -2, -1.  
+
+#### Calculate Eigenvector
+
+To find the corresponding eigenvectors, we plug the first eigenvalue -1 into the original $Ax\text{ = }\lambda{x}$ formula:
+
+$$
+\left[{\begin{matrix}{cc} 
+0 & 1 \\ 
+-2 & -3 \\ 
+\end{matrix}}\right]
+\left[{\begin{array}{cc} 
+x_1 \\ 
+x_2 \\ 
+\end{array}}\right]
+\text{ = }
+\left[{\begin{array}{cc} 
+-x_1 \\ 
+-x_2 \\ 
+\end{array}}\right]
+$$
+
+... where on the right side x has already been multiplied by -1.
+
+*  ...through matrix multipliation, this then becomes a set of equations we can solve by back-substitution:
+
+$$x_2\text{ = }-x_1$$
+$$-2x_1-3x_2\text{ = }-3x_1$$
+
+with the result that $x_1$ = $-x_2$ . This is your first eigenvector.  We repeat the process for as many eigenvalues as you have.
 
 ### General Solution for Eigenvectors, Eigenvalues
 
@@ -2744,9 +2822,9 @@ Finding the determinant looks like:
 
 $$
 \text{det }\left(A-\lambda{}I\right)\text{ = }
-\left\|{\begin{array}{cc} 
+\left\|{\begin{matrix}{cc} 
 {3-\lambda} & 1 \\ 
-1 & {3-\lambda} \\ 
+1 & {3-\matrix} \\ 
 \end{array}}\right\|
 $$
 
@@ -2770,7 +2848,6 @@ $$
 1 & 3 \\ 
 \end{array}}\right]
 \rightarrow
-$$
 \left[{\begin{array}{cc} 
 -1 & 1 \\ 
 1 & -1 \\ 
@@ -2787,7 +2864,6 @@ $$
 1 & 3 \\ 
 \end{array}}\right]
 \rightarrow
-$$
 \left[{\begin{array}{cc} 
 1 & 1 \\ 
 1 & 1 \\ 
@@ -2815,7 +2891,7 @@ $$
 \text{ + }3I
 $$ 
 
-Foreby, notice that while the eigenvalues were increased by 3 between these two matrices (1 + 3, 1-3), the eigenvectors did not change at all.   You can see why this is so by considering: Again suppose we have $Ax\text{ = }\lambda{x}$, and we add 3I to this matrix.  Then if $Ax\text{ = }\lambda{x}$, we get $\left(A\text{ + }3I\right)x\text{ = }\lambda{x}\text{ + }3x\text{ = }\left(\lambda\text{ + }3\right)x .  This equation shows that x is unchanged across both matrices in this situation, and all you're doing is "nudging" the matrix A by lambda = 3.
+Foreby, notice that while the eigenvalues were increased by 3 between these two matrices (1 + 3, 1-3), the eigenvectors did not change at all.   You can see why this is so by considering: Again suppose we have $Ax\text{ = }\lambda{x}$, and we add 3I to this matrix.  Then if $Ax\text{ = }\lambda{x}$, we get $\left(A\text{ + }3I\right)x\text{ = }\lambda{x}\text{ + }3x\text{ = }\left(\lambda\text{ + }3\right)x$ .  This equation shows that x is unchanged across both matrices in this situation, and all you're doing is "nudging" the matrix A by lambda = 3.
 
 #### Example: A Difficult Matrix
 
@@ -2892,7 +2968,6 @@ $$
 \text{ = }
 {\left({3-\lambda}\right)}^2\text{ -  }0
 $$
-
 
 by the 2x2 ad - bc equation.  Notice that because it was triangular, there is no "-bc" component; the solution is reduced to the product of the matrix' diagonals.  Thus lambda1 = 3; lambda2 = 3.
 
