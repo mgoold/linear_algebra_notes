@@ -1008,6 +1008,16 @@ If the matrix rank >2:
 
 ### Sources:
 * Eigendecomposition: https://www.youtube.com/watch?v=KTKAp9Q3yWg&t=84s
+* SVD simple example: https://youtu.be/NGHBniMyteo
+
+### Motivation and Meaning of "Singular Values"
+
+* Consider first the idea of an eigenvector, which is a vector x which is parallel to the original vector x even after it is transformed by A.  Logically, the parallelism of the eigenvector cannot be shifted by any eigenvalue $\lambda$ which acts on it, since that eigenvalue would act on all of the eigenvectors equally and thus keep the same proportions.  **It follows that the role of the eigenvalue is only to indicate the direction of the eigenvector and how much it stretches that eigenvector.**  The eigenvalue could reverse the eigenvector's direction (sign), but not its parallelism to x.
+* The cannonical formula for eigenvectors and eigenvalues is $Ax = \lambda{x}$ .  A **singular value** $\sigma$ is the square root of eigenvectors from $AA^T$  for A in this formula .
+  * As a consequence:
+    * $\sigma$ will always be positive
+    * relative to other singular values for the matrix, the size of the singular values must indicate vector components of A stretch the vector x the most.  This relative size can be taken as an indicator of importance.
+    * additionally, a subset of the singular values will account for the majority of the change that happens to the vector x.  The implication is that a sufficient estimate of the effect on x can be had with a smaller set of columns or features, which pays off in computation costs and efficiency.
 
 ### Eigendecomposition
 
@@ -1098,7 +1108,175 @@ $$
       * **This final formulation is what is known as the "eigendecomposition".**  It is so called because it breaks A into its component matrices in a way that isolates the eigenvalues.
       * To see that this works, you can multiply out the above simple matrices.
 
-### Computing SVD
+### Computing Singular Value Decomposition SVD
+
+* Recall that:
+  * Rank is the number of linearly independent columns in a matrix, or equivalently the number of pivots, and that the rank p must be less than or equal to n columns.
+  * the eigendecomposition only applied to diagonalizable square matrices.
+    * the SVD applies to non-square matrices, so it extends decomposition to a wider set of matrix types.
+  * Eigendecomposition takes the form $M_{mxm}\text{ = }U\LambdaU^{=1}$ , where M is a diagonalizable square matrix, U is the matrix of normalized eigenvectors, and $|Lambda$ is the diagonal matrix of eigenvalues.
+   * A consequence of being able to decompose M into these 3 right-side components is that it can be expressed as the sum of "atomic" **rank 1** matrices like:
+     $$M\text{ = }\sigma_1u_1v_1^T\text{+,...,+}\sigma_pu_pv_p^T$$ , where:
+       * $\sigma$ is a singular value coefficient,
+       * u is a vector of m rows,
+       * and v is a vector of n columns.
+     * each u and v together make a rank 1 matrix.
+       * A rank 1 matrix is a matrix that can be expressed as the multiplication of a mx1 vector and a 1xm vector.  Usually this is expressed as the multiplication of $uv^T$ .  It sounds kind of like a dot product but the result is a matrix and you don't add the components to get a single number.
+         * interestingly, the reason it is not a single number is that the column in u is multiplying the row in v, so procedurally you get a matrix.  If u and v were reverse in order, you would get a single number.
+         * v is the transpose of u.  this is necessary in order to get a square, symmetric matrix
+         * each u,v pair is thus a single row from the original matrix.
+     * these atomic matrices must be linearly independent from each other in order to be summed this way.
+   * We can write this summation of atomic matrices in a higher-level matrix form as:
+
+$$
+M\text{ = }
+\left[{\begin{matrix}{cc}
+\vdots & \cdots & \vdots\\
+u_1 & \cdots & u_p \\ 
+\vdots & \cdots & \vdots\\
+\end{matrix} }\right]
+\left[{\begin{matrix}{cc}
+\sigma_1 & {} & {} \\
+{} & \cdots & {} \\ 
+{} & {} & \sigma_p \\
+\end{matrix} }\right]
+\left[{\begin{matrix}{cc}
+\cdots & v_1 & \cdots \\
+\vdots & \vdots & \vdots \\ 
+\cdots & v_p & \cdots \\
+\end{matrix} }\right] 
+$$
+  
+where the dimensionality of each matrix is $\Sigma\text{:pxp}$ , and V:pxn .  The multiplication of all the matrices will result in a final matrix of mxn, matching that of the original matrix A .
+
+Just as with eigendecomposition, U will be an orthonormal matrix, and thus V will as well.  Also remember that each column in U is indepdendent.  As a consequence of these facts, $U^TU$ and $V^TV$ will both be identity matrices.  
+
+All the sigmas are on the diagonal of $\Sigma$ . 
+
+Notice that multiplying both sides by $V$ will yield $MV\text{ = }U\Sigma$ and similarly that multiplying by $U^T$ will yield $U^TM\text{ = }\SigmaU^T$ .  
+*  In $MV\text{ = }U\Sigma$ , the columns of V which had been the rows of $V^T$ are known as the **right singular vectors** of M.
+*  In parallel, since U has been on the left of $\Sigma$ , the vectors in U are called the **left singular vectors** of M.
+*  Sigma itself is called the ** singular values** of M.
+
+Presumably, the "singular" bit references the isolation of each column in M when calculating $\sigma$ . 
+
+### Computing SVD : Simple Example
+
+Given the matrix 
+
+$$
+A\text{ = }
+\left[{\begin{matrix}{cc}
+1 & 1 \\
+0 & 1 \\
+-1 & 1 \\
+\end{matrix} }\right]
+$$
+
+Let A = $U\SigmaV^T$ be svd of A .
+
+Steps:
+* Compute V = $A^TA$:
+
+$$
+A^T\text{ = }
+\left[{\begin{matrix}{cc}
+2 & 0 \\
+0 & 3 \\
+\end{matrix} }\right]
+$$
+
+* Find eigenvalues of $A^TA$ :
+
+$\lambda^2\text{ - }s_1\lambda\text{ + }s_2\text{ = }0$ is the characteristic equation of the matrix $A^TA$ :
+* $s_1\text{ = }T\left(A^A\right)\text{ = 2 + 3 = 5}$ , where T = trace.
+* $s_2$ = determinant of matrix = ad - bc = 6 - 0 = 6 .
+
+Plugging these into the characteristic equation, we get: $\lambda^2\text{ - }5\lambda\text{ + }6\text{ = }0$ : $\lambda\in\text{ = 3,2}$ .  These are the **eigenvalues** .  We don't technically half to write these in decreasing order, but for organizational reasons it is customary to do so.  This is so you can more quickly find the most important sigmas later.
+
+* Find eigenvectors based on eigenvalues:
+  * Let x1 = (a, b) be e.v. of $A^TA$ .  Then $\left(A^TA\right)x_1\text{ = }\lambda{x_1}$ :
+
+$$
+\left[{\begin{matrix}{cc}
+2 & 0 \\
+0 & 3 \\
+\end{matrix} }\right]
+\left[{\begin{array}{cc}
+a \\
+b \\
+\end{array}}\right]
+\text{ = }
+3
+\left[{\begin{array}{cc}
+a \\
+b \\
+\end{array}}\right]
+$$
+
+and 
+
+-a + 0b = 0
+0a + 0b = 0
+
+Both equations are the same.  Therefore, we can toggle a = 0 and b = 1 (or vice-versa).  These values satisfy both equations and therefore can serve as an eigenvector.  We then normalize x_1 = (0,1) --> u_1 = (0,1) .  The same process yields x_2 = (1,0) --> x_2 = (1,0) .
+
+The v matrix of normalized eigenvectors is thus:
+
+$$
+V\text{ = }
+\left[{\begin{matrix}{cc}
+0 & 1 \\
+1 & 0 \\
+\end{matrix} }\right]
+$$
+
+.  
+
+* Find $V^T$, which is the same since V is a symmetric matrix.
+
+$$
+V^T\text{ = }
+\left[{\begin{matrix}{cc}
+0 & 1 \\
+1 & 0 \\
+\end{matrix} }\right]
+$$
+
+.
+
+* Compute $\Sigma$ matrix:
+  * Note that the order of sigma must be the same as the order of A.
+  * Find sigmas, which are simply the sqrts of the eigenvectors above:
+    * $s_1\text{ = }\sqrt{\lambda_1}\text{ = }\sqrt(3)$
+    * $s_2\text{ = }\sqrt{\lambda_2}\text{ = }\sqrt(2)$
+  * Remember that the number of non-zero singular values (and eigenvalues) must be equal to the rank p of the matrix.
+  * the matrix $\Sigma$ is thus:
+
+$$
+\Sigma
+\left[{\begin{matrix}{cc}
+\sqrt{3} & 0 \\
+0 & \sqrt{2} \\
+0 & 0 \\
+\end{matrix}}\right]
+$$
+
+-- Note that a row of 0s are added so that Sigma fulfills its dimensionality requirements.  It should be equal to the dimensions of A.
+
+* Compute Matrix U = $AA^T$:
+
+$$
+$AA^T$\text{ = }
+\left[{\begin{matrix}{cc}
+2 & 1 & 0 \\
+1 & 1 & 0 \\
+0 & 1 & 2 \\
+\end{matrix}}\right]
+$$
+
+Let $\lambda^3\text{ - }s_1\lambda^2\text{ + }s_2\lambda\text{ - }s_3\text{ = }0$ be the characteristic equation of $AA^T$ .
+
 
 
 
