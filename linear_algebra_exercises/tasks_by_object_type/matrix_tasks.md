@@ -1,5 +1,5 @@
 
-# Unknown Matrix
+# Undefined Matrices
 
 ## Example 1
 
@@ -93,6 +93,21 @@ A 3x3 matrix A is said to reduce to the identity matrix I via a list or row oper
 ### Tasks
 * give the symbolic form of of the upper triangular matrix R repesenting a 3x3 matrix in RREF.
 * to give the basis, or subspace S that could be spanned by R, list the possible eschalon forms that R could take.
+
+## Example 5
+
+### Premise
+
+A list of undefined non-zero vectors are said to span a subspace of a defined R space.  List the possible dimensions that the vectors can occupy.
+
+### Problem Text
+*  "Suppose u, v and w are non-zero vectors in R7. They span a subspace of R7. What are the possible dimensions of that vector space?"
+
+### Solution or Solution Steps
+The answer is 1, 2 or 3. The dimension can’t be higher because a basis for
+this subspace has at most three vectors. It can’t be 0 because the vectors are
+non-zero.
+
 
 # Defined Matrix, >2x2, with Variable(s) in Content
 
