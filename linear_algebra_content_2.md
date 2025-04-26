@@ -1330,6 +1330,15 @@ Note that the two approaches will give you 2 different versions for the same vec
 * MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/the-four-fundamental-subspaces/
 * Strang, p184ff.
 
+### RRE, Redudancy, and R(A) and C(A)
+
+* When you take the RRE form of an augmented matrix, you do two things:
+    * For the rows, you take the redundancy out of the equations and perhaps some of their variables.
+        * The elimination of an equation or a variable means that it didn't add information; the post-RRE form of the equations will give you all the same results.
+        * The elimination of an equation all together (a 0 row) means that the equation was entirely a multiple of some other equation.
+        * The elimination of a variable means that the equation having this zero variable will make the same contribution to the system, without the variable, as it originally did.
+    *  For the columns, if a column is seen to be a linear combination of other columns, it means that it does not really extend into the additional dimension that would have been represented by that column.  Thus a system of 3 vectors, where the third is a combination of the first 2, will be a system filling at most a plane rather than 3d space.
+
 ### Column Space C(A)
 
 The column space is C(A) is a subspace of Rm.  That is, a given column in A has m components.
@@ -1343,12 +1352,15 @@ The null space is N(A) is a subspace of Rn.  Because x in Ax = 0 is a column, it
 #### Sources:
 * Strang, p171.
 
-The rowspace is C($A^T$), and is a subspace of Rn.  That is, a given row of A is n components wide.
+#### Meaning of Rowspace
 
-* The row space of A is all combinations of its rows.  In other words, the rows "span" the rowspace.
+* I had trouble with this concept.  It clarifies things to remember that the matrix and result vector represent some system of equations.  The rowspace then said to be all the possible linear combinations of its rows, meaning those equations.  Remember that this means both the set of equations as given, and also the set of equations in their most essential, non-redundant, RRE form (in other words, the basis of the row space). Either one would give you the same set of all the possible ways (combinations of variables and values) that you could use to get 0 or b, depending on the equation.
+
+The rowspace is $C\left(A^T\right)$ , and is a subspace of Rn.  That is, a given row of A is n components wide.
+
+* The row space of A, or "R(A)" is all the linear combinations of its rows.  In other words, the rows "span" the rowspace.
 * The rows may or may not be a basis for R(A) -- they may or may not be independent. 
-* What is in R(A)?  All combinations of the rows of A.
-* To work with the rows as column vectors, we can transpose the matrix A.  Then we say that R(A) is all combinations of $A^T$.  Further, we can say that R(A) = C($A^T$).  
+* To work with the rows as column vectors, we can transpose the matrix A.  Then we say that R(A) is all combinations of $A^T$.  Further, we can say that R(A) = $C\left(A^T\right)$.  
 
 ### Null Space A Transpose N($A^T$)
 
