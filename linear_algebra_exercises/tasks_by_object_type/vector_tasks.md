@@ -69,17 +69,17 @@ $$
 
 # Defined Vectors
 
-## Example 1
+## Example 1: calculate dot product
 * Given 2 vectors, take their dot product.
 
 ### Solution or Solution Steps
 * multiply each component in v by the corresponding component in w, and sum the products.
 
-## Example 2
+## Example 2: calculate vector length
 * To compute the length of a vector, take the dot product of a vector with itself. The square root of this dot product is the vector length.
     * The dot product of a vector is the length squared.
 
-## Example 3 
+## Example 3: length of vector subtraction
 *  Find Value of Length 2 Vectors Subtracted from Each Other
 
 ### Solution or Solution Steps
@@ -90,14 +90,14 @@ $$
 
 * NOTE: For orthognal vectors, the process is the same, but the resultant difference vector will always be a vector of 1s. Consequently, the dot product will be n, and the length will be sqrt(n).
 
-## Example 4
+## Example 4: create unit vector
 * Create a unit vector from a defined vector.
 
 ### Solution or Solution Steps
 * compute the vector's length
 * divide every component by that length, so that the components sum to 1.
 
-## Example 5
+## Example 5: vectors from coordinates
 
 ### Premise:
 * Given a list of coordinates, devise the vectors they describe, and:
@@ -113,7 +113,7 @@ $$
 *  The three edges going around the triangle are u = (5, 0), v = (−5, 12), w = (0,−12).   Their sum is u + v + w = (0, 0). Their lengths are ||u||= 5, ||v||= 13, ||w||= 12.
     *  Notes:  hen you're doing this "walk around the straight edges of a triangle or parallelogram" thing, always remember to check that your result vectors sum to 0.
 
-## Example 6
+## Example 6: describe space of vector system
 
 ### Premise:
 *  Given a set of vectors, describe the space that their linear combinations fill.
@@ -187,8 +187,7 @@ $$
     * Basically, you're trying to make vector a product of every other vector.
     * Always remember to try and make them sum to zero without multipliers, just to see if its true.
 
-
-## Example 7 
+## Example 7: draw vectors and their operations 
 
 ### Premise
 * Given a list of vectors, draw them and their additions and subtractions.
@@ -222,7 +221,7 @@ and v+w and v-w in a single plane."
   * So what you do is take the vectors apart and then reorganize them so that the pair of equations with v1, w1 can be solved simultaneously using substitution.
   * From there, you continue substitution to solve the rest.
 
-## Example 8
+## Example 8: compute the results of vectors in cv + dw formula
 
 ### Premise
 * Given a set of defined vectors, compute the results of specified linear combinations which use them.
@@ -252,7 +251,7 @@ $$
 ### Solution or Solution Steps
 * 3v + w = (7, 5) and cv + dw = (2c + d, c + 2d).  This is just scalars multiplying vectors.
 
-## Example 9
+## Example 9: vector linear combinations
 
 ### Given list of vectors:
 * detail what their components sum to.
@@ -267,7 +266,7 @@ $$
 * take note of how the components vertically sum, prior to RRE &c:
     * solutions for b must be in the column space of A; therefore, solutions for b must add their components in the same way that the components of C(A) sum up.  In this case, 3,3,6 is impossible because the components do not sum to 0.
   
-## Example 10
+## Example 10: mapping possible linear combinations
 
 ### Premise
 *  Given a set of defined vectors, and an equation cv + dw, and a list of values for c and d, draw all of the vectors result from filling in c and d.  Describe the results.
@@ -298,7 +297,7 @@ $$
 ### Solution or Solution Steps
 *  Simple plug and play equations.
 
-## Example 11
+## Example 11: vector linear independence with symbols
 
 ### Premise
 *  Given a set of numeric and symbolic vectors, decide if they are linearly independent.
@@ -307,10 +306,23 @@ $$
 * "(Not easy) How could you decide if the vectors u = (1,1,0) and v = (0,1, 1) and  w = (a, b, c) are linearly independent or dependent ?"
 
 ### Solution of Solution Steps
-*  This is sort of tough, but if you just write the 3 vectors out vertically, you'll see that "Certainly x1 has to be a. Certainly x2 has to be c. So the middle components give the requirement a + c = b."  So generally when you get a question that sounds like this, the approach is to write them out, and see if isolation makes any one variable easy to solve, so that you can sole the others apart via substitution.
+*  This is sort of tough, but if you just write the 3 vectors out vertically, you'll see that "Certainly x1 has to be a. Certainly x2 has to be c. So the middle components give the requirement a + c = b."  So generally when you get a question that sounds like this, the approach is to write them out, and see if isolation makes any one variable easy to solve, so that you can solve the others apart via substitution.
 
+## Example 12: find orthogonal dot product
 
+### Premise
+*  Given a vector of numbers, find another vector that is orthogonal to it.
 
+### Problem Text
+* "Given the vector (1,2,3), find a vector that is orthogonal to it."
+
+### Solution of Solution Steps
+* Remember that 2 vectors, which must be of equal length, are orthogonal if their dot product = 0.
+* Consider that the first variable v is the given list of values, and the unknown vector w is equal to (x,y,z ...) etc.
+* Combine the 2 vectors in the dot product formula = 0.  Set all variables except one as = 1:
+   * 1(1) + 2(1) + 3z = 0 .
+   * z = -1.
+   * w = (1,1,-1)
 
 
 
