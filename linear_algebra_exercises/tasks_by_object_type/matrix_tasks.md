@@ -646,10 +646,6 @@ $$
 ### Answer: 
 * Because the nullspace is orthogonal to the rowspace, and must therefore have a 0 dot product.  A vector in the nullspace and a row would, have a dot product of 14, which means it is by definition not in the nullspace.
 
-### Notes:
-* It's clear that the set of formulas that the rows represent would not be changed just by changing their order.
-   * Remember that when we swap rows, the corresponding components of b are moved as well.
-* It's less clear that the nullspace would be unchanged.  I take this means "without further row operations".
 
 # Generic Matrix Tasks
 
