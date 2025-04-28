@@ -505,7 +505,388 @@ $$
    * substitute in 0 for the free variables into this 2-equation system
    * use back substitution to find the pivot variables -- in this case, for $x_1$ and $x_2$ .
    * plug all these into a vector for $x_{particular}$ .  This plus $x_{nullspace}$ is then our complete solution.
+ 
+# Matrix Q & A
 
+## Q1
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
+
+### Question: 
+* Given a share matrix A who's nullspace is just {**0**} what is the nullspace of $A^T$?
+### Answer: 
+* $N\left(A^T\right)$ is also {**0**} because A is square.
+### Notes: 
+* it's easy to just mis-read this as "A is a 1x1 matrix" because there's just one number in the nullspace.  But the nullspace is the 0 vector, and this answer applies to a square matrix of any size.  
+### Relevant facts:
+* If the nullspace of a square matrix is only [0], it means the matrix is invertible.
+* Any invertible matrix can be reduced to I through row reduction, and the transpose of I is I, so the nullspace of $A^T$ would not be changed and would also be 0.
+
+## Q2
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
+
+### Question: 
+* Do the invertible matrices form a subspace of the vector space of 5x5 matrices?
+
+### Answer: 
+* No.  To be a subspace, you must be able to any 2 instances of the elements in the subspace and get the same kind of instance (stay in the subspace).  In ths case, adding 2 invertible matrices may not give you an invertible matrix, so invertible matrices can't make a subspace.
+* Also, 0 is not invertible, and a subspace must contain 0.
+  
+### Notes: 
+* 0 is not invertible because, by definition, a matrix is invertible if there exists a matrix A such that $AA^$T\text = }I$.  But because there are no 1's in {0} this is impossible.  So the conditions that both a 0 matrix be in the subspace, and that the 0 matrix be invertible, are opposed and impossible.
+
+## Q3
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
+
+### Question: 
+* "True or false: If $B^2$ = 0, then it must be true that B = 0." 
+* Alternate form: "Find a matrix B such that $B^2$ = 0 and B $\neq$ 0."
+
+### Answer: 
+* False.  It could be that
+
+$$
+B\text{ = }
+\left[
+{\begin{matrix}{cc}
+0 & 1 \\
+0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+.
+
+## Q4
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
+
+### Question: 
+* "True or false: A system Ax = b of n equations with n unknowns is solvable for every right hand side b if the columns of A are independent."
+
+### Answer: 
+* True.  "n equations of n unknowns" means an nxn or square matrix.  If every column of A is indepdendent, then A will reduce to I.  Then any b = Ix.  Equivalently, we can say that $x\text{ = }A^{-1}b$ is a unique solution for any b and x.
+
+## Q5
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
+
+### Question: 
+* "True or false: if m = n then the row space equals the column space."
+
+### Answer: 
+* False.  "m and n" typically refers to the row and column **dimensions** before RR.  Row and column **space** refer to bases discovered post-rr.  So a matrix might have enough potential dimension to fill a plane, for example, but only have the bases to fill a line.
+
+## Q6
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
+
+### Question: 
+* "The matrices A and -A share the same four spaces."
+
+### Answer: 
+* True.  -A is the same as multiplying every component by -1, so it should just be all the same vectors in the opposite direction, and thus in the same subspaces.
+
+## Q7
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
+
+### Question: 
+"True or false: If A and B have the same four subspaces, then A is a multiple of B."
+
+### Answer: 
+False. For example A = (1,1) and B =(1,2) should be in the same subspace of 2x1 matrices, but no single multiplier can turn A into B .
+
+## Q8
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
+
+### Question: 
+* "If we exchanges 2 rows of A, which subspaces stay the same?"
+
+### Answer: 
+* The rowspace and the nullspace.
+
+### Notes:
+* It's clear that the set of formulas that the rows represent would not be changed just by changing their order.
+   * Remember that when we swap rows, the corresponding components of b are moved as well.
+* It's less clear that the nullspace would be unchanged.  I take this means "without further row operations".
+
+## Q9
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
+
+### Question: 
+* "Why can't the vector
+
+$$
+v\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 \\
+2 \\
+3 \\
+\end{matrix}} 
+\right]
+$$
+
+... be in the nullspace of A and also be a row of A?"  
+
+### Answer: 
+* Because the nullspace is orthogonal to the rowspace, and must therefore have a 0 dot product.  A vector in the nullspace and a row would, have a dot product of 14, which means it is by definition not in the nullspace.
+
+### Notes:
+* It's clear that the set of formulas that the rows represent would not be changed just by changing their order.
+   * Remember that when we swap rows, the corresponding components of b are moved as well.
+* It's less clear that the nullspace would be unchanged.  I take this means "without further row operations".
+
+# Generic Matrix Tasks
+
+## Matrix Assessment
+
+* Evaluate whether any columns sum to 0.
+* Evaluate whether any rows sum to 0.
+  * IF a combination of rows of A gives a 0 row, then b must sum to 0 via the same combination.  This is a "condition of solvability".
+* Evaluate whether any columns are linear combinations of other columns.
+  * If they are not:
+    * The columns are independent.
+    * The only vector in N(A) will be [0].  --The only value of x that sets Ax = 0 is the 0 vector.
+  * If they are:
+    * The maximum number of dimensions the matrix can fill is the number of independent columns.
+* Compare expected counts pre-RRE: r vs n vs m:
+  * if r = m = n, then 1 solution x = b.
+  * if r = n < m, then 0 or 1 solution, 0 vector is only vector in N(A)
+  * if r = m < n, then R = IF, infinite solutions.
+  * if r < m, r < n then 0 or infinite solutions.
+
+### Matrix Facts:
+ * The number of *potential* dimensions that a matrix can fill is its row count.
+ * The maximum number of dimensions that a matrix can *actually* fill is the number of post-RRE independent columns.
+ * The relationship of these two is summed by saying that the matrix has a "[# of columns]-dimensional subspace of [number of rows]".
+
+### Transposed Matrices
+
+#### Facts
+
+* Transposing a matrix swaps row placement for column placement, so that row 1 becomes column 1, row 2 becomes column 2, etc.
+* In general, we can say that that $A^T_{ij}=A_{ji}$ for row i and column j.
+
+* Note that:
+  * the transpose of the identity matrix I is necessarily I.
+  * a symmetric matrix is identical to its transpose: $A=A^T$.
+  * multiplying a retangular matrix by its tranpose will give you a symmetric matrix.  For example, with a 2x3 matrix this would cause the off diagonal sum A_11*B_12+A_12*B_22 to be calculated with an identical value from as A_21*B_11+A_22*B_12, so that all the off-diagonal values end up duplicated.
+  * When taking the transpose of a product of matrices like $R^{T}R$, the practice is to reverse the order of items in the parentheses, then transpose each term.  So $\left(R^{T}R\right)^T\text{ = }R^TR^{TT}$.
+  * Taking additional transposes of symmetric matrix products, e.g. $R^{T}R$, leaves them unchanged.
+  * If you take the inverse of a transpose you have to reverse the order: $AA^{-1}=I={A^{-1}}^TA^T$ .
+
+
+#### Assess Matrix Invertibility
+
+##### Facts
+
+* A matrix must be square to be invertible.
+* $A^{-1}$ does not mean $\frac{1}{A}$ .
+* An nxn matrix must have n independent columns to be invertible.
+* A matrix is invertible if $AA^T\text{ = }I$ .
+* If A is invertible, the one and only solution to Ax = b is $x\text{ = }A^{-1}b$ .
+* If there is a non-zero vector such that Ax = b, then A has dependent columns, and cannot be invertible.
+* A 2x2 matrix is invertibile i.o.i. ad — bc is not zero .
+  *  A matrix is invertible i.o.i. its determinant is not equal to 0.
+* A triangular matrix is invertible if no diagonal entries are zero.
+* B(AC) = (BA)C gives BI=IC or B=C. A left and right inverse matrices are identical.
+* When matrices are multiplied, you must reverse their order if you take the inverse of their product: $\left(ABC\right)^{-1}\text{ = }C^{-1}B^{-1}A^{-1}$ .
+
+#### Find the Inverse of A 3x3 Matrix
+
+* We are unlikely to be asked to find the inverse of a matrix larger than 3x3.
+* Whatever the size, the fastest way to do it is always Gauss-Jordan $AI\text{ = }IA$ Elimination:
+  * Set the matrix A into an "AI --> IA" Equation:
+    * Set A (which must be square) and an equally sized I together side by side as if they were to be multiplied.
+    * Now set A into RRE form.  Every time you do something to a row of A, *do it to the entire row* , including the components of I in the same row.
+    * If you successfully set A into RRE, I will have been transformed into $A^{-1}$ .  If you can't set A into RRE, t means that A has no inverse even though it looked invertible.
+    * Check your work by multiplying $AA^{-1}$ .  You should get I.  If you don't, you have an error.
+
+## Matrix Operations
+
+### Matrix Multiplication
+
+![image](https://github.com/user-attachments/assets/c4cd6169-87f0-4e40-9722-9dd3a3722a23)
+
+### Facts
+* Matrix dimensions are describe in rows x columns order.
+
+#### Determine if Matrix Multiplication Is Possible
+##### Facts:
+* In order to multiply matrices AX, or A vector [x], A must have the same column count has X or [x] has rows.
+
+### Solving Matrices for x in Ax = b .
+
+#### Steps:
+
+* Assess matrix to develop intuitions.
+* Put matrix in augmented form and do Gaussian rre process.
+
+* Compare r, n, and m and select approach: 
+
+* **Full Column Rank: m=r=n:**
+  * Structure: R = I .
+  * all columns are independent
+  * the matrix will always be invertible
+  * its rref form will be I
+  * the matrix will have 1 solution x=b because its rref form is I.
+ 
+* **Full Column Rank: r=n<m:**
+  * Structure:
+
+$$
+R\text{ = }
+\left[ {\begin{array}{cc}
+   I \\
+   0 \\
+  \end{array} } \right]
+$$
+
+  * only x = 0 can be in N(A)
+  * probably no solution except trivial case of b explicitly in A, or x = [1]
+   * x in Ax = b will be one specific point.
+  * the matrix cannot be invertible (not square)
+  * there will be 1 or 0 solutions to x in Ax = b.
+   
+* **Full Row Rank: r=m<n:**
+  * Structure: $R\text{ = }\left[\text{IF or I and F interspersed; I must have first column.}\right]$
+  * You must have free variable(s), so there will be an infinite number of solutions.  There is no solvability constraint.
+  * Use general Ax = b solution process detailed for m>n; r<n, r<m .
+
+* **Not Full Column or Row Rank: r<n ; r<m**
+  * Structure:
+  
+  $$
+  R\text{ = }
+  \left[ {\begin{matrix}{cc}
+    I & F \\
+    0 & 0 \\
+   \end{matrix} } \right]
+  $$
+
+  * There will be 0 or infinite solutions.
+  * A 0 row is a solvability constraint; b must sum to 0 in the way specified for A rows via Gauss RRE process.
+  * Establish the particular point in x:
+    * Set free (non-pivot) variables to 0.
+    * Using back substitution, solve for specific values of pivot variables.
+    * Particular point then becomes vector containing resultant specific pivot variable values and 0s.
+  * Solve for special solution:
+    * Insert 1 into the first of the free variables in the equation system.
+    * Using back substitution, solve for the remaining values.
+    * Place values of all solved variables into a vector
+  * Repeat process, toggling each free variable to 1, and all others to 0, in succession, untill all special solutions are found.
+  * Complete solution is c * specific point + d \* special point + e \* special point ... n \* special point.
+
+
+#### Matrix Row Elimination
+
+Steps:
+
+#### Facts
+* Pivots can never be zero
+* You **can** multiply/divide a single row by anything.
+* In RR, swapping rows is allowed.  This is the same as if you multiplied the matrix by a permutation matrix.
+* For a SQUARE matrix in RR form, the determinant = the result of multipling the pivots.
+* If you do get the SQUARE matrix into RRE form, its inverse will simply be the same, but with the signs reverse on the off-diagonal multipliers.
+* You can simultaneously divide ("pull out") a factor from every component in a matrix in order to simplify it.  This factor should then be show multiplying the matrix from its left-hand side.
+
+### Solving Matrices for Ax = 0
+
+#### Steps
+
+* If matrix is square and full rank in RREF, 0 vector should be only solution.
+* If matrix is not square and\|or has 0 in pivot in RREF Ax = 0 will require special solution.
+ * If n > m, there will be some solutions to Ax = 0.
+  * In this situation, you must not change N(A), but may change C(A).
+  * Divide the columns into those with non-zero pivot columns from the zero-pivot "free variable" columns.
+  * Set the value of the first free variable column to 1, and the other free variables to 0.
+   * Use back-substitution to solve the equations in the rows of the RRE form.
+   * Repeat this process for each free variable in succession.  The number of free variables will always be n-r.
+  * The complete set of solutions is then the sum of each of these vectors in a linear combination, presented in a "cv + dw = 0" format:
+
+$$
+c\left[ {\begin{array}{cc}
+   -2 \\
+   1 \\
+   0 \\
+   0 \\
+  \end{array} } \right]
+\text{ + }
+d\left[ {\begin{array}{cc}
+   2 \\
+   0 \\
+   -2 \\
+   1 \\
+  \end{array} } \right]
+\text{ = }0
+$$
+
+### Projection Matrices
+
+### Facts: 
+
+## Assess Equations
+
+### Describe set of S Points for Equation System
+ * If equation is set equal to a value:
+  * Linear Combinations/Span can fill at most n-1 dimensions in specified $R^n$ space.
+   * Example: x - 5y + 2z = 9 can fill at most a 2d plane in 3d space.  Specifying the right side value has "n-1" d.f. type effect.
+  * Identical equations set to different values cannot be solved simultaneously, and describe a situation of parallelism.
+
+## Compute Jacobian of Matrix
+
+### Steps:
+* Using a Jacobian begins with two elements:
+  * There will be a function that maps a column of inputs to a column of output functions.  Review which inputs map to which outputs.
+  * A specific point at which to plot the Jacobian.
+* Take partial derivatives:
+  * Creat the Jacobian:
+    * To create the first Jacobian row, take a partial derivative of the first output function w.r.t the first input variable.  Move across each column in the row, taking the derivative of the same output function w.r.t. each successive input variable.
+    * Repeat this process for the next Jacobian row, using the next output function in order after the first, w.r.t. each successive input variable.
+    * Repeat this process until all output variables have been process w.r.t each input variable.
+  * Plug the coordinates for the given point into the derivative functions and process the resultant math.  The result is then the slope of a line in a subspace of $R^n$ which points toward the local maxima of the function.
+ 
+## Assess Independence, Basis, Dimension
+
+### Facts:
+
+* The potential larges space A might occupy, prior to RRE, is its m rows.  C(A) is said to be in "m space".
+* Only vectors can be said to be "in|dependent". This term cannot applie to matrices.
+* Only vectors span a space.
+ * The fact that vectors span a space says nothing about their independence.  
+* Only vectors form a basis.
+* The dimension is always a number.
+  * we refer to the dimension of a column space C(A), not of a matrix
+* If post RRE, r=n, then the number of vectors is "correct".  If m<n, not all vectors will be independent.  If r < n, the vectors will not span the complete potential space.
+* A square matrix guarantees vector independence and therefore that the matrix is a basis for its m space.
+  
+### Assess Basis:
+
+Vectors are a basis for a space or subspace if they:
+* are independent (all the vectors in A must be independent to be a basis for anything)
+* span the space; their linear combinations completely fill the specified dimension space of A
+
+### Assess Dimension:
+
+* The dimension of an m space (row count) is simply the post RRE rank of C(A).
+  * we refer to the dimension of a column space C(A), not of a matrix
+* The dimension of a nullspace N(A) is the number of independent columns in N(A).
+  * Therefore, the dimension of N(A) is the number of its free variables.
 
 
 
