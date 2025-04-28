@@ -96,9 +96,11 @@ A 3x3 matrix A is said to reduce to the identity matrix I via a list or row oper
 
 ## Example 5
 
-### Premise
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
 
-A list of undefined non-zero vectors are said to span a subspace of a defined R space.  List the possible dimensions that the vectors can occupy.
+### Premise
+* A list of undefined non-zero vectors are said to span a subspace of a defined R space.  List the possible dimensions that the vectors can occupy.
 
 ### Problem Text
 *  "Suppose u, v and w are non-zero vectors in R7. They span a subspace of R7. What are the possible dimensions of that vector space?"
@@ -108,6 +110,9 @@ A list of undefined non-zero vectors are said to span a subspace of a defined R 
 * It can’t be 0 because the vectors are non-zero.
 
 ## Example 6: 
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
 
 ### Premise
 * Given a matrix R of mxn dimensions in RRE with r pivots, describe the nullspace of R.
@@ -121,6 +126,9 @@ A list of undefined non-zero vectors are said to span a subspace of a defined R 
    * if r < n and r<m (by definition given mxn = 5x3) then there will either only 0 or infinite solutions for the nullspace bc there will be a free variable.
 
 ## Example 7: Describe Undefined Matrix A, with x Complete Solution and Defined b
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
 
 ### Premise
 * Given undefined matrix A, a complete soluton x, and a defined b, describe the dimensions and content of matrix A.
@@ -191,10 +199,14 @@ is a complete solution.  Note that in this problem A is undefined.
       * The remaining columns (in this case, column 1) is thus the column space of A; any solution for b will have to be a multiple of column 1.
       * There don't have to be free variables always.  Depending on A's content, the column space of A could have been 2 columns or all columns.
 
+### Problem Text
 
 # Block Matrices
 
 ## Example 1: RRE Form Assessment
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
 
 ### Premise
 * Given a generic block matrix of mxn dimensions, describe its RRE form.
@@ -230,6 +242,9 @@ $$
 .
 
 ## Example 2: Rank of Block Matrix
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
 
 ### Premise
 * Given a generic block matrix of mxn dimensions, describe its rank.
@@ -285,6 +300,9 @@ R & 0\\
 $$ 
 
 ## Example 4: Rank of 2x2 Block Matrix
+
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
 
 ### Premise
 * Give the rank of a 2x2 block matrix.
@@ -385,21 +403,108 @@ $$
 
 ## Example 2
 
+### Sources
+* https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18.06_exam_1_review.pdf
+
 ### Premise
 
-Given a 3x5 matrix in RREF form, give all possible info about the columns.
+Given 2 matrices that are to be multiplied together, give the basis for their nullspace, and their complete solution, without doing the matrix multiplication.
 
 ### Problem Text
 
-"Suppose row operations on A lead to this matrix R = rref(A):"
+* "Suppose:
+  
+$$
+\text{A = CD = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 0 \\
+0 & 1 & 0 \\
+1 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & -1 & 2 \\
+0 & 1 & 1 & -1 \\
+0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$
 
+.  Without performing matrix multiplication CD, answer the following:
 
+* Give the basis for the Nullspace of B
+* Find the complete solution to
 
+$$
+Bx\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+0 \\
+1 \\
+\end{array}} 
+\right]
+$$
 
+.
 
+### Solution or Solution Steps
 
+* For the basis of the nullspace of B:
+   * Remember that for the product B of any 2 matrices C and D multiplied together, $m_1xn_1$ times $m_2xn_2$ = $m_1xn_2$ .
+   * Assess whether either matrix is invertible:
+      * D cannot be; it is rectangular.
+      * C is square and all columns are independent.  There are 2 rules, either of which would show this:
+         * the matrix is square and all n columns are independent (it has n pivots).
+         * the RRE form has no 0s on the diagonal.
+   * Remember that if 2 matrices are multiplied, and one of them is invertible, then the nullspace for the resultant matrix will have to come from the non-invertible matrix.  The state problem solution states this as "Because C is invertible, the nullspace of B is the same as [whatever nullspace may exist for] D."  To see that this is so, consider that the matrix C and be reduced through RRE to the identity matrix due to its having values on every diagonal and all independent columns.  Thus CD reduces to ID, which means any nullspace will have to come from D.  The problem text that "C is invertible" is a round-about way of saying this.
+   * Evaluate whether either matrix is in RRE form.  Easiest way is to try RR on both and see if you can make any changes.  C will reduce to I, but you can't make any changes to D.
+   * Note that D has 2 pivots and 2 free variables.  Therefore, it will have a special solution.  When we solve for it, N(D) will be N(B):
+        * To get D's special solution, set one of the free variables to 1, and the others to 0.  Then plug these into the RR form of the equations and solve the remaining variables via back-substitution.  Do this for each free variable, toggling it to one and the others to zero.  This process will yield:
 
+      $$
+      \text{N(B) = N(B) = }
+      \left[
+      {\begin{array}{cc}
+      1 \\
+      -1 \\
+      1 \\
+      0 \\
+      \end{array}} 
+      \right]
+      \text{, }
+      \left[
+      {\begin{array}{cc}
+      1 \\
+      -1 \\
+      1 \\
+      0 \\
+      \end{array}} 
+      \right]
+      $$
 
+* For the complete solution to:
+
+$$
+Bx\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+0 \\
+1 \\
+\end{array}} 
+\right]
+$$
+
+, we can:
+
+* remember that a complete solution for Ax = b is $x_{particular}$ + $x_{nullspace}$ .  We already have the special solution for the nullspace, so we just need to find $x_{particular}$ .  To do this, we:
+   * take the equations of D for row 1 and 2
+   * substitute in 0 for the free variables into this 2-equation system
+   * use back substitution to find the pivot variables -- in this case, for $x_1$ and $x_2$ .
+   * plug all these into a vector for $x_{particular}$ .  This plus $x_{nullspace}$ is then our complete solution.
 
 
 
