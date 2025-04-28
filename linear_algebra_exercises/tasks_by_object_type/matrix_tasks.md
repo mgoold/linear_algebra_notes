@@ -354,8 +354,6 @@ $$
 
 .
 
-
-
 # Defined RREF Matrix R, >2x2
 
 ## Example 1
@@ -384,6 +382,32 @@ $$
 
 ### Tasks
 "Write all known information about the columns of A."
+
+## Example 2
+
+### Premise
+
+Given a 3x5 matrix in RREF form, give all possible info about the columns.
+
+### Problem Text
+
+"Suppose row operations on A lead to this matrix R = rref(A):"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
