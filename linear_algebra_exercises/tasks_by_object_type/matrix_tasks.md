@@ -505,6 +505,210 @@ $$
    * substitute in 0 for the free variables into this 2-equation system
    * use back substitution to find the pivot variables -- in this case, for $x_1$ and $x_2$ .
    * plug all these into a vector for $x_{particular}$ .  This plus $x_{nullspace}$ is then our complete solution.
+
+# Defined Matrix > 2x2
+
+## Example 1: Matrix Multiplication
+
+### Source
+* ITLA v6, 1.3: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+
+### Problem Text
+"Muluply Az and By and Iz using dot products as in $\left(\text{rows of A}\right)\cdot{x}$ :"
+
+$$
+Ax\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 1 & 2 \\
+4 & 2 & 4 \\
+0 & 1 & 0 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{array}{cc}
+1 \\
+2 \\
+5 \\
+\end{array}} 
+\right]
+\text{, By = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{array}{cc}
+4 \\
+4 \\
+10 \\
+\end{array}} 
+\right]
+\text{, Ix = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{array}{cc}
+z_1 \\
+z_2 \\
+z_3 \\
+\end{array}} 
+\right]
+$$
+
+### Solutions
+* The first matrix reduces considerably, after which Ax = (6,2,0).
+* Matrices B and I reduce to the identity matrix, so their products are the same as their respective x vectors.
+
+## Example 2: Matrix Multiplication 2
+
+### Problem Text:
+* "Multiply the same A times x and B times y and I times 2z using combinations of the columns of A and B and I, as in Az = 1(column 1) + 2(column 2) + 5(column 3)."
+
+### Solutions:
+* Yields the same results as in example 1.
+
+# Matrix Spaces
+
+## Example 1: Space Definition
+
+### Source
+* ITLA v6, 1.3: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+
+### Problem Text
+"Which columns are dependent on other columns?":
+
+$$
+A_1\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{matrix}} 
+\right]
+\text{, A_1 = }
+\left[
+{\begin{matrix}{cc}
+1 & 4 & 7 \\
+2 & 5 & 8 \\
+3 & 6 & 9 \\
+\end{matrix}} 
+\right]
+$$
+
+### Solutions
+* Both matrices have column 3 = 2x column 2 - column 1.  So both make a plane in R3.
+
+## Example 2: Assess Column Space
+
+### Sources
+* ITLA v6, 1.3: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+
+### Problem Text
+* "Describe the column spaces in $R^3$ of B and C:
+
+$$
+B\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 \\
+2 & 1 \\
+3 & 3 \\
+\end{matrix}} 
+\right]
+\text{, C = }
+\left[
+{\begin{matrix}{cc}
+B & -B \\
+\end{matrix}} 
+\right]
+$$
+
+."
+
+### Solution
+* Note that in this kind of word problem one matrix may be defined in terms of a preceding one.  Here, matrix C is composed of B.
+* B reduces to a structure like
+
+$$
+R_B\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+0 & 1 \\
+0 & 0 \\
+\end{matrix}} 
+\right]
+\text{ = }
+\left[
+{\begin{array}{cc}
+I \\
+0 \\
+\end{array}} 
+\right]
+$$
+
+... so the column space will be the 2d plane.  For any b there will just be one solution.  Only the 0 vector will be in the nullspace.
+
+*  C(C) will also be in the 2d plane, because at 2 columns are dependent on the others.  N(C) will have more than 1 solution.
+
+## Example 3: Matrix Space Definition
+
+### Source
+* ITLA v6, 1.3: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+
+### Problem Text
+"Describe the column space of these matrices: a point, a line, a plane, all of 3D:
+
+$$
+A_1\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 2 \\
+1 & 1 \\
+5 & 6 \\
+\end{matrix}} 
+\right]
+A_2\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 1 \\
+\end{matrix}} 
+\right]
+A_3\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 5 \\
+2 & 10 \\
+1 & 5 \\
+\end{matrix}} 
+\right]
+A_4\text{ = }
+\left[
+{\begin{matrix}{cc}
+0 & 0 \\
+0 & 0 \\
+0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+### Solutions
+* A1: plane in 2D
+* A2: identity matrix in 3D
+* A3: line in 3D
+* A4: 0 vector
  
 # Matrix Q & A
 
