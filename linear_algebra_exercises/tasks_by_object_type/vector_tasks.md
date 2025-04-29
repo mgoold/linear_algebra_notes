@@ -16,7 +16,7 @@
 * We always think of a vector in relationship to an origin point.
 * Vectors have an inherent "direction".
 
-# Vectors Facts  
+# Vector Facts  
 * If one scales a vector by a non-zero value, the resulting vector will lie along the same line.
     *  Vectors are the only object in linear algebra that can be scaled.
 * Zero Vector Facts:
@@ -69,15 +69,90 @@ $$
 
 # Defined Vectors
 
-## Example 1: calculate dot product
+## Calculate dot product
 * Given 2 vectors, take their dot product.
 
-### Solution or Solution Steps
+### General Solution
 * multiply each component in v by the corresponding component in w, and sum the products.
 
-## Example 2: calculate vector length
+### Dot Product Example 1
+* "Calculate the dot products $u\cdot{v}$ and $u\cdot{w}$ and $u\cdot\left(v\text{ + }w\right)$ and $w\cdotv$ :
+
+$$
+u\text{ = ,}
+\left[
+\begin{array}{cc}
+-.6 \\ 
+.8 \\  
+\end{array} 
+\right]
+v\text{ = ,}
+\left[
+\begin{array}{cc}
+4 \\ 
+3 \\  
+\end{array} 
+\right]
+w\text{ = ,}
+\left[
+\begin{array}{cc}
+1 \\ 
+2 \\  
+\end{array} 
+\right]
+$$
+
+
+#### Solutions
+
+* $u\cdot{v}$ = -.6(4) + .8(3) = 0
+* $u\cdot{w}$ = -.6(1) + .8(2) = 1
+* $u\cdot\left(v\text{ + }w\right)$ = -.6(5) + .8(5) = 7
+* $w\cdot{v}$ = 4(1) + 3(2) = 10
+
+## Calculate vector length
 * To compute the length of a vector, take the dot product of a vector with itself. The square root of this dot product is the vector length.
     * The dot product of a vector is the length squared.
+
+### Vector Length Example 1
+
+### Sources
+* ITLA v6, sec 1.2: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+  
+#### Problem Text:
+
+"Compute the lengths ||u|| and ||v|| and ||w|| of these vectors:
+
+$$
+u\text{ = ,}
+\left[
+\begin{array}{cc}
+-.6 \\ 
+.8 \\  
+\end{array} 
+\right]
+v\text{ = ,}
+\left[
+\begin{array}{cc}
+4 \\ 
+3 \\  
+\end{array} 
+\right]
+w\text{ = }
+\left[
+\begin{array}{cc}
+1 \\ 
+2 \\  
+\end{array} 
+\right]
+$$
+
+."
+
+### Solution
+* ||u|| = $\sqrt{{-.6^2}\text{ + }.8^2}$ = 1
+* ||v|| = $\sqrt{{4^2}\text{ + }3^2}$ = 5
+* ||w|| = $\sqrt{{1^2}\text{ + }2^2}$ = $\sqrt{5}$
 
 ## Example 3: length of vector subtraction
 *  Find Value of Length 2 Vectors Subtracted from Each Other
@@ -90,12 +165,79 @@ $$
 
 * NOTE: For orthognal vectors, the process is the same, but the resultant difference vector will always be a vector of 1s. Consequently, the dot product will be n, and the length will be sqrt(n).
 
-## Example 4: create unit vector
+## Create unit vector
 * Create a unit vector from a defined vector.
 
 ### Solution or Solution Steps
+
 * compute the vector's length
-* divide every component by that length, so that the components sum to 1.
+* divide every component by that length
+* when the length is calculated with using these revised components, it will equal 1.  So for example if you had a vector v = (3,4) the dot product would be 3 squared + 4 squared = 25, and the length would be sqrt(25) = 5.  Then the unit vector is (3/5, 4/5).  When you calculate the length of that unit vector by taking the sum of its squared components, the result will be 1.
+
+### Unit Vector Example 1
+
+### Sources
+* ITLA v6, sec 1.2: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+"For the following vectors:
+
+$$
+v\text{ = ,}
+\left[
+\begin{array}{cc}
+4 \\ 
+3 \\  
+\end{array} 
+\right]
+w\text{ = }
+\left[
+\begin{array}{cc}
+1 \\ 
+2 \\  
+\end{array} 
+\right]
+$$
+
+, find the unit vectors, and find the cosine of their angle $\theta$ .  Choose vectors a,b,c that make $0\textdegree{}$ , $90\textdegree{}$, and $180\textdegree{}$ angles with w.
+
+### Solutions
+
+*  For computing unit vector:
+   * unit vector v = (4/5, 1/5)
+   * unit vector w = $\left(\frac{1}{\sqrt{5}},\frac{4}{\sqrt{5}}
+*  For finding the cosine:
+   *  $\text{cos}\theta\text{ = }\frac{10}{5\sqrt{5}}\text{ = }\frac{2}{\sqrt{5}}$ .
+*  For angle selection:
+   *  0 degrees = 
+   *  90 degrees = 0 dot product; a = (-2,1)
+
+### Unit Vector Example 2
+
+### Sources
+* ITLA v6, sec 1.2: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+* "For any unit vectors v and w, find the dot products (actual numbers) of:
+      * v and -v : (1*-1) + (0*0) = -1.
+      * v + w and v - w : (v + w)(v - w) = $v\cdot{v} -v\cdot{w} + v\cdot{w} - w\cdot{w} = (1) - 0 - 1 = 0; implies 90 degree angle.
+      * v - 2w and v + 2w : (v - 2w)(v + 2w) = 1 + v2w - v2w - 4(1) = -3 .
+
+### Unit Vector Example 2
+
+### Sources
+* ITLA v6, sec 1.2: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text:
+* "Find unit vectors u1 and u2 in the directions of v = (1,3) and w = (2,1,2) .
+* Find unit vectors U1 and U2 that are perpendicula to u1 and u2.
+
+### Solutions
+
+* For the unit vectors:
+   * v = (1,3): length = $\sqrt{\text{1 + 9}}$ = $sqrt{10}$ ; u1 = $\left(\frac{1}{\sqrt{10}\text{, }\frac{3}{\sqrt{10}\right)$
+   * 2 = (2,1,2); lenght = $\sqrt{\text{4 + 1 + 4}}$ = $sqrt{9}\text = }3$ ; u2 = $\left(frac{2}{3}\text{, }frac{1}{3}\text{, }frac{2}{3}\right)$
+* For the perpendicular vectors:
+  * U1 = $\left(-\frac{3}{\sqrt{10}\text{, }\frac{1}{\sqrt{10}\right)$
+  * U2 = $\left(-frac{2}{3}\text{, }0\text{, }frac{2}{3}\right)$
 
 ## Example 5: vectors from coordinates
 
