@@ -570,11 +570,168 @@ $$
 
 ## Example 2: Matrix Multiplication 2
 
+### Source
+* ITLA v6, 1.3: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+
 ### Problem Text:
 * "Multiply the same A times x and B times y and I times 2z using combinations of the columns of A and B and I, as in Az = 1(column 1) + 2(column 2) + 5(column 3)."
 
 ### Solutions:
 * Yields the same results as in example 1.
+
+## Example 3: Matrix Multiplication 3
+
+### Source
+* ITLA v6, 1.4: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+* https://catonmat.net/mit-linear-algebra-part-three
+
+### Problem Text:
+
+"The following table shows the various approaches for multiplying 2 matrices $A_{mxn}$ and $B_{nxp}$ :
+
+|Method      |Description   |
+|:-----------|:-------------|
+|dot product (rows times columns)     |Multiply each row of A times each column of b as a dot product.  Results in m x p columns resulting in mxp dot products. |
+|column     |Multiply the columns of A times each scalar in a column of b, and add the scaled columns, as with a linear combination cv + dw ... .  Results in p columns of m rows. |
+|row     |Multiply a row of A times each successive column (vector) of B, as with Ax multiplication.  Do it across the row, then move to next row.  Results in p columns of m rows. No substantive difference vs dot product method.|
+|columns times rows     |Multiply each A column times corresponding row of B, resulting in a row C of dot products.  Results in 2 rank 1 matrices that are then summed together. |
+
+"Rewrite this four-way table for AB = C when A is m by n and B is n by p."
+
+### Solutions:
+* See mxn notes in table above.
+
+## Example 4: Matrix Multiplication 4
+
+### Source
+* ITLA v6, 1.4: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+* https://catonmat.net/mit-linear-algebra-part-three
+
+### Problem Text:
+* "If all columns of A = [ a a a ] contain the same a # 0. what are C and R ?"
+
+### Solutions:
+* The RRE form of A (aka R) should reduce to a single row, with 2 free variable columns. A is a rank 1 matrix.  Therefore, C will be the independent column, and R will be the top (independent row).
+
+## Example 5: Matrix Multiplication 5
+
+### Source
+* ITLA v6, 1.4: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+* https://catonmat.net/mit-linear-algebra-part-three
+
+### Problem Text:
+* "Multiply A times B for each of the 3 examples below by using dot products: (each row) $\cdot$ (each column)."
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+-1 & 1 & 0 \\
+1 & -1 & 1 \\
+\end{matrix}} 
+\right]
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+4 \\
+5 \\
+6 \\
+\end{matrix}} 
+\right]
+\text{ = }
+32
+$$
+
+$$
+\left[
+{\begin{matrix}{cc}
+4 \\
+5 \\
+6 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 \\
+\end{matrix}} 
+\right]
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+4 & 8 & 12 \\
+5 & 10 & 15 \\
+6 & 12 & 18 \\
+\end{matrix}} 
+\right]
+$$
+
+### Solutions:
+* See above.
+
+## Example 6: Matrix Multiplication 6
+
+### Source
+* ITLA v6, 1.4: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+
+### Problem Text:
+* "Test the truth of the associative law (AB)C = A(BC) :"
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 1 \\
+\end{matrix}} 
+\right]
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 \\
+1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+### Solutions
+* (AB)C : AxB = 2; 2[1 1 1] = [2 2 2]
+* A(BC) : This is tricker.  The solution is given in the book, but I don't see how you get to it.
+
+## Example 7: Matrix Multiplication 7
+
+### Source
+* ITLA v6, 1.4: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+
+### Problem Text:
+* "Why is it impossible for a matrix A with 7 columns and 4 rows to have 5 independent columns?"
+
+### Solution
+* There are not enough rows for each unique variable in the row to make a "unique contribution" for the dimension that it adds to the others, so 3 columns must end up being derivative of the 4 pivot columns.
 
 # Matrix Spaces
 
