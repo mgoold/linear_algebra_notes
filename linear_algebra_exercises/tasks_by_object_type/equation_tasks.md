@@ -1,7 +1,7 @@
 
 # Equation Spaces
 
-## Example 1,2: 2x2 Equation Spaces
+## Example 1,2: 2x2 Equation Spaces 1,2
 
 ### Sources
 * ITLA, p18: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
@@ -26,7 +26,7 @@ $$10x\text{ + }9y\text{ = }11$$
 * Checks out.
 * The solution given in the book is that the row and column picture and coefficient matrix change.  The question wasn't clear to me, but they did mean to add both equations into a single equation, reducing the system to a 1x2 matrix.
 
-## Example 3: 2x2 Equation Spaces
+## Example 3: 2x2 Equation Spaces 3
 
 ### Sources
 * ITLA, p46: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
@@ -45,7 +45,7 @@ $$10x\text{ + }9y\text{ = }11$$
 * no solution: (10,10); 2 different equations with the same variables cannot resolve to the same non-zero value.
 * infinite solutions: (10,20) -- this reduces the two equations to just one equation, where any multiple of x=10, y=-2x will yield a result of 10.
 
-## Example 4: 2x2 Equation Spaces
+## Example 4: 2x2 Equation Spaces 4
 
 ### Sources
 * ITLA, p46: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
@@ -61,6 +61,46 @@ $$4x\text{ + }8y\text{ = }g$$
 * choose coefficient g that makes system solvable: g = 32
 * find 2 solutions for the singular-but-solvable case. (4,2) (2,3)
 
+## Example 5: 2x2 Equation Spaces 5
+
+### Sources
+* ITLA, p46: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text
+* "Given the equations:
+
+$$3x\text{ - }2y\text{ = }b_1$$
+$$6x\text{ - }4y\text{ = }b_2$$
+
+* what test on $b_1$, $b_2$ decides whether this system has a solution?
+* how many solutions the system will have?
+
+### Solutions
+* what test on $b_1$, $b_2$ decides whether this system has a solution? If $b_1$ and $b_2$ have the same proportions that the left side equation coefficients have.  This includes the 0 vector.
+* how many solutions the system will have? If the right side proportions match the left side proportions, the system will reduce to a 1x2 matrix and have infinite solutions.  If the proportions are not kept, it will have no solutions.
+
+## Example 6: 2x2 Equation Spaces 6
+
+### Sources
+* ITLA, p46: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text
+* "Given the equations:
+
+$$3x\text{ + }2y\text{ = }10$$
+$$6x\text{ 4 }4y\text{ = }__$$
+
+... choose a right side that gives
+* no solution
+* infinitely many solutions
+* list 2 such solutions."
+
+### Solutions
+* no solution: (10,0)
+* infinitely many solutions: (10,20)
+* list 2 such solutions. (10,-10), (20,-25)
+
+
 # Equation Row Exchanges
 
 ## Example 1: Row Exchange 1
@@ -75,7 +115,7 @@ $$ax\text{ + }3y\text{ = }-3$$
 $$4x\text{ + }6y\text{ = }6$$
 
 ... select the values for a under which elimination breaks down:
-* permanently: a =2 
+* permanently: a = 2 
 * temporarily: a = 0
 * Solve for x and y after firxing the temporary breakdown using a row exchange." x = 3, y = -1
 
@@ -136,7 +176,24 @@ $$3x\text{ + }ky\text{ = }6$$
 ### Solutions
 * For which 3 values of k does elimination break down? 0, 3, -3
 * Which is fixed by a row exchange? 0
-* Is the number of solutions 0, 1, or infinity? If k = 0, then there is 1 solution.  If k is 3 or -3 then the system becomes unsolveable.
+* Is the number of solutions 0, 1, or infinity? If k = 0, then there is 1 solution.  If k is 3 then the system becomes unsolveable.  If k = -3, then there are infinitely many solutions.
   
+## Example 4: Row Reduction 4
+
+### Sources
+* ITLA, p46: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text
+* "Given the equations:
+
+$$x\text{ + }y\text{ = }5$$
+$$x\text{ + }2y\text{ = }6$$
+
+* draw the lines for these equations, and the line for y that results from elimination on their matrix.
+* Which line $5x\text{ - }4y\text{ = }c$ goes through the solution of these equations?
+
+### Solutions
+* draw the lines for these equations, and the line for y that results from elimination on their matrix. The line y = 1 results from elimination.  The solution is (4,1).
+* Which line $5x\text{ - }4y\text{ = }c$ goes through the solution of these equations? 5(4) - 4(1) = 16 = c goes through the solution of these equation.
 
 
