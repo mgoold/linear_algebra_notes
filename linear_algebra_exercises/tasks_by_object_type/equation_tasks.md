@@ -156,7 +156,7 @@ $$cx\text{ + }dy\text{ = }g$$
 
 ### Solutions
 * $\frac{a}{c}$
-* second pivot: $d\text{ - }\left(\frac{cb}{a}\right)
+* second pivot: $d\text{ - }\left(\frac{cb}{a}\right)$
 * After elimination, $y\text{ = }\frac{\left(ag\text{ - }cf\right)}{\left(ad\text{ - }bc\right)}$
 
 ## Example 3: Row Reduction 3
