@@ -88,7 +88,7 @@ $$6x\text{ - }4y\text{ = }b_2$$
 * "Given the equations:
 
 $$3x\text{ + }2y\text{ = }10$$
-$$6x\text{ 4 }4y\text{ = }__$$
+$$6x\text{ 4 }4y\text{ = __}$$
 
 ... choose a right side that gives
 * no solution
@@ -156,7 +156,8 @@ $$cx\text{ + }dy\text{ = }g$$
 
 ### Solutions
 * $\frac{a}{c}$
-* After elimination, $y\text{ = }\frac{g}{\left(d\text{ - }b\right)}\text{ - }\frac{1}{\left(d\text{ - }b\right)}\frac{c}{a}f$
+* second pivot: $d\text{ - }\left(\frac{cb}{a}\right)
+* After elimination, $y\text{ = }\frac{\left(ag\text{ - }cf\right)}{\left(ad\text{ - }bc\right)}$
 
 ## Example 3: Row Reduction 3
 
