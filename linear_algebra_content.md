@@ -1652,10 +1652,10 @@ A^{-1}\text{ = }
   \right]
 $$
 
-### Matrix Elimination = Factorization: A = LU
+## Matrix Elimination = Factorization: A = LU
 
 Sources:
-* Strang: https://youtu.be/MsIvs_6vC38
+* Strang: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/factorization-into-a-lu/
 * Strang, sec. 2.6, p95.
 
 In doing matrix elimination, we take some intial matrix A via row operations to some final matrix in "upper" triangular form U, assuming that elimination can successfully be performed on A to get U.  Remember that the "upper triangular" form U (for "upper") is the form that can be solved by back substitution.
