@@ -199,7 +199,270 @@ is a complete solution.  Note that in this problem A is undefined.
       * The remaining columns (in this case, column 1) is thus the column space of A; any solution for b will have to be a multiple of column 1.
       * There don't have to be free variables always.  Depending on A's content, the column space of A could have been 2 columns or all columns.
 
+## Example 8: Exchanged Matrix for Undefined Invertible Matrix
+
+### Sources
+* ITLA Sols, p22: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
 ### Problem Text
+* If columns 1 and 2 of invertible matrix A are exchanged, what is the effect on $A^{-1}$?
+
+### Solutions
+* If columns of an **invertible** matrix are exchanged, the the corresponding rows of $A^{-1}$ must also be exchanged in order for $AA^{-1}$ to remain equal to I .
+      * This makes sense when you remember that to multiply matrices is essentially to take a series of dot products (a row multiplied by a column of equal length).  So if you move a column on a matrix A that has proven invertible, you have to move the corresponding row in its inverse $AA^{-1}$ in order to still generate the same 1 or 0 in the resulting matrix I.
+      * I actually got caught thinking about whether Ax could still yield the same result when columns were switched, but that has nothing to do with this question.
+
+## Example 9: 3x3 Elimination Matrices
+
+### Sources
+* ITLA Sols, p22: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* "Give the 3x3 Matrices that produce these elimination steps:
+   * $E_{21}$ subtracts 5 times row 1 from row 2.
+   * $E_{32}$ subtracts -7 times row 2 from row 3.
+   * P exchanges rows 1 and 2, then rows 2 and 3."
+
+
+### Solutions
+
+* $E_{21}:$
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+-5 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+-5 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$ 
+
+* $E_{32}:$
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -7 & 1 \\
+\end{matrix}} 
+\right]
+$$ 
+
+* $P_{21}:$
+
+$$
+\left[
+{\begin{matrix}{cc}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$ 
+
+* $P_{32}:$
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{matrix}} 
+\right]
+$$ 
+
+* Applying $E_{21}$ and then $E_{32}$ to b = (1,0,0) gives
+
+$$
+E_{21}E_{32}b\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+-5 \\
+35 \\
+\end{array}} 
+\right]
+$$
+
+* Applying $E_{32}$  and then $E_{21}$ to b = (1,0,0) gives
+
+$$
+E_{21}E_{32}b\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+-5 \\
+0 \\
+\end{array}} 
+\right]
+$$
+
+When E_{32} comes first, row 3 feels no effect from row 1. ??
+
+
+### Notes
+* I think the answer for $E_{32}$ is actually in error; should be -7 not 7.
+* Remember that when you show a progression of changes for a permutation matrix P:
+      * "P" refers to the whole potential series of row swaps, each one swap having its own matrix.
+      * When you show the series of swap matrices constituting P, you show the first one at the right, and the most recent change at the far left.  The final result is show on the right of the equals sign, and on the left, the right most "first" matrix is multiplied by the one to its left and so on, until you get the final result on the right side of the equal sign, viz:
+
+$$
+P\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$ 
+
+* The solutions say that "When E_{32} comes first, row 3 feels no effect from row 1."  This is an odd and lazy way to put it.  It would be better say that third row of the result matrix from $E_{32}E_{21}$ and the first row of b don't interact, or that their product = 0.
+
+## Example 10: 3x3 Elimination Matrices
+
+### Sources
+* ITLA Sols, p22: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text:
+* "Suppose E subtracts 7 times row 1 from row 3.
+   * To invert that step you should do what?
+   * What "inverse matrix $E^{-1}$ takes that reverse step so that $E^{-1}E\text{ = }I$ ?
+   * If the reverse step is applied first (and then E) show that $EE^{-1}\text{ = }I$ ."
+
+### Solutions
+
+   * To invert that step you should do what? Multiply add 7 times row 1 to row 3.
+   * What "inverse matrix $E^{-1}$ takes that reverse step so that $E^{-1}E\text{ = }I$ ?
+   * If the reverse step is applied first (and then E) show that $EE^{-1}\text{ = }I$ ."
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+7 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+-7 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+0 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$ 
+
+* the reverse also = I .
+
+## Example 11: 2x2 Undefined Matrix Determinant
+
+### Sources
+* ITLA Sols, p22: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text:
+* "Suppose that matrix M is:
+
+$$
+\left[
+{\begin{matrix}{cc}
+a & b \\
+c & d \\
+\end{matrix}} 
+\right]
+$$ 
+
+.  The determinant formula for a 2x2 matrix is ad - bc.  Multiply row 1 by l and subtract it from row 2 to create a new matrix $M^{\*}$ .  Show that the determinant formula ad - bc also applies to this new M and to every M so obtained.
+
+### Solutions
+
+* "Suppose the ne matrix $M^{\*}$ is:
+
+$$
+\left[
+{\begin{matrix}{cc}
+a & b \\
+c-\ell{a} & d-\ell{b} \\
+\end{matrix}} 
+\right]
+$$ 
+
+Then the determinant is $a\left(d-\ell{b}\right)\text{ - }b\left(c-\ell{a}\right)$ , and $ad - a\ell{b} - bc + b\ell{a}$ --> $ad - a\ell{b} - bc + a\ell{b}$ -- ad - bc.  This should be true for any $\ell$ .
+
+## Example 12: 3x3 Undefined Matrix E & P
+
+### Sources
+* ITLA Sols, p22: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text and Solutions:
+* Find a matrix M1 that both subtracts row 1 from row 2, and exchanges rows 2 and 3, in one step.
+* Find a matrix M2 that exchanges rows 2 and 3 and subtracts row 1 from row 3, in one step.
+* Explain why M1 and M2 are identical, but the Es they represent are different.  -- It's simply that the E in M2 causes the same effect by adjusting for the rows exchanged first by P so that it acts on the same values as in M1.
+
+## Example 12: 3x3 Undefined Matrix E & P
+
+### Sources
+* ITLA Sols, p22: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* Find a matrix M1 that adds row 1 to row 3 and **at the same time** adds row 3 to row 1.
+* Find a matrix M2 that adds row 1 to row 3 **and then** adds row 3 to row 1.
+
+### Solutions
+
+$$
+M1\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$ 
+
+$$
+M2\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$ 
 
 # Block Matrices
 
@@ -508,6 +771,97 @@ $$
 
 # Defined Matrix > 2x2
 
+## Matrix Elimination Example 1
+
+### Source
+* ITLA sols, p22: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+  
+### Problem Text:
+* "Which of the 3 matrices $E_{21}E_{31}E_{32}$ put A into triangular form U?
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 0 \\
+4 & 6 & 1 \\
+-2 & 2 & 0 \\
+\end{matrix}} 
+\right]
+\text{ and }
+E_{32}E_{31}E_{21}A\text{ = }EA\text{ = }U\text{.}
+$$
+
+* Include b = (1,0,0) as a fourth column to A in order to produce augmented matrix [A b] ,  Carry out the elimination steps on this augmented matrix to solve Ax = b."
+* Suppose $A_{33}$ = 7, so that the 3rd pivot is 5.  If you change $A_{33}$ to 11, what is the third pivot?  What value for $A_{33}$ will give no pivot?
+
+### Solutions
+
+$$
+E_{32}E_{31}E_{21}\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+-4 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+2 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{matrix}} 
+\right]
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+-4 & 1 & 0 \\
+10 & -2 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+* Multiplying these in reverse order gives $E^{-1}$, which will restore the matrix to its original form.
+* Including b = (1,0,0) in an augmented matrix [A b] b and applying the above matrix E will give you b = (1, -4, 10).  Then back substitution gives you z = -5, y = $\frac{1}{2}$ , and x = $\frac{1}{2}$ . This solves Ax = (1,0,0).
+* Suppose $A_{33}$ = 7, so that the 3rd pivot is 5.  If you change $A_{33}$ to 11, what is the third pivot? Answer: 9.  What value for $A_{33}$ will give no pivot? Answer: 2. 
+
+
+### Notes
+* I'd forgotten how to do this.  Remember that by doing elimination on [A b], all you're doing is performing the elimination steps for the coefficients on both sides of the equation for A and b in Ax = b.  This is just what you'd have to do if you were solving any equation anyway, but it's easier to process as an augmented matrix.
+
+## Matrix Elimination Example 2
+
+### Source
+* ITLA sols, p22: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+  
+### Problem Text:
+* "Suppose every column of A is a multiple of (1,1,1), for example:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 \\
+1 & 2 & 3 \\
+1 & 2 & 3 \\
+\end{matrix}} 
+\right]
+$$
+
+... then Ax will always be a multiple of (1,1,1).  In the above example, how many pivots are produced by elimination? 
+
+### Solutions
+* Because the rows are duplicates, only $A_{11}$ can remain as a pivot.
+
 ## Example 1: Matrix Multiplication
 
 ### Source
@@ -732,6 +1086,8 @@ $$
 
 ### Solution
 * There are not enough rows for each unique variable in the row to make a "unique contribution" for the dimension that it adds to the others, so 3 columns must end up being derivative of the 4 pivot columns.
+
+
 
 # Matrix Spaces
 
