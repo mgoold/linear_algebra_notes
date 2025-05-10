@@ -1956,16 +1956,18 @@ $$
 
 With elementary matrices in this arrangement, L is obtained by simply "filling" in the diagonal multiplier values:
 
-$
+$$
 L\text{ = }
 \left[
   \begin{matrix}
   1 & 0 & 0 \\
   a & 1 & 0 \\
-  b & b/a & 1 \\
+  b & \frac{b}{a} & 1 \\
   \end{matrix}
 \right]
-$ .
+$$
+
+.
 
 ### Permutaions
 
