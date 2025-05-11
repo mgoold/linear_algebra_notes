@@ -1658,9 +1658,28 @@ Sources:
 * Strang: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/factorization-into-a-lu/
 * Strang, sec. 2.6, p95.
 
-In doing matrix elimination, we take some intial matrix A via row operations to some final matrix in "upper" triangular form U, assuming that elimination can successfully be performed on A to get U.  Remember that the "upper triangular" form U (for "upper") is the form that can be solved by back substitution.
+### General Notes on Notation in ITLA:
+* "E" refers to the set of matrices that multiply the orginal matrix A to get the "upper triangular" matrix U.  It is called U to emphasize the fact that after E acts on A, only values on or above the diagonal will have non-zero values.
+    * Each "sub E" [my words], denoted for example like $E_21$ is an identity matrix isolating a single subtraction that it enacts on A.  The sub matrices are written from right to left with the first matrix that acts on A being right-most, and the last matrix left-most. It is the product of all these sub-Es, multiplied in order, which gives you E.          * Following from these facts, the product of E acting on A is the upper triangular matrix U, or EA = U .
+* $E^{-1}$ references the product of the inverses of these matrices, with the each sub- $E^{-1}$ [again, my phrase] isolating an addition it enacts on U.  The sub-matrices are show in reverse of the order shown for E.  When this set of matrices act on the result U in EA = U, they reverse the effect and are said to "recover A".  
+    * L confusingly is **exactly the same thing as $E^{-1}$ **.  It stands for "lower triangular", because when all the sub- $E^{-1}$ matrices are multiplied together, you get a matrix with only non-zero values on or below the diagonal.
+    * Following from these facts, the convention is to say that A = LU.
+* L is lower triangular, and U is upper triangular.  The phrase "LU decomposition" comes from the fact that in the equation A = LU, A is "decomposed" into the product of a lower and an upper matrix.
+* Related to these processes is Gaussian matrix multiplication, which performs elimination on an "augmented" matrix combining A and b from the equation Ax = b into [A b].  Performing elimination on this matrix is said to update it to [U c] which can then be noted in the equation "Ux = c".
 
-We can either think of A being transformed into/related to U via E acting on A, or via L acting on U: That is EA = U, or A = LU.  For computational reasons, LU ends up being the preferred approach.
+### Motivation for A = LU Decomposition/Factorization
+
+#### Sources:
+* ITLA,v6 p49FF: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/MIT_18_06_unit_1_exam_solutions.pdf
+
+* I found it difficult to get a clear statement of motivation for LU decomposition in Strang, but here are three important reasons:
+    * **computation efficiency in finding a matrix inverse:**
+      * for an invertible matrix, Gauss-Jordan elimination to find the inverse is pretty painless.  However, for large matrices it gets computationally expensive.
+        * with this in mind, note that on Strang 49 we find that $A^{-1}\text{ = }\left(LU\right)^{-1}\text{ = }U^{-1}L^{-1}$ . --Remember that when you take the inverse of a product of two matrices you reverse the order of their multiplication.
+        * It turns out that decomposing A into L and U, and then multiplying the $U^{-1}L^{-1}$ , is a computationally less expensive way of getting the inverse of a matrix than just doing G-J on A itself, at least for large matrices.  This has to do partly with the way you can calculate L out of its $E^{-}$ components with actually multiplying the components together.
+    * **ease of calculating a determinant**
+      * once you get a matrix A decomposed into LU, and assuming that U has no 0 pivots, the determinant is just the product of the diagonal values of U.
+    * **it's faster to do back substitution on U than to solve A directly** .
 
 **Note that matrix elimination using the A = LU process is impossible if row exchanges are necessary.**
 
