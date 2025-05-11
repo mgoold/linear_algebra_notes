@@ -1658,14 +1658,17 @@ Sources:
 * Strang: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/factorization-into-a-lu/
 * Strang, sec. 2.6, p95.
 
-### General Notes on Notation in ITLA:
+### General Notes on LU Notation in ITLA:
+
 * "E" refers to the set of matrices that multiply the orginal matrix A to get the "upper triangular" matrix U.  It is called U to emphasize the fact that after E acts on A, only values on or above the diagonal will have non-zero values.
     * Each "sub E" [my words], denoted for example like $E_21$ is an identity matrix isolating a single subtraction that it enacts on A.  The sub matrices are written from right to left with the first matrix that acts on A being right-most, and the last matrix left-most. It is the product of all these sub-Es, multiplied in order, which gives you E.          * Following from these facts, the product of E acting on A is the upper triangular matrix U, or EA = U .
-* $E^{-1}$ references the product of the inverses of these matrices, with the each sub- $E^{-1}$ [again, my phrase] isolating an addition it enacts on U.  The sub-matrices are show in reverse of the order shown for E.  When this set of matrices act on the result U in EA = U, they reverse the effect and are said to "recover A".  
+* $E^{-1}$ references the product of the inverses of these matrices, with the each sub- $E^{-1}$ [again, my phrase] isolating an addition it enacts on U.  The sub-matrices are show in reverse of the order shown for E.  When this set of matrices act on the result U in EA = U, they reverse the effect and are said to "recover A".
+    * It is crucial to remember that, as an inverse, each component $E^{-1}$ has its off-diagonal values reversed.  Also, each component of $E^{-1}$ is multiplied succesively by the matrix to the left of it. to get the full  $E^{-1}$.
     * L confusingly is **exactly the same thing as $E^{-1}$ **.  It stands for "lower triangular", because when all the sub- $E^{-1}$ matrices are multiplied together, you get a matrix with only non-zero values on or below the diagonal.
     * Following from these facts, the convention is to say that A = LU.
 * L is lower triangular, and U is upper triangular.  The phrase "LU decomposition" comes from the fact that in the equation A = LU, A is "decomposed" into the product of a lower and an upper matrix.
 * Related to these processes is Gaussian matrix multiplication, which performs elimination on an "augmented" matrix combining A and b from the equation Ax = b into [A b].  Performing elimination on this matrix is said to update it to [U c] which can then be noted in the equation "Ux = c".
+* "LDU" is an extension of LU, in which the diagonal elements of U are isoluated in 
 
 ### Motivation for A = LU Decomposition/Factorization
 
