@@ -1087,6 +1087,691 @@ $$
 ### Solution
 * There are not enough rows for each unique variable in the row to make a "unique contribution" for the dimension that it adds to the others, so 3 columns must end up being derivative of the 4 pivot columns.
 
+## Matrix LU Decomposition Example 1
+
+### Source:
+* ITLA Sols, p27: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* "Suppose we have a matrix
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 5 \\
+1 & 2 & 7 \\
+\end{matrix}} 
+\right]
+$$
+
+* What matrix eliminates the pivot at $A_{21}$?
+* What matrix L reverses that step?
+* Show this reversal by multiplying it times [U c] to get [A b]
+* Write the 2 triangular systems Lc = b, and Ux = c . Check the first, and find x for the second.
+
+### Solutions:
+
+* What matrix eliminates the pivot at $A_{21}$?
+  
+$$
+E\text{ = }E_{21}\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+-1 & 1 \\
+\end{matrix}} 
+\right]
+$$
+  
+* What matrix L reverses that step?
+
+$$
+L\text{ = }-E_{21}\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+1 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+* Show this reversal by multiplying it times [U c] to get [A b]
+
+$$
+L\text{ = }-E_{21}\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+1 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 5 \\
+0 & 1 & 2\\
+\end{matrix}} 
+\right]
+\rightarrow
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 5 \\
+1 & 2 & 7\\
+\end{matrix}} 
+\right]
+$$
+
+* Write the 2 triangular systems Lc = b, and Ux = c . Check the first, and find x for the second.
+
+$$
+Lc\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+1 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{array}{cc}
+5 \\
+2 \\
+\end{array}} 
+\right]
+\text{ = }
+\left[
+{\begin{array}{cc}
+5 \\
+7 \\
+\end{array}} 
+\right]
+\text{ = }b
+$$
+
+$$
+Ux\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 \\
+0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{array}{cc}
+x_1 \\
+x_2 \\
+\end{array}} 
+\right]
+\text{ = }
+\left[
+{\begin{array}{cc}
+5 \\
+2 \\
+\end{array}} 
+\right]
+\text{, }
+\left[
+{\begin{array}{cc}
+x_1 \\
+x_2 \\
+\end{array}} 
+\right]
+\text{ = }
+\left[
+{\begin{array}{cc}
+3 \\
+2 \\
+\end{array}} 
+\right]
+$$
+
+## Matrix LU Decomposition Example 2
+
+### Source:
+* ITLA Sols, p27: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* "Given the matrix:
+
+$$
+A
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 1 & 0 \\
+0 & 4 & 2 \\
+6 & 3 & 5 \\
+\end{matrix}} 
+\right]
+$$
+
+* Give the matrix E that puts A into triangular form.
+* Find L to show the LU decomposition.
+
+### Solutions:
+
+* Give the matrix E that puts A into triangular form.
+
+$$
+E\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+-3 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+* Find L to show the LU decomposition.
+
+$$
+LU\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+3 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+2 & 1 & 0 \\
+0 & 4 & 2 \\
+0 & 0 & 5 \\
+\end{matrix}} 
+\right]
+$$
+
+## Matrix LU Decomposition Example 3
+
+### Source:
+* ITLA Sols, p27: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* "Given the matrix A:
+
+$$
+A
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 1 \\
+2 & 4 & 5 \\
+0 & 4 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+... 
+* Find the two elimination matrices that put A into upper triangular form $E_{32}E_{21}A\text{ = }U$ . 
+* Multiply by $E_{32}^{-1}$ and $E_{21}^{-1}$ to factor A into $LU\text{ = }E_{21}^{-1}E_{32}^{-1}U$
+
+### Solutions
+
+* Find the two elimination matrices that put A into upper triangular form $E_{32}E_{21}A\text{ = }U$ .
+  
+$$
+E_{32}E_{21}A
+\text{ = }
+\left[
+{\begin{array}{cc}
+1 & 0 & 0 \\
+-2 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{array}} 
+\right]
+\left[
+{\begin{array}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{array}} 
+\right]
+\left[
+{\begin{array}{cc}
+1 & 1 & 1 \\
+2 & 4 & 5 \\
+0 & 4 & 0 \\
+\end{array}} 
+\right]
+\text{ = }
+\left[
+{\begin{array}{cc}
+1 & 1 & 1 \\
+0 & 2 & 3 \\
+0 & 0 & -5 \\
+\end{array}} 
+\right]
+\text{ = }U
+$$
+
+* Multiply by $E_{32}^{-1}$ and $E_{21}^{-1}$ to factor A into $LU\text{ = }E_{21}^{-1}E_{32}^{-1}U$
+
+$$
+A\text{ = }
+LU\text{ = }
+\left[
+{\begin{array}{cc}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+0 & 2 & 1 \\
+\end{array}} 
+\right]
+\left[
+{\begin{array}{cc}
+1 & 1 & 1 \\
+0 & 2 & 3 \\
+0 & 0 & -5 \\
+\end{array}} 
+\right]
+$$
+
+## Matrix LU Decomposition Example 3
+
+### Source:
+* ITLA Sols, p27: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* "Given the matrix A:
+
+$$
+A
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 1 \\
+2 & 2 & 2 \\
+3 & 4 & 5 \\
+\end{matrix}} 
+\right]
+$$
+
+* Show the 3 E matrices that turn A into U
+* Show the LU factorization of A."
+
+### Solutions:
+
+* Show the 3 E matrices that turn A into U
+
+$$
+E_{32}E_{31}E_{21}A
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -2 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+-3 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+-2 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 1 \\
+2 & 2 & 2 \\
+3 & 4 & 5 \\
+\end{matrix}} 
+\right]
+$$
+
+* Show the LU factorization of A."
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 1 \\
+2 & 2 & 2 \\
+3 & 4 & 5 \\
+\end{matrix}} 
+\right]
+\text{ = }
+LU
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+3 & 2 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 1 \\
+0 & 2 & 0 \\
+0 & 0 & 2 \\
+\end{matrix}} 
+\right]
+$$
+
+## Matrix LU Decomposition Example 4
+
+### Source:
+* ITLA Sols, p27: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* "Compute L and U for the symmetric matrix A:"
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+a & a & a & a \\
+a & b & b & b \\
+a & b & c & c \\
+a & b & c & d \\
+\end{matrix}} 
+\right]
+$$
+
+### Solution 
+
+$$
+LU\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 & 0 \\
+1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 0 \\
+1 & 1 & 1 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+a & a & a & a \\
+0 & b-a & b-a & b-a \\
+0 & 0 & c-b & c-b \\
+0 & 0 & 0 & d-c \\
+\end{matrix}} 
+\right]
+$$
+
+## Matrix LU Decomposition Example 5
+
+### Source:
+* ITLA Sols, p27: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* "Compute L and U for the symmetric matrix A:"
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+a & r & r & r \\
+a & b & s & s \\
+a & b & c & t \\
+a & b & c & d \\
+\end{matrix}} 
+\right]
+$$
+
+### Solutions
+
+$$
+LU\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 & 0 \\
+1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 0 \\
+1 & 1 & 1 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+a & r & r & r \\
+0 & b-r & s-r & s-r \\
+0 & 0 & c-s & t-s \\
+0 & 0 & 0 & d-t \\
+\end{matrix}} 
+\right]
+$$
+
+## Matrix LU Decomposition Example 6
+
+### Source:
+* ITLA Sols, p27: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* "Solve the triangular system Lc =b to find c.  Then solve Ux = c to find x:
+
+$$
+L\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+4 & 1 \\
+\end{matrix}} 
+\right]
+\text{ and }U\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 4 \\
+0 & 1 \\
+\end{matrix}} 
+\right]
+\text{ and }b\text{ = }
+\left[
+{\begin{array}{cc}
+2 \\
+11 \\
+\end{array}} 
+\right]
+$$
+
+### Solution
+
+$$
+Lc\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+4 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{array}{cc}
+2 \\
+3 \\
+\end{array}} 
+\right]
+\text{ = }
+\left[
+{\begin{array}{cc}
+2 \\
+11 \\
+\end{array}} 
+\right]
+\text{ = }b
+$$
+
+$$
+Ux\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 4 \\
+0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{array}{cc}
+x_1 \\
+x_2 \\
+\end{array}} 
+\right]
+\text{ = }
+\left[
+{\begin{array}{cc}
+2 \\
+3 \\
+\end{array}} 
+\right]
+\text{; = }x_1\text{ = }-5\text{;}x_2\text{ = }3
+$$
+
+## Matrix LU Decomposition Example 7
+
+### Source:
+* ITLA Sols, p27: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+
+* "Given the matrices:
+
+$$
+L\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 1 \\
+\end{matrix}} 
+\right]
+\text{ and }U\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\text{ and }b\text{ = }
+\left[
+{\begin{array}{cc}
+4 \\
+5 \\
+6 \\
+\end{array}} 
+\right]
+$$
+
+* "Solve Lc = b to find c.  Then solve Ux = c to find x.  What was A?
+
+##
+c\text{ = }
+\left[
+{\begin{array}{cc}
+4 \\
+1 \\
+1 \\
+\end{array}} 
+\right]
+\text{, }x\text{ = }
+\left[
+{\begin{array}{cc}
+3 \\
+0 \\
+1 \\
+\end{array}} 
+\right]
+\text{, }A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 1 \\
+1 & 2 & 2 \\
+1 & 2 & 3 \\
+\end{matrix}} 
+\right]
+$$
+
+
+
+## Matrix LDU Decomposition Example 1
+
+### Source:
+* ITLA Sols, p27: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+
+* "Given the matrices
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 4 \\
+4 & 11 \\
+\end{matrix}} 
+\right]
+\text{, B = }
+\left[
+{\begin{matrix}{cc}
+1 & 4 & 0 \\
+4 & 12 & 4 \\
+0 & 4 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+* Show the triple LDU factorizations of each.
+* Say how U is related to L for these symmetric matrices."
+
+### Solutions
+
+* Show the triple LDU factorizations of each.
+
+$$
+LDU_A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+2 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+2 & 0 \\
+0 & 3 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 2 \\
+0 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+$$
+LDU_B\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+4 & 1 & 0 \\
+0 & -1 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & -4 & 0 \\
+0 & 0 & 4 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 4 & 0 \\
+0 & -1 & -1 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+### Problem Solution
+
 
 
 # Matrix Spaces
@@ -1108,7 +1793,7 @@ A_1\text{ = }
 7 & 8 & 9 \\
 \end{matrix}} 
 \right]
-\text{, A_1 = }
+\text{, = }A_2\text{ = }
 \left[
 {\begin{matrix}{cc}
 1 & 4 & 7 \\
