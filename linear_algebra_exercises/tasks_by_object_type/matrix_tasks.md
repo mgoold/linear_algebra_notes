@@ -2073,9 +2073,9 @@ $$
  * The maximum number of dimensions that a matrix can *actually* fill is the number of post-RRE independent columns.
  * The relationship of these two is summed by saying that the matrix has a "[# of columns]-dimensional subspace of [number of rows]".
 
-### Transposed Matrices
+## Transposed Matrices
 
-#### Facts
+### Facts
 
 * Transposing a matrix swaps row placement for column placement, so that row 1 becomes column 1, row 2 becomes column 2, etc.
 * In general, we can say that that $A^T_{ij}=A_{ji}$ for row i and column j.
@@ -2087,6 +2087,188 @@ $$
   * When taking the transpose of a product of matrices like $R^{T}R$, the practice is to reverse the order of items in the parentheses, then transpose each term.  So $\left(R^{T}R\right)^T\text{ = }R^TR^{TT}$.
   * Taking additional transposes of symmetric matrix products, e.g. $R^{T}R$, leaves them unchanged.
   * If you take the inverse of a transpose you have to reverse the order: $AA^{-1}=I={A^{-1}}^TA^T$ .
+
+### Transposed Matrix Example 1
+
+#### Sources
+* ITLA sols, p30. https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+#### Problem Text
+* "Find $A^T$ and $A^{-1}$ and $\left(A^{-1}\right)^T$ and $\left(A^T\right)^{-1}$ for
+
+$$
+A_1\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+9 & 3 \\
+\end{matrix}} 
+\right]
+\text{ and }A_2\text{ and }
+\left[
+{\begin{matrix}{cc}
+1 & c \\
+c & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+#### Solutions
+
+$$
+{A_1}^T\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 9 \\
+0 & 3 \\
+\end{matrix}} 
+\right]
+{{A_1}^{-1}}^T\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & -3 \\
+0 & \frac{1}{3} \\
+\end{matrix}} 
+\right]
+$$
+
+$$
+{A_2}^T\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & c \\
+c & 0 \\
+\end{matrix}} 
+\right]
+{{A_2}^{-1}}^T\text{ = }
+\frac{1}{c^2}
+\left[
+{\begin{matrix}{cc}
+0 & c \\
+c & -1 \\
+\end{matrix}} 
+\right]
+$$
+
+### Transposed Matrix Example 2
+
+#### Sources
+* ITLA sols, p30. https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+#### Problem Text
+* Given the matrices
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+2 & 1 \\
+\end{matrix}} 
+\right]
+\text{, }B\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 3 \\
+0 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+... show the results for $B^{T}A^{T}$ and $A^{T}B^{T}$ 
+
+$$
+B^{T}A^{T}\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 \\
+3 & 7 \\
+\end{matrix}} 
+\right]
+$$
+
+$$
+A^{T}B^{T}\text{ = }
+\left[
+{\begin{matrix}{cc}
+7 & 2 \\
+3 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+### Transposed Matrix Example 3
+
+#### Sources
+* ITLA sols, p30. https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+#### Problem Text
+* Show the order of operations for $\left(\left(AB\right)^{-1}\right)^T$ comes from $\left(A^{-1}\right)^T$ and $\left(B^{-1}\right)^T$ .
+* If U is upper triangular then $\left(U^{-1}\right)^T$ is what?
+
+#### Solutions
+* Show the order of operations for $\left(\left(AB\right)^{-1}\right)^T$ comes from $\left(A^{-1}\right)^T$ and $\left(B^{-1}\right)^T$ .
+      * Answer: $\left(B^T\right)^{-1}\left(A^T\right)^{-1}$ .
+* If U is upper triangular then $\left(U^{-1}\right)^T$ is what?
+      * Answer: lower triangular, because you can swap the transpose and inverse operators, so that U will be lower before you invert it.
+
+### Transposed Matrix Example 4
+
+#### Sources
+* ITLA sols, p30. https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+#### Problem Text
+* "Show that $A^2$ = 0 is possible but $A^TA\left{ = }0$ is not possible, unless A = 0 .
+
+#### Solutions
+* I can't find a proof but the intuition is that with $A^2$ you can work out some scheme where positive and negative values 0 out.  However, when you multiply A by its transpose you make it so some negative values are multiplied times each other so that positive non-zero values.
+
+### Transposed Matrix Example 5
+
+#### Sources
+* ITLA sols, p30. https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+#### Problem Text
+* Compute the number
+
+$$
+x^TAy\text{ = }\left[0 1\right]
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{array}{cc}
+0 \\
+1 \\
+0 \\
+\end{array}} 
+\right]
+$$
+
+* This is the row $x^TA = ?
+* This is the row $x^T\left{ = }\left[0 1\right]$ times the column $Ay\text{ = }$   .
+
+#### Solutions
+
+* Compute the number = 5.
+* This is the row $x^TA = (4, 5, 6)
+* This is the row $x^T\left{ = }\left[0 1\right]$ times the column
+  
+  $$
+  Ay\text{ = }
+  \left[
+   {\begin{array}{cc}
+   2 \\
+   5 \\
+   \end{array}} 
+   \right]
+  $$
+  
+
+
 
 
 #### Assess Matrix Invertibility
