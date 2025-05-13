@@ -431,7 +431,7 @@ Then the determinant is $a\left(d-\ell{b}\right)\text{ - }b\left(c-\ell{a}\right
 * Find a matrix M2 that exchanges rows 2 and 3 and subtracts row 1 from row 3, in one step.
 * Explain why M1 and M2 are identical, but the Es they represent are different.  -- It's simply that the E in M2 causes the same effect by adjusting for the rows exchanged first by P so that it acts on the same values as in M1.
 
-## Example 12: 3x3 Undefined Matrix E & P
+## Example 13: 3x3 Undefined Matrix E & P
 
 ### Sources
 * ITLA Sols, p22: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
@@ -463,6 +463,94 @@ M2\text{ = }
 \end{matrix}} 
 \right]
 $$ 
+
+## Example 13: 3x3 Undefined Matrix E & P
+
+### Sources
+* ITLA Sols, p30: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* "Why are there n! permutation matrices of order n? You can see that if you select any one row, the other n-1 rows remain to be selected, an when you select another row, n-2 rows remain to be selected &c.  
+
+## Example 14: 3x3 Undefined Matrix E & P
+
+### Sources
+* ITLA Sols, p30: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text 
+* If $P_1$ and $P_2$ are permutation matrices, so is  $P_{1}P_{2}$ , and this product will still have the rows of I in some order.
+* Give examples with :
+      * $P_{1}P_{2}\neq{P_{2}P_{1}}$
+      * $P_{3}P_{4}\neq{P_{4}P_{3}}$
+
+### Solutions
+* $P_{1}P_{2}\neq{P_{2}P_{1}}$
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\neq{}
+\left[
+{\begin{matrix}{cc}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$ 
+
+* $P_{3}P_{4}\neq{P_{4}P_{3}}$
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{matrix}} 
+\right]
+$$
 
 # Block Matrices
 
@@ -590,6 +678,60 @@ $$
 * Remember that rank of the rowspace is the same as for the column space, in this case 6.
 * Remember that when the matrix is transpose, the rows become columns, so the column count is now 10 = m.
 * Remember that the **rank of the left nullspace** is m-r = 10 - 6 = 4.
+
+## Example 5: Transposed Block Matrix
+
+### Sources
+* ITLA sols, p30: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text
+* The transpose of a block matrix M =
+
+$$
+\left[
+{\begin{matrix}{cc}
+A & B \\
+C & D \\
+\end{matrix}} 
+\right]
+M^T\left{ = }
+\left[
+{\begin{matrix}{cc}
+A & C \\
+B & D \\
+\end{matrix}} 
+\right]
+$$
+
+... what conditions on A,B,C,D would the block matrix be symmetric? 
+
+#### Solutions:
+* You can see that A and D have to be the same when transposed, and that C and B have to equal each other when transposed.
+
+## Example 6: Transposed Block Matrix 2
+
+### Sources
+* ITLA sols, p30: https://github.com/mgoold/linear_algebra_notes/blob/main/linear_algebra_exercises/strang_mit1806/ila6sols.pdf
+
+### Problem Text
+* True of false:
+      * the block matrix
+  
+$$
+\left[
+{\begin{matrix}{cc}
+0 & A \\
+A & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+is automatically symmetric.  False: A would itself need to be symmetric but doesn't have to be.
+* If A and B are symmetric then their product AB is symmetric. False.  The transpose of AB is $B^TA^T\text{ = }BA$ , so $\left(AB\right)^T\text{ = }AB$ needs BA = AB.
+   * Note: what the textbook answer is getting at is that if a matrix is truly symmetric then A = $A^T$, and if that's true then the product AB must also equal $B^TA^T$ , which would mean that AB = BA, which is often not the case.
+* If A is not symmetric then $A^{-1}$ is not symmetric .  True.
+* When A,B,C are symmetric, the transpose of ABC is CBA. True.
+
 
 # Defined Matrix, >2x2, with Variable(s) in Content
 
