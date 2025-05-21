@@ -100,6 +100,17 @@ $$6x\text{ 4 }4y\text{ = __}$$
 * infinitely many solutions: (10,20)
 * list 2 such solutions. (10,-10), (20,-25)
 
+## Example 7: Equation Spaces 7
+
+### Sources
+* ITLA, 5th Ed, p131.
+  
+### Problem Text
+* "The functions f(x) = $x^2$ and g(x) = 5x are "vectors" in F, the vector space of all real functions.  The functions are defined for x between positive and negative infinity.  The combination of 3f(x) - 4g(x) = h(x) = ___________.
+
+### Solution
+* h(x) = $3x^2\text{ - }20x$ .
+
 
 # Equation Row Exchanges
 
