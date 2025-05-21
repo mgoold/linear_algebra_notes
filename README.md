@@ -4,14 +4,13 @@ These are my notes-to-self on linear algebra concepts and lectures, almost all r
 
 The conceptual content is ordered serially across the "linear_algebra_content_" files, more or less following the order of the 18.06 course.
 
-Note that, as this repo developed, most of the "Strang" source content noted in the "linear_algebra_content_" files are from his "Intro to Linear Algebra" 4th edition.  However, the problem set content is from the 6th edition, as that is the edition for which I could find the solutions manual.  Still, the pagination from either source should land you in a likely spot in the books.
+Note that, as this repo developed, the "Strang" source content ended up coming from several editions (4th, 5th, 6th), reflecting what I could find online..
 
-There is a folder of excercises, one directory for Strang/MIT 18.06, and one organized by topic.  The topical organization aims to prepare for the USF linear algebra entrance exam.
-
-The "linear algebra tasks" file tries to index common problems and solution algorithms.
-
-By all means reach out with corrections as you encounter inevitable mistakes in understanding, markdown code, etc.
+There is a folder of excercises, one directory for Strang/MIT 18.06, and one organized by object type (function, vector, matrix).  I may never get it completely organized, but I believe the best testing process for this topic would be one that that allows you to do all the exercises on a complete bestiary of vector and matrix types, since each type carries its own challenges.
 
 I will continue to add content as I learn, but anticipate quitting (with regrets) after determinants and eigenvectors because of time constraints.
 
 HTH
+
+To Do:
+* ITLA 5th Edition, ch 3.1. "Vector Spaces" --extremely poor match between the problem set and the textbook content and corresponding online lecture.  Need to find better source to understand this content.
