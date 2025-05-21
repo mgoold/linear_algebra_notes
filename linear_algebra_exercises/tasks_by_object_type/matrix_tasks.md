@@ -732,6 +732,104 @@ is automatically symmetric.  False: A would itself need to be symmetric but does
 * If A is not symmetric then $A^{-1}$ is not symmetric .  True.
 * When A,B,C are symmetric, the transpose of ABC is CBA. True.
 
+# 2x2 Defined Matrix
+
+## Example 1: Matrix Spaces
+
+### Sources
+* ITLA, 5th Ed., P131
+
+### Problem Text
+"The matrix A = 
+
+$$
+\left[
+{\begin{matrix}{cc}
+2 & -2 \\
+2 & -2 \\
+\end{matrix}} 
+\right]
+$$
+
+is a "vector" in the space M of all 2x2 matrices.  
+* Write down the 0 vector for this space, the vector $\frac{1}{2}A$, and the vector -A.
+* What matrices are in the smallest subspace containing A?
+
+### Solutions
+* This is so easy you overthink it.  The 0 vector, $\frac{1}{2}A$, and -A are:
+
+$$
+0\text{ = }
+\left[
+{\begin{matrix}{cc}
+0 & 0 \\
+0 & 0 \\
+\end{matrix}} 
+\right]
+\text{, }\frac{1}{2}A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & {-1} \\
+1 & {-1} \\
+\end{matrix}} 
+\right]
+-A\text{ = }
+\left[
+{\begin{matrix}{cc}
+-2 & 2 \\
+-2 & 2 \\
+\end{matrix}} 
+\right]
+$$
+
+* What matrices are in the smallest subspace containing A?
+
+Answer: the smallest subspace is cA -- it is also the largest subspace.  The point is to think about the definition of the subspace, and whether it is divisible.  In this case, you can't have less or more than a 2x2 matrix, so cA is the subspace.  A subspace is a space that stays closed under all linear combinations, while obeying the definition constraints of the larger space.  So if the initial space were "R2", then a subspace could be a 2x2 matrix or a line for example, so long as they went through the origin.
+
+## Example 2: Matrix Spaces
+
+### Sources:
+* ITLA, 5th ed, p131.
+
+### Problem Text
+* "Describe a subspace of M [the space of 2x2 matrices in R] that contains
+
+$$
+M\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+but not 
+
+$$
+M\text{ = }
+\left[
+{\begin{matrix}{cc}
+0 & 0 \\
+0 & -1 \\
+\end{matrix}} 
+\right]
+$$
+
+* If a subspace of M does contain A and B, must it contain I?
+* Describe a subspace of M that contains no non-zero matrices."
+
+### Solutions
+
+* Describe a subspace of M that contains...
+  * cA should be such a subspace, because it could go on the origin, and be added to itself, and would never contain B.
+* If a subspace of M does contain A and B, must it contain I?
+  * I believe so, because if they're both in the subspace then you should be able to add A and B together, which you could then change to I.
+* Describe a subspace of M that contains no nonzero diagonal matrices.
+   * I think $A^2$ should be an example.  The answer from the book is "matrices whose main diagonal is all 0."
+
+
+
 
 # Defined Matrix, >2x2, with Variable(s) in Content
 
