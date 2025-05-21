@@ -1,7 +1,7 @@
 
 # Undefined Vectors
 
-## Example 1
+## Example 1: Vector vs Point
 
 ### Problem Text
 * Though we can think of both as an N-tuple of real values (in other words an ordered list of N-many continuous real numbers), what is the fundamental difference between a point and a vector?
@@ -22,6 +22,21 @@
 * Zero Vector Facts:
   * The 0 vector stays the same for any scalar.  Subtracting the 0 vector from any other vector leaves it unchanged.
   * The 0 vector is part of any legitimate subspace; every legitimage subspace must pass through it.
+
+## Example 2: Vector Space Rules
+
+### Sources:
+* ITLA, 5th Ed. P131
+
+### Problem Text
+
+"Consider the (https://github.com/mgoold/linear_algebra_notes/edit/main/linear_algebra_content.md#8-rules-for-vector-spaces)[8 Rules for Vector Spaces] :
+Suppose that $left(x_{1},x_{2}\right)\text{ + }left(y_{1},y_{2}\right)$ is defined to be $left(x_{1}\text{ + }y_{2},x_{2}\text{ + }y_{1}\right)$ .  With the usual multiplication cx = $\left(cx_{1},cx_{2}\right)$ , which of the eight conditions are not satisfied?"
+
+### Solutions
+
+I think condition 7 "c(x + y) = cx + cy" is not satisfied, because per the above when you multiply their sum the components are added together in a different way than they are when you multiply x and y separately.  I honestly don't understand the solutions book answer.
+
 
 # Vectors Defined by Symbols
 
