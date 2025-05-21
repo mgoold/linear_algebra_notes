@@ -2061,6 +2061,19 @@ The column space consists of all linear combinations of the columns.  These line
 
 Suppose you have an mxn matrix with components in R real numbers.  You can see that the set of potential columns would be limited to those that have m rows.  So you can think of column spaces as being subspaces of $R^m$ (not $R^n$ ).
 
+### 8 Rules for Vector Spaces
+
+There are 8 rules for vector spaces.  Remember that these are **spaces** , not just vectors.  So we're talking about vectors such that the rules of addition, multiplication, and inclusion of the zero vector remain true for the vector in question.
+
+#### x + y = y + x
+#### x + (y + z) = (x + y) + z
+#### There is a unique "zero vector" such that x + 0 = x for all x.
+#### For each x there is a unique vector -x such that x + (-x) = **0**.
+#### 1 timex x = x .
+#### $\left(c_{1}c_{2}\right)x\text{ = }c_{1}\left(c_{2}x\right)$
+#### c(x + y) = cx + cy
+#### $\left(c_{1}\text{ = }c_{2}\right)x\text{ = }c_{1}x\text{ + }c_{2}x$
+
 ### S and V Spatial Notation
 
 We can also consider a space as any set of vectors S in a vector space V.  The subspace SS would then equal all *possible* linear combinations of vectors in S.
