@@ -2057,6 +2057,38 @@ The column space consists of all linear combinations of the columns.  These line
 
 **It follows that Ax = b is solvable if and only if b is in the column space of A.**
 
+### Vector Spaces and Functions
+
+#### Sources
+* ITLA, 5th Ed., Chapter 3.1.
+* https://youtu.be/SzZaQnzstfE
+
+#### Notes
+* Linear algebra mostly focuses on linear equations, so variables of a higher order than x (e.g. $x^2$ ) may not "belong" to linear algebra and not be represented in a formula like Ax = b, depending on whom you ask.  That said:
+    * A polynomial of a higher order than x can be represented, but in a regular Ax = b or Ax = 0 format the information about the variable's order or degree will be lost.  Here is a typical example:
+        * Say you have the system 1-x, 1 + x, and $x^2$ .
+        * Because x is already "taken" as a variable, you can represent each function as being multiplied by a separate value t, and add them together and set them = 0.  This must be allowed because (1) t could equal 1, which would make no change to the equations, and (2) we are stipulating that the equations are a system and that they are in the same vector space of all functions using real numbers, which means that under the addition requirement for a vector space they can be added, and in solving them as a system we can stipulate that they have some common solution, in this case 0.  So we say that:
+          
+          $$t_{1}\left(\text{ - }x\right)\text{ + }t_{2}\left(\text{ + }x\right)\text{ + }t_{3}x^2\text{ = }0$$ .
+
+          We can then rearrange this equation in terms of factors commonly multiplied by the degree of variable, from constant to $x^2$, thus:
+
+          $$\left(t_{1}\text{ + }t_{2}\right)1\text{ + }\left(t_{2}\text{ - }t_{1}\right)x\text{ + }t_{3}x^2\text{ = }0$$ .
+
+          Then we can set x = 0 and construe the equation as:
+
+          $$\left(t_{1}\text{ + }t_{2}\right)\text{ = }0$$
+          $$\left(t_{2}\text{ - }t_{1}\right)\text{ = }0$$
+          $$t_{3}\text{ = }0$$
+
+This can then be construed as a matrix A times a vector t = 0 and A can be row-reduced to give finally give It = 0.  Notice that: 
+* in doing this, we demonstrate (or could fail to demonstrate) that the polynomial system is linearly independent.
+* we have lost all info about the degree of variable: I don't believe there is anything that would work backward from It = 0 to return you to the original polynomial.  An infinite number of original equations could row-reduce to It = 0.
+* the variables are in the place of b in "Ax = b", while the variables t that we introduce took the place of "x" in "Ax = b".
+
+Finally, it is possible to use linear algebra notation to capture variables with a degree greater than 1 by using a transpose.  For example $x^2$ can be $x^{T}Ix$ .  
+I'm not sure though whether the info that would let you return to the original formulas could be preserved as a system is solved.
+
 ### Column Spaces Defined in Terms of M components.
 
 Suppose you have an mxn matrix with components in R real numbers.  You can see that the set of potential columns would be limited to those that have m rows.  So you can think of column spaces as being subspaces of $R^m$ (not $R^n$ ).
