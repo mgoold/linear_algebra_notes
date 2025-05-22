@@ -552,6 +552,141 @@ $$
 \right]
 $$
 
+## Example 15: Matrix Free and Pivot Variables
+
+### Sources
+* ITLA, 5th Ed., p143
+
+### Problem Text and Solutions:
+* "Give a reason that each is true or false:
+      * A square matrix has no free variables.  False: it might be square, but under row reduction would have free variables.
+      * An invertible matrix has no free variables.  True.  To be invertible, the matrix must be square, and must have a r=n=m pivot variables.
+      * An m by n matrix has no more than n pivot variables.  True.  By definition, the potential pivot variables r are reckoned in terms of n.  But n might be less than m.
+      * An m by n matrixs has no more than m pivot variables.  True.  Potential pivot variables are reckoned in terms of n, but to have r=n, m must be >= n.
+
+## Example 16: Matrix Free and Pivot Variables
+
+### Sources
+* ITLA, 5th Ed., p143
+
+### Problem Text:
+* Put as many 1s and possible into a 4x7 updated matrix U with the following pivot columns:
+      * 2,4,5
+      * 1,3,6,7
+      * 4,6
+
+### Solutions:
+
+* 2,4,5
+
+$$
+\left[
+{\begin{matrix}{cc}
+0 & 1 & 1 & 1 & 1 & 1 & 1 \\
+0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+* 1,3,6,7
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+* 4,6
+
+$$
+\left[
+{\begin{matrix}{cc}
+0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+## Example 17: Matrix Free and Pivot Variables
+
+### Sources
+* ITLA, 5th Ed., p143
+
+### Problem Text:
+* Put as many 1s as possible in a 4 by 8 RREF matrix R so that the free columns are:
+      * 2,4,5,6
+      * 1,3,6,7,8
+
+### Solutions:
+* 2,4,5,6 (pivots 1,3,7,8)
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 0 & 1 & 1 & 1 & 0 & 9 \\
+0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+* 1,3,6,7,8 (pivots 2,4,5)
+
+$$
+\left[
+{\begin{matrix}{cc}
+0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 \\
+0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+### Notes
+* the rule for this is that if it is a pivot column, you can clear all the values above the pivot.  Otherwise it reduces to 1 (or whatever).  Also every column before the first pivot has to be cleared to 0.
+
+## Example 18: Matrix Free and Pivot Variables
+
+### Sources
+* ITLA, 5th Ed., p143
+
+### Problem Text & Solutions:
+* "Suppose column 4 of a 3 by 5 matrix is all zero.  Then $x_4$ is certainly a " answer: free variable.
+* The special solution for this variable is the vector x = (0,0,0,1,0), because 1 will multiply that zero column to give Ax = 0.
+
+## Example 19: Matrix Free and Pivot Variables
+
+### Sources
+* ITLA, 5th Ed., p143
+
+### Problem Text & Solutions:
+* "Suppose column 3 and 5 of a 3x5 matrix are the same (and not 0 columns).  Which column is a free variable? Answer: column 5.
+* Find the special solution for this variable: (-1,0,0,0,1).
+
+### Notes
+* See that when 2 columns are the same, the first will be the pivot, and the second must be the free variable.  Because the free variable is 1, the pivot must be set to -1 to offset it.  Since column 5 is set to 1, all the other columns, whether pivot or free, would be set to 0.
+
+## Example 20: Matrix Free and Pivot Variables
+
+### Sources
+* ITLA, 5th Ed., p143
+
+### Problem Text & Solutions:
+* Suppose an m by n matrix has r pivots.  The number of special solutions is: answer: n-r.
+* The null space contains only x = 0 when : answer: r = n.  [Note that the matrix doesn't need to be square.]
+* The column space is all of Rm when: answer: r = m.  [Again, note that the matrix doesn't need to be square.]
+
 # Block Matrices
 
 ## Example 1: RRE Form Assessment
