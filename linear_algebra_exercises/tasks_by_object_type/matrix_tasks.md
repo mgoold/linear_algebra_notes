@@ -2010,9 +2010,115 @@ LDU_B\text{ = }
 \right]
 $$
 
-### Problem Solution
+## Matrix Special Solutions Example 1
+
+### Sources
+* ITLA 5th Ed., p.141.
+
+### Problem Text
+
+* "Reduce A and B to their triangular forms U.  Which variables are free?
+
+   $$
+   A\text{ = }
+   \left[
+   {\begin{matrix}{cc}
+   1 & 2 & 2 & 4 & 6 \\
+   1 & 2 & 3 & 6 & 9 \\
+   0 & 0 & 1 & 2 & 3 \\
+   \end{matrix}} 
+   \right]
+   \text{,  }B\text{ = }
+   \left[
+   {\begin{matrix}{cc}
+   1 & 4 & 2 \\
+   0 & 4 & 4 \\
+   0 & 8 & 8 \\
+   \end{matrix}} 
+   \right]  
+   $$
+
+* Find a special solution for each matrix.
+* Further reduce U to R for each matrix.  State whether N(R) = N(U), and if so why.
+
+### Solutions:
+
+   * U and R forms:
+     
+   $$
+   U_{A}\text{ = }
+   \left[
+   {\begin{matrix}{cc}
+   1 & 2 & 2 & 4 & 6 \\
+   0 & 0 & 1 & 2 & 3 \\
+   0 & 0 & 0 & 0 & 0 \\
+   \end{matrix}} 
+   \right]
+   \text{,  }U_{B}\text{ = }
+   \left[
+   {\begin{matrix}{cc}
+   2 & 4 & 2 \\
+   0 & 0 & 2 \\
+   0 & 0 & 0 \\
+   \end{matrix}} 
+   \right]  
+   $$
+
+   $$
+   R_{A}\text{ = }
+   \left[
+   {\begin{matrix}{cc}
+   1 & 2 & 0 & 0 & 0 \\
+   0 & 0 & 1 & 2 & 3 \\
+   0 & 0 & 0 & 0 & 0 \\
+   \end{matrix}} 
+   \right]
+   \text{,  }R_{B}\text{ = }
+   \left[
+   {\begin{matrix}{cc}
+   1 & 0 & -1 \\
+   0 & 1 & 1 \\
+   0 & 0 & 0 \\
+   \end{matrix}} 
+   \right]  
+   $$
 
 
+* For $U_A$ , columns 2,4,5 are free, for $U_B$ ,  column 3 is free .
+* Special solutions:
+      * Remember that the number of special solutions = number of free variables = n - r.
+      * For $U_A$ : (-2,1,0,0,0), (0,0,-2,1,0), (0,0,-3,0,1) .
+      * For $U_B$ : (1,-1,1)
+
+* See above for RREF forms.  N(R) = N(U) = N(A), because row reduction does not change the mathematical relationships of the equations to each other.
+
+## Matrix Special Solutions Example 2
+
+### Sources
+* ITLA 5th Ed., p.141.
+
+### Problem Text
+
+* "For the following matrices A and B, find the special solutions to Ax = 0 and Bx = 0.
+
+   $$
+   A\text{ = }
+   \left[
+   {\begin{matrix}{cc}
+   -1 & 3 & 5 \\
+   -2 & 6 & 10 \\
+   \end{matrix}} 
+   \right]
+   \text{,  }B\text{ = }
+   \left[
+   {\begin{matrix}{cc}
+   -1 & 3 & 5 \\
+   -2 & 6 & 7 \\
+   \end{matrix}} 
+   \right]
+   $$
+
+  * For A: (3,1,0), (5,0,1) .  For B: (3,1,0)
 
 # Matrix Spaces
 
