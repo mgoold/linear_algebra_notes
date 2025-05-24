@@ -2254,6 +2254,442 @@ $$
    $$
 
   * For A: (3,1,0), (5,0,1) .  For B: (3,1,0)
+ 
+## Matrix Complete Solutions Example 1
+
+### Sources
+* ITLA 5th Ed., p.158.
+
+### Problem Text
+* "Given the matrix equation Ax = b:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 4 & 6 & 4 \\
+2 & 5 & 7 & 6 \\
+2 & 3 & 5 & 2 \\
+\end{matrix}} 
+\right]
+x\text{; b = }
+\left[
+{\begin{array}{cc}
+4 \\
+3 \\
+5 \\
+\end{array}} 
+\right]
+$$
+
+... 
+
+* find the column space of A
+* find the null space of A
+* find the complete solution to Ax = b."
+
+### Solutions
+
+* First, [U c] =
+
+$$
+\left[
+{\begin{matrix}{cc}
+2 & 4 & 6 & 4 & b_1 \\
+0 & 1 & 1 & 2 & b_2\text{ - }b_1 \\
+0 & 0 & 0 & 0 & b_2\text{ - }2b_1\text{ + }b_2 \\
+\end{matrix}} 
+\right]
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 4 & 6 & 4 & 4 \\
+0 & 1 & 1 & 2 & -1 \\
+0 & 0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+...So:
+* the first 2 columns are the pivot columns, and the first 2 corresponding columns of A are the column space C(A).
+* toggling the free variable columns 3,4 to 1 and 0, and back substituting in U, the nullspace is all combinations $c_1s_1$ = (-1,-1,1,0) and $c_2s_2$ = (2,-1,0,1) .
+* further reducing [U c] to [R d] and back-substituting in R where columns 3 and 4 variables are 0, we get $x_p$ = (4,-1,0,0).  The complete solution is then $x_p\text{ + }c_1s_1\text{ + }c_2s_2$ .
+
+## Matrix Complete Solutions Example 2
+
+### Sources
+* ITLA 5th Ed., p.158.
+
+### Problem Text
+
+* "For the matrix
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 1 & 3 \\
+6 & 3 & 9 \\
+4 & 2 & 6 \\
+\end{matrix}} 
+\right]
+$$
+
+and b = (10,30,20) ...
+
+Find the pivot columns, column space, [U c], [R d], and complete solution."
+
+### Solutions
+
+$$
+\[U c\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 1 & 3 & 10\\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+So column 1 is the pivot column, and (2,6,4) is C(A).  The null space is s1 = (-1/2,1,0), s2 = (-3/2,0,1) .
+
+$$
+\[R d\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & \frac{1}{2} & \frac{3}{2} & 5\\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+So $x_p$ = (5,0,0) and the complete solution is $x_p\text{ + }c_1s_1\text{ + }c_2s_2$ .
+
+## Matrix Complete Solutions Example 3
+
+### Sources
+* ITLA 5th Ed., p.158.
+
+### Problem Text
+
+* "For the matrix
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 3 & 3 & 1 \\
+2 & 6 & 9 & 5 \\
+-1 & -3 & 3 & 5 \\
+\end{matrix}} 
+\right]
+$$
+
+and b = (1,5,5) ...
+
+find the pivot columns, column space, [U c], [R d], and complete solution."
+
+### Solutions
+
+$$
+\[U c\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 3 & 3 & 1 \\
+0 & 0 & 3 & 3 \\
+0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+... so the pivot columns are 1 and 3, and C(A) = (1,2-1), (3,9,3) .  The nullspace $c_1_s_1$ = (-3,1,0) .
+
+$$
+\[R d\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 3 & 0 & -2 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+and $x_p$ = (-2,0,1) .  The complete solution = $x_p\text{ + }c_1_s_1$ .
+
+## Matrix Complete Solutions Example 4
+
+### Sources
+* ITLA 5th Ed., p.158.
+
+### Problem Text
+* "Given the matrix:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 3 & 1 & 2 \\
+2 & 6 & 4 & 8 \\
+0 & 0 & 2 & 4 \\
+\end{matrix}} 
+\right]
+$$
+
+and b = (1,3,1) ... find the pivot columns, column space, [U c], [R d], and complete solution."
+
+### Solution
+
+$$
+\[U c\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 3 & 1 & 1 & 1\\
+0 & 0 & 2 & 4 & 1\\
+0 & 0 & 0 & 0 & 0\
+\end{matrix}} 
+\right]
+$$
+
+* pivot columns are 1,3.  C(A) is (1,2,0), (1,4,2).  N(A) = (-3,1,0,0), (0,0,-2,1) .
+* $x_p$ = (1/2,0,1/2,0)
+
+## Matrix Complete Solutions Example 5
+
+### Sources
+* ITLA 5th Ed., p.158.
+
+### Problem Text
+* "Given the matrix:
+
+$$
+\[A b\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & -2 & b_1 \\
+2 & 5 & -4 & b_2 \\
+4 & 9 & -8 & b_3 \\
+\end{matrix}} 
+\right]
+$$
+
+under what conditions is this system solvable? Include b as a fourth column in elimination.  Find all solutions when that condition holds."
+
+### Solution:
+
+$$
+\[U c\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & -2 & {b_1} \\
+0 & 1 & 0 & {b_2\text{ - }2b_1} \\
+0 & 0 & 0 & {b_3\text{ - }2b_1\text{ - }b_2} \\
+\end{matrix}} 
+\right]
+$$
+
+Since the coefficient matrix 0s out, it is a "solvability condition", and ${b_3\text{ - }2b_1\text{ - }b_2}$ must = 0 for the system to be solvable.
+
+Further reducing the augmented matrix to [R d] we get:
+
+$$
+\[R d\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & -2 & {5b_1\text{ - }2b2} \\
+0 & 1 & 0 & {b_2\text{ - }2b_1} \\
+0 & 0 & 0 & {b_3\text{ - }2b_1\text{ - }b_2} \\
+\end{matrix}} 
+\right]
+$$
+
+Remember that for the "x particular" part of a complete solution to Ax = b, we set the free variable to 0.  So then x_p = 
+
+$$
+\left[
+{\begin{array}{cc}
+{5b_1\text{ - }2b2} \\
+{b_2\text{ - }2b_1} \\
+0 \\
+\end{array}} 
+\right]
+$$
+
+and x_s = (2,0,1) .
+
+### Notes
+* when you see the "include column b as a column" qualifiication, it indicates that you should solve with b as an augmented matrix in the usual way, except with all variables.  This allows you to specify x_p purely in terms of b variables (not actual values), but also specify x_s in the normal way of setting all equations in [U c] to 0 and using back-substitutions.
+* when you have multiple rows in the coefficient matrix that 0 out, you can represent them as just one 0 in the bottom of your x_p matrix.
+
+## Matrix Complete Solutions Example 6
+
+### Sources
+* ITLA 5th Ed., p.158.
+
+### Problem Text
+* "Given the matrix A:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 \\
+2 & 4 \\
+2 & 5 \\
+3 & 9 \\
+\end{matrix}} 
+\right]
+$$
+
+with $b\text{ = \left(b_1,b_2,b_3,b_4\right) , what conditions on b make the system solveable.  Find x in this solveable case.
+
+### Solutions:
+
+$$
+\[U c\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & b_1 \\
+0 & 1 & b_3\text{ - }2b_1 \\
+0 & 0 & b_4\text{ - }3b_3\text{ + }3b_1 \\
+0 & 0 & b_2\text{ - }2b_1\\
+\end{matrix}} 
+\right]
+$$
+
+... so solvability contions are $b_4\text{ - }3b_3\text{ + }3b_1$ = 0 and $b_2\text{ - }2b_1$ = 0 .  There are no free variables, so reducing [U c] to [R d] gives us
+
+$$
+\[R d\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 5b_1\text{ - }2b_2 \\
+0 & 1 & b_3\text{ - }2b_1 \\
+0 & 0 & b_4\text{ - }3b_3\text{ + }3b_1 \\
+0 & 0 & b_2\text{ - }2b_1\\
+\end{matrix}} 
+\right]
+$$
+
+.  Then $x_p$ = 
+
+$$
+\left[
+{\begin{array}{cc}
+5b_1\text{ - }2b_2 \\
+b_3\text{ - }2b_1 \\
+0 \\
+\end{array}} 
+\right]
+$$
+
+## Matrix Complete Solutions Example 7
+
+### Sources
+* ITLA 5th Ed., p.158.
+
+### Problem Text
+* "Given the matrix A:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 \\
+2 & 4 & 6 \\
+2 & 5 & 7 \\
+3 & 9 & 12 \\
+\end{matrix}} 
+\right]
+$$
+
+with $b\text{ = \left(b_1,b_2,b_3,b_4\right) , what conditions on b make the system solveable.  Find x in this solveable case.
+
+### Solutions
+
+$$
+\[U c\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 & b_1 \\
+0 & 1 & 1 & b_3\text{ - }2b_1 \\
+0 & 0 & 0 & b_4\text{ - }3b_3\text{ + }4b_1 \\
+0 & 0 & 0 & b_2\text{ - }2b_1 \\
+\end{matrix}} 
+\right]
+$$
+
+... so the solvability conditions are $b_4\text{ - }3b_3\text{ + }4b_1$ = 0 and $b_2\text{ - }2b_1$ = 0.  Then [R d] =
+
+$$
+\[R d\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 1 & 5b_1\text{ - }2b_1 \\
+0 & 1 & 1 & b_3\text{ - }2b_1 \\
+0 & 0 & 0 & b_4\text{ - }3b_3\text{ + }4b_1 \\
+0 & 0 & 0 & b_2\text{ - }2b_1 \\
+\end{matrix}} 
+\right]
+$$
+
+and x_p = 
+
+$$
+x_p\text{ = }
+\left[
+{\begin{array}{cc}
+5b_1\text{ - }2b_1 \\
+b_3\text{ - }2b_1 \\
+0 \\
+\end{array}} 
+\right]
+$$
+
+and x_s = (-1,-1,0)
+
+## Matrix Complete Solutions Example 7
+
+### Sources
+* ITLA 5th Ed., p.158.
+
+### Problem Text
+
+* "Given the matrix A:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 3 & 1 \\
+3 & 8 & 2 \\
+2 & 4 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+... what combination of the rows of A gives the zero row?"
+
+[U c]
+
+$$
+\[U c\]\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 3 & 1 & b_\\
+0 & -1 & -1 & b_2\tex{ -}3b_1 \\
+0 & 0 & 0 & b_3\text{ - }2b_2\text{ + }4b_1 \\
+\end{matrix}} 
+\right]
+$$
+
+So the solvability condition is $b_3\text{ - }2b_2\text{ + }4b_1$ = 0 .
+
+
+
+
 
 # Matrix Spaces
 
