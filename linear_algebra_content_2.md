@@ -729,7 +729,7 @@ Both of these statements, in terms of rows and of columns, give different solvab
 
 The primary question and focus of this activity is: does a given system have 0, 1, or >1 solutions?  The summary to these answers will be given below.
 
-Continuing to solve the above matrix with a complete solution to Ax=b for the above matrix, we begin by finding a particular solution "$x_{particular}$".  To do this, we:
+Continuing to solve the above matrix with a complete solution to Ax=b for the above matrix, we begin by finding a particular solution  $"x_{particular}"$ .  To do this, we:
 * set all the free (non-pivot) variables to zero.  In this case, the free variables are $x_2$ and $x_4$.
 * then, solve Ax=b for pivot variables. Remember that we've already **b** to a specific point (1,3)
 
