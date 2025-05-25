@@ -2215,23 +2215,29 @@ Remember that:
 * a null space is the set of values x the matrix A can act on to yield a zero vector b.
 * a column space is the set of all results that can be obtained via linear combinations of the columns.  This set of all results is sometimes called the "span" of the columns.
 
-Example 1: $b_1\text{ + }b_2\text{ - }B_3\text{ = }0$ .
+#### Example 1: $b_1\text{ + }b_2\text{ - }B_3\text{ = }0$ .
 
 Answer:
-This example can be re-written as $\left[1,1,-1\right]\left[{\begin{array}{cc}
+This example can be re-written as 
+
+$$
+\left[1,1,-1\right]
+\left[{\begin{array}{cc}
    b_1 \\
    b_2 \\
    b_3 \\
-  \end{array} } \right]$
+  \end{array} } 
+\right]
+$$
 
 Notice that  $\left[1,1,-1\right]$ is a matrix.  When acted on the this matrix A and set equal to 0, this vector of b values describes the null space for Ab, *which is a subspace.*  This is easier to see when you consider addition and multiplication: any additon of two vectors b that were able to yeild a 0 vector would also yield a vector that when acted on by A would yield the zero vectors.  Of course, multiplying the b vector would do the same since it would multiply every b value equally.
 
-Example 2: $b_1b_2\text{ - }B_3\text{ = }0$ .
+#### Example 2: $b_1b_2\text{ - }B_3\text{ = }0$ .
 
 Answer: 
 These values are not a subspace.  It is easiest to see by multipying a vector b values that solve Ab=0.  One such vector is (1,1,1) which yields 1\*1-0.  But multiplying this vector, say times 2, yeilds 2\*2-2=0, which is false.  The result of multiplication does not stay in the same "space" as its antecedents.
 
-Example 3: 
+#### Example 3: 
 
 $$
 \left[{\begin{array}{cc}
@@ -2309,7 +2315,7 @@ I infer that the parenthetic notation, e.g. (1/2 + c1), must mean just a value i
 
 It is clear that any value of c1 and c2 will yield a pair of vectors that remain in the same plane.  Adding these resultant vectors together will also yield a vector in the same plane. The addition of any two such results will remain in the same plane.  Multiplying such a pair of results, or the addition of their results, will remain in the same plane.
 
-Example 4: 
+#### Example 4: 
 
 $$
 \left[{\begin{array}{cc}
@@ -2341,8 +2347,27 @@ Answer:
 
 No, it cannot be a subspace. The first vector (0,1,0) is on the y plane .There are no coefficients c1 and c2 that can set the whole equation equal to the 0 vector, because they do not include the y plane.  Consequently the results of the equation cannot include the 0 vector, so this cannot be a subspace.
 
+#### Example 5
 
-
+Suppose you have vectors v_1 = (1,2,0) and v_2 = (2,3,0).
+* Are they linearly independent?
+  * Answer: yes, you can see that they are not combinations of each other.
+* Are they a basis for some space?
+  * Answer: the space of all combinations of cv_1 + dv_2. 
+* What space V do they span?
+  * The space contains all vectors (x,y,0).
+  * Note: span is based on the original (not row-reduced) form of the matrix.
+* What is the dimension of V?
+  * The dimension of V is 2 because because the basis contains 2 [independent] vectors.  This is the definition of the dimension of V
+  * Notes:
+      * **so the "dimension" must be the number of independet vectors.** The vectors are in "m" space, but the vectors cannot extend more than n dimensions, however big m might be.
+      * the dimension of V is the number of independent column vectors, which need not be based on the row-reduced form.  The row-reduced form is only a tool for assessing independence.
+* Which matrices A have V as their column space?
+  * Any 3xn matrix, where all the columns are combinations of v_1 + v_2, particularly the 3x2 matrix c_v1 + dv_2.
+* Which matrices have V as their nullspace?
+  * Any mx3 matrix where all the rows are multiples of (0,0,1), particularly the matrix [0 0 1].  Remember that the nullspace of A must be vectors that are perpendicular to A, so that they can form a 0 dot product.  That is why the columns of N(A) = rows of R(A).
+* Describe all vectors v_3 that complete a basis v_1,v_2,v_3 for $\mathbb{R}^3$ .
+  * any 3x1 vector where the last component is not zero, so that it will be linearly independent of the other 2 vectors and extend into R3.
 
 
 
