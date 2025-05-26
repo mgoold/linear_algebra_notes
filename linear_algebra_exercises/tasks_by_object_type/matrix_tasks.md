@@ -2941,6 +2941,219 @@ $$
 * A3: line in 3D
 * A4: 0 vector
 
+# Matrix Space Assessment
+
+## Example 1: Find Bases, Dimensions of Subspaces
+
+### Source
+* ITLA v5, p190.
+
+### Problem Text
+* "If a 7 by 9 matrix has rank 5, what are the dimensions of the 4 subspaces?  What is the sum of all four dimensions."
+      * C(A): 5
+      * N(A): 9-5 = 4
+      * R(A): 5
+      * $N\left(A^T\right)$ 7-5 = 2
+*  "If a 3 x 4 matrix has rank 3, what are its column space and left nullspace?"
+      *   C(A) = 3, $N\left(A^T\right)$ = 0 .
+
+## Example 2: Find Bases, Dimensions of Subspaces
+
+### Source
+* ITLA v5, p190.
+
+### Problem Text
+* Find bases and dimensions for the four subspaces associated with matrices A and B:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 4 \\
+2 & 4 & 8 \\
+\end{matrix}} 
+\right]
+\text{, }B\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 4 \\
+2 & 5 & 8 \\
+\end{matrix}} 
+\right]
+$$
+
+### Solutions
+* A:
+      * C(A) = (1,2), dimension = 1.
+      * R(A) = (1,2,4), dimension = 1.
+      * N(A) = (-2,1,0), (-4,0,1), dimension = 2.
+      * $N\left(A^T\right)$ = (-2,1), dimension = 1.
+
+* B:
+      * C(A) = (1,2), (2,5) dimension = 2.
+      * R(A) = (1,2,4), (2,5,8) dimension = 2.
+      * N(A) = (-4,0,1), dimension = 1.
+      * $N\left(A^T\right)$  = 0, dimension = 0.
+
+### Notes:
+* Remember that the bases for C(A), R(A) are the complete rows or columns of A that correspond to the pivot rows and columns in R after row-reduction.
+      * For some reason, I tend to think that R(A) is only the portion of the row that is in the pivot columns.  That is wrong.  The basis for R(A) is the complete row of A.
+* The bases for N(A) and $N\left(A^T\right)$ are not taken from A but rather from U.
+      * N(A) is found by back substitution.
+      * $N\left(A^T\right)$ is the vector y which you could multiply $A^T$ to return as 0 vector.  It may be easiest to think of it as the list of coefficients by which you'd need multiply the rows so that if you added the rows together down the columns they'd total to 0.
+         * If you can't easily see what the basis for $N\left(A^T\right)$ is, the way to get it is to figure out $E^{-1}$ = L.  The row(s) of L that corresponds to any zero rows in U will be the basis for  $N\left(A^T\right)$.
+
+## Example 3: Find Bases, Dimensions of Subspaces
+
+### Source
+* ITLA v5, p190.
+
+### Problem Text
+* Find bases and dimensions for the four subspaces associated with matrix A:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+0 & 1 & 2 & 3 & 4 \\
+0 & 1 & 2 & 4 & 6 \\
+0 & 0 & 0 & 1 & 2 \\
+\end{matrix}} 
+\right]
+$$
+
+### Solutions
+
+$$
+R\text{ = }
+\left[
+{\begin{matrix}{cc}
+0 & 1 & 2 & 3 & 4 \\
+0 & 0 & 0 & 1 & 2 \\
+0 & 0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+* Bases:
+* C(A) : (1,1,0), (3,4,1)
+* R(A) : first 2 rows of A.
+* N(A) : (1,0,0,0,0), (0,-2,1,0,0), (0,2,0,-2,1)
+* $N\left(A^T\right)$ : figure out L, then the left nulls basis is the row of L that corresponds to the zero row(s) in U.  In this case it's (1,-1,1).
+
+## Example 4: Find Bases, Dimensions of Subspaces
+
+### Source
+* ITLA v5, p190.
+
+### Problem Text
+* "For the following situations, construct a matrix having the required properties, or explain why the situation is impossible:"
+      * Column space contains 3x1 vectors (1,1,0), (0,0,1), row space contains 2x1 vectors (1,2),(2,5).
+      * Column space has 3x1 basis (1,1,3), nullspace has 3x1 basis (3,1,1).
+      * Dimension of nullspace = 1 + dimension of left nullspace.
+      * Nullspace contains 2x1 (1,3), column space contains 2x1 (3,1).
+      * Row space = column space, and nullspace is not equal to the left nullspace.
+
+### Solutions
+* Column space contains (1,1,0), (0,0,1), row space contains (1,2),(2,5).
+      * Answer: This is possible, because after row reduction the column space will only have r = 2 like the row space.  The basis for both the row and column space in this example will reduce to I, so their actually equal despite initial different appearance.
+* Column space has 3x1 basis (1,1,3), nullspace has 3x1 basis (3,1,1).
+      * Answer: Impossible, because to be in the nullspace of A a vector would have to have 1x3 dimensions to generate the 0 dot product.
+* Dimension of nullspace = 1 + dimension of left nullspace.
+      * Answer: possible.  You can imagine for example a 2x3 matrix, where the first two rows and columns are non-zero, and the third column is free.  Then the dimension of the left nullspace does equal 0 and the dimension of N(A) = 0 + 1 = 1.
+* Nullspace contains 2x1 basis (1,3), column space contains 2x1 basis (3,1).
+      * Answer: possible  The key word is "contains".  It would be impossible for them do have only these vectors as thier basis, because their dimensions wouldn't match up correctly for the dot product.  But it would be possible for C(A) to have 2x2 dimensions and contain/include (3,1) so that the nullspace could be (1,3).
+* Row space = column space, and nullspace is not equal to the left nullspace.
+   * Impossible.  Remember that a "space" is the set of all linear combinations of column or row vectors.  If you think about it, column and row *spaces* to match without their each having the same number of components (m = n); otherwise the columns will extend into a dimension that the rows cannot, or vice versa.  But then if m = n, then it is impossible for the nullspace and left nullspace to not match, because nullspace = n-r, and left nullspace = m - r, but r=m=n, so both nullspace and left nullspace must be 0.
+
+## Example 5: Find Bases, Dimensions of Subspaces
+
+### Source
+* ITLA v5, p190.
+
+### Problem Text
+* "If V is the subspace spanned by (1,1,1) and (2,1,0) find a matrix A that has V as its rowspace.  Find a matrix B that has V as its nullspace.  Multiply AB."
+
+### Solutions
+* A:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 1 \\
+2 & 1 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+* B:
+
+$$
+B\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 \\
+-2 \\
+1 \\
+\end{matrix}} 
+\right]
+$$
+
+* AB = 0
+
+### Notes
+* This problem may seem ill-worded because it breaks the convention of denoting a column vector using horizontal "(1,1,1) and (2,1,0)" notation.  So it can be confusing to have the task of what would normally be column vectors in a row space.  So the purpose of the problem seem seems to be to encourage us to think of the parenthetic () notation as just lists of numbers in a conceptual vector space "V" when explicitly told to do so.  Also, the problem reminds us that if we can find a row matrix that is in the nullspace of a set of columns (A transpose) -- effectively a left nullspace, then we should always expect the dot product to be 0.
+
+## Example 6: Find Bases, Dimensions of Subspaces
+
+### Source
+* ITLA v5, p190.
+
+### Problem Text
+* "Without using elimination, find dimensions and bases fro the four subspaces for these matrices:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+0 & 3 & 3 & 3 \\
+0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\text{, }B\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 \\
+4 \\
+5 \\
+\end{matrix}} 
+\right]
+$$
+
+### Solutions
+
+* A:
+      * C(A) = (3,0,0) and (3,0,1) -- note that either column (3,0,1) can be used.  Dimension : 2.
+      * N(A) = (1,0,0,0), (0,1,0,-1).  Dimension: 2.
+      * R(A) = (0,3,3,3) and (0,1,1,1).  Dimension : 2.
+      * N(A^T) = (0,1,9).  Dimension : 1.
+
+* B:
+      * C(A) = (1,4,5).  Dimension : 1.
+      * N(A) = Empty basis.
+      * R(A) = 1.  Dimension : 1.
+      * N(A^T) = (-4,1,1),(5,0,-1).  Dimension : 2.
+
+### Notes:
+* Note that when only the 0 vector is in the nullspace it is correct to say that the nullspace has "an empty basis", not that the nullspace is the 0 vector with dimension = 1.
+* Expect to have one vector for each empty/free column or row, whether in N(A) or N(A^T).
+
+  
+### Solutions
+
+
 ## Example 4: Matrix Linear Independence
 
 ### Sources
