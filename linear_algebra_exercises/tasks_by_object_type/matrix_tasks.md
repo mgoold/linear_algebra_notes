@@ -2687,8 +2687,124 @@ $$
 
 So the solvability condition is $b_3\text{ - }2b_2\text{ + }4b_1$ = 0 .
 
+## Matrix Complete Solutions Example 8
 
+### Sources
+* ITLA 5th Ed., p.158.
 
+### Problem Text
+* Given the following matrices A and B:
+      * tell which columns are in the column space
+      * tell which combinations of rows will give 0.
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 1 \\
+2 & 6 & 3 \\
+0 & 2 & 5 \\
+\end{matrix}} 
+\right]
+\text{, B = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 1 \\
+1 & 2 & 5 \\
+2 & 4 & 8 \\
+\end{matrix}} 
+\right]
+$$
+
+### Solutions
+
+* For A: under row reduction, all columns have a pivot, so all columns of A are in the column space, and only the 0 vector will give return 0.
+* For B: Under row reduction, only columns 1 and 2 of B have pivots.  The combination of rows that gives 0 is b3-2b2, or row 3 - 2 times row 2.
+
+## Matrix Complete Solutions Example 8
+
+### Sources
+* ITLA 5th Ed., p.158.
+
+### Problem Text
+* "For the following equation system:
+
+Ax = B is
+
+$$x_1\text{ + }2x_2\text{ + }3x_3\text{ + }5x_4\text{ = }b_1$$
+$$2x_1\text{ + }4x_2\text{ + }8x_3\text{ + }12x_4\text{ = }b_2$$
+$$3x_1\text{ + }6x_2\text{ + }7x_3\text{ + }13x_4\text{ = }b_3$$
+
+...where a particular solution to Ax = (0,6,-6) , do the following:
+
+* transform the equation system into LU format, and verify that LU = A and that Lc = b.
+* combine the pivot columns of A with the numbers -9 and -3 in the particular solution x_p.  What is that linear combination and what is its significance?
+
+### Solutions
+
+The matrix [A b] can be written as 
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 & 5 & b_1 \\
+2 & 4 & 8 & 12 & b_3 \\
+3 & 6 & 7 & 13 & b_3 \\
+\end{matrix}} 
+\right]
+$$
+
+Using E notations to transform A into, we get E[A b] = [U c] as 
+
+$$
+E_{2}E_{1}
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 1 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+-2 & 1 & 0 \\
+-3 & 0 & 1 \\
+\end{matrix}} 
+\right]
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 & 5 & b_1 \\
+2 & 4 & 8 & 12 & b_3 \\
+3 & 6 & 7 & 13 & b_3 \\
+\end{matrix}} 
+\right]
+\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 & 5 & b_1 \\
+0 & 0 & 2 & 2 & b_2\text{ - }2b_1 \\
+0 & 0 & 0 & 0 & b3\text{ + }b_2\text{ - }4b_1 \\
+\end{matrix}} 
+\right]
+$$
+
+$E^{-1}\text\text{ = }L$ is then
+
+$$
+E^{-1}
+\left[
+{\begin{matrix}{cc}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+3 & -1 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+And LU does = A.  Also Lc = b.
+
+* The meaning of the values 9,3 is that they are the values of the transformed particular solution for b given in the original problem, when Ab --> Rd.  The values 9,3 can be made into a particular point when the free variable columns 2 and 4 are set to 0, so x_p = (9,0,3,0). 
 
 
 # Matrix Spaces
@@ -2824,7 +2940,264 @@ $$
 * A2: identity matrix in 3D
 * A3: line in 3D
 * A4: 0 vector
- 
+
+## Example 4: Matrix Linear Independence
+
+### Sources
+* ITLA, 5th ed.  p175.
+
+### Problem Text
+* "Given the following vectors:
+
+$$
+v_1\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+0 \\
+0 \\
+\end{array}} 
+\right]
+\text{, }v_2\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+1 \\
+0 \\
+\end{array}} 
+\right]
+\text{, }v_3\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+1 \\
+1 \\
+\end{array}} 
+\right]
+\text{, }v_4\text{ = }
+\left[
+{\begin{array}{cc}
+2 \\
+3 \\
+4 \\
+\end{array}} 
+\right]
+$$
+
+* Show that v_1,v_2,v_3 are independent, but v_1,v_2,v_3,_v4 are dependent.
+* Solve $c_1v_1\text{ + }c_2v_2\text{ + }c_3v_3\text{ + }c_4v_4\text{ = }0$ or Ax = 0.  The v's go in the columns of A."
+
+### Solutions
+* Show that v_1,v_2,v_3 are independent, but v_1,v_2,v_3,_v4 are dependent.
+   * It is clear that only x =0 will give Ax = 0 when only v_1,v_2,v_3 are in A.
+* When v_1,v_2,v_3,v_4 are all in A, you can solve for 0 by toggling the free variable column 4 to 1 and solving for Ax = 0 using back-substitution.  Then you get N(A) = c(1,1,-4,1), which is not c = 0, so the 4 columns are dependent.
+
+## Example 4: Matrix Linear Independence
+
+### Sources
+* ITLA, 5th ed.  p175.
+
+### Problem Text
+* "find the largest possible number of independent vectors among:
+
+$$
+v_1\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+-1 \\
+0 \\
+0 \\
+\end{array}} 
+\right]
+\text{, }v_2\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+0 \\
+-1 \\
+0 \\
+\end{array}} 
+\right]
+\text{, }v_3\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+0 \\
+0 \\
+-1 \\
+\end{array}} 
+\right]
+\text{, }v_4\text{ = }
+\left[
+{\begin{array}{cc}
+0 \\
+1 \\
+-1 \\
+0 \\
+\end{array}} 
+\right]
+\text{, }v_5\text{ = }
+\left[
+{\begin{array}{cc}
+0 \\
+1 \\
+0 \\
+-1 \\
+\end{array}} 
+\right]
+\text{, }v_6\text{ = }
+\left[
+{\begin{array}{cc}
+0 \\
+0 \\
+1 \\
+-1 \\
+\end{array}} 
+\right]
+$$
+
+### Solution
+* It is self-evident that the first 3 vectors are independent, since the first value = 1 but each vector has its only non-zero value in a unique position.
+* The answer the book gives is that "all of the vectors are in the plane (1,1,1,1)*v = 0, so no four of these six vectors can be independent."  --This is not obvious to me, and I don't understand why being in the plane (1,1,1,1)*v = 0 means that a max of 3 and not 4 vectors can be independent.  But what is clear is that under row reduction you're left with 3 pivot columns, so I take RREF as the surer way to decide this question.
+
+## Example 5: Matrix Linear Independence
+
+### Sources
+* ITLA, 5th ed.  p175.
+
+### Problem Text
+
+* "Given the following matrix:
+
+$$
+\left[
+{\begin{array}{cc}
+a & b & c \\
+0 & d & e \\
+0 & 0 & f \\
+\end{array}} 
+\right]
+$$
+
+... prove that if a, d, or f = 0 that the columns of U are dependent."
+
+### Solution
+
+* Book solution: "If a = 0 then column 1 = 0; if d = 0 then b(column 1)− a(column 2) = 0; if f = 0 then all columns end in zero (they are all in the xy plane, they must be dependent)."
+* Notes:
+      * this solution hangs on the strict definition of linear independence for a matrix: "if a combination gives 0, when the [scalars that multiply the vectors] are not all 0, then the vectors are *dependent*."  --Since the vectors can be shown to be 0 regardless of their scalar multiplier, then they are dependent.
+      * the comment about being on a plane makes sense, but is a less obvious (to me) way to make the point.  It shows though that dependence is something like "filling out fewer than the available dimensions in a matrix", or, what is related to this,  "having more columns or rows than the full rank r".
+
+## Example 6: Matrix Linear Independence
+
+### Sources
+* ITLA, 5th ed.  p175.
+
+### Problem Text
+* "Given the following matrix:
+
+$$
+\left[
+{\begin{array}{cc}
+a & b & c \\
+0 & d & e \\
+0 & 0 & f \\
+\end{array}} 
+\right]
+$$
+
+... show that if a, d, and f are all non-zero that the columns of U are all independent."
+
+### Solution
+* I initially said: "If a, d, and f are all non-zero then it will not be possible to eliminate the pivots and this square matrix will be full rank.  A consequence is that each column will extend into at least 1 dimension that the others do not, and therefore they must all be linearly independent."
+* I think this is correct at least in the case of a square matrix, but what the book does it to show that you can consider the matrix U as multiplying x in Ux = 0.  Because it's upper triangular, you solve Ux = 0 using back-substituion and show that the components of x are always 0.  Going back to the definition of independence: since the only way to get Ux = 0 is when the scalars in x are all 0, then the columns of U are independent.  --This approach is prob the safe proof so go with that.
+
+
+## Example 7: Matrix Linear Independence
+
+### Sources
+* ITLA, 5th ed.  p175.
+
+### Problem Text
+* "Given the following vectors:
+   * vectors (1,3,2), (2,1,3) and (3,2,1)
+   * vectors (1,-3,2),(2,1,-3) and (-3,2,1)
+
+..."show the independence or dependence of each."
+
+### Solutions
+* vectors (1,3,2), (2,1,3) and (3,2,1): when put into a matrix, the matrix reduces to I under RREF.
+* vectors (1,-3,2),(2,1,-3) and (-3,2,1): the 3rd vector is the sum of the each of the first 2 vectors, when each is multiplied by -1.
+
+## Example 8: Matrix Linear Independence
+
+### Sources
+* ITLA, 5th ed.  p175.
+
+### Problem Text
+* Given the following matrices:
+
+$$
+U\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 3 & 4 & 1 \\
+0 & 6 & 7 & 0 \\
+0 & 0 & 0 & 9 \\
+0 & 0 & 0 & 0 \\
+\end{matrix}} 
+\right]
+\text{, }U\text{ = }
+\left[
+{\begin{matrix}{cc}
+2 & 3 & 4 & 1 \\
+0 & 6 & 7 & 0 \\
+0 & 0 & 0 & 9 \\
+4 & 6 & 8 & 2 \\
+\end{matrix}} 
+\right]
+$$
+
+... choose 3 independent columns of U.  Then find 2 other unique combinations of 3 independent columns.  Do the same for A.
+
+### Solutions
+* U is an updated form of A.  Any 3 columns except for 1,2,3 are independent in both of them.
+* Note: one point of this problem is to **separate the concept of pivot columns from the concept of independent columns.**  Only 1,2,4 are pivot columns, but 3 can be independent of other columns, depending on the columns selected.  A column need not be a pivot column to be independent.
+
+## Example 9: Matrix Linear Independence
+
+### Sources
+* ITLA, 5th ed.  p175.
+
+### Problem Text
+* If w_1,w_2,w_3 are independent vectors, show that the sums v_1 = w_2 + w_3, v_2 = w_1 + w_3, v_3 = w_1 + w_2 are independent.
+
+## Solutions
+* This is done by first construing the formula in terms of a linear combination of vs, where c_1v_1 + c_2v_2 + c_3v_3 = 0. Then substituted in the w formulas: c_1(w_2 + w_3) + c_2(w_1 + w_3) + c_3(w_1 + w_2) .  When the cs are distributed and the terms re-arranged and abstracted, you get (c_2 + c_3)w_1 + (c_1 + c_3)w_2 + (c_1 + c_2)w_3 = 0.  This shows that the w's are independent, or at least reformuates everything in terms of a linear combination of 3 independent vectors equal to 0.  Considering them as independent means that the only scalar multipliers that will return the 0 vector must be cs = 0, or c_2 + c_3 = c_1 + c_3 = c_1 + c_2 = 0.  This works out to saying that all the cs must equal 0.  Only this combination of independent vectors times c (or x) = 0 returns 0, so the vectors are independent.
+
+## Example 10: Matrix Linear Independence
+
+### Sources
+* ITLA, 5th ed.  p175.
+
+### Problem Text and Solutions
+* Suppose v_1,v_2,v_3,v_4 are vectors in $\mathbb{R}^3$ .
+      * These four vectors are dependent because columns are in m-space, so saying that you have four columns in R3 means you have a 4x3 matrix, which guarantees at least one free variable column.  So there will be one non-zero solution to Ax = 0, which is the definition of dependent.
+      * The two vectors v1 and v2 will be dependent if : answer: one is a multiple of the other.  Another way the book says is is that [v1 v2] is a rank 0 or rank 1 matrix, meaning that at least one of the rows would zero out.
+      * The vector v1 and (0,0,0) are dependent because: answer: a nontrivial combination of v_1 and 0 gives 0: e.g. 0v_1 + 3(0,0,0) = 0.  --What this means is that if the values of a vector are 0 itself, then someting other than a scalar c = 0 gives the 0 vector.  This is a definition of dependence, although it's strange.
+
+
+## Example 10: Matrix Linear Independence
+
+### Sources
+* ITLA, 5th ed.  p175.
+
+### Problem Text
+*  Find 2 independent vectors on the plane x + 2y - 3z - t = 0.  Then find 3 independent vectors.  Why not four?  The plane is in the nullspace of what matrix?
+      *  The coefficient matrix is a 1x4 matrix = A, so it's got 3 free variables for a max of 3 indepdent vectors among them (this is why not four).  The vectors are (-2,1,0,0), (3,0,1,0), (1,0,1,0).  The these 3 vectors can be considered as a matrix and all of N(A) is some linear combination of them.
+
+  
 # Matrix Q & A
 
 ## Q1
