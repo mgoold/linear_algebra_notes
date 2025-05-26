@@ -867,6 +867,125 @@ is automatically symmetric.  False: A would itself need to be symmetric but does
 * If A is not symmetric then $A^{-1}$ is not symmetric .  True.
 * When A,B,C are symmetric, the transpose of ABC is CBA. True.
 
+## Example 7: Find Bases, Dimensions of Subspaces
+
+### Source
+* ITLA v5, p190.
+
+### Problem Text
+* "Suppose the 3x3 matrix A is invertible.  Write down the bases for the four subspaces for A, and also for the 3 by 6 matrix B = [A A] .
+
+### Solutions
+* All invertible matrices reduce to I in RREF form.  Therefore for the 3x3 invertible matrix A:
+   * The basis for C(A) will be all columns, and the basis for R(A) will be all rows, each having 3 dimensions.
+   * The basis for N(A) and N(A^T) will be empty (or the 0 vector, depending on how you want to describe it).
+* For B = [A A]
+   * The basis for C(A) is not change, but now either of 2 duplicate columns can be used so long as you get a unique combination of the 3 columns.
+   * It is not possible to eliminate any rows, so the basis for R(A) is still all the rows of A.
+   * N(A) will have 3 special solutions for the 3 free columns, each one matching the same column in A as 1,-1 and all other columns being 0.
+   * N(A^T) will be empty.
+
+## Example 8: Find Bases, Dimensions of Subspaces
+
+### Source
+* ITLA v5, p190.
+
+### Problem Text
+* "What are the dimension of the 4 subspaces for A,B,C if I is the 3x3 identity matrix and 0 is the 3x2 0 matrix for the following matrices:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+I & 0 \\
+\end{matrix}} 
+\right]
+\text{, }B\text{ = }
+\left[
+{\begin{matrix}{cc}
+I & I \\
+{0^T} & {0^T} \\
+\end{matrix}} 
+\right]
+\text{, }C\text{ = }
+\left[
+{\begin{matrix}{cc}
+0 \\
+\end{matrix}} 
+\right]
+$$
+
+### Solutions
+* For A dimensions:
+      * C(A): 3, R(A): 3, N(A): 2, N(A^T): empty
+* For B dimensions:
+      * C(B): 3, R(B): 3, N(B): 3, N(B^T): 2
+* For C dimensions:
+      * C(B): 0, R(B): 0, N(B): 2, N(B^T): 3
+
+### Notes
+* for the 3x2 0 grid: the nullspace and left nullspace are not empty.  The reason is that since all the rows are 0, "ironically" any non-zero vector could be multiplied with them to yield a 0 dot product.
+* All the columns and rows being 0 is also why the nullspace and left nullspace is equal to the respective full row or column count of the 0 grid -- the grid is sort of nothing but free variables.
+
+## Example 9: Find Bases, Dimensions of Subspaces
+
+### Source
+* ITLA v5, p190.
+
+### Problem Text
+* "Which subspaces are the same for these matrices of differing sizes?"
+
+$$
+\left(a\right)
+\left[
+{\begin{matrix}{cc}
+A \\
+\end{matrix}} 
+\right]
+\text{ and }
+\left[
+{\begin{matrix}{cc}
+A \\
+A \\
+\end{matrix}} 
+\right]
+\left(b\right)
+\left[
+{\begin{matrix}{cc}
+A \\
+A \\
+\end{matrix}} 
+\right]
+\text{ and }
+\left[
+{\begin{matrix}{cc}
+A & A \\
+A & A \\
+\end{matrix}} 
+\right]
+$$
+
+... prove that all 3 of these matrices have the same rank r."
+
+### Solutions
+
+* For a, R(A) and N(A) should be the same.
+* For b, C(A) and N(A^T) should be the same.
+* When you create a matrix by duplicating a matrix either beside or below its original, all of the duplicate rows or columns thus generated will go into the nullspace or left nullspace of the matrix. This is why the rank r of the original matrix will remain unchanged.
+
+## Example 10: Find Bases, Dimensions of Subspaces
+
+### Source
+* ITLA v5, p190.
+
+### Problem Text
+* "If the entries of a 3x3 matrix A are chosen randomly between 0 and 1, what are the most likely dimensions of the four subspaces?"
+* "What if this random matrix A is 3x5?"
+
+### Solutions
+* The most likely configuration is the identiy matrix I, because if you have at least one 1 in each diagonal position you can rowref until you get I and there is a better than 50% change of this being the case.  Then C(A) and R(A) dimension = 3, and N(A) and N(A^T) dimensions = 0.
+* Same thing, but now you are most likely to have 2 free variables, so N(A) dimension = 2, N(A^T) dimensions = 0.
+
 # 2x2 Defined Matrix
 
 ## Example 1: Matrix Spaces
