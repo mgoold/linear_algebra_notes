@@ -809,7 +809,24 @@ $$
 * Left Nullspace
 * To say that an entire matrix is in the nullspace or left nullspace of another matrix is to say that they are orthogonal.  In order for entire matrices orthogonal, every row has to be orthogonal to every column.  If they were rank 2 3x3 matrices this would not be possible by definition.
 
+## Example 23: Orthogonal Complements
 
+### Sources
+* ITLA, 5th Ed., p202
+
+### Problem Text:
+* "If Ax = b has a solution and $A^Ty\text{ = }0$, is $y^Tx\text{ = }0$ , or $y^Tb\text{ = }0$ ?"
+* "If $A^Ty$ = (1,1,1) has a solution and Ax = 0, what does that tell us?"
+
+### Solutions:
+* "If Ax = b has a solution and $A^Ty\text{ = }0$, is $y^Tx\text{ = }0$ , or $y^Tb\text{ = }0$ ?"
+      * Answer: If Ax = b has a solution, then by definition b is in C(A).  If $A^Ty\text{ = }0$ , then y is perpendicular to $A^T$ by definition of dot product.  To be perpendicular, it must be a horizontal matrix.  Since b is in C(A), and y is a horizontal matrix, they must be perpendicular to each other.  Therefore $b^Ty\text{ = }0$ .  Further, the solutions book says that $b^Ty\text{ = }left(Ax\right)^Ty\text{ = }x^T\left(A^t\right)y\text{ = }0$ .  This is so because:
+         * we already demonstrated that $b^Ty\text{ = }0$
+         * by extension, Ax is the column space of A and Ax = b, so it follows that $left(Ax\right)^Ty\text{ = }0$ .
+         * by the rules of transformation, $left(Ax\right)^T$ = $x^T\left(A^t\right)$, so it follows that $x^T\left(A^t\right)y\text{ = }0$ .
+* "If $A^Ty$ = (1,1,1) has a solution and Ax = 0, what does that tell us?"
+      * Answer: "If $A^Ty$ = (1,1,1) has a solution, then that solution is a linear combination of the rows of A and is in R(A).  It must therefore be orthogonal to every x in the nullspace."
+         * This is one of those things where its so obvious that it can be hard to tell what response the question wants to elicit.  First of all, realize that $A^Ty$ is a way of describing the rowspace, variously called R(A) or $C\left(A^T\right)$ .  It seems weird that when we talk about columns space, we're multiply rows of A times the column x, and when we're talking of rowspace, we transpose the rows into columns and multiply across their rows (what would be the columns of A) times the column vector y.  But anyway, just as if b is a solution to Ax = b it is in C(A), so too if $A^Ty$ = (1,1,1) has solution, it must be in R(A).  But R(A) is perpendicular to the nullspace, and therefore the solution to $A^Ty$ = (1,1,1) must be perpendicular to every x in N(A).
 
 # Block Matrices
 
