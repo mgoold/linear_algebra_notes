@@ -223,7 +223,6 @@ is a complete solution.  Note that in this problem A is undefined.
    * $E_{32}$ subtracts -7 times row 2 from row 3.
    * P exchanges rows 1 and 2, then rows 2 and 3."
 
-
 ### Solutions
 
 * $E_{21}:$
@@ -686,6 +685,131 @@ $$
 * Suppose an m by n matrix has r pivots.  The number of special solutions is: answer: n-r.
 * The null space contains only x = 0 when : answer: r = n.  [Note that the matrix doesn't need to be square.]
 * The column space is all of Rm when: answer: r = m.  [Again, note that the matrix doesn't need to be square.]
+
+## Example 20: Orthogonal Complements
+
+### Sources
+* ITLA, 5th Ed., p201
+
+### Problem Text & Solutions:
+* Suppose that S is a six-dimensional subspace of 9-dimensional space $R^9$ .
+      * What are the possible dimensions of subspaces orthogonal to S?
+         * Answer: If S is six-dimensional in R9, subspaces orthogonal to S can have dimensions 0, 1, 2, 3.  Note: the key here is to consider what basis S would have to have.  Since it's said to be six dimensions, it must really have 6 linearly independent columns out of 9.  This leaves up to 3 dimensions that can be orthogonal complements of S -- special solutions for N(A) for example.
+      * What are the possible dimensions of the orthogonal complement $S^{\perp}$ of S?
+         * Answer: the orthogonal complement must have a dimension of 3.  Note: by definition, an orthogonal complement contains every vector perpendicular to every vector in what it complements, so it has to have the full set of potential vectors in its basis.  It is the "largest orthogonal subspace".
+      * What is the smallest size of a matrix A that has row space S?
+         * Answer: the question says that it is row space S, so in order to actually be 6 dimensional, it must have a basis of 6 rows, because the dimension is by definition the number of independent vectors in a basis. -- but a row space includes the whole row, and the potential size was up to 9 dimensions, so the matrix must be at least size 6 by 9.
+      * What is the smallest possible size of a matrix B that has nullspace $S^{\perp}$ ?
+         * Answer: referencing the previous question, S is the 6x9 sized matrix just discussed,  In order for a matrix to have an orthogonal complement of $S^{\perp}$, it would have to be the same size S.  Therefore, B must be at least the same size as A.
+
+## Example 21: Orthogonal Complements
+
+### Sources
+* ITLA, 5th Ed., p201
+
+### Problem Text:
+* Construct any 2x3 matrix of rank 1.  Show the bases for each subspace.  Which vectors are orthogonal?
+
+### Solutions
+
+Example matrix:
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 3 \\
+2 & 4 & 6 \\
+\end{matrix}} 
+\right]
+$$
+
+* C(A) : (1,2), dimension 1.
+* R(A) : (1,2,3), dimension 1.
+* N(A) : (-2,1,0),(-3,0,1), dimension 2.
+* N(AT) : (2,-1), dimension 1.
+
+* C(A) and N(A) are orthogonal, R(A) and N(AT) are orthogonal.
+
+## Example 21: Orthogonal Complements
+
+### Sources
+* ITLA, 5th Ed., p201
+
+### Problem Text:
+* Construct any 3,2 matrix of rank 2.  Show the bases for each subspace.  Which vectors are Z (zero vector)?
+
+### Solutions:
+
+Example matrix:
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 2 \\
+2 & 5 \\
+3 & 6 \\
+\end{matrix}} 
+\right]
+$$
+
+* C(A) : (1,2),(2,5) dimension 2.
+* R(A) : (1,2,3), (2,5,6), dimension 2.
+* N(A) : empty.
+* N(AT) : (2,0,-1), dimension 1.
+
+## Example 22: Orthogonal Complements
+
+### Sources
+* ITLA, 5th Ed., p201
+
+### Problem Text and Solutions:
+
+* "Construct a matrix with the required property, or say why it is impossible to have a matrix with that property."
+      * Column space contains (1,2,3) and (2,3,5) and the nullspace contains (1,1,1).
+         * Answer: the key word is "contains" -- this leaves the door open to having more than the 2 columns listed, so that it could be a 3x3 matrix and thus be multiplied times a 3x1 vector in its nullspace. The example matrix is then:
+
+$$
+\left[
+{\begin{matrix}{cc}
+1 & 2 & -3\\
+2 & -3 & 1 \\
+3 & 5 & -2 \\
+\end{matrix}} 
+\right]
+$$
+
+   * Rowspace contains (1,2,-3) and (2,-3,5), nullspace contains (1,1,1).  Note: all of these vectors are presented in column brackets in problem text.
+      * Answer: the book says that this is impossible "because N(A) and C(A^T) aka R(A) are orthogonal subspaces."  The only way this makes sense to me is if it implies that we're disallowed from adding an additional column to the matrix when talking about rowspace -- we **could** add an additional column to the column space in other questions, when the matrix is described as "containing" columns.  If that is true then its also true that you can't multiply a 3x2 set of columns by a 3x2 nullspace vector, which is what you do with rows and the null space.
+   * Every row is orthogonal to every column (A is not the zero matrix).
+      * Answer: Note: in general it's good to try and do a 2x2 matrix to test questions like these so that you can try the most arrangements in the shortest time.  Also note that to say every row is orthogonal to every column is to say that every row times every column = 0.  Here is an example that works:
+
+$$
+B\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & -1 \\
+1 & -1 \\
+\end{matrix}} 
+\right]
+$$ 
+
+   * Columns add up to a column of zeros, rows add up to a column of 1s.
+      * The book answer is that this can't be done; the actual wording is cryptic and I couldn't understand it.  Anyway I couldn't produce a 2x2 matrix that met the conditions.
+
+## Example 22: Orthogonal Complements
+
+### Sources
+* ITLA, 5th Ed., p201
+
+### Problem Text:
+* If AB = 0 then the columns of B are in the __________ of A.  The rows of A are in the _____________ of B.  With AB = 0, why can't A and B be 3x3 matrices of rank 2?
+
+### Solutions:
+* Nullspace
+* Left Nullspace
+* To say that an entire matrix is in the nullspace or left nullspace of another matrix is to say that they are orthogonal.  In order for entire matrices orthogonal, every row has to be orthogonal to every column.  If they were rank 2 3x3 matrices this would not be possible by definition.
+
+
 
 # Block Matrices
 
