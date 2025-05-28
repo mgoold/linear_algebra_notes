@@ -777,7 +777,7 @@ This means we must calculate p.  As stated previously, p = xa, and in this case 
 
 In an n-space, the projection p = $A\hat{x}$  and our problem is to find $\hat{x}$ .  The key is that e = b - $a\hat{x}$ .  Again, in n-space, x consists of as many components as you have basis vectors.  In this case, we have a plane, meaning 2 basis vectors, so we'll need to solve for $\hat{x}_1$ and $\hat{x}_2$ .  We know that e is perpendicular to the plane, so it must consist of :
 
-${a_1}^T\left(b\left{ - }A\hat{x}\right)\text{ = }0$ and ${a_2}^T\left(b\left{ - }A\hat{x}\right)\text{ = }0$ .
+${a_1}^T\left(b\text{ - }A\hat{x}\right)\text{ = }0$ and ${a_2}^T\text(b\left{ - }A\hat{x}\right)\text{ = }0$ .
 
 These will be easier to process if we put them in matrix form:
 
@@ -785,8 +785,8 @@ $$
 A\text{ = }
 \left[
 {\begin{array}{cc}
-{a_1}^T\ \\
-{a_1}^T\ \\
+{a_1}^T \\
+{a_1}^T \\
 \end{array} } 
 \right]
 left(b\left{ - }A\hat{x}\right)
@@ -800,7 +800,7 @@ left(b\left{ - }A\hat{x}\right)
 left(b\le
 $$
 
-This detailed breakout is the same as the formula $A^Tleft(b\left{ - }A\hat{x}\right)\text{ = }0$ . 
+This detailed breakout is the same as the formula $A^Tleft(b\text{ - }A\hat{x}\right)\text{ = }0$ . 
 
 Note that:
 * The matrix A in this equation is the n-space correspondence to the single line little "a" in our previous equation.  If you substituted that in, you would have the same equation as previously.
