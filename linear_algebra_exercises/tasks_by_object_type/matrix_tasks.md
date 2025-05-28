@@ -3066,6 +3066,71 @@ And LU does = A.  Also Lc = b.
 
 * The meaning of the values 9,3 is that they are the values of the transformed particular solution for b given in the original problem, when Ab --> Rd.  The values 9,3 can be made into a particular point when the free variable columns 2 and 4 are set to 0, so x_p = (9,0,3,0). 
 
+## Example 9: Matrix Orthogonality
+
+### Sources
+* ITLA 5th Ed., p.202
+
+### Problem Text
+* "This system of equations Ax = b has no solution: (they lead to 0 = 1):
+
+$$x\text{ + }2y\text{ + }2z\text{ = }5$$
+$$2x\text{ + }2y\text{ + }3z\text{ = }5$$
+$$3x\text{ + }4y\text{ + }5z\text{ = }9$$
+
+... find a vector y of numbers to multiply the equations so that they add to 0 = 1.  In what subspace is this vector y?  Its dot product $y^Tb$ is 1, so there is no solution $x$ ."
+
+### Solutions & Notes
+* When the problem wording is "find numbers [or find a vector] to multiply the equations so that they sum" ... what it wants is find numbers by which to multiply the entire equation **on both sides** .  Then you sum the equations vertically.  In this case, if you multiply equations 1,2,3 by 1,1,-1 respectively, you'll get 0 = 1.  When you multiply the entire equation this way, it's the same effect as using dot product-style multiplication in $A^Ty$ or $\left(y^TA\right)x$ or $y^Tb$.  All of these are ways of saying that (1,1,-1) would be in the left nullspace.  However, the results on the 2 sides (0 = 1) don't match, so this doesn't solve the equation.
+
+## Example 10: Matrix Orthogonality
+
+### Sources
+* ITLA 5th Ed., p.202
+
+### Problem Text & Solution
+* In the context of orthogonality, how do we know that $Ax_r$ is equal to Ax?
+* How do we know that this vector is in the column space?
+* If
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 1 \\
+1 & 1 \\
+\end{matrix}} 
+\right]
+\text{ and  x = }
+\left[
+{\begin{matrix}{cc}
+1 \\
+0 \\
+\end{matrix}} 
+\right]
+$$
+
+... what is r?
+
+### Solutions
+* In the context of orthogonality, how do we know that $Ax_r$ is equal to Ax?
+* * How do we know that this vector is in the column space?
+      * Answer: The book says that "x = $x_r$ + $x_n$ , where $x_r$ is in the row space and $x_n$ is in the nullspace.  Then $Ax_n$ = 0 and Ax = $Ax_r$ + $Ax_n$ = Ax."  So this is a "by definition" justification, saying that only the parts of Ax that are in the "column space" (another phrase for Ax) come from $Ax_r$ .  --If it were otherwise, it would be in the nullspace.
+      * Note: I'm not sure it says so anywhere explicitly, but the r in $x_r$ seems to stand for "the part of x or Ax that comes from the pivot columns and rows", since the pivot columns/rows are denoted as "r" or a matrix' "rank".  Correspondingly the n in $x_n$ is for null.
+* What is r?
+      * The book says that we should split x into (1/2, 1/2) and (1/2,-1/2).  I see that when you multiply A times the first (1/2, 1/2) you get 1 and when you multiply it times (1/2,-1/2) you get 0, and if you add them you get 1,0 = x.  What I don't get is the algo for doing these computations.
+
+## Example 11: Matrix Orthogonality
+
+### Sources
+* ITLA 5th Ed., p.202
+
+### Problem Text 
+* "Suppose that A is a symmetric matrix $A^T$ = A.  Why is its column space perpendicular to its rowspace?"
+
+### Solution
+* For a symmetric matrix, its columns are the same as its rows.  The nullspace (the xs for which Ax = 0) are columns that are perpendicular to the rows.  But in the case of a symmetric matrix, the columns are identical to the rows, so we can say that the column space is perpendicular to the nullspace.
+
 
 # Matrix Spaces
 
