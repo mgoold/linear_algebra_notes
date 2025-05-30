@@ -826,9 +826,32 @@ The projection matrix P will still have the same properties as it a projection d
 * It will be symmetric: $P^T\text{ = }P$.
 * $P^2\text{ = }P$ .  --If you were to multiply out the full function times itself: $A\left(A^TA\right)^{-1}\color{red}{A^TA\left(A^TA\right)^{-1}}A^T$, you'll see the left side of it (in red) has $A^TA$ multiplying it's inverse, which gives an identity matrix, so that the whole thing reduces to its original form  $A\left(A^TA\right)^{-1}A^T$ .
 
-### Common Applications of P
+## Least Squares with Projection
+
+### Sources
+* MIT 18.06: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/least-squares-determinants-and-eigenvalues/projection-matrices-and-least-squares/
+* https://www.youtube.com/watch?v=MC7l96tW8V8
+* Example: https://www.youtube.com/watch?v=8mAZYv5wIcE&list=PL39469144F25ACECE
 
 The most common application of P is fitting points to a line.
+
+### Basics of Least Squares Approximation
+
+Suppose you have a system of equations that can be construed as the formula Ax = b in the usual way for linear algebra, where A is the coefficients for the equations, x is the vector of variables for these equations, and y is the solution for the equation.  In the context of linear regression from a grind data, this would look like $\Beta_1\x_1\text{ = }\Beta_2\x_2\text{ ... }\Beta_n\x_n\text{ = }y$, where y is the variable we hope to predict.  Each row of data would be considered a separate equation predicting its own y.  Mapping this on to the linear algebra Ax = b format, the values in the columns i...m are the coefficients, the imaginary variables from columns i ... n that the coefficients multiply are the variables in the vector x, and the i...m y values we expect to predict are in the beta vector.  
+
+Usually there is not an exact solution for x, and this is usually because there are two many rows in A, so you just can't find a set of x values that will solve for all the values of b.
+
+So in this situation Ax cannot = b.  In other words, b is not in A's column space C(A).  But you can immagine that in the column space C(A) of all possible Ax linear combinations, there is some set of x values $\hat{x}$ such that the vector of errors or differences $A\hat{x}$ - b will be as small as possible.  We know what A is, but so far the ideal $A\hat{x}$ that minimizes errors is unknown because we haven't found $\hat{x}$.  This $A\hat{x}$ is called a "projection" p because it can be thought of as a projection or shadow of b on Ax, where b and p are identical in all respects except the errors.  
+
+These error values $A\hat{x}$ - b are thought of as being orthogonal to C(A).  In order to make mathematical use of this orthogonality to find the projection $A\hat{x}$ , we do a couple things:
+
+* first we know that if $A\hat{x}$ - b is orthogonal to C(A), that means it is by definition in the left nullspace of C(A).  That is, $A\hat{x}$ - b is in $N\left(A^T\right)$, which contains all values orthogonal to C(A).
+* next, we note that again by definition, if $A\hat{x}$ - b is in $N\left(A^T\right)$ , then $A^T\left(A\hat{x}\text{ - }b\right)\text{ = }0$ , because:
+  * $A^T$ is orthogonal to $N\left(A^T\right)$ and
+  * if vectors are orthogonal to each other, their dot product is 0.
+* finally we distribute $A^T$ over $\left(A\hat{x}\text{ - }b\right)$ by multiplication, and then move $A^Tb$ to the right side of the equation to get: $A^TA\hat{x}\text{ = }A^Tb$ .
+* This puts us in a position to solve for x by treating putting [A b] into RREF in the usual way.  This process is easier than finding $\hat{x}$ via a projection matrix to multiply on b.
+
 
 ## Orthogonality and Gram-Schmidt
 
