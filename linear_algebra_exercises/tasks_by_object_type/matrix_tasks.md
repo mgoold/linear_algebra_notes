@@ -3726,7 +3726,7 @@ $$
       * The vector v1 and (0,0,0) are dependent because: answer: a nontrivial combination of v_1 and 0 gives 0: e.g. 0v_1 + 3(0,0,0) = 0.  --What this means is that if the values of a vector are 0 itself, then someting other than a scalar c = 0 gives the 0 vector.  This is a definition of dependence, although it's strange.
 
 
-## Example 10: Matrix Linear Independence
+## Example 11: Matrix Linear Independence
 
 ### Sources
 * ITLA, 5th ed.  p175.
@@ -3735,7 +3735,244 @@ $$
 *  Find 2 independent vectors on the plane x + 2y - 3z - t = 0.  Then find 3 independent vectors.  Why not four?  The plane is in the nullspace of what matrix?
       *  The coefficient matrix is a 1x4 matrix = A, so it's got 3 free variables for a max of 3 indepdent vectors among them (this is why not four).  The vectors are (-2,1,0,0), (3,0,1,0), (1,0,1,0).  The these 3 vectors can be considered as a matrix and all of N(A) is some linear combination of them.
 
-  
+## Example 12: Projection Matrices
+
+### Sources
+* ITLA, 5th ed.  p214.
+
+### Problem Text
+* "Project the vector b onto the line through a. Check that e is perpendicular to a.  Then find the projection matrix P = $\frac{aa^T}{a^Ta}$ .  Verify that P^2 = P.  Multiply Pb to compute the projection p.
+
+$$
+\text{(a) b = }
+\left[
+{\begin{array}{cc}
+1 \\
+2 \\
+2 \\
+\end{array}} 
+\right]
+\text{, and a = }
+\left[
+{\begin{array}{cc}
+1 \\
+1 \\
+1 \\
+\end{array}} 
+\right]
+$$
+
+$$
+\text{(b) b = }
+\left[
+{\begin{array}{cc}
+1 \\
+3 \\
+1 \\
+\end{array}} 
+\right]
+\text{, and a = }
+\left[
+{\begin{array}{cc}
+-1 \\
+-3 \\
+-1 \\
+\end{array}} 
+\right]
+$$
+
+### Solutions:
+* (a) xhat = 5/3, axhat = p = (5/3,5/3,5/3), e = (-2/3,1/3,1/3); e is perpendicular to a.
+
+P = $\frac{aa^T}{a^Ta}$ = 
+
+$$
+\frac{1}{3}
+\left[
+{\begin{matrix}{cc}
+1 & 1 & 1 \\
+1 & 1 & 1 \\
+1 & 1 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+$P^2$ does = P.  Pb = (5/3,5/3,5/3) as listed above.
+
+* (b) xhat = -1, axhat = p = (1,3,1), e = (1,3,1)-(1,3,1) = (0,0,0); e is perpendicular to a.
+
+P = $\frac{aa^T}{a^Ta}$ = 
+
+$$
+\frac{1}{11}
+\left[
+{\begin{matrix}{cc}
+1 & 3 & 1 \\
+3 & 9 & 3 \\
+1 & 3 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+$P^2$ does = P; Pb = (1,3,1) as listed above.
+
+## Example 13: Projection Matrices
+
+### Sources
+* ITLA, 5th ed.  p214.
+
+### Problem Text
+* "Compute the project p from b and a.  Then construct the projection matrices P1 and P2 onto the lines through the a's.  Is it true that $\left(P_1\text{ + }P_2\right)^2\text{ = }P_1\text{ + }P_2$ ?  This *would* be true if $P_1P_2\text{ = }0$ .
+
+$$
+\text{(a) b = }
+\left[
+{\begin{array}{cc}
+{\text{cos}\theta} \\
+{\text{sin}\theta} \\
+\end{array}} 
+\right]
+\text{, and a = }
+\left[
+{\begin{array}{cc}
+1 \\
+0 \\
+\end{array}} 
+\right]
+$$
+
+$$
+\text{(b) b = }
+\left[
+{\begin{array}{cc}
+1 \\
+1 \\
+\end{array}} 
+\right]
+\text{, and a = }
+\left[
+{\begin{array}{cc}
+-1 \\
+-1 \\
+\end{array}} 
+\right]
+$$
+
+## Solutions
+* (a) xhat = ${\text{cos}\theta}$, p = $\left({\text{cos}\theta},0\right)$ .
+
+$$
+P_1\text{ = }
+\left[
+{\begin{matrix}{cc}
+1 & 0 \\
+0 & 0 \\
+\end{matrix}} 
+\right]
+$$
+
+* (b) xhat = 0, p = (0,0) .
+
+$$
+P_2\text{ = }
+\frac{1}{2}
+\left[
+{\begin{matrix}{cc}
+1 & -1 \\
+-1 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+* It is not the case that $\left(P_1\text{ + }P_2\right)^2\text{ = }P_1\text{ + }P_2$ .
+
+## Example 14: Projection Matrices
+
+### Sources
+* ITLA, 5th ed.  p214.
+
+### Problem Text
+* Compute the projection matrices P1 from a1 = (-1,2,2) and P2 from a2 = (2,2,-1).  Multiply the 2 matrices P1P2 and explain why the result is like it is.
+* Project b = (1,0,0) onto the lines through a1 and a2, as well as a3 = (2,-1,2).  Add up the 3 projections p1 + p2 + p3.
+* Find the projection matrix P3 onto a3 = (2,-1,2).  Verify that P1 + P2 + P3 = I.  This is because the bases a1, a2, and a3 are orthogonal to each other.
+
+### Solutions
+
+$$
+P_1\text{ = }
+\frac{1}{9}
+\left[
+{\begin{matrix}{cc}
+1 & -2 & -2 \\
+-2 & 4 & 4 \\
+-2 & 4 & 4 \\
+\end{matrix}} 
+\right]
+$$
+
+$$
+P_2\text{ = }
+\frac{1}{9}
+\left[
+{\begin{matrix}{cc}
+4 & 4 & -2 \\
+4 & 4 & -2 \\
+-2 & -2 & 1 \\
+\end{matrix}} 
+\right]
+$$
+
+$$
+P_3\text{ = }
+\frac{1}{9}
+\left[
+{\begin{matrix}{cc}
+4 & -2 & 4 \\
+-2 & 1 & -2 \\
+4 & -2 & 4 \\
+\end{matrix}} 
+\right]
+$$
+
+$$
+P_1+P_2+P_3\text{ = }
+\frac{1}{9}
+\left[
+{\begin{matrix}{cc}
+9 & 0 & 0 \\
+0 & 9 & 0 \\
+0 & 0 & 9 \\
+\end{matrix}} 
+\right]
+\text{ = }I
+$$
+
+* P1P2 = [0] matrix of same dimensions.  Because a1 and a2 are perpendicular to each other their respective matrices are perpendicular to each other.
+
+* xhat1 = -1/9 and p1 = (1/9,-2/9,-2/9)
+* xhat2 = 2/9 and p2 = (4/9,4/9,-2/9)
+* xhat3 = 2/9 and p3 = (4/9,-2/9,4/9)
+
+So p1 + p2 + p3 = (1,0,0) which is b.
+
+## Example 15: Projection Matrices
+
+### Sources
+* ITLA, 5th ed.  p214.
+
+### Problem Text
+* "Project the vector b = (1,1) onto the lines through a1 = (1,0) and a2 = (1,2).  Verify that the projections do not add up to b.  This is because they are not orthogonal."
+* The projection of vector b = (1,1) onto the *plane* of a1 and a2 will equal b.  Find P = $A\left(A^TA\right)^{-1}A^T$ for A = [a1 a2] .
+
+### Solutions
+
+* p1 = xhat1a1 = 1(1,0) = (1,0) = p1 .
+* p2 = xhat2a2 = 3/5(1,2) = (3/5,3/10) = p2 .
+* p1 + p2 does not equal (1,1).
+* P = $A\left(A^TA\right)^{-1}A^T$ for A = [a1 a2]  = I , and I is the projection matrix on to all of $R^2$ .
+
+
+
 # Matrix Q & A
 
 ## Q1
