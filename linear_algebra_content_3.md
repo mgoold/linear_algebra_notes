@@ -843,7 +843,9 @@ Usually there is not an exact solution for x, and this is usually because there 
 
 So in this situation Ax cannot = b.  In other words, b is not in A's column space C(A).  But you can immagine that in the column space C(A) of all possible Ax linear combinations, there is some set of x values $\hat{x}$ such that the vector of errors or differences $A\hat{x}$ - b will be as small as possible.  We know what A is, but so far the ideal $A\hat{x}$ that minimizes errors is unknown because we haven't found $\hat{x}$.  This $A\hat{x}$ is called a "projection" p because it can be thought of as a projection or shadow of b on Ax, where b and p are identical in all respects except the errors.  
 
-These error values $A\hat{x}$ - b are thought of as being orthogonal to C(A).  In order to make mathematical use of this orthogonality to find the projection $A\hat{x}$ , we do a couple things:
+These error values $A\hat{x}$ - b are thought of as being orthogonal to C(A).  **This is very important, because the projection p that is closest to b, which minimal error, will be the only one that is orthogonal.** To see that this is true, you can look up 3d illustrations of this concept where a line b is not in a 2d plane of C(A) and by reasoning and eyeballing it you can see that the shortest line e between b and p would have to intersect p at a right angle.  The Kahn youtube videos referenced above give a good account.  For higher dimensions you have to take it on faith or look up more complicated proofs.  
+
+In order to make mathematical use of this orthogonality to find the projection $A\hat{x}$ , we do a couple things:
 
 * first we know that if $A\hat{x}$ - b is orthogonal to C(A), that means it is by definition in the left nullspace of C(A).  That is, $A\hat{x}$ - b is in $N\left(A^T\right)$, which contains all values orthogonal to C(A).
 * next, we note that again by definition, if $A\hat{x}$ - b is in $N\left(A^T\right)$ , then $A^T\left(A\hat{x}\text{ - }b\right)\text{ = }0$ , because:
