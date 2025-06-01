@@ -21,7 +21,13 @@ $$\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)\cdot\left(\ov
 * Solving $A^TA\hat{x}\text{ = }A^Tb$ gives the projection p = $A\hat{x}$ of b onto the column space of A.
 * When Ax = b has no solution $\hat{x}$ is the "least-squares solution" : ${\text{||}b\text{ - }A\hat{x}\text{||}}^2$ = minimum.
 * Setting partial derivatives of E = ${\text{||}A\hat{x}\text{ - }b\text{||}}^2$ to zero $\left(\frac{\partial{E}}{x}\text{ = }0\right)$ also produces $A^TA\hat{x}\text{ = }A^Tb$ .
+  * How do do this:
+    1. For each variable, write out the error terms as $E\text{ = }{\left(C\text{ + }t_{i}Dt\text{ - }b_{i}\right)}^2\text{ + }{\left(C\text{ + }t_{i+1}Dt\text{ - }b_{i+1}\right)}^2\text{,...,}{\left(C\text{ + }t_{m}Dt\text{ - }b_{m}\right)}^2$ , where i is the row index, C is the y intercept constant (typically 1), D is an independent variable (in an Ax = b context, a component of the vector x), and b is the corresponding component of b from the same row.  Across the equation row-wise, there should be one squared error for every row i to m.  The **exact same equation** should then be repeated once for each component of x, so that you have a set of identical equations composed of nxm square errors.
+    2. For each equation, take the derivative of E on both sides with respect to a different component of x, so that you work through the x components from i to m, one per equation.
+    3. For each equation, sum the common terms.
+    4. You will finally end up with the same equation $A^TA\text{ = }A^Tb$ , which can then be solved in the same way.
 * To fit points $\left(t_1,b_1\right)\text{,...,}\left(t_m,b_m\right)$ by a straight line, A has columns (1,....1) and $\left(t_1\text{,...,}t_m\right)$ .
+  * IN OTHE WORDS, THE MAIN POINT OF THIS: you get 1 term for a constany y intercept, plus one term for each independent variable, to solve for the dependent var b.
 * In that case $A^TA$ is the 2x2 matrix
 
 $$
