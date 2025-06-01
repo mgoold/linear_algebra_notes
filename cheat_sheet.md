@@ -11,7 +11,9 @@ The most concise-yet-recoverable set of notes I can manage.
 x,y are the independent variables and z is the target variable.  How many parameters does a general linear function have in this scenario?"
 * "Suppose I have 10 data points $\left(x_i,y_i\right)$ and I want to find the line of best fit. The total sum of squares is given by the following dot product:
 
-$$\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)\cdot$$
+$$\left(\right)\cdot$$
+
+\overrightarrow{y}\text{ - }X\overrightarrow{\beta}
 
 \left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)$$
 
