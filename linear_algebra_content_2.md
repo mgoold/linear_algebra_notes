@@ -816,7 +816,7 @@ Remember that:
     * in this situation, by definition there can be no free variables, since fv=n-r.
       * thus only the particular point will be a solution for Ax=b, if it exists, since there can be no special solutions
       * the nullspace N(A) will thus be nothing but the zero vector
-    * the matrix will not be invertible; all vectors will be independent
+    * the matrix will be invertible; all vectors will be independent
     * **full column rank r=n means there will be 1 or 0 solutions**
 
 A typical full column rank r=n example:
