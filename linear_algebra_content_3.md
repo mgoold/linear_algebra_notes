@@ -380,7 +380,7 @@ In the context of the Jacobian, a point is a critical point if the rank of the J
 
 **Gradient Notation**
 
-Gradients apply to a class of functions which take multiple outputs and output a single value.  A gradient function looks like : $f\left(x_1,x_2,x_3\text{,...,}x_n\right)$ .  We can collect all the partials of f in a column vector.  The gradient of f at point $\left(a_{1}\text{,...,}a_{n2}\right)$ is then:
+Gradients apply to a class of functions which take multiple inputs and output a single value.  A gradient function looks like : $f\left(x_1,x_2,x_3\text{,...,}x_n\right)$ .  We can collect all the partials of f in a column vector.  The gradient of f at point $\left(a_{1}\text{,...,}a_{n2}\right)$ is then:
 
 $$
 \nabla{f\left(a\right)}\text{ = }
@@ -422,13 +422,13 @@ $$
 \text{ = }
 $$   
 
-$f'\left(g\left(g\left(x\right)\right)g'\left(x\right)$ .
+$f'\left(g\left(g\left(x\right)\right)\right)g'\left(x\right)$ .
 
 This says that the derivative of a nested function with respect to variable in the inner function is the derivative of the outer function, times the derivative of the inner function with respect to x.  Since this is multiplication, the order doesn't matter, so some descriptions reverse which derivativ is taken first.
 
 For example:
 
-$f\left(x\right)\text{ = }\left(2x\text{ + }3\right)^5)\text{; }f'\left(x\right)\text{ = }\left(5\left(2x\text{ + }3\right)-4\right)\*2\right)\text{=}10\left(2x+3\right)^4\right)$ .
+$f\left(x\right)\text{ = }\left(2x\text{ + }3\right)^5)\text{; }f'\left(x\right)\text{ = }\left\left(5\left(2x\text{ + }3\right)-4\right)\*2\right)\text{=}10\left\left(2x+3\right)^4\right)$ .
 
 #### Dot Product Angles
 
@@ -484,7 +484,7 @@ When gradient descent is used to minimize error/approximate a value in machine l
 
 Formally, this approache looks like this recursive formula:
 
-$$\Large{a_N\text{ = }a_{N-1}-\gamma\nablaf\left(a_{N-1}right\)}$$
+$$\Large{a_N\text{ = }a_{N-1}-\gamma\nabla{f}\left(a_{N-1}right\)}$$
 
 In words, this is "The gradient at point N equals the gradient at the previous point - gamma * gradient at previous point..." .  Where gamma is the "step size", or  scaling parameter that can adjust the impact of learning thus farm, since a given gradient can be large.  This is also called the "learning rate".
 
