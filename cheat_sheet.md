@@ -11,7 +11,9 @@ The most concise-yet-recoverable set of notes I can manage.
 x,y are the independent variables and z is the target variable.  How many parameters does a general linear function have in this scenario?"
 * "Suppose I have 10 data points $\left(x_i,y_i\right)$ and I want to find the line of best fit. The total sum of squares is given by the following dot product:
 
-$$\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)\cdot\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)$$
+$$\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)\cdot$$
+
+\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)$$
 
 ... how many columns does X have in this equation?" Answer: 2 (in fact, X could have an aribtrarily large number of columns, but I think what they're getting at is that it has at least the intercept + x term, which is 2 columns.)
 
