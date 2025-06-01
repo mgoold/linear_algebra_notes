@@ -130,6 +130,62 @@ So B_11 = .25.  In general, the answer to finding the inverse of an invertible m
 
 ## Rules for Subspace Orthogonality
 
+### Independence, Basis, Dimension
+
+* Only vectors can be said to be "in|dependent". This term cannot applie to matrices.
+* The rows x columns measure is the **size** of a matrix.
+* The set of column vectors with pivots in RREF is the rank r of a matrix. r is the same for columns and rows.
+
+* The number of columns or rows in the the bases are the **dimensions** of C(A) or R(A).  The dimension is a number (count) of basis vectors.
+* The set of all linear combinations in C(A) or R(A) is called their span.
+* If a set of vectors in a basis for C(A) or R(A) are said to "span" the space of C(A) or R(A).  The vectors being unique, minimal, and sufficient to span the space is said to confirm their status as a basis.
+* Only vectors span a space.
+* Only vectors form a basis.
+* Vectors are *independent* if no vector is a linear combination of any other vectors.  Equivalently, vectors are independent if no vectors can be subtracted from linear combinations of others to = 0.
+
+### Getting Bases for Each Subspace
+
+* The columns or rows of A that correspond to the pivot columns and rows of R are the *$bases** of C(A) or R(A).
+* The special solution columns of A are the basis of N(A).
+* For the left nullspace:
+  1. To the right of matrix $A_{mxn}$, add $I_{mxm}$ .
+  2. Using row elimination, transform AI to RE; that is A will be updated to R, and I will be updated to E.
+  3. As noted above, EA = R, but you can keep the AI --> RE format, since the insight will be the same.
+  4. Find the row indices of zero rows in R.
+  5. These zero row indices in R will be the indices of the basis in E of the left null space.
+
+### Orthogonality
+
+* Orthogonal means that 2 vectors (or vector spaces) are at a right angle to each other and thus have a dot product of 0.
+* An orthogonal complement is a subspace for which every vector in one subspace is orthogonal to every vector in the other subspace.
+* R(A) is an orthogonal complement to N(A).
+* C(A) is an orthogonal complement to $N\left(A^T\right)$, aka the "left nullspace".
+
+## Subspaces
+A set of vectors in linear combination are a subspace of something if:
+* multiplying the vectors produces results that still fit the rules for the subspace
+* adding the vecotrs produces results that still fit the rules for the subspace
+* the 0 vector is included in the results
+
+When A is an mxn matrix, what is the location of each of these subspaces?
+
+* Null space of A N(A) is in $R^n$.
+* Column space of A C(A) is in $R^m$.
+* R(A) = Column Space of C($A^T$) is in $R^n$.
+* Null space of A N($A^T$) is in $R^m$.
+
+### Dimensions for the Four Subspaces
+
+* Column Space: the rank r of the column space (the number of its pivot variables).  = Number of independent vectors in matrix.
+* Null space: number of special solutions  = n-r
+* Row Space: also r, same as column space.  Dim of C($A^T$) = Dim C(A)
+* Left Null Space N($A^T$):  m-r; note that m is the number of columns in $A^T$ .
+* The row space and null space are in $R^n$, and their dimension add to n.
+* The column space and left null space are in $R^m$, and their dimensions add to m.
+
+### Getting Bases for Four Subspaces
+
+
 ## Compute a Gradient
 
 ## Eigenvalues, Eigenvectors, Jacobians
