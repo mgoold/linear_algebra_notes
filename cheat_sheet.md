@@ -191,8 +191,22 @@ When A is an mxn matrix, what is the location of each of these subspaces?
 
 ### Getting Bases for Four Subspaces
 
+## Compute a Gradient At a Point
 
-## Compute a Gradient
+Given a function, e.g. $f\text(x,y\right)\text{ = }2y\text{ + }4x^2y + 1$, and a point, e.g. (1,1):
+
+* For each variable in the equation:
+  * for each variable take the partial derivative of that same function.  Do this in the left-right column order of the variables.
+  * put the resultant partial derivatives in a single transposed column, starting with the left-most variable's derivative at the top.
+* When this process is complete, plug the values from the point corresponding to each variable into the partial derivatives.
+
+### Recursively Update A Gradient
+
+*  Having computed the initial gradient, e.g. (6x, 2y), and given a gamma step value, e.g. .01, and an inital point e.g. (1,1).
+  *  Plug the point values into the gradient to get the gradient point a1, e.g. (6,2).
+  *  Subtract the product of the gamma step times a1, e.g. .01(6,2) from the intial point, e.g. (1,1) - .01(6,2) = (.4,.8).  The result is updated point a2, e.g. a2 = (.4,.8).
+  *  Repeat the process the specified number of times:
+    *   an = an-1 - gamma times gradient(an-1), e.g. a2 = (.4,.8) - .01(6(.4),2(.8)) = (.16,.64).
 
 ## Eigenvalues, Eigenvectors, Jacobians
 
