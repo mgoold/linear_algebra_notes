@@ -380,7 +380,7 @@ In the context of the Jacobian, a point is a critical point if the rank of the J
 
 **Gradient Notation**
 
-Gradients apply to a class of functions which take multiple inputs and output a single value.  A gradient function looks like : $f\left(x_1,x_2,x_3\text{,...,}x_n\right)$ .  We can collect all the partials of f in a column vector.  The gradient of f at point $\left(a_{1}\text{,...,}a_{n2}\right)$ is then:
+Gradients **apply to** a class of functions which take multiple inputs and combine them into a function that yields a single value.  A real example of such a function is $f\left(x,y\right)\text{ = }3x^2\text{ + }y^2$ .  A gradient is a collection of partial derivatives of such functions.  We can collect all the partials of the function in a column vector.  The gradient of f() at point a where the input variables are $x_1,...x_n$ and the value at a point a for the "coordinate" inputs of these variables is $\left(a_{1}\text{,...,}a_{n}\right)$ is then:
 
 $$
 \nabla{f\left(a\right)}\text{ = }
@@ -396,7 +396,21 @@ $$
 
 --In this notation, the partial derivative and the point value that is plugged into it are combined into a single component.  Remember that there is just one function, so all the components down the column are denoted with just "df" instead of "df1...dfn".  The derivative is taken of the same function over and over, but w.r.t. a different, successive input variable.  In this sense, I believe this column down is what would normally be the first row in an mxn Jacobian matrix, where m>1.   --In fact, the instructor goes on to say that we can think of this as the transpose $\left(J^{T}_f\right)$ for f.  The whole resultant vector is called the "gradient vector".
 
-Along with the derivative being given, I believe the notation means that the corresponding point value is plugged into it and the whole component being calculated. 
+### Simple Example of Gradient Descent
+
+Suppose our function takes to inputs, x and y, and combines them in an output function $f\left(x_1,x_2\right)\text{ = }3{x_1}^2\text{ + }{x_2}^2$ .  Then the gradient consists of taking partial derivatives with respect to $x_1$, then $x_2$.  The gradient would then be:
+
+$$
+\nabla{f}\left(x\right)\text{ = }
+\left[
+{\begin{array}{cc}
+\frac{\partial f}{\partial x_1}\text{ = }6x_1 \\
+\frac{\partial f}{\partial x_2}\text{ = }2x_2 \\
+\end{array}}
+\right]
+$$
+
+At a point a = (1,2), the gradient would thus be (6,2).
 
 ### Excursus: Meaning of the Gradient of a Function
 
@@ -412,23 +426,17 @@ $$
   f\left(
     g
     \left(
-     g
-     \left(
      x
-     \right)
     \right)
   \right)
 \right]
 \text{ = }
+f'\left(g\left(x\right)\right)g'\left(x\right)
 $$   
 
-$f'\left(g\left(g\left(x\right)\right)\right)g'\left(x\right)$ .
+This says that the derivative of a nested function with respect to a variable x in the inner function is the derivative of the outer function, times the derivative of the inner function with respect to x.  Since this is multiplication, the order doesn't matter, so some descriptions reverse which derivative is taken first.
 
-This says that the derivative of a nested function with respect to variable in the inner function is the derivative of the outer function, times the derivative of the inner function with respect to x.  Since this is multiplication, the order doesn't matter, so some descriptions reverse which derivativ is taken first.
-
-For example:
-
-$f\left(x\right)\text{ = }\left(2x\text{ + }3\right)^5)\text{; }f'\left(x\right)\text{ = }\left\left(5\left(2x\text{ + }3\right)-4\right)\*2\right)\text{=}10\left\left(2x+3\right)^4\right)$ .
+For example: $\frac{d}{dx}\left(5x\text{ + }3\right)^4\text{ = }4\left(5x\text{ + }3\right)^3\left(5\right)$ .
 
 #### Dot Product Angles
 
@@ -484,9 +492,95 @@ When gradient descent is used to minimize error/approximate a value in machine l
 
 Formally, this approache looks like this recursive formula:
 
-$$\Large{a_N\text{ = }a_{N-1}-\gamma\nabla{f}\left(a_{N-1}right\)}$$
+$$\Large{a_N\text{ = }a_{N-1}\text{ - }\gamma\nabla{f}\left(a_{N-1}\right)}$$
 
 In words, this is "The gradient at point N equals the gradient at the previous point - gamma * gradient at previous point..." .  Where gamma is the "step size", or  scaling parameter that can adjust the impact of learning thus farm, since a given gradient can be large.  This is also called the "learning rate".
+
+#### Gradient Descent Recursion Example
+
+Suppose again our function takes to inputs, x and y, and combines them in an output function $f\left(x_1,x_2\right)\text{ = }3{x_1}^2\text{ + }{x_2}^2$ . Also suppose that we are beginning our recursion at point (1,1), and that the $\gamma$ step size is .01.  Then the gradient consists of taking partial derivatives with respect to $x_1$, then $x_2$.  The gradient would then be:
+
+$$
+\nabla{f}\left(x\right)\text{ = }
+\left[
+{\begin{array}{cc}
+\frac{\partial f}{\partial x_1}\text{ = }6x_1 \\
+\frac{\partial f}{\partial x_2}\text{ = }2x_2 \\
+\end{array}}
+\right]
+$$
+
+And the initial gradient is 
+
+$$
+\nabla{f}\left(x\right)\text{ = }
+\left[
+{\begin{array}{cc}
+6 \\
+2 \\
+\end{array}}
+\right]
+$$
+
+.  In the first step, we subtract gamma times this gradient from the inital point:
+
+$$
+a_1\text{ = }
+\left[
+{\begin{array}{cc}
+1 \\
+1 \\
+\end{array}}
+\right]
+\text{ - }
+.01
+\left[
+{\begin{array}{cc}
+6 \\
+2 \\
+\end{array}}
+\right]
+\text{ = }
+\left[
+{\begin{array}{cc}
+.4 \\
+.8 \\
+\end{array}}
+\right]
+$$
+
+.  Repeating this step gives us:
+
+$$
+a_1\text{ = }
+\left[
+{\begin{array}{cc}
+.4 \\
+.8 \\
+\end{array}}
+\right]
+\text{ - }
+.01
+\left[
+{\begin{array}{cc}
+6(.4) = 2.4 \\
+2(.8) = 1.6 \\
+\end{array}}
+\right]
+\text{ = }
+\left[
+{\begin{array}{cc}
+.16 \\
+.64 \\
+\end{array}}
+\right]
+$$
+
+. **NOTICE THAT:** 
+* at each step, the coordinate values of the new resultant point after gamma times the gradient ( $\gamma\nabla{f}\left(a_{N-1}\right)$ ) has been subtracted from it, is plugged back into the gradient.  This is the recursive part.
+* the values of the gradient diminish toward 0.  This zero "point" is what we're seeking, since it marks a minimum point for prediction error.
+* the starting point (1,1) was randomly chosen.  The rationale by which you would pick a point is not clear to me.   I believe in real life the gradient descent function seeds several such points and runs the gradient procedure on multiple simultaneous "threads" in order to save time.
+* the functionality that slows or stops the recursion before the desired 0 gradient is "overrun" or "missed" is external to the formula itself.
 
 
 ## Linear Regression
