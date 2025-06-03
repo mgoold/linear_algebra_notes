@@ -2738,7 +2738,7 @@ Suppose we have the matrix A:
 
 $$
 A\text{ = }
-\left[{\begin{matrix}{cc} 
+\left[{\begin{matrix} 
 0 & 1 \\ 
 -2 & -3 \\ 
 \end{matrix}}\right]
