@@ -2822,10 +2822,11 @@ Looking ahead, after we have found lambda, we can find x by elimination in the r
 Suppose we have a matrix:
 
 $$
-A\text{ = }\left[{\begin{array}{cc} 
+A\text{ = }
+\left[{\begin{matrix}
 3 & 1 \\ 
 1 & 3 \\ 
-\end{array}}\right] 
+\end{matrix}}\right] 
 $$
 
 Symmetric matrices like this one will always yield real eigenvalues.  The eigenvectors that result from symmetric matrices will always be perpendicular to each other.  
@@ -2834,10 +2835,10 @@ Finding the determinant looks like:
 
 $$
 \text{det }\left(A-\lambda{}I\right)\text{ = }
-\left\|{\begin{matrix}{cc} 
+\left\|{\begin{matrix}
 {3-\lambda} & 1 \\ 
 1 & {3-\matrix} \\ 
-\end{array}}\right\|
+\end{matrix}}\right\|
 $$
 
 so that the diagonal matrix is shifted, and then we take the determinant.  Notice that you can see why the $\lambda{}I$ multiplication is used ; it has the effect of only subtracting lambda from the diagonal components of A, and 0 otherwise.
