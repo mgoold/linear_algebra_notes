@@ -2837,7 +2837,7 @@ $$
 \text{det }\left(A-\lambda{}I\right)\text{ = }
 \left\|{\begin{matrix}
 {3-\lambda} & 1 \\ 
-1 & {3-\matrix} \\ 
+1 & {3-\lambda} \\ 
 \end{matrix}}\right\|
 $$
 
