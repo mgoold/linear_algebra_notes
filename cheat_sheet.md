@@ -218,7 +218,9 @@ Given a function, e.g. $f\text(x,y\right)\text{ = }2y\text{ + }4x^2y + 1$, and a
  = ad - bc
 
 ### >2x2 Determinants
--- Product of diagonals of U.
+* = Product of diagonals of U (ala determinant "property #7" ).
+  * Calculate U through row reduction.
+  * Multiply diagonals of U.  This is not the same as product of I diagonals, which is always = 5.
 
 ## Number of System Solutions
 
