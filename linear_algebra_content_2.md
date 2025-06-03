@@ -2754,21 +2754,21 @@ $$Ax\text{ = }\lambda{I}x\text{ = }0$$ ,
 * the matrix M **cannot be invertible** .  A matrix with a non-zero vector in its nullspace cannot be invertible.
   * consequently, its determinant must be = 0.  Non-invertible matrices only have 0 as their determinant.
 
-* With this in mind, we take the determinant $text{det }\left(A\text{ - }\lambda{I}\right)\text{ = }0$ .  We prepare to calculate this determinant, first by fully writing out all the components
+* With this in mind, we take the determinant $\text{det }\left(A\text{ - }\lambda{I}\right)\text{ = }0$ .  We prepare to calculate this determinant, first by fully writing out all the components
 
 $$
 A\text{ = }
-\left[{\begin{matrix}{cc} 
+\left[{\begin{matrix} 
 0 & 1 \\ 
 -2 & -3 \\ 
 \end{matrix}}\right]
 \text{ - }
-\left[{\begin{matrix}{cc} 
+\left[{\begin{matrix} 
 \lambda & 0 \\ 
 0 & \lambda \\ 
 \end{matrix}}\right]
 \text{ = }
-\left[{\begin{matrix}{cc} 
+\left[{\begin{matrix} 
 -\lambda & 1 \\ 
 -2 & -3-\lambda \\ 
 \end{matrix}}\right]
