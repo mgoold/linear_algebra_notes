@@ -2741,7 +2741,7 @@ A\text{ = }
 \left[{\begin{matrix}{cc} 
 0 & 1 \\ 
 -2 & -3 \\ 
-\end{array}}\right]
+\end{matrix}}\right]
 $$
 
 *  We start with the equation $Ax\text{ = }\lambda{x}$ , which we re-write as $Ax\text{ = }\lambda{I}x$  We can do this since I wouldn't change x.  Now we set the whole thing equal to 0:
