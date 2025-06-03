@@ -2781,16 +2781,16 @@ $$
 To find the corresponding eigenvectors, we plug the first eigenvalue -1 into the original $Ax\text{ = }\lambda{x}$ formula:
 
 $$
-\left[{\begin{matrix}{cc} 
+\left[{\begin{matrix} 
 0 & 1 \\ 
 -2 & -3 \\ 
 \end{matrix}}\right]
-\left[{\begin{array}{cc} 
+\left[{\begin{array} 
 x_1 \\ 
 x_2 \\ 
 \end{array}}\right]
 \text{ = }
-\left[{\begin{array}{cc} 
+\left[{\begin{array} 
 -x_1 \\ 
 -x_2 \\ 
 \end{array}}\right]
