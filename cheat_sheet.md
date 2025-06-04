@@ -208,7 +208,31 @@ Given a function, e.g. $f\text(x,y\right)\text{ = }2y\text{ + }4x^2y + 1$, and a
   *  Repeat the process the specified number of times:
     *   an = an-1 - gamma times gradient(an-1), e.g. a2 = (.4,.8) - .01(6(.4),2(.8)) = (.16,.64).
 
-## Eigenvalues, Eigenvectors, Jacobians
+## Eigenvalues, Eigenvectors
+
+### Facts
+* eigenvectors and values only exist for square matrices with determinants.
+
+### Computing Eigenvalues and Eigenvectors:
+
+*  For a given equation Ax = 0:
+  *  Reformat Ax = 0 to $\left(A\text{ - }\lambda{I}\right)\text{ = }0$, where I and A are matrices of the same size.
+  *  Subtract the product of $\lambda{I}$ from A.  This should result in a matrix A that is unchanged except for the diagonal components having lambda subrtracted from them.  --Which this in mind, you could just skip to subtracting lambda from every diagonal term.
+  *  Using row reduction, put the matrix A into a upper "U" format.
+  *  Take the determinant as the product of the diagonal components, = 0 .  Multiply out and solve for 0.  The results are your eigenvalues.
+    *  Note: it is possible to have multiple identical eigenvalues.
+    *  It's difficult to calculate eigenvalues for a matrix greater than 2x2.  Hence a test question is likely to be for a 2x2 matrix.
+      * This means the quadratic equation $x\text{ = }\frac{-b\pm\sqrt{b^2\text{ - }4ac}}{2a}$ will likely come in handy.
+      * If you do have to do a 3x3 matrix, put it into U format as usual, and multiply the determinants to get the polynomial equation to solve for the eigenvalues.
+  *  Having computed the eigenvalues, for each eigenvalue, you complete the following steps:
+    *  plug each eigenvalue into the matrix M = $\left(A-\lambda{I}$ to get a matrix of values.
+    *  reduce M into $U_M$
+    *  multiply $U_{M}x$ into its set of equations in x, each set = 0, and solve for each x component ( $x_1,x_2\text{,... etc}$ ).
+      * if A is > 2x2, the solution may well involve "special solutions", where the E space involves multiple vectors and scalars.
+
+## Jacobians
+
+
 
 ### Compute a Jacobian 
 
