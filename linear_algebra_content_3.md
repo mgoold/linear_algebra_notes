@@ -847,7 +847,7 @@ What are the properties of the projection Matrix P?
 * The rank of P is therefore always 1.
  * You can see that this is so by considering its structure in the above formula -- the matrix consists of a column times a row.
  * The columm that multiplies the row is the basis for the column space.
-* P is symmetric.  The denominator in $\frac{aa^T}{a^Ta}$ is a number, and the transpose of the numerator is again $aa^T$ .  Thus, $P^\text{ = }P$ .  **This is a key property of projection matrices.**
+* P is symmetric.  The denominator in $\frac{aa^T}{a^Ta}$ is a number, and the transpose of the numerator is again $aa^T$ .  Thus, $P^\text{ = }P^T$ .  **This is a key property of projection matrices.**
 * If we do the same projection twice, that is if we take $P^2$, we still get P.
 * **Thus, the 2 key properties that distinguish a projection matrix are:**
  * $P^T\text{ = }P$ , and
