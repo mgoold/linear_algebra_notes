@@ -852,6 +852,23 @@ What are the properties of the projection Matrix P?
 * **Thus, the 2 key properties that distinguish a projection matrix are:**
  * $P^T\text{ = }P$ , and
  * $P^2\text{ = }P$
+   * This last property can be a bit hard to swallow, so consider a real example:
+
+$$
+P\text{ = }\frac{1}{9}
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 2 \\
+1 & 2 & 2 \\
+1 & 2 & 2 \\
+\end{matrix} } 
+\right]
+$$
+
+  * In order for $P^2\text{ = }P$, all values of P must be positive.  An additional property results:
+    * P is positive semidefinite: $x^TPx\geqq{0}$ , for all x.  Because all vectors in P are $geqq{0}$ , and all x components are squared.
+
+If you squared P (multiplied it times itself), of course the P's resultant values *do* change.  However, the internal proportions of the matrice's values wouldn't change, and so you could factor out $\frac{1}{9}$ and be right back to $\frac{1}{9}P$ again.  This is what is meant by the property $P^2\text{ = }P$ .
 
 ### Projection in Higher Dimensions
 
