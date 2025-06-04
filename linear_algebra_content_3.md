@@ -1105,7 +1105,7 @@ By convention, people don't write out the G-S transformations.  Rather they say 
 * As a result of this symmetric matrix structure:
   * eigenvalues of a symmetric matrices, where all the values in A are $\in{\mathbb{R}}$, are real.  The eigenvectors will not be complex &c.
     * Why is are the eigenvalues Real?  Consider the canonical equation $Ax\text{ = }\lambda{x}$ :
-      * For a first step, we can take the complex conjugate of everything: $Ax\text{ = }\lambda{x}\arrow\overline{A}\overline{x}\text{ = }\overline{\lambda}\overline{x}$  As a reminder, a **complex conjugate** is 
+      * For a first step, we can take the complex conjugate of everything: $Ax\text{ = }\lambda{x}\rightarrow\overline{A}\overline{x}\text{ = }\overline{\lambda}\overline{x}$  As a reminder, a **complex conjugate** is 
   * a complete set of eigenvectors can be selected to be perpendicular 
     * for example, the I matrix is symmetrical, and all vectors x are necessarily eigenvectors since they are unchanged by I.  But among these, vectors perpendicular to each other could be selected.  --This is not (necesarily? always?) the case for other matrix types.
 * A matrix A can typically be decomposed into its eigenvalue matrix $\Lambda$ and its eigenvector matrix S as $A\text{ = }S\Lambda{S^{-1}}$ .
