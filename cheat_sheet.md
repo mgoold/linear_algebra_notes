@@ -232,9 +232,15 @@ Given a function, e.g. $f\left(x,y\right)\text{ = }2y\text{ + }4x^2y\text{ + }1$
 
 ## Jacobians
 
-
-
 ### Compute a Jacobian 
+
+* A Jacobian Matrix is simply a way of organizing the partial derivatives of a set of functions.
+  * For a set of input variables consumed by a set of functions:
+    * For the first function, take the derivative of that function with w.r.t. each input variable in turn, from left to right, storing the resultant partial derivatives in a row from left to right.
+    * Follow this process for the next function, using the next row.
+    * The result should be a matrix with the same function across the variables stored in a row, and the same variable stored across the functions down each column.
+    * Do not omit any functions or variables in the placements, even if a function does not use a variable (in which case its partial is simply 0).
+    * The Jacobian is this matrix of partials, but it is typically given an input point.  If this point is zero, or it has zero rows or columns, the point is considered critical -- an "inflection point" in a "slope".
 
 ## Determinants
 
@@ -245,8 +251,6 @@ Given a function, e.g. $f\left(x,y\right)\text{ = }2y\text{ + }4x^2y\text{ + }1$
 * = Product of diagonals of U (ala determinant "property #7" ).
   * Calculate U through row reduction.
   * Multiply diagonals of U.  This is not the same as product of I diagonals, which is always = 5.
-
-## Number of System Solutions
 
 ## Properties of Vectors vs Points
 
