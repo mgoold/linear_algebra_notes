@@ -1098,7 +1098,7 @@ Note that:
 
 ### Intuition for Positive Semidefiniteness
 
-*  We know that $\in\text{ = }\mathbb{R}^n$ is non-negative if $a\text{ }\geq{}\text{ }0$ .  This is the same thing as saying tha for any $x\in\mathbb{R}^n$ , $ax^2\text{ }\geq{}\text{ }0$ , where a is > 0. Thus, we can re-write $ax^2\text{ }\geq{}\text{ }0$ as $xax\text{ }\geq{}\text{ }0$ .
+*  We know that $a\in\text{ = }\mathbb{R}^n$ is non-negative if $a\text{ }\geq{}\text{ }0$ .  This is the same thing as saying that for any $x\in\mathbb{R}^n$ , $ax^2\text{ }\geq{}\text{ }0$ , where a is > 0. Thus, we can re-write $ax^2\text{ }\geq{}\text{ }0$ as $xax\text{ }\geq{}\text{ }0$ .
 *  We can generalize the scalar-based equation $xax\text{ }\geq{}\text{ }0$ to a matrix form as $x^TAx\text{ }\geq{}\text{ }0$ .  In the matrix form, the first vector x is transposed, so that the vector $x^Tx$ in this inequality is squared.  Necessarily, since the inequality is $\geq{0}$ , A must be non-negative (aka "positive semidefinite").
  *  The resultant value or quantity based on x, which we can call $q_A\left(x\right)\text{ = }x^Tx$, is also called the "quadratic form" of the matrix A.
 
