@@ -1097,6 +1097,21 @@ By convention, people don't write out the G-S transformations.  Rather they say 
 
 ### Sources:
 * USF: https://usfca.instructure.com/courses/1627052/pages/positive-semidefinite-matrices-video-18?module_item_id=18611427
+* MIT: https://www.youtube.com/watch?v=UCc9q_cAhho
+
+### Symmetric Matrices, Eigenvalues, and Eigenvectors
+
+* A matrix A is symmetric if A = $A^T$ .
+* As a result of this symmetric matrix structure:
+  * eigenvalues of a symmetric matrices, where all the values in A are $\in{\mathbb{R}}$, are real.  The eigenvectors will not be complex &c.
+    * Why is are the eigenvalues Real?  Consider the canonical equation $Ax\text{ = }\lambda{x}$ :
+      * For a first step, we can take the complex conjugate of everything: $Ax\text{ = }\lambda{x}\arrow\overline{A}\overline{x}\text{ = }\overline{\lambda}\overline{x}$  As a reminder, a **complex conjugate** is 
+  * a complete set of eigenvectors can be selected to be perpendicular 
+    * for example, the I matrix is symmetrical, and all vectors x are necessarily eigenvectors since they are unchanged by I.  But among these, vectors perpendicular to each other could be selected.  --This is not (necesarily? always?) the case for other matrix types.
+* A matrix A can typically be decomposed into its eigenvalue matrix $\Lambda$ and its eigenvector matrix S as $A\text{ = }S\Lambda{S^{-1}}$ .
+  * However, in the case of a symmetric matrix, the perpendicularity of the eigenvectors means that they can be scaled to be unit vectors.  This means that the eigenvectors are orthonormal.  This special composition of the eigen decomposition of A is denoted by using the matrix Q instead of S: $A\text{ = }Q\Lambda{Q^{-1}}$ .  Note that inverse of Q is the same as $Q^T$ .
+  * Thus: $A\text{ = }Q\Lambda{Q^{-1}}\text{ = }Q\Lambda{Q^T}$ .  This is known as the **"spectral theorem"** , owing to applications in optics and light. In mechanics, it is known as the principal axis theorem.  
+    * We can consider $A\text{ = }Q\Lambda{Q^T}$ as the "factorization of a symmetric matrix".  Note: this formula implies that A is symmetric, because the definition of a symmetric matrix is that $A\text{ = }A^T$, and it is clear that transposing $Q\Lambda{Q^T}$ would equal $Q^{T}Q\Lambda{}$ which is equivalent to $Q\Lambda{Q^T}$ .
 
 ### Motivation and Uses of PSD Evaluation
 * Covariance matrices are always positive semidefinite, or positive definite.
