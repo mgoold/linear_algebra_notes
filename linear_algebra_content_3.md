@@ -816,7 +816,7 @@ We can think of the purple projection a onto b as "e" for the error.  Because it
 
 The process that calculates this distance in linear algebra is computationally easier than trig-based approaches.  
 
-We know that p is some multiple of a; it is on the line a.  We will call this multiple x of a, or "xa".  x is the number we want to find.  The key to the process is the perpendicularity $e\perp{a}$ at the intersection p.  We can denote this relationship as $a^T\left(e\right)$, and e = b-xa , so we state the key relationship as  $a^T\left(b\text{ - }xa\right)=0$ .  This equation is saying that a is perpendicular to e, and this will tell us what x is.  
+We know that p is some multiple of a; it is on the line a.  We will call this multiple x of a, or "xa".  x is the number we want to find.  The key to the process is the perpendicularity $e\perp{a}$ at the intersection p.  We can denote this relationship as $a^T\left(e\right)$, and e = b-xa , so we state the key relationship as  $a^T\left(b\text{ - }xa\right)=0$ , remembering that the dot product of 2 perpendicular vectors is 0.  This equation is saying that a is perpendicular to e, and this will tell us what x is.  
 
 This becomes clearer when we simplify the equation to: $xa^Ta\text{ = }a^Tb$ .  Then we can divide by $a^Ta$ to get $x\text{ = }\frac{a^Tb}{a^Ta}$ .  This is the right x to get the needed projection p .  
 
