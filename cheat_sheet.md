@@ -193,7 +193,7 @@ When A is an mxn matrix, what is the location of each of these subspaces?
 
 ## Compute a Gradient At a Point
 
-Given a function, e.g. $f\text(x,y\right)\text{ = }2y\text{ + }4x^2y + 1$, and a point, e.g. (1,1):
+Given a function, e.g. $f\left(x,y\right)\text{ = }2y\text{ + }4x^2y\text{ + }1$, and a point, e.g. (1,1):
 
 * For each variable in the equation:
   * for each variable take the partial derivative of that same function.  Do this in the left-right column order of the variables.
