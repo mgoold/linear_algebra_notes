@@ -127,6 +127,46 @@ $$
 
 So B_11 = .25.  In general, the answer to finding the inverse of an invertible matrix is the AI -- > IA G-J transformation.
 
+### Projection, Projection Matrices
+
+#### Projection Key Equations:
+
+Given a vector a in C(A), a vector b not in C(A), and a factor x by which multiply a to obtain p:
+
+* $xa^Ta\text{ = }a^Tb$ , which leads us to
+* $x\text{ = }\frac{a^Tb}{a^Ta}$
+* p = ax to get our projection p .
+* error e = b - p .
+* $P=\frac{aa^T}{a^Ta}b$
+* E = sum of squared e components (b1 - p1) ... (bn - pn).
+
+#### Properties of Projection Matrix P
+
+* The column space C(P) is the line through a.  
+* The rank of P is therefore always 1.
+ * You can see that this is so by considering its structure in the above formula -- the matrix consists of a column times a row.
+ * The columm that multiplies the row is the basis for the column space.
+* P is symmetric.  The denominator in $\frac{aa^T}{a^Ta}$ is a number, and the transpose of the numerator is again $aa^T$ .  Thus, $P^\text{ = }P^T$ .  **This is a key property of projection matrices.**
+* If we do the same projection twice, that is if we take $P^2$, we still get P.
+* **Thus, the 2 key properties that distinguish a projection matrix are:**
+ * $P^T\text{ = }P$ , and
+ * $P^2\text{ = }P$
+   * This last property can be a bit hard to swallow, so consider a real example:
+
+$$
+P\text{ = }\frac{1}{9}
+\left[
+{\begin{matrix}{cc}
+1 & 2 & 2 \\
+1 & 2 & 2 \\
+1 & 2 & 2 \\
+\end{matrix} } 
+\right]
+$$
+
+  * In order for $P^2\text{ = }P$, all values of P must be positive.  An additional property results:
+    * P is positive semidefinite: $x^TPx\geqq{0}$ , for all x.  Because all vectors in P are $geqq{0}$ , and all x components are squared.
+
 ## Singular Value Decomposition
 * Understand SVD of $A^TA\hat{x}\text{ = }A^Tb$ .
 
