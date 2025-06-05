@@ -1268,7 +1268,7 @@ Suppose we have matrix A:
 
 $$
 A\text{ = }
-\left[{\begin{matrix}{cc}
+\left[{\begin{matrix}
 1 & 4 \\
 9 & 1 \\
 \end{matrix} }\right]
@@ -1296,16 +1296,20 @@ $$
 
 $$
 u_1\text{ = }
-\left[{\begin{array}{cc}
-\frac{2}{\sqrt{13} \\
-\frac{3}{\sqrt{13} \\
-\end{array} }\right]
+\left[
+{\begin{array}
+\frac{2}{\sqrt{13}} \\
+\frac{3}{\sqrt{13}} \\
+\end{array} }
+\right]
 \text{ corresponds to }\lambda_1\text{, and }
 u_2\text{ = }
-\left[{\begin{array}{cc}
-\frac{2}{\sqrt{13} \\
-\frac{-3}{\sqrt{13} \\
-\end{array} }\right]
+\left[
+{\begin{array}
+\frac{2}{\sqrt{13}} \\
+\frac{-3}{\sqrt{13}} \\
+\end{array} }
+\right]
 \text{ corresponds to }\lambda_2
 $$
 
@@ -1336,7 +1340,7 @@ $$
 
     Note: in this construal, $u_1,u_2$ are both vectors comprising the matrix U.
 
-    * In matrix form, this formula is now: $AU\text{ = }U\Lambda$ , which can be re-written to isolate A as: $A\text{ = }U\LambdaU^{-1}$ .
+    * In matrix form, this formula is now: $AU\text{ = }U\Lambda$ , which can be re-written to isolate A as: $A\text{ = }U\Lambda{U^{-1}}$ .
       * **This final formulation is what is known as the "eigendecomposition".**  It is so called because it breaks A into its component matrices in a way that isolates the eigenvalues.
       * To see that this works, you can multiply out the above simple matrices.
 
@@ -1346,7 +1350,7 @@ $$
   * Rank is the number of linearly independent columns in a matrix, or equivalently the number of pivots, and that the rank p must be less than or equal to n columns.
   * the eigendecomposition only applied to diagonalizable square matrices.
     * the SVD applies to non-square matrices, so it extends decomposition to a wider set of matrix types.
-  * Eigendecomposition takes the form $M_{mxm}\text{ = }U\LambdaU^{=1}$ , where M is a diagonalizable square matrix, U is the matrix of normalized eigenvectors, and $|Lambda$ is the diagonal matrix of eigenvalues.
+  * Eigendecomposition takes the form $M_{mxm}\text{ = }U\Lambda{U^{=1}}$ , where M is a diagonalizable square matrix, U is the matrix of normalized eigenvectors, and $|Lambda$ is the diagonal matrix of eigenvalues.
    * A consequence of being able to decompose M into these 3 right-side components is that it can be expressed as the sum of "atomic" **rank 1** matrices like:
      $$M\text{ = }\sigma_1u_1v_1^T\text{+,...,+}\sigma_pu_pv_p^T$$ , where:
        * $\sigma$ is a singular value coefficient,
