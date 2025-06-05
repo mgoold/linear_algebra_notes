@@ -1105,13 +1105,95 @@ By convention, people don't write out the G-S transformations.  Rather they say 
 * As a result of this symmetric matrix structure:
   * eigenvalues of a symmetric matrices, where all the values in A are $\in{\mathbb{R}}$, are real.  The eigenvectors will not be complex &c.
     * Why is are the eigenvalues Real?  Consider the canonical equation $Ax\text{ = }\lambda{x}$ :
-      * For a first step, we can take the complex conjugate of everything: $Ax\text{ = }\lambda{x}\rightarrow\overline{A}\overline{x}\text{ = }\overline{\lambda}\overline{x}$  As a reminder, a **complex conjugate** is 
-  * a complete set of eigenvectors can be selected to be perpendicular 
+      * For a first step, we can take the complex conjugate of an equation: $Ax\text{ = }\lambda{x}\rightarrowA\overline{x}\text{ = }\overline{\lambda}\overline{x}$  As a reminder, a **complex conjugate** is complex formulation of a set of terms such that adding them together will remove the imaginary elements, e.g. a + ib = a - ib (here, a would be the only term remaining).
+        * This already tells us that if Ax has an eigenvalue lambda and eigenvector x, it also has an eigenvalue $\overline{\lambda}$ and $\overline{x}$ .
+      * We can also transpose $A\overline{x}\text{ = }\overline{\lambda}\overline{x}$ to $\overline{x}^TA^T\text{ = }\overline{x}^T\overline{\lambda}$ .  Since $\lambda$ is just a number, we don't transpose it.
+      * At this point, we note that since A is symmetric, then $A^T$ is the same as A.  We can then multiply both sides by x:
+        * $\overline{x}^TAx\text{ = }\overline{x}^T\overline{\lambda}x$ .  Notice that the left hand side is the same as if we had just multiplied the original equation by $\overline{x}^T$:
+        * $\overline{x}^TAx\text{ = }\lambda{}\overline{x}^Tx$
+        * --but since the two different right hand sides have an identical left hand side, the two different right hand sides must be equal to each other.  That is: $\lambda\overline{x}^Tx\text{ = }\overline{\lambda}\overline{x}^Tx$ .  It is clear from this equation, where the only difference is the conjugate of $\lambda$, that $\lambda\text{ = }\overline{\lambda}$ .  Note that this conclusion assumes that $\overline{x}^Tx$ is > 0 .
+        * **Then $\overline{x}^Tx$ can be cancelled, with the conclusion that the $\lambda$ and $\overline{\lambda}$ are identical and therefore real.**  --It is a rule that if a number is equal to its own complex conjugate then there is no imaginary portion and the only remaining part is real.  This makes sense if you look back to a simple complex conjugate like a + ib = a - ib, where adding them together would cancel the imaginary portions.
+      * Coming back to the qualification that $\overline{x}^Tx$ > 0:
+        * remember that, as far as we know in this equation context, x is a complex number:  a column vector of complex numbers is being multiplied by a row of its complex conjugates.
+        * remember that the basic formulation of a complex number multiplied by its conjugate is (a + ib)(a - ib), and also that i is $\sqrt{-1}$ .  This means that a vector of complex numbers multiplied by its transpose will result in a vector of positive numbers, because the middle terms will cancel out, and $i^2$ = -1, so you get $a^2$ +aib -aib - $b^2i^2$ = $a^2$ - $b^2$ (-1) = $a^2\text{ + }b^2$.
+        * **consequently, multiplying a vector x by its conjugates ensures a vector of positive, real results.**
+        * **this maneuver also shows us that we can change complex number vectors to real number vectors by multiplying them with their transpose.**
+          * **this result is also the length squared of x.**
+      * What if A has been a matrix of complex numbers?
+        * Consider the properties of a "good matrix" (one that is computationally easy).  It has:
+          * real $\lambda$ values
+          * perpendicular x's
+          * symmetric: A = $A^T$
+        * However, if A is complex, the proofs we looked at above will still work, provided $\overline{A}^T\text{ = }A$ .
+
+* Consider the formula $A\text{ = }Q\Lambda{}Q^T$ .  This says that A can be decomposed into a matrix Q of eigenvectors multiplying a matrix of eigenvalues, times the transpose of Q.  This is true for the symmetric case A = $A^T$ .
+   * We can break this down further to show the composition:
+
+$$
+A
+\text{ = }
+\left[
+{\begin{matrix}
+\vdots & \vdots & \vdots \\
+q_1 & \ldot & q_n \\
+\vdots & \vdots & \vdots \\
+\end{matrix}}
+\right]
+\left[
+{\begin{matrix}
+\lambda_1 & {} & {} \\
+{} & \lambda_2 & {} \\
+{} & {} & \lambda_mn \\
+\end{matrix}}
+\right]
+\left[
+{\begin{matrix}
+\ldots & q_1 & \ldots \\
+\ldots & \vdots & \ldots \\
+\ldots & q_n & \ldots \\
+\end{matrix}}
+\right]
+\text{ = }
+\lambda_1q_1q_1^T\text{ + }\lambda_2q_2q_2^T\ldots
+$$
+
+...so the result is a set of addtions considing of lambdas times eigenvectors in an orthonormal relationship, since they are multiplied times their transpose.  
+  * **Every symmetric matrix consists of additions in this pattern.**
+  * **Every symmetric matrix is a combination of mutually perpendicular projection matrices.**
+  * each $q_1q_1^T$ pair is a projection matrix.  
+
+* Because symmetric matrices have real eigenvalues, we can look at whether they are positive or negative, which tells us things like the stability of a system (depending on the application).
+* It is a fact, in a symmetric matrix, that the signs of the pivots much match the signs of the eigevenvalues.
+* It is also a fact that the product of the pivots in a symmetric matrix equals the product of the eigenvalues.  This is because both of these products equal the determinant, assuming for the product of the pivots that no row exchanges occurred.
+
+* a complete set of eigenvectors can be selected to be perpendicular 
     * for example, the I matrix is symmetrical, and all vectors x are necessarily eigenvectors since they are unchanged by I.  But among these, vectors perpendicular to each other could be selected.  --This is not (necesarily? always?) the case for other matrix types.
 * A matrix A can typically be decomposed into its eigenvalue matrix $\Lambda$ and its eigenvector matrix S as $A\text{ = }S\Lambda{S^{-1}}$ .
   * However, in the case of a symmetric matrix, the perpendicularity of the eigenvectors means that they can be scaled to be unit vectors.  This means that the eigenvectors are orthonormal.  This special composition of the eigen decomposition of A is denoted by using the matrix Q instead of S: $A\text{ = }Q\Lambda{Q^{-1}}$ .  Note that inverse of Q is the same as $Q^T$ .
   * Thus: $A\text{ = }Q\Lambda{Q^{-1}}\text{ = }Q\Lambda{Q^T}$ .  This is known as the **"spectral theorem"** , owing to applications in optics and light. In mechanics, it is known as the principal axis theorem.  
     * We can consider $A\text{ = }Q\Lambda{Q^T}$ as the "factorization of a symmetric matrix".  Note: this formula implies that A is symmetric, because the definition of a symmetric matrix is that $A\text{ = }A^T$, and it is clear that transposing $Q\Lambda{Q^T}$ would equal $Q^{T}Q\Lambda{}$ which is equivalent to $Q\Lambda{Q^T}$ .
+
+## Positive Definite Matrices
+*  These matrices are a subclass of symmetric matrices.
+*  All the eigenvalues are > 0.
+*  The pivots are also are > 0.
+
+These 2 items are a sufficient test of whether a matrix is positive definite.
+
+Consider the matrix:
+
+$$
+\left[
+{\begin{matrix}
+5 & 2 \\
+2 & 3 \\
+\end{matrix}}
+\right]
+$$
+
+The pivots are 5, and 11/5, because the determinant is the product of the pivots, and in this case the determinant is 11.  
+Because the pivots are both positive, we know that the eigenvalues are positive.
+To check that a matrix is positive definite using determinants, we must verify not just that the overall determinant is positive, but also that the **"subdeterminants"** are positive.  So in this case considering component $a_11$ = 5 as a 1x1 matrix, we can say that the "sub" determinant = 5 > 0.  Then expanding the matrix outward from there to 2x2 dimensions, we can say that the determinant 11 is also positive.  
 
 ### Motivation and Uses of PSD Evaluation
 * Covariance matrices are always positive semidefinite, or positive definite.
@@ -1153,7 +1235,6 @@ If the matrix rank >2:
   * If there is some matrix B such that $B^TB\text{ = }A$ where all components of B are >0, AND all columns of B are linearly independent.
  * Mutatis mutandis, the same conditions apply for negative semidefinite, negative definite matrices.
  * Assuming no row exchanges, the signs of the pivots of a symmetric matrix in rre form are the signs of its eigenvalues.  Consequently, you can use this criteria to assess positive (semi) definiteness, etc.
-
 
 ## Singular Value Decomposition
 
