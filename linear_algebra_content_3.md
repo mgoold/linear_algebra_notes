@@ -1411,7 +1411,7 @@ Given the matrix
 $$
 A\text{ = }
 \left[
-{\begin{matrix}{cc}
+{\begin{matrix}
 1 & 1 \\
 0 & 1 \\
 -1 & 1 \\
@@ -1426,7 +1426,7 @@ Steps:
 
 $$
 A^T\text{ = }
-\left[{\begin{matrix}{cc}
+\left[{\begin{matrix}
 2 & 0 \\
 0 & 3 \\
 \end{matrix} }\right]
