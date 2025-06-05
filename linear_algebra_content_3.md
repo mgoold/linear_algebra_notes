@@ -1257,10 +1257,10 @@ If the matrix rank >2:
 *  A primary reason for performing eigendecompositions is that they simplify the common data science task of computing a matrix taken to a power.
   *  A basic of linear algebra is that a matrix is multiplied on a vector in order to map it to another vector, or equivalently, to map it into a new space.
   *  In real life, this often involves applying this linear transformation at every step of an algorithm.  This often ends up being equivalent to multiplying a vector by a matrix taken to a power.  Without eigendecomposition, taking a matrix A to the power of p involves $log_2\left(p\right)$ such computations --this fact reflects the max number of pair-wise computational shortcuts you can take without eigendecomposition.
-  *  As shown below, eigendecomposition transforms (decomposes) A into $U\LambdaU^{-1}$ .  This can then be decomposed into p $u\lambda{u^T}$ computations multiplied times each other.  Any incidence of $uu^T$ can them be factor out as an identity I, leaving the simplification $u\Lambda^pu^{-1}$, which is much easier to compute.
+  *  As shown below, eigendecomposition transforms (decomposes) A into $U\Lambda{}U^{-1}$ .  This can then be decomposed into p $u\lambda{u^T}$ computations multiplied times each other.  Any incidence of $uu^T$ can them be factor out as an identity I, leaving the simplification $u\Lambda^pu^{-1}$, which is much easier to compute.
 
 #### Definition
-*  For a square matrix (only square matrices have Eigenvectors|values), the eigendecomposition is a $U\LambdaU^{-1}$ which breaks A into p individual $u\lambda{u^T}$ matrices, requiring only 2 matrix multiplications, regardless of the complexity.
+*  For a square matrix (only square matrices have Eigenvectors|values), the eigendecomposition is a $U\Lambda{}U^{-1}$ which breaks A into p individual $u\lambda{u^T}$ matrices, requiring only 2 matrix multiplications, regardless of the complexity.
 
 #### Performing an Eigendecomposition:
 
