@@ -1320,28 +1320,28 @@ $$
 
   * The left and right sides have different structures, so you need to put the right side into a matrix format, so that the equations are put into a matrix system like so:
  
-    $$
-    A
-    \left[
-    {\begin{array}
-    u_1 \\
-    u_2 \\
-    \end{array}}
-    \right]
-    \text{ = }
-    \left[
-    {\begin{array}
-    u_1 \\
-    u_2 \\
-    \end{array}}
-    \right]
-    \left[{
-    \begin{matrix}
-    \lambda_1 & 0 \\
-    0 & \lambda_2 \\
-    \end{matrix}}
-    \right]      
-    $$
+$$
+\text{A}
+\left[
+{\begin{array}
+u_1 \\
+u_2 \\
+\end{array}}
+\right]
+\text{ = }
+\left[
+{\begin{array}
+u_1 \\
+u_2 \\
+\end{array}}
+\right]
+\left[
+{\begin{matrix}
+\lambda_1 & 0 \\
+0 & \lambda_2 \\
+\end{matrix}}
+\right]      
+$$
 
     Note: in this construal, $u_1,u_2$ are both vectors comprising the matrix U.
 
