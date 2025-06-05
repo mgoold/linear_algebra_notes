@@ -1444,17 +1444,17 @@ Plugging these into the characteristic equation, we get: $\lambda^2\text{ - }5\l
   * Let x1 = (a, b) be e.v. of $A^TA$ .  Then $\left(A^TA\right)x_1\text{ = }\lambda{x_1}$ :
 
 $$
-\left[{\begin{matrix}{cc}
+\left[{\begin{matrix}
 2 & 0 \\
 0 & 3 \\
 \end{matrix} }\right]
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 a \\
 b \\
 \end{array}}\right]
 \text{ = }
 3
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 a \\
 b \\
 \end{array}}\right]
