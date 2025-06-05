@@ -1397,9 +1397,9 @@ Just as with eigendecomposition, U will be an orthonormal matrix, and thus V wil
 
 All the sigmas are on the diagonal of $\Sigma$ . 
 
-Notice that multiplying both sides by $V$ will yield $MV\text{ = }U\Sigma$ and similarly that multiplying by $U^T$ will yield $U^TM\text{ = }\SigmaU^T$ .  
-*  In $MV\text{ = }U\Sigma$ , the columns of V which had been the rows of $V^T$ are known as the **right singular vectors** of M.
-*  In parallel, since U has been on the left of $\Sigma$ , the vectors in U are called the **left singular vectors** of M.
+Notice that multiplying both sides by $V$ will yield $MV\text{ = }U\Sigma{}$ and similarly that multiplying by $U^T$ will yield $U^TM\text{ = }\Sigma{}U^T$ .  
+*  In $MV\text{ = }U\Sigma{}$ , the columns of V which had been the rows of $V^T$ are known as the **right singular vectors** of M.
+*  In parallel, since U has been on the left of $\Sigma{}$ , the vectors in U are called the **left singular vectors** of M.
 *  Sigma itself is called the ** singular values** of M.
 
 Presumably, the "singular" bit references the isolation of each column in M when calculating $\sigma$ . 
