@@ -1320,23 +1320,28 @@ $$
 
   * The left and right sides have different structures, so you need to put the right side into a matrix format, so that the equations are put into a matrix system like so:
  
-    * 
-      $$
-      A
-      \left[{\begin{array}{cc}
-      u_1 \\
-      u_2 \\
-      \end{array} }\right]
-      \text{ = }
-      \left[{\begin{array}{cc}
-      u_1 \\
-      u_2 \\
-      \end{array} }\right]
-      \left[{\begin{matrix}{cc}
-      \lambda_1 & 0 \\
-      0 & \lambda_2 \\
-      \end{matrix} }\right]      
-      $$
+    $$
+    A
+    \left[
+    {\begin{array}
+    u_1 \\
+    u_2 \\
+    \end{array}}
+    \right]
+    \text{ = }
+    \left[
+    {\begin{array}
+    u_1 \\
+    u_2 \\
+    \end{array}}
+    \right]
+    \left[{
+    \begin{matrix}
+    \lambda_1 & 0 \\
+    0 & \lambda_2 \\
+    \end{matrix}}
+    \right]      
+    $$
 
     Note: in this construal, $u_1,u_2$ are both vectors comprising the matrix U.
 
@@ -1352,7 +1357,10 @@ $$
     * the SVD applies to non-square matrices, so it extends decomposition to a wider set of matrix types.
   * Eigendecomposition takes the form $M_{mxm}\text{ = }U\Lambda{U^{=1}}$ , where M is a diagonalizable square matrix, U is the matrix of normalized eigenvectors, and $|Lambda$ is the diagonal matrix of eigenvalues.
    * A consequence of being able to decompose M into these 3 right-side components is that it can be expressed as the sum of "atomic" **rank 1** matrices like:
-     $$M\text{ = }\sigma_1u_1v_1^T\text{+,...,+}\sigma_pu_pv_p^T$$ , where:
+
+      $$M\text{ = }\sigma_1u_1v_1^T\text{+,...,+}\sigma_pu_pv_p^T$$
+
+     , where:
        * $\sigma$ is a singular value coefficient,
        * u is a vector of m rows,
        * and v is a vector of n columns.
