@@ -1410,14 +1410,16 @@ Given the matrix
 
 $$
 A\text{ = }
-\left[{\begin{matrix}{cc}
+\left[
+{\begin{matrix}{cc}
 1 & 1 \\
 0 & 1 \\
 -1 & 1 \\
-\end{matrix} }\right]
+\end{matrix}}
+\right]
 $$
 
-Let A = $U\SigmaV^T$ be svd of A .
+Let A = $U\Sigma{}V^T$ be svd of A .
 
 Steps:
 * Compute V = $A^TA$:
