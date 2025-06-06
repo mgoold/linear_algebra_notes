@@ -265,7 +265,7 @@ Given a function, e.g. $f\left(x,y\right)\text{ = }2y\text{ + }4x^2y\text{ + }1$
       * This means the quadratic equation $x\text{ = }\frac{-b\pm\sqrt{b^2\text{ - }4ac}}{2a}$ will likely come in handy.
       * If you do have to do a 3x3 matrix, put it into U format as usual, and multiply the determinants to get the polynomial equation to solve for the eigenvalues.
   *  Having computed the eigenvalues, for each eigenvalue, you complete the following steps:
-    *  plug each eigenvalue into the matrix M = $\left(A-\lambda{I}$ to get a matrix of values.
+    *  plug each eigenvalue into the matrix M = $\left(A-\lambda{}I$ to get a matrix of values.
     *  reduce M into $U_M$
     *  multiply $U_{M}x$ into its set of equations in x, each set = 0, and solve for each x component ( $x_1,x_2\text{,... etc}$ ).
       * if A is > 2x2, the solution may well involve "special solutions", where the E space involves multiple vectors and scalars.
