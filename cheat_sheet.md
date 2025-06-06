@@ -251,26 +251,135 @@ Given a function, e.g. $f\left(x,y\right)\text{ = }2y\text{ + }4x^2y\text{ + }1$
 ## Eigenvalues, Eigenvectors
 
 ### Facts
-* eigenvectors and values only exist for square matrices with determinants.
-
+* eigenvectors and values only exist for square matrices with 0 determinants.
+* **Review of Eigenvector & Eigenvalues Proof**: an eigenvector is a vector such that Ax = $\lambda{}x$; that is A makes no change in x's direction, and only extends it by some value $\lambda$.  This being the case:
+  * Ax = $\lambda{}x$ can be set to $Ax\text{ - }\lambda{}x\text{ = }0$ and the identity matrix inserted, with no change to the equation results to get $Ax\text{ - }\lambda{}Ix\text{ = }0$ .  The distributive property reduces this to $\left(A\text{ - }\lambda{}I\right)x\text{ = }0$ .  It follows that if this equation equals 0, then $x\in{}N\left(A\text{ - }\lambda{}I\right)$ . This is, x is in then nullspace of $N\left(A\text{ - }\lambda{}I\right)$.
+  * Assume that $x\in{}N\left(A\text{ - }\lambda{}I\right)$ is not 0.
+  * Note that $\left(A\text{ - }\lambda{}I\right)$ is by itself a matrix.  Call it M.
+     * M's columns are independent, and its determinant $\neq{}$ 0, iff. $N\left(M\right)$ = 0.  But $x\in{}N\left(M\right)$ is $\neq{}$ 0.  Therefore M's columns are **not** independent, and **$\text{det }\|A\text{ - }\lambda{}I\|\text{ = }0$.**
+       * **--It is this finding that lets us solve for eigenvalues $\lambda{}$ in the equation $\text{det}\|A\text{ - }\lambda{}I\|\text{ = }0$ by itself, and then plug the result into $Ax\text{ - }\lambda{}x\text{ = }0$ to obtain the eigenvector x.**
+  * For such a matrix A of n columns there will be n eigenvectors.
+       
 ### Computing Eigenvalues and Eigenvectors:
 
-*  For a given equation Ax = 0:
-  *  Reformat Ax = 0 to $\left(A\text{ - }\lambda{I}\right)\text{ = }0$, where I and A are matrices of the same size.
-  *  Subtract the product of $\lambda{I}$ from A.  This should result in a matrix A that is unchanged except for the diagonal components having lambda subrtracted from them.  --Which this in mind, you could just skip to subtracting lambda from every diagonal term.
-  *  Using row reduction, put the matrix A into a upper "U" format.
-  *  Take the determinant as the product of the diagonal components, = 0 .  Multiply out and solve for 0.  The results are your eigenvalues.
-    *  Note: it is possible to have multiple identical eigenvalues.
-    *  It's difficult to calculate eigenvalues for a matrix greater than 2x2.  Hence a test question is likely to be for a 2x2 matrix.
-      * This means the quadratic equation $x\text{ = }\frac{-b\pm\sqrt{b^2\text{ - }4ac}}{2a}$ will likely come in handy.
-      * If you do have to do a 3x3 matrix, put it into U format as usual, and multiply the determinants to get the polynomial equation to solve for the eigenvalues.
-  *  Having computed the eigenvalues, for each eigenvalue, you complete the following steps:
-    *  plug each eigenvalue into the matrix M = $\left(A-\lambda{}I\right)$ to get a matrix of values.
-    *  reduce M into $U_M$
-    *  multiply $U_{M}x$ into its set of equations in x, each set = 0, and solve for each x component ( $x_1,x_2\text{,... etc}$ ).
-      * if A is > 2x2, the solution may well involve "special solutions", where the E space involves multiple vectors and scalars.
+#### 2x2 Case:
 
+* Set up characteristic equation:
+
+$$
+\left(A\text{ - }\lambda{}I\right)
+\text{ = }
+\left[
+{\begin{matrix}
+1 & 2 \\
+4 & 3 \\
+\end{matrix}}
+\right]
+\text{ - }
+\left[
+{\begin{matrix}
+\lambda & 0 \\
+0 & \lambda \\
+\end{matrix}}
+\right]
+\text{ = }
+\left[
+{\begin{matrix}
+{1\text{ - }\lambda} & 2 \\
+4 & {3\text{ - }\lambda} \\
+\end{matrix}}
+\right]
+$$
+
+* take determinant = 0 via 2x2 ad - bc equation:
+
+$$
+\text{det}
+\left|
+{\begin{matrix}
+{1\text{ - }\lambda} & 2 \\
+4 & {3\text{ - }\lambda} \\
+\end{matrix}}
+\right|
+\text{ = }\left(1\text{ - }\lambda{}\right)\left(3\text{ - }\lambda{}\right)\text{ - }8
+\text{ = }\lambda^2\text{ - }4\lambda{}\text{ - }5\text{ = }0
+$$
+
+* solve "add terms to get middle, multiply to get outer" --> $\lambda$ : {1,-5} .
+* plug each eigenvalue into characteristic equation to compute its eigenvector:
+
+$$
+E_{-5}\text{ = }
+\left(A\text{ - }\lambda{}I\right)\text{ = }
+\left[
+{\begin{matrix}
+1 & 2 \\
+4 & 3 \\
+\end{matrix}}
+\right]
+\text{ - }
+\left[
+{\begin{matrix}
+5 & 0 \\
+0 & 5 \\
+\end{matrix}}
+\right]
+\text{ = }
+\left[
+{\begin{matrix}
+-4 & 2 \\
+4 & -2 \\
+\end{matrix}}
+\right]
+$$
+
+* row reduce result:
+
+$$
+\left[
+{\begin{matrix}
+1 & -\frac{1}{2} \\
+0 & 0 \\
+\end{matrix}}
+\right]
+$$
+
+* plug into initial $\left(A\text{ - }\lambda{}I\right)x\text{ = }0$ equation:
+
+$$
+\left(A\text{ - }\lambda{}I\right)x\text{ = }
+\left[
+{\begin{matrix}
+1 & -\frac{1}{2} \\
+0 & 0 \\
+\end{matrix}}
+\right]
+\left[
+{\begin{array}
+x_1 \\
+x_2 \\
+\end{array}}
+\right]
+\text{ = }0
+$$
+
+... so eigenvector $E_{-5}$ is ...
+
+$$
+E_{-5}\text{ = }c
+\left[
+{\begin{matrix}
+\frac{1}{2} \\
+1 \\
+\end{matrix}}
+\right]
+\text{ = }0
+$$
+
+... where c is some scalar
+ 
 ## Jacobians
+
 
 ### Compute a Jacobian 
 
