@@ -20,16 +20,7 @@
 
 ## Fit, Least Squares
 
-* "Suppose I want to find the linear function of best fit for my data $\\{\left(x_1,y_1,z_1\right)\text{,}\left(x_2,y_2,z_2\right)\text{,...}\left(x_N,y_N,z_N\right)\\}$ where
-x,y are the independent variables and z is the target variable.  How many parameters does a general linear function have in this scenario?"
-  * Answer: 3.  Count the number of variables including the target variable for this kind of question.
-
-* "Suppose I have 10 data points $\left(x_i,y_i\right)$ and I want to find the line of best fit. The total sum of squares is given by the following dot product:
-
-$$\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)\cdot\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)$$
-
-... how many columns does X have in this equation?" **Answer:** 2 (in fact, an unspecified matrix X could have an aribtrarily large number of columns, but I think what they're getting at is that it has at least the intercept + x term, which is 2 columns.)
-
+### Facts
 * Solving $A^TA\hat{x}\text{ = }A^Tb$ gives the projection p = $A\hat{x}$ of b onto the column space of A.
 * When Ax = b has no solution $\hat{x}$ is the "least-squares solution" : ${\text{||}b\text{ - }A\hat{x}\text{||}}^2$ = minimum.
 * Setting partial derivatives of E = ${\text{||}A\hat{x}\text{ - }b\text{||}}^2$ to zero $\left(\frac{\partial{E}}{x}\text{ = }0\right)$ also produces $A^TA\hat{x}\text{ = }A^Tb$ .
@@ -65,13 +56,25 @@ $$
 * Multiply A on $\hat{x}$ to get p in; this is the closest possible approximation to Ax = b.
 * The error term e is then b - p, and the total sum of squared components of e is E. This is the measure of how close p was to b.
 
+### Examples
+* "Suppose I want to find the linear function of best fit for my data $\\{\left(x_1,y_1,z_1\right)\text{,}\left(x_2,y_2,z_2\right)\text{,...}\left(x_N,y_N,z_N\right)\\}$ where
+x,y are the independent variables and z is the target variable.  How many parameters does a general linear function have in this scenario?"
+  * Answer: 3.  Count the number of variables including the target variable for this kind of question.
+
+* "Suppose I have 10 data points $\left(x_i,y_i\right)$ and I want to find the line of best fit. The total sum of squares is given by the following dot product:
+
+$$\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)\cdot\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)$$
+
+... how many columns does X have in this equation?" 
+  * **Answer:** 2 (in fact, an unspecified matrix X could have an aribtrarily large number of columns, but I think what they're getting at is that it has at least the intercept + x term, which is 2 columns.)
 
 ## Matrix Properties
 
-### Independence
-* "Suppose you have 3 vectors that are 2-dimensional, i.e. $\overrightarrow{v}_1,\overrightarrow{v}_2,\overrightarrow{v}_3\text{ }\in\text{ }\mathbb{R}^2$ .  Is it possible that they are linearly independent?" -- NO
+### Examples
 
-### Number of Solutions
+### Facts
+
+#### Number of Solutions
 
 * r = number of pivot variables after row reduction. It is the same for RREF R(A) and C(A).
 * Always: r <= n; r <= m.
@@ -93,7 +96,9 @@ $$
 * I and F columns may be interspersed.
 * No solution or infinitely many solutions.
 
-#### Example:
+#### Examples
+
+* "Suppose you have 3 vectors that are 2-dimensional, i.e. $\overrightarrow{v}_1,\overrightarrow{v}_2,\overrightarrow{v}_3\text{ }\in\text{ }\mathbb{R}^2$ .  Is it possible that they are linearly independent?" -- NO
 * How many solutions does the following linear system have?
 
 $$10x\text{ - }2y\text{ + }z\text{ = }1$$
