@@ -198,6 +198,36 @@ $$
   * In order for $P^2\text{ = }P$, all values of P must be positive.  An additional property results:
     * P is positive semidefinite: $x^TPx\geqq{0}$ , for all x.  Because all vectors in P are $geqq{0}$ , and all x components are squared.
 
+## LU Decomposition
+
+### Steps/Method
+* LU Factorization or Decomposition of A multiplies A by a series of "elimination" matrices E.
+* It requires fewer computation steps than G-J AI transformation, but is maybe less human-friendly than G-J in a testing context. So for a test, the trick is to do G-J in an orderly way so that you can preserve your thought process, then abstract the Es and ultimately L out of the E-inverses. 
+
+To do LU decomp in a test:
+* **If follow-up test questions go on to reduce U to R, then do G-J A->I elimination.**  Otherwise regular row elimination on A is sufficient.
+* in the middle of your scratch page copy A.
+* put the first update to A resulting from your first row elimination step to the right of it.
+* do only one unique row elimination step at a time, on the right side of the page, in a column showing each successive change to A in order top to bottom.  Stop when you get to U; no further elimination is advisable.
+* when you have gotten to U:
+  * moving to the left of A in the first row, write in the elimination matrix E_1 that would multiply A to get the first modified A_2 result on the right.
+  * move to the next row.  In the middle column, copy in A_2.  To the left of it, write in the matrix E_2 that would multiply A_2 in the middle column to give the result A_3 on the right, and so on.  
+  * When you have finished the last row ending in U, calculate L.
+
+* Calculating L:
+  * starting from the bottom row of your work, create $E^{-1}$ out from your last row's E, and put it in a new row toward the right of your page, leaving room to the left.
+    * if you have been careful to do only one discrete elimination step at a time, creating $E^{-1}$ should only involve changing a sign on a single off-diagonal value in the corresponding E.
+    * to the left of your first $E^{-1}$, put the next $E^{-1}$ created from the E in the second-to-last row.  Proceed in this way till you process the E in the top-most row.
+    * Multiply these inverse matrices from left to right.  Their product is L, which is also called $E^{-1}$ in the literature.
+
+* QA: check that LU = A .
+
+## EA = R Updating
+
+* EA = R updating is the same process as multiplying successive Es on A as was used in LU = A factorization.
+* However, we continue to multiply Es on A until A becomes R.
+* The Es are multiplied left to right in original order into one E.  Check that this E multiplied on A = R.
+
 ## Singular Value Decomposition
 * Understand SVD of $A^TA\hat{x}\text{ = }A^Tb$ .
 
