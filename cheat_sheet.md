@@ -123,8 +123,8 @@ Answer: 0 (it has a zero row = 1).
 
 #### Examples
 * "Suppose a square NxN matrix is invertible. Which of the following is NOT true:
-  * The rows of the matrix are linearly dependent -- TRUE
-  * The determinant is non-zero -- FALSE 
+  * The rows of the matrix are linearly dependent -- NOT TRUE
+  * The determinant is non-zero -- TRUE 
   * The matrix is full rank -- TRUE
   * The columns of the matrix form the basis for an N-dimensional space."  -- TRUE
 
