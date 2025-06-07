@@ -187,7 +187,7 @@ Given a vector a in C(A), a vector b not in C(A), and a factor x by which multip
 $$
 P\text{ = }\frac{1}{9}
 \left[
-{\begin{matrix}{cc}
+{\begin{matrix}
 1 & 2 & 2 \\
 1 & 2 & 2 \\
 1 & 2 & 2 \\
