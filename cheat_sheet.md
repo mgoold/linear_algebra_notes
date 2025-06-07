@@ -222,7 +222,7 @@ $$
 
 ### Getting Bases for Each Subspace
 
-* The columns or rows of A that correspond to the pivot columns and rows of R are the *$bases** of C(A) or R(A).
+* The columns or rows of A that correspond to the pivot columns and rows of R are the **bases** of C(A) or R(A).
 * The special solution columns of A are the basis of N(A).
 * For the left nullspace:
   1. To the right of matrix $A_{mxn}$, add $I_{mxm}$ .
