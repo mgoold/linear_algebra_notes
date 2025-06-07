@@ -500,5 +500,21 @@ Find the determinant.  (You use product of determinants of U; Kahn uses "rule of
 * We always think of a vector in relationship to an origin point.
 * Vectors have an inherent "direction".
 
+# Appendices
+
+## Derivation Rules
+* So you don't get burned doing gradients, Jacobians, etc.
+
+* Power Rule: The derivative of $x^n$ is $nx^{n-1}$. For example, if f(x) = $x^3$, then f'(x) = $3x^2$ .
+* Product Rule: If f(x) = u(x) * v(x), then f'(x) = u'(x)v(x) + u(x)v'(x).
+* Quotient Rule: If f(x) = u(x) / v(x), then f'(x) = (v(x)u'(x) - u(x)v'(x)) / $\text{[v(x)]}^2$ .
+* Chain Rule: If y = f(g(x)), then dy/dx = f'(g(x)) * g'(x).
+* Sum/Difference Rule: The derivative of a sum or difference of functions is the sum or difference of their derivatives. For example, if f(x) = u(x) + v(x), then f'(x) = u'(x) + v'(x).
+* Constant Multiple Rule: The derivative of a constant times a function is the constant times the derivative of the function. If f(x) = k * g(x), where k is a constant, then f'(x) = k * g'(x).
+* Constant Rule: The derivative of a constant is always zero.
+* General Power Rule: combines power rule and chain rule. If f(x) = $\text{[u(x)]}^n$ , then f'(x) = $\text{n[u(x)]}^{(n-1)}$ * u'(x) .
+
+
+
 
   
