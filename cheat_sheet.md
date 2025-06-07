@@ -269,12 +269,13 @@ To do LU decomp in a test:
 * C(A) is an orthogonal complement to $N\left(A^T\right)$, aka the "left nullspace".
 
 ## Subspaces
+
 A set of vectors in linear combination are a subspace of something if:
-* Note: "still fit the rules for the subspace" is frequently phrased as "staying in the space"
 * multiplying the vectors produces results that still fit the rules for the subspace
 * adding the vectors produces results that still fit the rules for the subspace
 * the 0 vector is included in the results
 * functions, and particular matrix types, can be the bases for subspaces.
+* Note: "still fit the rules for the subspace" is frequently phrased as "staying in the space"
 
 When A is an mxn matrix, what is the "location" of each of these subspaces (i.e. which dimension limits them) ?
 
