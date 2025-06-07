@@ -258,6 +258,7 @@ Given a function, e.g. $f\left(x,y\right)\text{ = }2y\text{ + }4x^2y\text{ + }1$
   * Note that $\left(A\text{ - }\lambda{}I\right)$ is by itself a matrix.  Call it M.
      * M's columns are independent, and its determinant $\neq{}$ 0, iff. $N\left(M\right)$ = 0.  But $x\in{}N\left(M\right)$ is $\neq{}$ 0.  Therefore M's columns are **not** independent, and **$\text{det }\|A\text{ - }\lambda{}I\|\text{ = }0$.**
        * **--It is this finding that lets us solve for eigenvalues $\lambda{}$ in the equation $\text{det}\|A\text{ - }\lambda{}I\|\text{ = }0$ by itself, and then plug the result into $Ax\text{ - }\lambda{}x\text{ = }0$ to obtain the eigenvector x.**
+* $\left(A\text{ - }\lambda{}I\right)x\text{ = }0$ is called the **characteristic equation** .  Strang shows this equation with the term $\left(A\text{ - }\lambda{}I\right)$ ; others like Kahn academy reverse it as $\left(\lambda{}I\text{ - }A\right)$ , but the results come out the same either way.
   * For such a matrix A of n columns there will be n eigenvectors.
        
 ### Computing Eigenvalues and Eigenvectors:
@@ -376,10 +377,65 @@ E_{-5}\text{ = }c
 \text{ = }0
 $$
 
-... where c is some scalar
+... where c is some scalar.
+
+#### 3x3 Case
+
+* This is straight out of: https://www.youtube.com/watch?v=11dNghWC4HI&list=PL472D7015831DBF51&index=5
+
+* Given the matrix:
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}
+-1 & 2 & 2 \\
+2 & 2 & -1 \\
+2 & -1 & 2 \\
+\end{matrix}}
+\right]
+$$
+
+* Subtract $\lambda{}I$ from A.  (For notational convenience, we will designate the resulting matrix as "M"):
+
+$$
+\left(A\text{ - }lambda{}I\right)\text{ = }
+\left[
+{\begin{matrix}
+{-1\text{ - }\lambda} & 2 & 2 \\
+2 & {2\text{ - }\lambda} & -1 \\
+2 & -1 & {2\text{ - }\lambda}} \\
+\end{matrix}}
+\right]
+\text{ = }M
+$$
+
+Find the determinant.  (You use product of determinants of U; Kahn uses "rule of Sarrus" and that is probably easier).
+
+* **Rule of Sarrus:**
+* For a **3x3 matrix** , make a 3x5 augmented matrix by copying the first 2 columns to the right of initial 3x3, so that they become columns for and 5.
+* Add and subtract the diagonal products in the following way:
+  * Starting with the first column, take the product of the diagonals from **rc positions** 11 to 33.  To this product add the products of the diagonals for 12 to 34 and 13 to 35.
+  * To these sums, subtract diagonals from 15 to 33, 14 to 32, and 13 to 31.
+  * The overall pattern product additions and subtractions is 11 to 33 + 12 to 34 + 31 to 35 - 15 to 33 - 14 to 32 - 13 to 31.
+  * The pattern looks like this:
+ 
+![Screenshot 2025-06-06 at 4 33 58 PM](https://github.com/user-attachments/assets/d75de182-bfdc-49ff-981f-0d3d90401df3)
+
+  * In this example, the resulting determinant is: $\lambda^3\text{ - }3\lambda^2\text{ - }9\lambda\text{ + }27$ . 
+
+* Find the roots of the determinant polynomial.  In test examples, the roots will typically be integer roots of the constant term (here, 27 --> 1,3,9,27 ).  Try factoring these into the equation.
+  * **Remember that:**
+    * You can expect n eigenvalues.
+    * Eigenvalues can be repeated.
+    * Having found a root, you can divide (lambda - that root) into the polynomial to find the other roots, viz:
+      ![Screenshot 2025-06-06 at 4 48 11 PM](https://github.com/user-attachments/assets/59eec287-87d7-4c64-ab3e-6ee0465c7682)
+
+      * In this case, the $\lambda$ roots, or eigenvalues, are $\lambda$ : {3,-3}, with 3 being repeated 2x.
+ * Plug the eigenvalues into the characteristic equation as with the 2x2 case, to find the eigenvectors.
+
  
 ## Jacobians
-
 
 ### Compute a Jacobian 
 
