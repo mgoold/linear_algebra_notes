@@ -1,10 +1,22 @@
 
 # Cheat Sheet
 
-The most concise-yet-recoverable set of notes I can manage.
+## Unit Vectors, Lengths
 
-## Unit Vectors
-  * Suppose that is a unit vector. What is the value of the dot product $v\cdot\left(-v\right)$ ?
+### Facts
+* Any value squared could be considered as the squared hypotenuse of a symmetric right triangle.
+* It follows that the dot product (the sum of all of a vector's squared components), noted as $v\cdot{}v$, is then an overall squared "hypotenuse" to its component right triangles.
+* The **length** of a vector is the square root or hypotenuse of that dot product.
+* a **unit vector** is a vector with every component divided by the vector's length. The unit vector's dot product, which squares every component, will then = 1, and the square root of that dot product must likewise equal 1.
+  * example:
+    * v = (1,2,3)
+    * $v^2$ = 14 ; the length of v "lv" is $\lvert\lvert{v}\rvert\rvert$ = $\sqrt{14}$
+    * u = (1/lv,2/lv,3/lv).
+    * Thus, $u\cdot{}u$ = 1, so length of u = $\lvert\lvert{v}\rvert\rvert$ = $sqrt(1)$ = 1.
+
+### Examples
+* Suppose that v is a unit vector. What is the value of the dot product $v\cdot\left(-v\right)$ ?
+  * Answer: -1.  A unit vector always has a "hypotenuse" (in the 2d case) or length squared of 1; the sum of its squared components = 1.  So $v\cdot\left(-v\right)$ ends up meaning So $vs\cdot\left(-1\right)v$ or "the sum of every unit component multiplied by its negative", which must equal -1.
 
 ## Fit, Least Squares
 
