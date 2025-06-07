@@ -109,6 +109,19 @@ $$-2x\text{ + }2y\text{ - }6z\text{ = }1$$
 Answer: 0 (it has a zero row = 1).
 
 ### Invertibility
+
+#### Facts
+* A matrix is only invertible if all columns are independent.
+  * Alternate phrases, identical significance:
+    * "An inverse exists if and only if elimination produces n pivots."
+    * A **diagonal matrix** has an inverse if it has no 0 entries on its diagonal.
+* A matrix has only one inverse.
+* If A is invertible, then the only solution to [x in] $Ax\text{ = }b$ is $x = A^{-1}Ax\text{ = }A^{-1}b$ .
+* If there is a non-zero vector x such that Ax = 0, then A cannot have an inverse.
+  * Alternate phrase, identical significance:
+     * For invertible matrices, the only solution to Ax=0 is that x is the 0 vector.
+
+#### Examples
 * "Suppose a square NxN matrix is invertible. Which of the following is NOT true:
   * The rows of the matrix are linearly dependent -- TRUE
   * The determinant is non-zero -- FALSE 
