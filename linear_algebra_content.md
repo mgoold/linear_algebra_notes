@@ -845,21 +845,19 @@ This definition implies that we have to be able to multiple $A^{-1}A$ and $AA^{-
 
 In the context of linear algebra, AB is not necessarily equal to BA. In fact it may not be possible to multiply both AB and BA (they would need to be square).  So in linear algebra, "handedness" (whether a matrix A is on the left or right side of B in multiplication) matters.  Handedness wouldn't wouldn't in "regular" algebra, where multiplying scalar variables ab=ba.  With this in mind, Strang finds it worth noting that the "left side inverse equals the right side inverse" ($A^{-1}$ in $A^{-1}A$) .  --Strang says that this statement is actually difficult to prove.
 
-An inverse matrix looks like if you took the lower left to upper right diagonal and spun everything around it once so that the positions were reversed.  Then non-diagonal values are have their signs reversed so that $AA^{-1}$ will yield the identity matrix I$. An Identity Matrix is a matrix of but 1s on the diagonal and 0s everywhere else, so that when you multiply a matrix * I you get back the original matrix unchanged).  
-
 Here is an example of A and its inverse.
 
 $$
 A=
 \
-  \left[ {\begin{array}{cc}
+  \left[ {\begin{array}
    4 & 3\\
    3 & 2\\
   \end{array} } \right]
 \,
 A^{-1}=
 \
-  \left[ {\begin{array}{cc}
+  \left[ {\begin{array}
    -2 & 3\\
    3 & -4\\
   \end{array} } \right]
