@@ -220,7 +220,7 @@ $$
 * Only vectors form a basis.
 * Vectors are *independent* if no vector is a linear combination of any other vectors.  Equivalently, vectors are independent if no vectors can be subtracted from linear combinations of others to = 0.
 
-### Getting Bases for Each Subspace
+### Getting Bases for Four Subspaces
 
 * The columns or rows of A that correspond to the pivot columns and rows of R are the **bases** of C(A) or R(A).
 * The special solution columns of A are the basis of N(A).
@@ -228,7 +228,7 @@ $$
   1. To the right of matrix $A_{mxn}$, add $I_{mxm}$ .
   2. Using row elimination, transform AI to RE; that is A will be updated to R, and I will be updated to E.
   3. As noted above, EA = R, but you can keep the AI --> RE format, since the insight will be the same.
-  4. Find the row indices of zero rows in R.
+  4. Find the row indices of zero rows (if any) in R.
   5. These zero row indices in R will be the indices of the basis in E of the left null space.
 
 ### Orthogonality
@@ -240,27 +240,27 @@ $$
 
 ## Subspaces
 A set of vectors in linear combination are a subspace of something if:
+* Note: "still fit the rules for the subspace" is frequently phrased as "staying in the space"
 * multiplying the vectors produces results that still fit the rules for the subspace
-* adding the vecotrs produces results that still fit the rules for the subspace
+* adding the vectors produces results that still fit the rules for the subspace
 * the 0 vector is included in the results
+* functions, and particular matrix types, can be the bases for subspaces.
 
-When A is an mxn matrix, what is the location of each of these subspaces?
+When A is an mxn matrix, what is the "location" of each of these subspaces (i.e. which dimension limits them) ?
 
-* Null space of A N(A) is in $R^n$.
-* Column space of A C(A) is in $R^m$.
-* R(A) = Column Space of C($A^T$) is in $R^n$.
-* Null space of A N($A^T$) is in $R^m$.
+* Null space of A, N(A) is in $R^n$.
+* Column space of A, C(A) is in $R^m$.
+* Row Space R(A) = Column Space of C($A^T$) is in $R^n$.
+* Left Null space of A, N($A^T$) is in $R^m$.
 
 ### Dimensions for the Four Subspaces
-
+* Note: "dimensions" are pivot counts r in R; "sizes" are row m and column n counts in A.
 * Column Space: the rank r of the column space (the number of its pivot variables).  = Number of independent vectors in matrix.
 * Null space: number of special solutions  = n-r
-* Row Space: also r, same as column space.  Dim of C($A^T$) = Dim C(A)
-* Left Null Space N($A^T$):  m-r; note that m is the number of columns in $A^T$ .
+* Row Space: also r, same as column space.  Dim of R(A) = Dim C($A^T$) = Dim C(A)
+* Left Null Space N($A^T$):  m-r; note that m is the number of rows in A or columns in $A^T$ .
 * The row space and null space are in $R^n$, and their dimension add to n.
 * The column space and left null space are in $R^m$, and their dimensions add to m.
-
-### Getting Bases for Four Subspaces
 
 ## Compute a Gradient At a Point
 
@@ -282,7 +282,7 @@ Given a function, e.g. $f\left(x,y\right)\text{ = }2y\text{ + }4x^2y\text{ + }1$
 ## Eigenvalues, Eigenvectors
 
 ### Facts
-* eigenvectors and values only exist for square matrices with 0 determinants.
+* eigenvectors and values **only exist for square matrices with 0 determinants.**
 * **Review of Eigenvector & Eigenvalues Proof**: an eigenvector is a vector such that Ax = $\lambda{}x$; that is A makes no change in x's direction, and only extends it by some value $\lambda$.  This being the case:
   * Ax = $\lambda{}x$ can be set to $Ax\text{ - }\lambda{}x\text{ = }0$ and the identity matrix inserted, with no change to the equation results to get $Ax\text{ - }\lambda{}Ix\text{ = }0$ .  The distributive property reduces this to $\left(A\text{ - }\lambda{}I\right)x\text{ = }0$ .  It follows that if this equation equals 0, then $x\in{}N\left(A\text{ - }\lambda{}I\right)$ . This is, x is in then nullspace of $N\left(A\text{ - }\lambda{}I\right)$.
   * Assume that $x\in{}N\left(A\text{ - }\lambda{}I\right)$ is not 0.
@@ -484,9 +484,14 @@ Find the determinant.  (You use product of determinants of U; Kahn uses "rule of
  = ad - bc
 
 ### >2x2 Determinants
+
+#### For a >2x2 Matrix of Real Numbers
 * = Product of diagonals of U (ala determinant "property #7" ).
   * Calculate U through row reduction.
   * Multiply diagonals of U.  This is not the same as product of I diagonals, which is always = 5.
+ 
+### For a 3x3 Matrix Using Formulas:
+* Use the "Rule of Sarrus" --see above in eigenvector section.
 
 ## Properties of Vectors vs Points
 
