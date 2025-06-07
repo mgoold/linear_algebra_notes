@@ -48,13 +48,14 @@ $$
     * $\hat{x}$ = aTa/aTb 
     * p = $\hat{x}a$
     * error e = b - p; E = sum of squares of every e in b - p .
-    * error vector e will be orthogonal to a and thus $a^Te$ will have a 0 dot product.
+    * error vector e will be orthogonal to a and thus $a^Te$ will have a 0 dot product. --Use this as a QA check.
 
 ### Solving $A^TA\hat{x}\text{ = }A^Tb$
-* Compute $A^TA$ and $A^Tb$ .
-* Put $A^TA$ and $A^Tb$ into an augmented matrix, then put that matrix into RREF form.  The result of the augmented portion is $\hat{x}$ .
-* Multiply A on $\hat{x}$ to get p in; this is the closest possible approximation to Ax = b.
-* The error term e is then b - p, and the total sum of squared components of e is E. This is the measure of how close p was to b.
+* For a given matrix A and vector b, where Ax = b does not have an exact solution:
+  * Compute $A^TA$ and $A^Tb$ .
+  * Put $A^TA$ and $A^Tb$ into an augmented matrix, then put that matrix into RREF form.  The result of the augmented portion is $\hat{x}$ .
+  * Multiply A on $\hat{x}$ to get p; p is the closest possible approximation b Ax = b.
+  * The error term e is then b - p, and the total sum of squared components of e is E. This is the measure of how close p was to b.
 
 ### Examples
 * "Suppose I want to find the linear function of best fit for my data $\\{\left(x_1,y_1,z_1\right)\text{,}\left(x_2,y_2,z_2\right)\text{,...}\left(x_N,y_N,z_N\right)\\}$ where
@@ -105,7 +106,7 @@ $$10x\text{ - }2y\text{ + }z\text{ = }1$$
 $$x\text{ - }2y\text{ + }3z\text{ = }0$$
 $$-2x\text{ + }2y\text{ - }6z\text{ = }1$$
 
-Answer: 0 (it had a zero row).
+Answer: 0 (it has a zero row = 1).
 
 ### Invertibility
 * "Suppose a square NxN matrix is invertible. Which of the following is NOT true:
@@ -119,7 +120,7 @@ Answer: 0 (it had a zero row).
 $$
 A\text{ = }
 \left[
-\begin{matrix}{cc}
+\begin{matrix}
 1 & 0 & -1 \\
 -1 & 2 & -1 \\
 3 & 0 & 1 \\
@@ -134,7 +135,7 @@ $$
 $$
 A\text{ = }
 \left[
-\begin{matrix}{cc}
+\begin{matrix}
 .25 & 0 & .25 \\
 -.25 & 0.5 & .25 \\
 .75 & 0 & .25 \\
