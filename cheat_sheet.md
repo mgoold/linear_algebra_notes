@@ -228,6 +228,62 @@ To do LU decomp in a test:
 * However, we continue to multiply Es on A until A becomes R.
 * The Es are multiplied left to right in original order into one E.  Check that this E multiplied on A = R.
 
+## Ax = 0 Special Solutions
+
+### Facts
+* If for a matrix R, r pivots < n columns, there will be n-r special solutions for n-r "free columns".
+* If the size of A has n > m, there will always be at least 1 free column.
+* The process for calculating solutions to Ax = 0 when r < n involves:
+  * reducing the matrix to R
+  * toggling each free variable to 1, and the others to 0, in order, then solving via substitution for the remaining values.
+
+### Examples:
+
+#### Create Matrix from Special Solutions
+* Details: For a set of special solutions, create a matrix R to which those special solutions would apply.
+
+* Example:
+* Create a 3 by 4 matrix R whose special solutions to Rx = 0 are $s_1$ and $s_2$:
+
+$$
+s_1
+\text{ = }
+\left[
+{\begin{matrix}
+-3 \\
+1 \\
+0 \\
+0 \\
+\end{matrix}}
+\right]
+\text{and  }s_2\text{ = }
+\text{ = }
+\left[
+{\begin{matrix}
+-2 \\
+0 \\
+-6 \\
+1 \\
+\end{matrix}}
+\right]
+$$
+
+Solution: 
+*  Note the size of the matrix and compare it to the number of pivots shown in the special solutions.  There are 2 special solutions and 4 columns, making 2 pivots. Because r is the same for C(R) and R(R), there is one row without pivots, which means row 3 will zero out in R.
+*  The toggle 1 and 0 values in the special solutions tell you where the pivot columns are in C(R).
+  *  Create an empty matrix of the prescribed size, filling in any pivots =1 (because it is R), and any known 0 rows at the bottom.
+  *  Anything to the left of a pivot column must be 0.
+  *  Comparing the values of the special solution to the remaining empty spaces in the pivot rows, you should be able to work out the values by elimination.
+    *  For example, since the first special solution above has -3,1 in its first 2 components, and opposed 1,3 in the pivot row will cause the values to 0 out.
+
+## Ax = b Complete Solutions
+
+For a matrix A with m < n , where b in Ax = b is not equal to 0:
+* Reduce Ab to Rd
+* Write out the remaining pivot rows as equations.
+* Obtain the **particular solution** by setting the **free** variables to 0, and solving for the remaining pivot variables via back-substitution.
+* Now obtain the special solutions by toggling each free variable to 1 in turn, and setting other free variables to zero.  Solve for the remaining values via back-substitution.  You should have 1 special solution for each free variable.
+
 ## Singular Value Decomposition
 * Understand SVD of $A^TA\hat{x}\text{ = }A^Tb$ .
 
