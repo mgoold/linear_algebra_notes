@@ -280,9 +280,30 @@ Solution:
 
 For a matrix A with m < n , where b in Ax = b is not equal to 0:
 * Reduce Ab to Rd
+* If for some reason b is a vector of variables, and a row is reduced to 0's, then b's arrangement of variables in state d are a "solvability condition" on R.
 * Write out the remaining pivot rows as equations.
 * Obtain the **particular solution** by setting the **free** variables to 0, and solving for the remaining pivot variables via back-substitution.
 * Now obtain the special solutions by toggling each free variable to 1 in turn, and setting other free variables to zero.  Solve for the remaining values via back-substitution.  You should have 1 special solution for each free variable.
+* The complete solution is written as : vector for particular solution + (free variable 1 * vector for special solution 1) + ... + (free variable n * vector for special solution n) , e.g:
+
+$$
+x\text{ = }x_p\text{ + }x_n\text{ = }
+\left[
+{\begin{matrix}
+2 \\
+1 \\
+0 \\
+\end{matrix}}
+\right]
+\text{ = }x_3
+\left[
+{\begin{matrix}
+-3 \\
+2 \\
+1 \\
+\end{matrix}}
+\right]
+$$
 
 ## Singular Value Decomposition
 * Understand SVD of $A^TA\hat{x}\text{ = }A^Tb$ .
