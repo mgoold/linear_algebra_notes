@@ -4,13 +4,11 @@ These are my notes-to-self on linear algebra concepts and lectures, almost all r
 
 The conceptual content is ordered serially across the "linear_algebra_content_" files, more or less following the order of the 18.06 course.
 
-Note that, as this repo developed, the "Strang" source content ended up coming from several editions (4th, 5th, 6th), reflecting what I could find online..
+Note that, as this repo developed, the "Strang" source content ended up coming from several editions (4th, 5th, 6th), reflecting what I could find online.
 
-There is a folder of excercises, one directory for Strang/MIT 18.06, and one organized by object type (function, vector, matrix).  I may never get it completely organized, but I believe the best testing process for this topic would be one that that allows you to do all the exercises on a complete bestiary of vector and matrix types, since each type carries its own challenges.
-
-I will continue to add content as I learn, but anticipate quitting (with regrets) after determinants and eigenvectors because of time constraints.
+The most helpful thing may be the "cheat_sheet.md" , which has the most succinct notes in preparation for tests.  As of this writing, there isn't a way to view markdown code on your phone -- so you may want to download this page (with the markdown rendered) as a pdf and then upload it to your phone for viewing.  
+There's also a "matrix generation.ipynb" jupyter file for generating matrices to test yourself.  At the top I've stored matrices that are more human-friendly for testing.
 
 HTH
 
-To Do:
-* ITLA 5th Edition, ch 3.1. "Vector Spaces" --extremely poor match between the problem set and the textbook content and corresponding online lecture.  Need to find better source to understand this content.
+
