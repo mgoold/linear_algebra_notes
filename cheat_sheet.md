@@ -390,7 +390,8 @@ Given a function, e.g. $f\left(x,y\right)\text{ = }2y\text{ + }4x^2y\text{ + }1$
 ## Eigenvalues, Eigenvectors
 
 ### Facts
-* eigenvectors and values **only exist for square matrices with 0 determinants.**
+* **eigenvalues and eigenvecotrs only exist for square matrices
+* **non-zero eigenvalues only exist for square matrices with non-zero determinants.**
 * **Review of Eigenvector & Eigenvalues Proof**: an eigenvector is a vector such that Ax = $\lambda{}x$; that is A makes no change in x's direction, and only extends it by some value $\lambda$.  This being the case:
   * Ax = $\lambda{}x$ can be set to $Ax\text{ - }\lambda{}x\text{ = }0$ and the identity matrix inserted, with no change to the equation results to get $Ax\text{ - }\lambda{}Ix\text{ = }0$ .  The distributive property reduces this to $\left(A\text{ - }\lambda{}I\right)x\text{ = }0$ .  It follows that if this equation equals 0, then $x\in{}N\left(A\text{ - }\lambda{}I\right)$ . This is, x is in then nullspace of $N\left(A\text{ - }\lambda{}I\right)$.
   * Assume that $x\in{}N\left(A\text{ - }\lambda{}I\right)$ is not 0.
