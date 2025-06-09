@@ -544,7 +544,7 @@ $$
 {\begin{matrix}
 {-1\text{ - }\lambda} & 2 & 2 \\
 2 & {2\text{ - }\lambda} & -1 \\
-2 & -1 & {2\text{ - }\lambda}} \\
+2 & -1 & {2\text{ - }\lambda} \\
 \end{matrix}}
 \right]
 \text{ = }M
