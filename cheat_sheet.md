@@ -588,6 +588,16 @@ Find the determinant.  (You use product of determinants of U; Kahn uses "rule of
 
 ## Determinants
 
+### Facts
+
+* Only square matrices have determinants.
+  * Only non-singular matrices have non-zero determinants 
+  * Only matrices with n pivots have have non-zero determinants 
+* When using row reduction during determinant calculations:
+  * the determinant changes sign for each row swap
+    * consequently, an even number of swaps gives the determinants original sign; an odd number of swaps reverses the original sign.
+* the determinant of A = product of pivots in U
+
 ### 2x2 Determinant Formula
  = ad - bc
 
