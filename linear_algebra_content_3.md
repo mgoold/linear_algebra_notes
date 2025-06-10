@@ -106,11 +106,11 @@ Remember that the derivative is a "rate of change" .  The definition of a deriva
 
 Supose we have a function f(x) = y, and we want to find the derivative at a specific value x = a.  We usually denote this derivative equation as: 
 
-$$\text{f'(a) = }\lim_{x \to a}\frac{\text{f(x)-f(a)}{\text{x - a}}$$ 
+$$\text{f'(a) = }\lim_{x \to a}\frac{\text{f(x) - f(a)}}{\text{x - a}}$$ 
 
 .  This is also sometimes written equivalently as:
 
-$$\text{f'(x) = }\lim_{h \to 0}\frac{\text{f(x+h)-f(x)}{h}}$$ 
+$$\text{f'(x) = }\lim_{h \to 0}\frac{\text{f(x + h)-f(x)}}{h}$$ 
 
 .  This equation finds the rate of change at a specific point x=a.  So if we have the function f(x) = y = $x^2$ , and we're looking for the derivative f'(x) at x = a.  
 
