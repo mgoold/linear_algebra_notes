@@ -51,7 +51,7 @@ Suppose we have the matrix
 $$
 A\text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 2 & 4 \\
 1 & 2 \\
 \end{array} } 
@@ -63,7 +63,7 @@ $$
 $$
 A\text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 1 & 2 \\
 0 & 0 \\
 \end{array} } 
@@ -75,7 +75,7 @@ Which means that N(A) will be
 $$
 N(A)\text{ = c}
 \left[
-{\begin{array}{cc}
+{\begin{array}
 -2 \\
 1 \\
 \end{array} } 
@@ -83,7 +83,7 @@ N(A)\text{ = c}
 \text{, }
 N(A)\text{ = c}
 \left[
-{\begin{array}{cc}
+{\begin{array}
 2 \\
 -1 \\
 \end{array} } 
@@ -228,13 +228,13 @@ Suppose we took the derivative of a particular point "a" with respect to x, then
 
 Considering the partial derivatives as slope scalars, in the context of linear algebra, we can think of them as multiplying basis vectors: 
 
-$$\frac{\partial f}{\partial x}\left(a\right)\left[{\begin{array}{cc}
+$$\frac{\partial f}{\partial x}\left(a\right)\left[{\begin{array}
 1 \\
 0 \\
 0 \\
 \end{array} }\right]
 \text{, and }
-\frac{\partial f}{\partial y}\left(a\right)\left[{\begin{array}{cc}
+\frac{\partial f}{\partial y}\left(a\right)\left[{\begin{array}
 0 \\
 1 \\
 0 \\
@@ -293,7 +293,7 @@ Suppose we have a function that maps x and y to two new values, using two "coord
 $$
 f\left(
 \left[
-{\begin{array}{cc}
+{\begin{array}
 x \\
 y \\
 \end{array}}
@@ -301,7 +301,7 @@ y \\
 \right)
 \text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 x^2y+2x \\
 y^3+2xy \\
 \end{array}}
@@ -315,7 +315,7 @@ Thus the Jacobean for this case:
 $$
 f(x,y)
 \text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 {2xy\text{ + }2} & x^2 \\
 2y & {3y^2\text{ + }2x} \\
 \end{array} }\right]
@@ -328,17 +328,17 @@ In this case:
 $$
 J_{f}\left({1,2}\right)
 \text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 {2xy\text{ + }2} & x^2 \\
 2y & {3y^2\text{ + }2x} \\
 \end{array} }\right]
 \text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 {2\*1\*2+2} & {1^2} \\
 {2*2} & {3\*2^2+2x} \\
 \end{array} }\right]
 \text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 6 & 7 \\
 4 & 14 \\
 \end{array} }\right]
@@ -385,7 +385,7 @@ Gradients **apply to** a class of functions which take multiple inputs and combi
 $$
 \nabla{f\left(a\right)}\text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 \frac{\partial f}{\partial x_1}\left(a\right) \\
 \frac{\partial f}{\partial x_2}\left(a\right) \\
 \vdots \\
@@ -403,7 +403,7 @@ Suppose our function takes to inputs, x and y, and combines them in an output fu
 $$
 \nabla{f}\left(x\right)\text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 \frac{\partial f}{\partial x_1}\text{ = }6x_1 \\
 \frac{\partial f}{\partial x_2}\text{ = }2x_2 \\
 \end{array}}
@@ -503,7 +503,7 @@ Suppose again our function takes to inputs, x and y, and combines them in an out
 $$
 \nabla{f}\left(x\right)\text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 \frac{\partial f}{\partial x_1}\text{ = }6x_1 \\
 \frac{\partial f}{\partial x_2}\text{ = }2x_2 \\
 \end{array}}
@@ -515,7 +515,7 @@ And the initial gradient is
 $$
 \nabla{f}\left(x\right)\text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 6 \\
 2 \\
 \end{array}}
@@ -527,7 +527,7 @@ $$
 $$
 a_1\text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 1 \\
 1 \\
 \end{array}}
@@ -535,14 +535,14 @@ a_1\text{ = }
 \text{ - }
 .01
 \left[
-{\begin{array}{cc}
+{\begin{array}
 6 \\
 2 \\
 \end{array}}
 \right]
 \text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 .4 \\
 .8 \\
 \end{array}}
@@ -554,7 +554,7 @@ $$
 $$
 a_1\text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 .4 \\
 .8 \\
 \end{array}}
@@ -562,14 +562,14 @@ a_1\text{ = }
 \text{ - }
 .01
 \left[
-{\begin{array}{cc}
+{\begin{array}
 6(.4) = 2.4 \\
 2(.8) = 1.6 \\
 \end{array}}
 \right]
 \text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 .16 \\
 .64 \\
 \end{array}}
@@ -614,7 +614,7 @@ Consider what length *is* .  What is length squared?  If we consider the vector:
 
 $$
 x\text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 1 \\
 2 \\
 3 \\
@@ -625,13 +625,13 @@ the dot product is sqrt(1 + 4 + 9) = sqrt(14), so the length squared is 14.  Thi
 
 $$
 x\text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 1 \\
 2 \\
 3 \\
 \end{array} }\right]
 \text{,  }x\text{y = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 2 \\
 -1 \\
 0 \\
@@ -714,20 +714,20 @@ We want to move beyond this **to an optimal, approximate solution** .  The key t
 $$
 A^A\text{ = }
 \left[
-{\begin{matrix}{cc}
+{\begin{matrix}
 1 & 2 \\
 3 & 4 \\
 \end{matrix} } 
 \right]
 \left[
-{\begin{matrix}{cc}
+{\begin{matrix}
 1 & 3 \\
 2 & 4 \\
 \end{matrix} } 
 \right]
 \text{ = }
 \left[
-{\begin{matrix}{cc}
+{\begin{matrix}
 5 & 11 \\
 11 & 25 \\
 \end{matrix} } 
@@ -744,7 +744,7 @@ Answer: it may be.  Consider the 3x2 matrix:
 $$
 A\text{ = }
 \left[
-{\begin{matrix}{cc}
+{\begin{matrix}
 1 & 1 \\
 1 & 2 \\
 1 & 5 \\
@@ -857,7 +857,7 @@ What are the properties of the projection Matrix P?
 $$
 P\text{ = }\frac{1}{9}
 \left[
-{\begin{matrix}{cc}
+{\begin{matrix}
 1 & 2 & 2 \\
 1 & 2 & 2 \\
 1 & 2 & 2 \\
@@ -895,7 +895,7 @@ These will be easier to process if we put them in matrix form:
 $$
 A\text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 {a_1}^T \\
 {a_1}^T \\
 \end{array} } 
@@ -903,7 +903,7 @@ A\text{ = }
 \left(b\text{ - }A\hat{x}\right)
 \text{ = }
 \left[
-{\begin{array}{cc}
+{\begin{array}
 0 \\
 0 \\
 \end{array} } 
@@ -1039,13 +1039,13 @@ Suppose we have the vectors
 
 $$
 a\text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 1 \\
 1 \\
 1 \\
 \end{array} }\right]
 \text{,  b = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 1 \\
 0 \\
 2 \\
@@ -1060,19 +1060,19 @@ B is then
 
 $$
 B\text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 1 \\
 0 \\
 2 \\
 \end{array} }\right]
 \text{ - }\frac{3}{3}
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 1 \\
 1 \\
 1 \\
 \end{array} }\right]
 \text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 0 \\
 -1 \\
 1 \\
@@ -1279,13 +1279,13 @@ $$
 
 $$
 v_1\text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 2 \\
 3 \\
 \end{array} }\right]
 \text{ corresponds to }\lambda_1\text{, and }
 v_2\text{ = }
-\left[{\begin{array}{cc}
+\left[{\begin{array}
 2 \\
 -3 \\
 \end{array} }\right]
@@ -1374,17 +1374,17 @@ Note: in this construal, $u_1,u_2$ are both vectors comprising the matrix U.
 
 $$
 M\text{ = }
-\left[{\begin{matrix}{cc}
+\left[{\begin{matrix}
 \vdots & \cdots & \vdots\\
 u_1 & \cdots & u_p \\ 
 \vdots & \cdots & \vdots\\
 \end{matrix} }\right]
-\left[{\begin{matrix}{cc}
+\left[{\begin{matrix}
 \sigma_1 & {} & {} \\
 {} & \cdots & {} \\ 
 {} & {} & \sigma_p \\
 \end{matrix} }\right]
-\left[{\begin{matrix}{cc}
+\left[{\begin{matrix}
 \cdots & v_1 & \cdots \\
 \vdots & \vdots & \vdots \\ 
 \cdots & v_p & \cdots \\
@@ -1471,7 +1471,7 @@ The v matrix of normalized eigenvectors is thus:
 
 $$
 V\text{ = }
-\left[{\begin{matrix}{cc}
+\left[{\begin{matrix}
 0 & 1 \\
 1 & 0 \\
 \end{matrix} }\right]
@@ -1483,7 +1483,7 @@ $$
 
 $$
 V^T\text{ = }
-\left[{\begin{matrix}{cc}
+\left[{\begin{matrix}
 0 & 1 \\
 1 & 0 \\
 \end{matrix} }\right]
@@ -1501,7 +1501,7 @@ $$
 
 $$
 \Sigma
-\left[{\begin{matrix}{cc}
+\left[{\begin{matrix}
 \sqrt{3} & 0 \\
 0 & \sqrt{2} \\
 0 & 0 \\
@@ -1514,7 +1514,7 @@ $$
 
 $$
 $AA^T$\text{ = }
-\left[{\begin{matrix}{cc}
+\left[{\begin{matrix}
 2 & 1 & 0 \\
 1 & 1 & 0 \\
 0 & 1 & 2 \\
