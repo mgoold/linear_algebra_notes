@@ -1438,7 +1438,7 @@ $\lambda^2\text{ - }s_1\lambda\text{ + }s_2\text{ = }0$ is the characteristic eq
 * $s_1\text{ = }T\left(A^A\right)\text{ = 2 + 3 = 5}$ , where T = trace.
 * $s_2$ = determinant of matrix = ad - bc = 6 - 0 = 6 .
 
-Plugging these into the characteristic equation, we get: $\lambda^2\text{ - }5\lambda\text{ + }6\text{ = }0$ : $\lambda\in\text{ = 3,2}$ .  These are the **eigenvalues** .  We don't technically half to write these in decreasing order, but for organizational reasons it is customary to do so.  This is so you can more quickly find the most important sigmas later.
+Plugging these into the characteristic equation, we get: $\lambda^2\text{ - }5\lambda\text{ + }6\text{ = }0$ : $\lambda\in\text{ = 3,2}$ .  These are the **eigenvalues** .  We don't technically have to write these in decreasing order, but for organizational reasons it is customary to do so.  This is so you can more quickly find the most important sigmas later.
 
 * Find eigenvectors based on eigenvalues:
   * Let x1 = (a, b) be e.v. of $A^TA$ .  Then $\left(A^TA\right)x_1\text{ = }\lambda{x_1}$ :
