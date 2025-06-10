@@ -400,7 +400,9 @@ Given a function, e.g. $f\left(x,y\right)\text{ = }2y\text{ + }4x^2y\text{ + }1$
        * **--It is this finding that lets us solve for eigenvalues $\lambda{}$ in the equation $\text{det}\|A\text{ - }\lambda{}I\|\text{ = }0$ by itself, and then plug the result into $Ax\text{ - }\lambda{}x\text{ = }0$ to obtain the eigenvector x.**
 * $\left(A\text{ - }\lambda{}I\right)x\text{ = }0$ is called the **characteristic equation** .  Strang shows this equation with the term $\left(A\text{ - }\lambda{}I\right)$ ; others like Kahn academy reverse it as $\left(\lambda{}I\text{ - }A\right)$ , but the results come out the same either way.
   * For such a matrix A of n columns there will be n eigenvectors.
-       
+* If you know the eigevector, you can multiply A on X to see which $\lambda{}x$ reveals $\lambda{}$.
+* If you know the eigenvalues, solve $\left(A\text{ - }\lambda{}I\right)x\text{ = }0$ to find x.
+
 ### Computing Eigenvalues and Eigenvectors:
 
 #### 2x2 Case:
