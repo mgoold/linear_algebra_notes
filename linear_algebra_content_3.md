@@ -1185,6 +1185,154 @@ $$
   * Thus: $A\text{ = }Q\Lambda{Q^{-1}}\text{ = }Q\Lambda{Q^T}$ .  This is known as the **"spectral theorem"** , owing to applications in optics and light. In mechanics, it is known as the principal axis theorem.  
     * We can consider $A\text{ = }Q\Lambda{Q^T}$ as the "factorization of a symmetric matrix".  Note: this formula implies that A is symmetric, because the definition of a symmetric matrix is that $A\text{ = }A^T$, and it is clear that transposing $Q\Lambda{Q^T}$ would equal $Q^{T}Q\Lambda{}$ which is equivalent to $Q\Lambda{Q^T}$ .
 
+## Diagonalization, Eigenvectors, Powers of A
+
+### Sources
+* https://www.youtube.com/watch?v=13r9QY6cmjc
+
+### Notes
+
+#### Basic Diagonalization 
+
+* In **diagonalization of a matrix** we arrange eigenvalues and eigenvectors in a way that is optimal for computation.
+* The key formula for this process is $S^{-1}AS\text{ = }A$
+  * Suppose A has n independent **eigenvectors**, and we put them in the columns of the "eigenvector matrix" S.
+    * When we multiply A times S we get:
+
+$$
+AS\text{ = }A
+\left[
+{\begin{matrix}
+\vdots & \vdots & \vdots \\
+x_1 & \ldots & x_n \\
+\vdots & \vdots & \vdots \\
+\end{matrix}}
+\right]
+\text{ = }
+\left[
+{\begin{matrix}
+\vdots & \vdots & \vdots \\
+\lambda_1x_1 & \ldots & \lambda_nx_n \\
+\vdots & \vdots & \vdots \\
+\end{matrix}}
+\right]
+$$
+
+... to understand this, remember that by definition an eigenvector is unchanged in its parallelism to x by being multiplied by A.  This means that A will have no effect on the eigenvector in s except for whatever eigenvalue scalar it contributes.  Therefore each multiplication of A on each column storing an eigenvector in S will result in a new matrixx with columns having $\lambda_ix_i$ .
+
+Next, we want to separate the x and lambda components into separate matrices.  We can do this by factoring the xs into a matrix of columns, times a diagonal matrix of lambdas:
+
+$$
+\left[
+{\begin{matrix}
+\vdots & \vdots & \vdots \\
+\lambda_1x_1 & \ldots & \lambda_nx_n \\
+\vdots & \vdots & \vdots \\
+\end{matrix}}
+\right]
+\text{ = } 
+\left[
+{\begin{matrix}
+\vdots & \vdots & \vdots \\
+x_1 & \ldots & x_n \\
+\vdots & \vdots & \vdots \\
+\end{matrix}}
+\right]
+\left[
+{\begin{matrix}
+\lambda_1 & \vdots & \vdots \\
+\vdots & \ddots & \vdots \\
+\vdots & \vdots & \lambda_n \\
+\end{matrix}}
+\right]
+$$
+
+... we can refer to the matrix of eigenvector x columns as S, and the diagonal matrix of $\lambdas$ as $\Lambda$.  So altogether, AS\text{ = }\Lambda$.
+
+The reason why we mentioned n **independent** eigenvectors is to stress that the matrix S is invertible.  Thus we can also write the formula as $S^{-1}AS\text{ = }\Lambda$ , by multiplying each side by the inverse of S.  This is **diagonalization** of the eigenvalues.  Further, we can calculate A by reformulation this as $A\text{ = }S\LambdaS^{-1}$ .  Having stepped through the above diagonalization process, the first formulas are undestandable; the last is a lot of abstraction to swallow.  This is a new formulation which which we can replace previous ones such as A = LU , or Graham - Schmidt.
+
+#### Diagonalization Applications: Powers of A Matrix
+
+Below, we work out a system for dealing with powers of a matrix.  While useful in itself, it also prepares us for dealing with differentials of a matrix.
+
+We can use these formulas to understand the eigenvalues of $A^2$ :
+
+Beginning with $Ax\text{ = }\lambda{}x$ .  If this formula is true, then $A^2x\text{ = }\lambda{}Ax$ .  
+
+But by the initial formula Ax = $\lambda{}x$, so we can substitute
+
+$A^2x\text{ = }\lambda{}^2x$ .
+
+Based on these formulations, we can conclude that **the eigenvalues of A squared are lambda squared.  The eigenvectors are the same on both sides of the equation. **That is, if you square a matrix (having n independent eigenvalues), its eigenvalues will be squared, and its eigenvectors will be unchanged.** 
+
+Returning to the formulation $A\text{ = }S\LambdaS^{-1}$ , we can also look at the impact of squaring A:
+
+$A^2\text{ = }S\LambdaS^{-1}S\Lambda{}S^{-1}\text{ = }S\Lambda{}^2S^{-1}$  -- contemplating the right side a little, you'll see that the combinations of S and its inverse will yield identity matrix I, leaving the $\Lambda$ by itself to be squared.  In words, this means again, as with the other formulation immediately above, that the eigenvectors are unchanged but the eigenvalues are squared. 
+
+Of course, this formula could be multiplied to $A^k$ power for an arbitrarily large k, with the same result -- only the eigenvectors would be multiplied.   This is another way to describe **eigen decomposition** .
+
+We can use this information to understand when the powers of a matrix go to 0, which can also be thought of as a matrix becoming stable.  In regular algebra, when a variable is taken to the power of 0 it is equal to 1.  In linear algebra, a matrix taken to a power of 0 becomes the identity matrix.  -- A theorem describes this fact:
+
+**Matrix Powers Theorem:**
+
+For $S\LambdaS^{-1}$ :
+
+* $A^k\rightarrow{}0$ as $k\rightarrow{}\inf$ if all $\|\lambda\|$ <1 .  We have to qualify on the absolute value of lambda, because we remember that lambda can be a complex number and result in a negative value.  Remember also that we're assuming that A has n independent eigenvectors.  This is the only situation in which eigendecomposition or "diagonalization", which purely uses eigenvectors, can work.  This is because S is not invertible if A does not have n independent eigenvectors.
+
+Key point for diagonalizability: **A is sure to have n independent evectors and be diagonalizable if A has n distinct eigenvalues.**  --I.e., no eigenvalue is repeated.
+
+However, if an eigenvalue is repeated, the matrix A may or may not have n independent eigenvectors.  Take the extreme case of the identity matrix, for which every vector is an eigenvector.  If A = I, then we can choose n independent vectors for A, and when we use the equation $S^{-1}\Lambda{}S$ we get I as a result again.  This makes sense because if $\Lambda$ is already diagonal, then the $\Lambda$ is the same as the matrix -- a diagonal matrix already has its eigenvalues resolved.  
+
+If however the matrix is triangular and has non-distinct eigenvalues, for example 
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}
+2 & 1 \\
+0 & 2 \\
+\end{matrix}}
+\right]
+$$
+
+
+... then diagonalization is impossible.  --This matrix yields eigenvectors (2,2), but after subtracting the eigenvalues the matrix will be "degenerate" like so:
+
+$$
+A2\text{ = }
+\left[
+{\begin{matrix}
+0 & 1 \\
+0 & 0 \\
+\end{matrix}}
+\right]
+$$
+
+... "degenerate" means that there are fewer dimensions to the eigenvector (in this case only one) than were in the original matrix.  The only eigenvector in the nullspace of A2 is (1,0).  (0,1) is not in the nullspace.  Another way to say this is the algebraic multiplicity is 2 (the algebraic solution has 2 roots), but the geometric multiplicity is 1 .  It is not diagonalizable because you cannot find 2 eigenvectors such that you can write A = $S^{-1}\Lambda{}S$.
+
+#### Diagonalization Applications: Powers of A Matrix Times a Vector
+
+Suppose we have a vector $u_{k+1}\text{ = }Au_k$ .  We start with a given vector $u_0$, and at every step k+1 $u_{k+1}$ is the result of multiplying $u_k$ by A as $Au_k$ .  In other words, if we start with a vector $u_0$ and multiply it by A 100x, what do we have? 
+
+Clearly, $u_k\text{ = }A^ku_0$ .  Imagine that k = 100.
+
+--Incidentally, we can call this a first-order system, because k is only increased one level, and the vector being multiplied by a matrix makes it a system.
+
+To really solve for $u_0$, write it as a combination of components of u multiplied by components of $\Lambda$ : $u_0\text{ = }c_1x_1\text{ + }c_2x_2\text{ +...+ }c_nx_n$ .
+
+In order to find $u_100$, the easy thing is to diagonalize A (assuming n disting eigenvectors), so that we can reduce the problem to taking powers of $\Lambda$, and then multiplying that times $u_0$.
+
+Strang writes out the solution to this (in this lecture and in ITLA) in basically 2 steps:
+
+* construe $X^{-1}u$ as the components of u (c1 ... cn) times each eigenvector x1...xn of $X^{-1}$ like so: $u_0\text{ = }c_1x_1\text{ + }c_2x_2\text{ +...+ }c_nx_n$ .  The textbook gives this as "c = " rather than $u_0\text{ = }$ .  In this way of thinking, both the vector u and the inverse eigenvector matrix $X^{-1}$ are portioned out into c components.
+* multiply these components times corresponding eigenvalues and eigenvectorx from X, like so: $Au_0\text{ = }c_1\lambda_1x_1\text{ + }c_2\lambda_2x_2\text{ +...+ }c_n\lambda_nx_n$ .
+
+Remember that by definition, we have said that A has n independent eigenvectors, which again by definition are unaffected by multiplication with A.  As we have shown above, only the eigenvalues are therefore multiplied when multiply A by k in $A^k$ . Thus we can say that:
+
+* $A^ku_0\text{ = }c_1\lambda_1{}^kx_1\text{ + }c_2\lambda_2{}^kx_2\text{ +...+ }c_n\lambda_n{}^kx_n$ .
+
+
+
 ## Positive Definite Matrices
 *  These matrices are a subclass of symmetric matrices.
 *  All the eigenvalues are > 0.
