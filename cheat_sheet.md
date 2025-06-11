@@ -311,6 +311,7 @@ $$
 ## Positive Semidefiniteness
 * Relation of projection matrices to positive semidefiniteness.
 * True: All projection matrices are positive semidefinite.
+* 
 
 ## Rules for Subspace Orthogonality
 
