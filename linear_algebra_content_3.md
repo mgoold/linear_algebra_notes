@@ -1099,8 +1099,20 @@ By convention, people don't write out the G-S transformations.  Rather they say 
 * USF: https://usfca.instructure.com/courses/1627052/pages/positive-semidefinite-matrices-video-18?module_item_id=18611427
 * MIT: https://www.youtube.com/watch?v=UCc9q_cAhho
 
-### Symmetric Matrices, Eigenvalues, and Eigenvectors
+### Eigenvectors and Eigenvalues
 
+### Sources:
+* https://www.youtube.com/watch?v=cdZnhQjJu4I
+
+### Notes:
+* eigenvectors and eigenvalues only come from square matrices
+* the sum of eigenvalues must equal the sum of the diagonal in A, aka the "trace" (not nec. = the pivots in R).
+* 
+
+## Symmetric Matrices, Eigenvalues, and Eigenvectors
+
+
+### Symmetric Matrices
 * A matrix A is symmetric if A = $A^T$ .
 * As a result of this symmetric matrix structure:
   * eigenvalues of a symmetric matrices, where all the values in A are $\in{\mathbb{R}}$, are real.  The eigenvectors will not be complex &c.
