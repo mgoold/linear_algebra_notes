@@ -236,6 +236,7 @@ To do LU decomp in a test:
 * The process for calculating solutions to Ax = 0 when r < n involves:
   * reducing the matrix to R
   * toggling each free variable to 1, and the others to 0, in order, then solving via substitution for the remaining values.
+    * **when you solve the equations, they should be set to 0, since you're solving for the nullspace.**
 
 ### Examples:
 
@@ -283,7 +284,7 @@ For a matrix A with m < n , where b in Ax = b is not equal to 0:
 * If for some reason b is a vector of variables, and a row is reduced to 0's, then b's arrangement of variables in state d are a "solvability condition" on R.
 * Write out the remaining pivot rows as equations.
 * Obtain the **particular solution** by setting the **free** variables to 0, and solving for the remaining pivot variables via back-substitution.
-* Now obtain the special solutions by toggling each free variable to 1 in turn, and setting other free variables to zero.  Solve for the remaining values via back-substitution.  You should have 1 special solution for each free variable.
+* Now obtain the special solutions by toggling each free variable to 1 in turn, and setting other free variables to zero. **Set the entire equations = 0, because you are solving for the nullspace.**  Solve for the remaining values via back-substitution.  You should have 1 special solution for each free variable.
 * The complete solution is written as : vector for particular solution + (free variable 1 * vector for special solution 1) + ... + (free variable n * vector for special solution n) , e.g:
 
 $$
