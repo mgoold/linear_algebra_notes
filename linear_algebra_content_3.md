@@ -1188,7 +1188,8 @@ $$
 ## Diagonalization, Eigenvectors, Powers of A
 
 ### Sources
-* https://www.youtube.com/watch?v=13r9QY6cmjc
+* MIT: https://www.youtube.com/watch?v=13r9QY6cmjc
+* Youtube Rando: https://www.youtube.com/watch?v=uuB0WE31318
 
 ### Notes
 
@@ -1322,7 +1323,7 @@ To really solve for $u_0$, write it as a combination of components of u multipli
 
 In order to find $u_100$, the easy thing is to diagonalize A (assuming n disting eigenvectors), so that we can reduce the problem to taking powers of $\Lambda$, and then multiplying that times $u_0$.
 
-Strang writes out the solution to this (in this lecture and in ITLA) in basically 2 steps:
+Strang writes out the solution to this (in this lecture and in ITLA) in basically 2 steps to show the actual computations involved:
 
 * construe $X^{-1}u$ as the components of u (c1 ... cn) times each eigenvector x1...xn of $X^{-1}$ like so: $u_0\text{ = }c_1x_1\text{ + }c_2x_2\text{ +...+ }c_nx_n$ .  The textbook gives this as "c = " rather than $u_0\text{ = }$ .  In this way of thinking, both the vector u and the inverse eigenvector matrix $X^{-1}$ are portioned out into c components.
 * multiply these components times corresponding eigenvalues and eigenvectorx from X, like so: $Au_0\text{ = }c_1\lambda_1x_1\text{ + }c_2\lambda_2x_2\text{ +...+ }c_n\lambda_nx_n$ .
@@ -1331,7 +1332,230 @@ Remember that by definition, we have said that A has n independent eigenvectors,
 
 * $A^ku_0\text{ = }c_1\lambda_1{}^kx_1\text{ + }c_2\lambda_2{}^kx_2\text{ +...+ }c_n\lambda_n{}^kx_n$ .
 
+We can also re-write this as:
 
+* $A^ku_0\text{ = }\Lambda^kSc$ , where c contains the set of vectors that portion out the eigenvectors with their respective component multipliers from $u_0$ .
+
+#### Diagonalization Applications: Powers of A Matrix Fibonnaci Example
+
+We can apply the above to find the 100th Fibonnaci number, and understand the rate of growth for the Fibonnaci numbers.  The rate of growth will be given by the eigenvalues of a Fibonnaci matrix.
+
+The Fibonnaci rule is $F_{k+2}\text{ = }F_{k+1}\text{ + }F_k$ .
+
+So far, we've been solving systems where a matrix operates on a vector.  Strang addresses 2 problems with solving an equation like this via the linear algebra processes we have so far:
+* it is an equation, rather than a "system" in which we get a result from a matrix acting on a vector.
+* it is "second-order" : it involves 2 steps  -- first getting fk, then fk+1, rather than just one step as we have in our linear algebra systems so far.  Strang compares this situation to taking a second-order derivative; I am not sure how literal this comparison is.
+
+In order to address these issues and turn this Fibonacci formula into a matrix system, Strang puts the 2 values on the right side of the equation into a vector:
+
+$$
+u_k
+\text{ = }
+\left[
+{\begin{matrix}
+F_{k+1} \\
+F_k \\
+\end{matrix}}
+\right]
+$$
+
+The two items on the right side of the equation are simply values, so they should be fine to put in a vector.  Using this vector, we can construe a system with a matrix as $u_{k+1}\text{ = }Au_k$ , where A has the to-be-determined values that multiples $u_k$ to get $u_{k+1}$ .  The matrix that operates on it can then be a 2x2 matrix.  Essentially what happens is that because a matrix operates on both items, we are able to solve both items at once in one step, reducing the equation to what Strang calls a "first order difference".  I don't know why he says "difference" instead of "sum".  Strang's essential comment here is that introducing the vector $u_k$ allows him to "have a first order matrix system instead of a second order scalar equation."  
+
+To the intial Fibonnaci equation Strang adds a second equation:
+
+* $F_{k+2}\text{ = }F_{k+1}\text{ + }F_k$
+* $F_{k+1}\text{ = }F_{k+1}$
+
+... I am not sure yet how this fits into the discussion.  Strang doesn't immediate verbalize a reason for it.  Later he says that he is making an artificial system of equations.  I think it must be to fill out the 2x2 matrix somehow because he says "this [the 2 equations] is my system, the vector $u_k$ is my unknown, and the one-step [first order] equation altogetehr is...
+
+$$
+u_{k+1}\text{ = }A
+\left[
+{\begin{matrix}
+F_{k+1} \\
+F_k \\
+\end{matrix}}
+\right]
+\text{ = }Au_k
+$$
+
+
+...", where A is some tbd matrix that operates on $u_k$ on the right to give the left side result .  
+
+The matrix A must then be
+
+$$
+A\text{ = }
+\left[
+{\begin{matrix}
+1 & 1 \\
+1 & 0 \\
+\end{matrix}}
+\right]
+\text{ = }Au_k
+$$
+
+--- this will obviously give you back $F_{k+2}\text{ = }F_{k+1}\text{ + }F_k$ for the first component of $F_{k+2}$.  I'm not sure why you then want the second component $F_{k+1}$ since you just want a single result?  
+
+To my surprise, Strang stops to take the eigenvalues and eigenvectors.  We remember that the det will be the product of the eigenvalues, and the trace will be the sum of the eigenvalues, and also that a symmetric matrix will have real eigenvalues. We also know that we have n independent vectors.  
+
+The eigenvalue solution process yields the formula $\lambda^2-\lambda-1\text{ = }0$ .  Rather than factor this, Strang takes the quadratic formula.  --I couldn't mentally factor this equation it in such a way to get **both** the determinant and the trace, so I guess that's a clue that the quadractic formual is the way to go.  In the end Strang gets  
+
+$\Large{\lambda{}\text{ = }\frac{1\pm\sqrt{5}}{2}}$ ; $\Large{\lambda_1\text{ = }\frac{1}{2}\left(1+\sqrt{5}\right)}$ , $\Large{\lambda_2\text{ = }\frac{1}{2}\left(1-\sqrt{5}\right)}$
+
+... these values do indeed add to 1, and multiply to -1 ; they are roughly 1.618 and -.618.
+
+Note that at this point we can see the rate of increase for the Fibonacci numbers.  Somehow, the eigenvalues control the growth of these Fibonnaci numbers.  Strang doesn't articulate it, but looking at the above, we can imagine 2 successive numbers out of the Fib sequence as being the result of our matrix system, and their progression lying on a line that is controlled by the value $\approx$ 1.618 .  **He says that the "biggest" value controls the growth. --I have missed out somehow on why this is so.**  (See next paragraph for explanation).  Therefore, the 100th value of the Fib sequence is $\approx{}c_1\left(1.618\right)^{100}$ , where c_1 is some constant . $\approx$ 1.618 is the factor by which the Fib numbers grow.  I don't like how the constant came out of nowhere. 
+
+Note that this finding relates back to diagonalization.  The initial value $u_0$ was. $u_0\text{ = }c_1x_1\text{ + }c_2x_2\text{ +...+ }c_nx_n$ .  That is, it is a combination of the components of a vector times the corresponding eigevectors of X inverse.  When we start computing the series of Fibonnaci numbers and multiply by A 100 times, we end up taking $c_1\lambda_{1}^100x_1$ -- this term takes over. **Note this also shows us where "c_1" came from immediately above.**  By contract, the second term $c_2\lambda_{2}^100x_2$ diminishes to nothing because it is multiplying a term <1. 
+
+Solving for eigenvectors in this system, we get:
+
+$$
+A-\lambda{}I
+\text{ = }
+\left[
+{\begin{matrix}
+{1\text{ - }\lambda} & 1 \\
+1 & {-\lambda} \\
+\end{matrix}}
+\right]
+\left[
+{\begin{matrix}
+\lambda \\
+1 \\
+\end{matrix}}
+\right]
+\text{ = }
+\left[
+{\begin{matrix}
+0 \\
+0 \\
+\end{matrix}}
+\right]
+$$
+
+... the first term of eigenvector x here is by no means obvious -- you'll not resolve it with simple algebra.  It's only when you see him point to the earlier formulation $\lambda^2\text{ - }\lambda{ - }1\text{ = }0$ that you see it could be true [and I think only true for specific values of lambda].  Getting the second term of eigenvector x is simple though.  Thus $x_1$ = ( $\lambda_1$ , 1)  and $x_2$ = ( $\lambda_12$ , 1) .  -- Somehow, he unpacks 2 lambda values out of 1 lambda to get the 2 eigenvectors.  He says that this "trick" is available in the 2x2 case, perhaps meaning that this maneuver isn't available for larger matrices. 
+
+To completely resolve this excercise, we can calculate u0 per the above equations.  Strang begins this process by noting that "u0" was "F1, F0", or 
+
+$$
+u_0
+\text{ = }
+\left[
+{\begin{matrix}
+F_1 \\
+F_0 \\
+\end{matrix}}
+\right]
+\text{ = }
+\left[
+{\begin{matrix}
+1 \\
+0 \\
+\end{matrix}}
+\right]
+$$
+
+... which makes sense, considering that he started the reformulation of Fib sequence into a matrix system at u0 = $F{k+2}\tex{ = }F{k+1}+F_k$ .
+
+We therefore need to find constants multiplying the eigenvectors we calculated such that they will produce the vector (1,0):
+
+$$
+c_1x_1\text{ + }c_2x_2\text{ = }
+\left[
+{\begin{matrix}
+1 \\
+0 \\
+\end{matrix}}
+\right]
+$$
+
+We know the eigenvectors, so if we find c1, c2, we are home and dry.  The central idea here is that when things are involving in time by a first order system, starting from an original value $u_0$, the key is to find the eigenvectors and eigenvalues of A.  The eigenvalues will tell you whether the solution is increasing, going to zero, etc.  
+
+#### Diagonalization Continue: Fibonnaci Example Cont.
+
+As stated above: remembering that we made $F_{k+1}$ equal to $u_0$, we can use the $u_0$ formula as 
+
+$$
+c_1x_1\text{ + }c_2x_2\text{ = }
+\left[
+{\begin{matrix}
+1 \\
+0 \\
+\end{matrix}}
+\right]
+$$
+
+... just as with Fk - style reformulation, Fk+1 + Fk is c1x_1, and Fk+1 is c2_x2 ; the Fk+2 or u0 component is given as (1,0).  (1,0) is initial state we posit as 2 successive items in the Fib series; I guess we could have picked any two such?  
+
+We can re-format our eigenvector inputs into an Ax = b formlation like:
+
+$$
+\left[
+{\begin{matrix}
+\lambda_1 & \lambda_2 \\
+1 & 1 \\
+\end{matrix}}
+\right]
+\left[
+{\begin{matrix}
+c_1 \\
+c_2 \\
+\end{matrix}}
+\right]
+\text{ = }
+\left[
+{\begin{matrix}
+1 \\
+0 \\
+\end{matrix}}
+\right]
+$$
+
+From the second row of this matrix, we can see that c1 + c2 must = 0 so c1 = - c2, or equivalently c2 = -c1.   We know the values of lambda, so in order to solve for the first row, we can substitute in -c2 for c1 like so:
+
+$$\frac{\left(1+\sqrt{5}\right)}{2}c_1\text\{ - }frac{\left(1+\sqrt{5}\right)}{2}c1\text{ = }1$$ 
+
+... here, we used the equation c2 = -c1.  This equation then reduces to $c_1\text{ = }\frac{1}{\sqrt{5}}$ ; $c_2\text{ = -}\frac{1}{\sqrt{5}}$ .
+
+Substituting these back into our u0 or uk formulation and taking for example k = 3, we get:
+
+$$
+u_k\text{ = }c_1\lambda_1^kx_1\text{ + }c_2\lambda_2^kx_2\text{ = }
+\frac{1}{\sqrt{5}}\frac{\left(1+\sqrt{5}\right)}{2}^3
+\left[
+{\begin{matrix}
+frac{\left(1+\sqrt{5}\right)}{2} \\
+1 \\
+\end{matrix}}
+\right]
+\text{ - }
+\frac{1}{\sqrt{5}}\frac{\left(1-\sqrt{5}\right)}{2}^3
+\left[
+{\begin{matrix}
+frac{\left(1-\sqrt{5}\right)}{2} \\
+1 \\
+\end{matrix}}
+\right]
+$$
+
+so for k=10 using this formulation in python, you will get 144 (89 + 55) which is indeed correct.  In reality if you do this in python the "k" constant may not index the number you expect, because python for example starts from a base 0 in a range and goes to range-end - 1.  But the calculations will be correct once you sort that out.  Here is some python code implementing the above:
+
+#### Diagonalization Continue: Fibonnaci Python Notes
+
+```
+l1=(1+np.sqrt(5))/2
+l2=(1-np.sqrt(5))/2
+c1=(1/np.sqrt(5))
+c2=-1*(1/np.sqrt(5))
+
+for k in range(0,11):
+    result = ((c1*l1**k*l1)+(c1*l1**k*1))-((c2*l2**k*l2)+(c2*l2**k*1))
+    print(k,round(result))
+```
+
+It's well worth reviewing backwards and forwards how an algebraic "2nd order" system is wound into a 2x2 matrix "first order" system and vice-versa.  It helped me to note that what the above is going to give you is a single number because it is the **result** of a 2x2 matrix operating on a 2x1 vector and so is already summed up -- visually it is still taken apart as a vector of components (in this example, 89 + 55).
 
 ## Positive Definite Matrices
 *  These matrices are a subclass of symmetric matrices.
