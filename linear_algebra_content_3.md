@@ -1592,6 +1592,7 @@ Because the pivots are both positive, we know that the eigenvalues are positive.
 To check that a matrix is positive definite using determinants, we must verify not just that the overall determinant is positive, but also that the **"subdeterminants"** are positive.  So in this case considering component $a_11$ = 5 as a 1x1 matrix, we can say that the "sub" determinant = 5 > 0.  Then expanding the matrix outward from there to 2x2 dimensions, we can say that the determinant 11 is also positive.  
 
 ### Motivation and Uses of PSD Evaluation
+
 * Covariance matrices are always positive semidefinite, or positive definite.
 * Optimization typically uses positive semidefinite matrices.
   * this often involves a min or max of a function over several variables
@@ -1629,8 +1630,79 @@ If the matrix rank >2:
  * The conditions for positive definiteness are similar, except that:
   * All eigenvalues are > 0, OR
   * If there is some matrix B such that $B^TB\text{ = }A$ where all components of B are >0, AND all columns of B are linearly independent.
+  * All sub-determinants are positive.  That is, all sub-matrices on the diagonal also have det > 0.
  * Mutatis mutandis, the same conditions apply for negative semidefinite, negative definite matrices.
  * Assuming no row exchanges, the signs of the pivots of a symmetric matrix in rre form are the signs of its eigenvalues.  Consequently, you can use this criteria to assess positive (semi) definiteness, etc.
+
+## Complex Matrices and Fast Fourier
+
+### Sources
+* https://www.youtube.com/watch?v=M0Sa8fLOajA
+
+### Handling Complex Numbers in Linear Algebra
+
+In dealing with eigenvalues we noted that a matrix of real numbers can have complex eigenvalues.  We need methods to handle complex numbers in both vector and matrix settings.  The Fourier matrix is the most important matrix for this purpose.  The Fourier Transform, and Fast Fourier Transforms or FFTs are the canonical approaches.  These two transforms have transformed entire industries.  Normally, multiplying by an nxn matrix would require n-squared multiplications, assuming we have a full matrix with orthogonal columns.  The FFT concept reduces the calculation count from $n^2$ to n $\text{log}_2\text{(n)}$, which is markedly smaller.
+
+Consider a vector z that has complex numbers:
+
+$$
+z\text{ = }
+\left[
+{\begin{matrix}
+z_1 \\
+z_1 \\
+\vdots \\
+z_n \\
+\end{matrix}}
+\right]
+$$
+
+... where the "n" indicates that the vector is in "complex n-dimensional space".  --This is why z's column vector's are not indexed to m.  For a vector having complex numbers, calculating length as a dot product or $z^Tz$ does not work because a length should be positive, but complex numbers can yield a length <= 0.  For example (1, i) when squared would give 1 + -1 = 0.  What we need instead is a vector concept that uses complex conjugates.  Remember that a complex conjugate for a complex number has the same real part, but an imaginary component with the opposite sign.  Then the product of a pair of complex conjugates z+ and z- is z+\*z- = $\|z_1\|^2$ , or the magnitude of z1 squared.   To summarize, to take the length of z, we want $\overline{z}^Tz$ .  In general, whenever we transpose, we should take conjugates "for safety's sake".
+
+Symbolically, the way to show that conjugates are useds in a transpose multiplication is " $z^Hz$ ", where the H stands for "Hermite", an influential mathematician in this area.  We would pronounce this as "z Hermitian z" .  If the Hermitian is done correctly, it should match the **inner product** of the vectors, which is the same thing.  This is true for both a dot product of different vectors and of identical vectors.
+
+We also need to change the idea of symmetric matrices.  Again, these do not work if A is comple.  In order to address this problem, we now qualify A has having paired complex conjuguates in the off-diagonal positions, and only real numbers on the diagonal.  An example is:
+
+$$
+\overline{A}^T\text{ = }A\text{ = }
+\left[
+{\begin{matrix}
+2 & {3+i} \\
+{3-i} & 5 \\
+\end{matrix}}
+\right]
+$$
+
+These are called Hermitian matrices.  
+
+Consider orthogonality with respect to complex numbers.  For a set of orthornomal vectors $q_1,q_2,...q_n$, for any 2 such vectors, $\overline{q}_{i}^Tq_j$ equals 0 if assuming i $\neq$ j , and 1 if i = j.  
+
+This implies that $Q^TQ$ = I  would be composed of complex vectors, so instead we must take $Q^HQ$ = I .  Just as the word "symmetric" became "hermitian", so some people say "unitary" instead of "orthogonal".  
+
+### Fourier Matrices
+
+**n-by-n case**
+
+For the full matrix F_n:
+
+$$
+F_n\text{ = }
+\left[
+{\begin{matrix}
+1 & 1 & 1 & \ldots & 1^{n-1}\\
+1 & w & w^2 & \ldots & w^{n-1}w \\
+1 & w^2 & w^4 & \ldots & w^{2\left(n-1\right)} \\
+\vdots & \vdots & \vdots & \vdots & \vdots \\
+1 & w^{n-1} & w^{2\left(n-1\right)} & \ldots w^{\left(n-1\right)^2} \\
+\end{matrix}}
+\right]
+$$
+
+... where i,j=0...n-1 . w is a special number who's nth power is 1.  There are n numbers like this.  1 is such a number.  The value of w is $w\text{ = }e^{i\frac{2\pi}{n}}$ .  --To be clear, "i" here is for the imaginary number rather than being an index.
+
+In the complex plane, w is on the unit circle.  $i\frac{2\pi}{n}$ equals $cos\theta\frac{2\pi}{n}\text{ + }sin\frac{2\pi}{n}$ .  However, working with imaginary circle coordinates is not ideal when taking powers of a number as shown in the matrix above.  Therefore, we just calculate using $w\text{ = }e^{i\frac{2\pi}{n}}$ .  The benefit of using this number is that any power we use will still be on the unit circle, because taking it to any power will still yield a value of 1 (or -1?).  Any power value of n just ends up being a % of 360 degrees (which is 2 times pi), be cause w divides 2pi by n .
+
+
 
 ## Singular Value Decomposition
 
