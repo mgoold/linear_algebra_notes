@@ -1111,13 +1111,15 @@ By convention, people don't write out the G-S transformations.  Rather they say 
 
 ## Symmetric Matrices, Eigenvalues, and Eigenvectors
 
-
 ### Symmetric Matrices
+
 * A matrix A is symmetric if A = $A^T$ .
+
+#### Symmetric Matrices Have Real Eigenvalues
 * As a result of this symmetric matrix structure:
-  * eigenvalues of a symmetric matrices, where all the values in A are $\in{\mathbb{R}}$, are real.  The eigenvectors will not be complex &c.
+  * eigenvalues of a symmetric matrices, where all the values in A are $\in{\mathbb{R}}$, are real.  The eigenvectors will not be complex as we saw with rotation matrices Q.
     * Why is are the eigenvalues Real?  Consider the canonical equation $Ax\text{ = }\lambda{x}$ :
-      * For a first step, we can take the complex conjugate of an equation: $Ax\text{ = }\lambda{x}\rightarrowA\overline{x}\text{ = }\overline{\lambda}\overline{x}$  As a reminder, a **complex conjugate** is complex formulation of a set of terms such that adding them together will remove the imaginary elements, e.g. a + ib = a - ib (here, a would be the only term remaining).
+      * For a first step, we can take the complex conjugate of an equation: $Ax\text{ = }\lambda{x}\rightarrow{}A\overline{x}\text{ = }\overline{\lambda}\overline{x}$  As a reminder, a **complex conjugate** is complex formulation of a set of terms such that adding them together will remove the imaginary elements, e.g. a + ib = a - ib (here, a would be the only term remaining).
         * This already tells us that if Ax has an eigenvalue lambda and eigenvector x, it also has an eigenvalue $\overline{\lambda}$ and $\overline{x}$ .
       * We can also transpose $A\overline{x}\text{ = }\overline{\lambda}\overline{x}$ to $\overline{x}^TA^T\text{ = }\overline{x}^T\overline{\lambda}$ .  Since $\lambda$ is just a number, we don't transpose it.
       * At this point, we note that since A is symmetric, then $A^T$ is the same as A.  We can then multiply both sides by x:
@@ -1138,6 +1140,8 @@ By convention, people don't write out the G-S transformations.  Rather they say 
           * symmetric: A = $A^T$
         * However, if A is complex, the proofs we looked at above will still work, provided $\overline{A}^T\text{ = }A$ .
 
+#### Symmetric Matrix Decomp to Proj Matrices
+
 * Consider the formula $A\text{ = }Q\Lambda{}Q^T$ .  This says that A can be decomposed into a matrix Q of eigenvectors multiplying a matrix of eigenvalues, times the transpose of Q.  This is true for the symmetric case A = $A^T$ .
    * We can break this down further to show the composition:
 
@@ -1147,7 +1151,7 @@ A
 \left[
 {\begin{matrix}
 \vdots & \vdots & \vdots \\
-q_1 & \ldot & q_n \\
+q_1 & \ldots & q_n \\
 \vdots & \vdots & \vdots \\
 \end{matrix}}
 \right]
@@ -1170,20 +1174,28 @@ q_1 & \ldot & q_n \\
 $$
 
 ...so the result is a set of addtions considing of lambdas times eigenvectors in an orthonormal relationship, since they are multiplied times their transpose.  
-  * **Every symmetric matrix consists of additions in this pattern.**
+  * **Every symmetric matrix consists of additions, using real lambdas, in this pattern.**
   * **Every symmetric matrix is a combination of mutually perpendicular projection matrices.**
+    * the spectral theorem is sometimes construed as the decomposition of a symmetric matrix into these mutually perpendicular projection matrices.
   * each $q_1q_1^T$ pair is a projection matrix.  
 
+#### Symmetric Matrices and Stability
+
 * Because symmetric matrices have real eigenvalues, we can look at whether they are positive or negative, which tells us things like the stability of a system (depending on the application).
-* It is a fact, in a symmetric matrix, that the signs of the pivots much match the signs of the eigevenvalues.
-* It is also a fact that the product of the pivots in a symmetric matrix equals the product of the eigenvalues.  This is because both of these products equal the determinant, assuming for the product of the pivots that no row exchanges occurred.
+* Some facts about eigenvalues that are computationally useful.
+  * It is a fact, in a symmetric matrix, that the signs of the pivots must match the signs of the eigevenvalues.
+  * It is also a fact that the product of the pivots in a symmetric matrix equals the product of the eigenvalues.  This is because both of these products equal the determinant, assuming for the product of the pivots that no row exchanges occurred.
+
+#### Symmetric Matrices Have n Orth Eigenvectors
 
 * a complete set of eigenvectors can be selected to be perpendicular 
     * for example, the I matrix is symmetrical, and all vectors x are necessarily eigenvectors since they are unchanged by I.  But among these, vectors perpendicular to each other could be selected.  --This is not (necesarily? always?) the case for other matrix types.
 * A matrix A can typically be decomposed into its eigenvalue matrix $\Lambda$ and its eigenvector matrix S as $A\text{ = }S\Lambda{S^{-1}}$ .
-  * However, in the case of a symmetric matrix, the perpendicularity of the eigenvectors means that they can be scaled to be unit vectors.  This means that the eigenvectors are orthonormal.  This special composition of the eigen decomposition of A is denoted by using the matrix Q instead of S: $A\text{ = }Q\Lambda{Q^{-1}}$ .  Note that inverse of Q is the same as $Q^T$ .
-  * Thus: $A\text{ = }Q\Lambda{Q^{-1}}\text{ = }Q\Lambda{Q^T}$ .  This is known as the **"spectral theorem"** , owing to applications in optics and light. In mechanics, it is known as the principal axis theorem.  
+  * However, in the case of a symmetric matrix, not only is having n perpendicular (orthonormal) eigenvectors guaranteed, but also we can scale them to be unit vectors.  This special composition of the eigen decomposition of A is denoted by using the matrix Q instead of S: $A\text{ = }Q\Lambda{Q^{-1}}$ .  Note that inverse of Q is the same as $Q^T$ .
+  * Thus: $A\text{ = }Q\Lambda{Q^{-1}}\text{ = }Q\Lambda{Q^T}$ is the factorization of a symmetric matrix.  This is known as the **"spectral theorem"** , owing to applications in optics and light. In mechanics, it is known as the principal axis theorem.  
     * We can consider $A\text{ = }Q\Lambda{Q^T}$ as the "factorization of a symmetric matrix".  Note: this formula implies that A is symmetric, because the definition of a symmetric matrix is that $A\text{ = }A^T$, and it is clear that transposing $Q\Lambda{Q^T}$ would equal $Q^{T}Q\Lambda{}$ which is equivalent to $Q\Lambda{Q^T}$ .
+
+
 
 ## Diagonalization, Eigenvectors, Powers of A
 
