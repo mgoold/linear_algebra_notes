@@ -297,6 +297,13 @@ Solution:
 
 ## Ax = b Complete Solutions
 
+### Facts
+* A has full column rank r = n when its nullspace N(A) = zero vector: no free variables.
+* When Rx = d is solvable, one very particular solution $x_p$ has all free variables equal to zero.
+* A has full column rank r = n when its nullspace N(A) = zero vector: no free variables.
+* A has full row rank r = m when its column space C(A) is Rm : Ax= b is always solvable.
+
+### Method
 For a matrix A with m < n , where b in Ax = b is not equal to 0:
 * Reduce Ab to Rd
 * If for some reason b is a vector of variables, and a row is reduced to 0's, then b's arrangement of variables in state d are a "solvability condition" on R.
@@ -334,6 +341,12 @@ $$
 
 ## Rules for Subspace Orthogonality
 
+*  Orthogonal vectors have $v^Tw$ = 0. Then $\text{||v||}^2\text{ + }\text{||w||}^2\text{ = }\text{||v + w||}^2\text{ = }\text{||v - w||}^2 .
+*  Subspaces V and W are orthogonal when $v^Tw$ = 0 for every v in V and every w in W.
+*  The row space of A is orthogonal to the nullspace. The column space is orthogonal to $N\left(A^T\right)$ .
+*  N(A) is the orthogonal complement of the row space C(AT ) (in $R^n$ ).
+*  $N\left(A^T\right)$ is the orthogonal complement of the column space C(A) (in $R^m$ ).
+
 ### Independence, Basis, Dimension
 
 * Only vectors can be said to be "in|dependent". This term cannot applie to matrices.
@@ -368,11 +381,18 @@ $$
 ## Subspaces
 
 A set of vectors in linear combination are a subspace of something if:
-* multiplying the vectors produces results that still fit the rules for the subspace
-* adding the vectors produces results that still fit the rules for the subspace
-* the 0 vector is included in the results
+  * multiplying the vectors produces results that still fit the rules for the subspace
+  * adding the vectors produces results that still fit the rules for the subspace
+  * the 0 vector is included in the results
 * functions, and particular matrix types, can be the bases for subspaces.
 * Note: "still fit the rules for the subspace" is frequently phrased as "staying in the space"
+
+### Nullspaces
+
+#### Facts
+* The nullspace N(A) in $R^n$ contains all solutions x to Ax = 0. This includes x = 0.
+* Elimination (from A to U to R) does not change the nullspace: N(A) = N(U) = N(R).
+* Every matrix with m < n has nonzero solutions to Ax = 0 in its nullspace.
 
 When A is an mxn matrix, what is the "location" of each of these subspaces (i.e. which dimension limits them) ?
 
