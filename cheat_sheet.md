@@ -165,6 +165,17 @@ $$
 
 So B_11 = .25.  In general, the answer to finding the inverse of an invertible matrix is the AI -- > IA G-J transformation.
 
+### Transposition
+
+#### Facts
+*  The transposes of Ax and AB and $A^{-1}$ are $x^TA^T$ and $B^TA^T$ and $\left(A^T\right)^{-1}$ .
+*  The transpose of AB is $B^TA^T$ . The transpose of $A^{-l}$ is the inverse of $A^T$ .
+*  The dot product (inner product) is x · y = $x^Ty$ . This is (1 x n)(n x 1) = (1 x 1).
+*  The outer product is $xy^T$ = column times row = ( n x 1) ( 1 x n) = n x n matrix.
+*  An orthogonal matrix has $Q^T\text{ = }Q^{-1}$ . The columns of Q are orthogonal unit vectors.
+*  A permutation matrix P has the same rows as I (in any order). There are n ! different orders.
+*  When S is symmetric $\left(S^T\text{ = }S\right)$ , its LDU factorization is symmetric: $S\text{ = }LDL^T$  .
+
 ### Projection, Projection Matrices
 
 #### Projection Key Equations:
