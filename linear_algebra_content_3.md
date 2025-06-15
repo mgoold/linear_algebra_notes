@@ -1702,6 +1702,106 @@ $$
 
 In the complex plane, w is on the unit circle.  $i\frac{2\pi}{n}$ equals $cos\theta\frac{2\pi}{n}\text{ + }sin\frac{2\pi}{n}$ .  However, working with imaginary circle coordinates is not ideal when taking powers of a number as shown in the matrix above.  Therefore, we just calculate using $w\text{ = }e^{i\frac{2\pi}{n}}$ .  The benefit of using this number is that any power we use will still be on the unit circle, because taking it to any power will still yield a value of 1 (or -1?).  Any power value of n just ends up being a % of 360 degrees (which is 2 times pi), be cause w divides 2pi by n .
 
+A 4x4 F4 Fourier matrix thus looks like:
+
+$$
+F_4\text{ = }
+\left[
+{\begin{matrix}
+1 & 1 & 1 & 1 \\
+1 & i & i^2 & i^3 \\
+1 & i^2 i^4 & i^6 \\
+1 & i^3 & i^6 & i^9 \\
+\end{matrix}}
+\right]
+$$
+
+Notice that the exponent is the row number times the column number (with a base 0).  The use of the value "i" in this way, raised by powers, causes the resultant values to toggle between i, -i, 1, -1 in a symmetric matrix like so:
+
+$$
+F_4\text{ = }
+\left[
+{\begin{matrix}
+1 & 1 & 1 & 1 \\
+1 & i & -1 & -i \\
+1 & -1 & 1 & -1 \\
+1 & -i & -1 & i \\
+\end{matrix}}
+\right]
+$$
+
+Strang references this latter matrix form as a "four point" matrix, I guess because it has 4 distinct possible values?  He says we use it to multiply on a vector with 4 components, using either F4 or its inverse depending on the case.  The inverse is also a nice (computation-friendly) matrix which looks very similar.  The inverse comes from the vadt that the columns are orthogonal and therefore is relatively easy to figure out.  
+
+Fourier created this matrix, but didn't notice about it something with Gauss later did, which is that its composition makes it easy to divide into pieces so that it (or its inverse) can be multiplied very rapidly.  
+
+The orthogonality of the F-matrix columns can be seen by noticing that the inner product of any 2 columns is 0.  For some columns, this is not obvious, but conjugation for an inner product causes their signs to change so that you do get 0.
+
+The columns are **not** orthonormal; they all have length 2 so F4 can be made orthonormal by multiplying the matrix by 1/2.
+
+The Hermitian of F4, that is $F_4^{H}F_4$ = I.  
+
+$F_64$ is a matrix with a "w" value that is the 64th root of one.  That is it is $i\frac{2\pi}{64}$ .  Thus any F-matrices that are multiples of each other are connected in that they use multiples of "w" , and squaring a w will give you a w that is divided by that power.  So for example $\left(w_64\right)^2$ is $w_32$ .  As a result of this relationship, it is true for example that F_64 is connected to a matrix containing 2 copies of F_32 in which the F_32s are on the diagonal, and the remaining values are 0 matrices, like so:
+
+$$
+F_64\text{ = }
+\left[
+{\begin{matrix}
+F_32 & 0 \\
+0 & F_32 \\
+\end{matrix}}
+\right]
+$$
+
+.  As will be shown, the 0 matrices are crucial for multiplication purposes.  
+
+These 2 matrices, F_64 and 2xF_32, are NOT equal.  In order to make them equal, they have to be put in a system relationship with some TBD additional matrices like so:
+
+$$
+F_64\text{ = }
+\left[
+{\begin{matrix}
+{} & {} \\
+{} & {} \\
+\end{matrix}}
+\right]
+\left[
+{\begin{matrix}
+F_32 & 0 \\
+0 & F_32 \\
+\end{matrix}}
+\right]
+\left[
+{\begin{matrix}
+{} & {} \\
+{} & {} \\
+\end{matrix}}
+\right]
+$$
+
+... the additional "fixup" matrices to be added consist almost entirely of zeros.   
+
+It's pretty abstract, but from a computation pov this is where the benefit of Fourier matrices begin to be visible.  If you think about it F_64 will take 64^2 calculations, but F32_x only takes 2x32^2 + "fixup" calculations, which is much less.
+
+The matrix to the right of the 2xF_32 matrix is a permutation matrix P consisting of odd and even numbers.  What it does is to take the even numbered components, and then the odd-numbered components.  The effect is to separate an original vector into even and odd components, so that the 2xF_32 matrix can process them separately.  Then we will re-assemble the results.
+
+The left side of the 2xF_32 is structured like so:
+
+$$
+\left[
+{\begin{matrix}
+I & D \\
+I & -D \\
+\end{matrix}}
+\right]
+$$
+
+.  That is, it is constucted of identity and diagonal matrices.  The "fix up" cost computationally is therefore the cost of multiplying by D, because there's essentially no cost to processing the I portion or the Permutation matrix part.  The "fix up" cost will be n multiplications -- e.g. for F_32 it will be 32 multiplications.
+
+The diagonal matrix D in this equation is powers of w, ordered on the diagonal from w_0=1 to n_31 in this example.
+
+The above outlines the concept of FFT.  As you would guess, the 32s in this example can be further decomposed in this way, for added computational benefit.  In other words, FFT processing is recursive.  If the original matrix is entirely broken down into "fixup" components, there will be $\frac{1}{2}nlog_2n$ computations to do.
+
+To give an example of computation savings in real numbers, a common case would be to have n=1024 components in n=1024 computations, and $n^2$ is > 1M.  1/2nlog_2n however is only 1024 (10/2) = 5 x 1024 = 5120. 
 
 
 ## Singular Value Decomposition
