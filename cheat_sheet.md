@@ -341,11 +341,25 @@ $$
 
 ## Rules for Subspace Orthogonality
 
-*  Orthogonal vectors have $v^Tw$ = 0. Then $\text{||v||}^2\text{ + }\text{||w||}^2\text{ = }\text{||v + w||}^2\text{ = }\text{||v - w||}^2 .
+*  Orthogonal vectors have $v^Tw$ = 0. Then $\text{||v||}^2\text{ + }\text{||w||}^2\text{ = }\text{||v + w||}^2\text{ = }\text{||v - w||}^2$ .
 *  Subspaces V and W are orthogonal when $v^Tw$ = 0 for every v in V and every w in W.
 *  The row space of A is orthogonal to the nullspace. The column space is orthogonal to $N\left(A^T\right)$ .
 *  N(A) is the orthogonal complement of the row space C(AT ) (in $R^n$ ).
 *  $N\left(A^T\right)$ is the orthogonal complement of the column space C(A) (in $R^m$ ).
+*  The columns $q_1......q_n$ are orthonormal if
+
+$$
+q_i^Tq_j
+\left{
+{\begin{matrix}
+{\text{0 for i }\neqj} \\
+{\text{1 for i = }j}  \\
+\end{matrix}}
+\right}
+$$ 
+
+.  Then $Q^TQ\text{ = }I$ .
+* If Q is also square, then $QQ^T\text{ = }I$ and $Q^T\text{ = }Q^{-1}$.  Q is an orthogonal matrix.
 
 ### Independence, Basis, Dimension
 
