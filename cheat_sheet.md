@@ -1,6 +1,13 @@
 
 # Cheat Sheet
 
+## Vectors
+
+### Vector Facts
+* vectors are defined in relation to an origin
+* vectors have inherent direction
+* we can add, subtract, and multiply vectors, but not points
+
 ## Unit Vectors, Lengths
 
 ### Facts
