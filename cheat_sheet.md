@@ -456,6 +456,9 @@ Given a function, e.g. $f\left(x,y\right)\text{ = }2y\text{ + }4x^2y\text{ + }1$
   * For such a matrix A of n columns there will be n eigenvectors.
 * If you know the eigevector, you can multiply A on X to see which $\lambda{}x$ reveals $\lambda{}$.
 * If you know the eigenvalues, solve $\left(A\text{ - }\lambda{}I\right)x\text{ = }0$ to find x.
+* The eigenvalues of AB $\neq$ eigenvalues of A + eigenvalues of B.
+* Eigenvalues of AB **are not equal to** eigenvalues of A times eigenvalues of B.
+* Eigenvalues of AB and BA **are equal** .
 
 ### Computing Eigenvalues and Eigenvectors:
 
