@@ -504,6 +504,7 @@ $$
 
 * solve "add terms to get middle, multiply to get outer" --> $\lambda$ : {1,-5} .
 * when the matrix A is originally triangular (0 in lower left), the quadratic is already equal to 0 and 2 $\lambda$ terms will be positive.
+  * if the matrix A is originally triangular, you may end up with a "degenerate" matrix reduced to R with 1 in the upper or lower left, and 0 otherwise.  In that case, only one eigenvector, some permutation of (1,0), will exist.
 * plug each eigenvalue into characteristic equation to compute its eigenvector:
 
 $$
