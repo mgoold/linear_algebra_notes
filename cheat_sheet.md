@@ -503,6 +503,7 @@ $$
 $$
 
 * solve "add terms to get middle, multiply to get outer" --> $\lambda$ : {1,-5} .
+* when the matrix A is originally triangular (0 in lower left), the quadratic is already equal to 0 and 2 $\lambda$ terms will be positive.
 * plug each eigenvalue into characteristic equation to compute its eigenvector:
 
 $$
