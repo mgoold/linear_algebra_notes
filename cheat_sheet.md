@@ -68,13 +68,54 @@ $$
 * "Suppose I want to find the linear function of best fit for my data $\\{\left(x_1,y_1,z_1\right)\text{,}\left(x_2,y_2,z_2\right)\text{,...}\left(x_N,y_N,z_N\right)\\}$ where
 x,y are the independent variables and z is the target variable.  How many parameters does a general linear function have in this scenario?"
   * Answer: 3.  Count the number of variables including the target variable for this kind of question.
-
 * "Suppose I have 10 data points $\left(x_i,y_i\right)$ and I want to find the line of best fit. The total sum of squares is given by the following dot product:
 
 $$\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)\cdot\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)$$
 
 ... how many columns does X have in this equation?" 
   * **Answer:** 2 (in fact, an unspecified matrix X could have an aribtrarily large number of columns, but I think what they're getting at is that it has at least the intercept + x term, which is 2 columns.)
+
+#### Fitting Partial Derivatives
+
+#### Matrix Fit: line
+* Find the closest line to the points (0, 6), (1, 0), and (2, 0):
+  * Formulate each point as Constant + D(x_1) = y:
+    * 1 + D\*0 = 6
+    * 1 + D\*1 = 0
+    * 1 + D\*2 = 0
+  * Formulate as a matrix system Ax = b:
+
+##
+A\text{ = }
+\left[
+\begin{matrix}
+1 & 0 \\
+1 & 1 \\
+1 & 2 \\
+\end{matrix} 
+\right]
+\left[
+\begin{matrix}
+C \\
+D \\
+\end{matrix} 
+\right]
+\text{ = }
+\left[
+\begin{matrix}
+6 \\
+0 \\
+0 \\
+\end{matrix} 
+\right]
+$$
+
+* apply the formulas listed above to obtaine ATA, ATb, p, and e.
+
+
+
+
+#### Parabola Fit
 
 ## Matrix Properties
 
@@ -687,13 +728,17 @@ Find the determinant.  (You use product of determinants of U; Kahn uses "rule of
 ## Derivation Rules
 * So you don't get burned doing gradients, Jacobians, etc.
 
+* Constant rule: the derivative of a constant = 0.
+  * Example: $f\left(x\right)\text{ = }8\text{; }f'\left(8\right)\text{ = }0$ .
 * Power Rule: The derivative of $x^n$ is $nx^{n-1}$. For example, if f(x) = $x^3$, then f'(x) = $3x^2$ .
 * Product Rule: If f(x) = u(x) * v(x), then f'(x) = u'(x)v(x) + u(x)v'(x).
+  * Example: 
 * Quotient Rule: If f(x) = u(x) / v(x), then f'(x) = (v(x)u'(x) - u(x)v'(x)) / $\text{[v(x)]}^2$ .
 * Chain Rule: If y = f(g(x)), then dy/dx = f'(g(x)) * g'(x).
 * Sum/Difference Rule: The derivative of a sum or difference of functions is the sum or difference of their derivatives. For example, if f(x) = u(x) + v(x), then f'(x) = u'(x) + v'(x).
+  * 
 * Constant Multiple Rule: The derivative of a constant times a function is the constant times the derivative of the function. If f(x) = k * g(x), where k is a constant, then f'(x) = k * g'(x).
-* Constant Rule: The derivative of a constant is always zero.
+  * Example $\pdv{d}{x}\left(3x^2\right)\text{ = }3\pdv{d}{x}\left(x^2\right)\text{ = }3\*2x\text{ = }6x$.
 * General Power Rule: combines power rule and chain rule. If f(x) = $\text{[u(x)]}^n$ , then f'(x) = $\text{n[u(x)]}^{(n-1)}$ * u'(x) .
 
 
