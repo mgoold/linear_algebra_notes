@@ -740,12 +740,16 @@ Find the determinant.  (You use product of determinants of U; Kahn uses "rule of
 * Quotient Rule: If f(x) = u(x) / v(x), then f'(x) = (v(x)u'(x) - u(x)v'(x)) / $\text{[v(x)]}^2$ .
   * Example: use the quotient rule to find the derivative of $q\left(x\right)\text{ = }\frac{5x^2}{4x\text{ + }3}$
     * Let f(x)= $5x^2$ and g(x) = 4x + 3. Thus, f'(x)=10x and g'(x)=4.
-    * Substituting into the quotient rule, we have $q\`\left(x\right)\text{ = }\frac{f\`\left(x\right)g\left(x\right)\text{ - }g\`\left(x\right)f\left(x\right)}{\left(g\left(x\right)\right)^2}\text{ = }\frac{10x\left(4x\text{ + }3\right)\text{ - }4\left(5x^2\right)}{\left(4x\text{ + }3\right)^2$ .
+    * Substituting into the quotient rule, we have $q\`\left(x\right)\text{ = }\frac{f\`\left(x\right)g\left(x\right)\text{ - }g\`\left(x\right)f\left(x\right)}{\left(g\left(x\right)\right)^2}\text{ = }\frac{10x\left(4x\text{ + }3\right)\text{ - }4\left(5x^2\right)}{\left(4x\text{ + }3\right)^2}$ .
     * Simplifying, we get $q\`\left(x\right)\text{ = }\frac{20x^2\text{ + }30x}{4x\text{ + }3}$
-* Chain Rule: If y = f(g(x)), then dy/dx = $\frac{20x^2\text{ + }30x}{\left(4x\text{ + }3\right)^2}$ .
+* Chain Rule: If h(x) = f(g(x)), then $h\`\left(x\right)\text{ = }f\`\left(g\left(x\right)\right)\cdot{g\`\left(x\right)}$ .
+  * Example: find the derivative of $h\left(x\right)\text{ = }\frac{1}{\left(3x^2\text{ + }1\right)^2}$ .
+    * $h\left(x\right)\text{ = }\left(3x^2\text{ + }1\right)^{-2}$
 * Sum/Difference Rule: The derivative of a sum or difference of functions is the sum or difference of their derivatives. For example, if f(x) = u(x) + v(x), then f'(x) = u'(x) + v'(x).
 * Constant Multiple Rule: The derivative of a constant times a function is the constant times the derivative of the function. If f(x) = k * g(x), where k is a constant, then f'(x) = k * g'(x).
   * Example $\frac{d}{dx}\left(3x^2\right)\text{ = }3\frac{d}{dx}\left(x^2\right)\text{ = }3\*2x\text{ = }6x$.
+  * g(x) = $3x^2\text{ + }1$ ; g`(x) = 6x.
+  * h`(x) = $-2\left(3x^2\text{ + }1\right)^-3\cdot{6x}\text{ = }\frac{-12}{\left(3x^2\text{ + }1\right)^3}$ .
 * General Power Rule: combines power rule and chain rule. If f(x) = $\text{[u(x)]}^n$ , then f'(x) = $\text{n[u(x)]}^{(n-1)}$ * u'(x) .
 
 
