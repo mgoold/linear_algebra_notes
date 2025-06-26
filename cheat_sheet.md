@@ -77,6 +77,8 @@ $$\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)\cdot\left(\ov
 
 #### Fitting Partial Derivatives
 
+* TBD
+
 #### Matrix Fit: line
 * Find the closest line to the points (0, 6), (1, 0), and (2, 0):
   * Formulate each point as Constant + D(x_1) = y:
@@ -85,7 +87,7 @@ $$\left(\overrightarrow{y}\text{ - }X\overrightarrow{\beta}\right)\cdot\left(\ov
     * 1 + D\*2 = 0
   * Formulate as a matrix system Ax = b:
 
-##
+$$
 A\text{ = }
 \left[
 \begin{matrix}
@@ -112,10 +114,52 @@ $$
 
 * apply the formulas listed above to obtaine ATA, ATb, p, and e.
 
-
-
-
 #### Parabola Fit
+
+* **Example**
+  * Given a set of points (-1,1/2), (1,-1), (2,-1/2), (3,2), suppose that a parabola is the best line of fit.
+  * The equation for a parabola is : y = $Bx^2\text{ + }Cx\text{ + }D$ .
+  * Always use the last component of the points as y.  The first element is taken to the first and second powers, and a constant = 1 is added like so:
+
+
+$2\text{ = }B\left(3\right)^2\text{ + }C\left(3\right)\text{ + }D$  
+$\frac{1}{2}\text{ = }B\left(-1\right)^2\text{ + }C\left(-1\right)\text{ + }D$  
+$-1\text{ = }B\left(1\right)^2\text{ + }C\left(1\right)\text{ + }D$  
+$-\frac{1}{2}\text{ = }B\left(2\right)^2\text{ + }C\left(2\right)\text{ + }D$  
+
+This is then turned into a matrix A, x variable and target variable b as follows:
+
+$$
+A\text{ = }
+\left[
+\begin{matrix}
+1 & -1 & 1 \\
+1 & 1 & 1 \\
+4 & 2 & 1 \\
+9 & 3 & 1 \\
+\end{matrix}
+\right]
+\text{; x = }
+\left[
+\begin{matrix}
+B \\
+C \\
+D \\
+\end{matrix}
+\right]
+\text{; b = }
+A\text{ = }
+\left[
+\begin{matrix}
+\frac{1}{2} \\
+-1 \\
+-\frac{1}{2} \\
+2 \\
+\end{matrix}
+\right]
+$$
+
+The usual formulas are then applied.
 
 ## Matrix Properties
 
