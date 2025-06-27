@@ -737,6 +737,8 @@ Find the determinant.  (You use product of determinants of U; Kahn uses "rule of
 
 ### Jacobian Examples
 
+* https://tutorial.math.lamar.edu/Solutions/CalcIII/ChangeOfVariables/Prob2.aspx
+
 * Note that the 3rd and 4th terms are the ad-bc determinant formula results.
 
 #### Example 1
