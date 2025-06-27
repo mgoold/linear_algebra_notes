@@ -735,6 +735,84 @@ Find the determinant.  (You use product of determinants of U; Kahn uses "rule of
     * Do not omit any functions or variables in the placements, even if a function does not use a variable (in which case its partial is simply 0).
     * The Jacobian is this matrix of partials, but it is typically given an input point.  If this point is zero, or it has zero rows or columns, the point is considered critical -- an "inflection point" in a "slope".
 
+### Jacobian Examples
+
+* Note that the 3rd and 4th terms are the ad-bc determinant formula results.
+
+#### Example 1
+
+$x\text{ = }4u\text{ - }3v^2$ ; $y\text{ = }u^2\text{ - }6v$
+
+
+$$
+\frac{\partial \left(x,y\right)}{\partial \left(u,v\right)}
+\text{ = }
+\left|
+\begin{matrix}
+\frac{\partial \left(x\right)}{\partial \left(u\right)} & \frac{\partial \left(x\right)}{\partial \left(v\right)} \\
+\frac{\partial \left(y\right)}{\partial \left(u\right)} & \frac{\partial \left(y\right)}{\partial \left(v\right)} \\
+\end{matrix}
+\right|
+\text{ = }
+\left|
+\begin{matrix}
+4 & -6v \\
+2u & -6 \\
+\end{matrix}
+\right|
+\text{ = }
+24\text{ - }\left(-12uv\right)\text{ = }-24\text{ + }12uv
+$$
+
+#### Example 2
+
+$x\text{ = }u^2v^3$ ; $y\text{ = }4\text{ - }2\sqrt{u}$
+
+$$
+\frac{\partial \left(x,y\right)}{\partial \left(u,v\right)}
+\text{ = }
+\left|
+\begin{matrix}
+\frac{\partial \left(x\right)}{\partial \left(u\right)} & \frac{\partial \left(x\right)}{\partial \left(v\right)} \\
+\frac{\partial \left(y\right)}{\partial \left(u\right)} & \frac{\partial \left(y\right)}{\partial \left(v\right)} \\
+\end{matrix}
+\right|
+\text{ = }
+\left|
+\begin{matrix}
+2uv^3 & 3u^2v^2 \\
+-u^{-\frac{1}{2}} & 0 \\
+\end{matrix}
+\right|
+\text{ = }
+0\text{ - }\left(-3uu^{\frac{3}{2}}v^2\right)\text{ = }3u^{\frac{3}{2}}v^2
+$$
+
+
+#### Example 3
+
+$x\text{ = }\frac{v}{u}$ ; $y\text{ = }u^2\text{ - }4v^2$
+
+$$
+\frac{\partial \left(x,y\right)}{\partial \left(u,v\right)}
+\text{ = }
+\left|
+\begin{matrix}
+\frac{\partial \left(x\right)}{\partial \left(u\right)} & \frac{\partial \left(x\right)}{\partial \left(v\right)} \\
+\frac{\partial \left(y\right)}{\partial \left(u\right)} & \frac{\partial \left(y\right)}{\partial \left(v\right)} \\
+\end{matrix}
+\right|
+\text{ = }
+\left|
+\begin{matrix}
+-\frac{v}{u^2} & \frac{1}{u} \\
+2u & -8v \\
+\end{matrix}
+\right|
+\text{ = }
+\frac{8v^2}{u^2}\text{ - }2
+$$
+
 ## Determinants
 
 ### Facts
