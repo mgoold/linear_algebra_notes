@@ -770,11 +770,12 @@ Find the determinant.  (You use product of determinants of U; Kahn uses "rule of
 # Appendices
 
 ## Derivation Rules
-* So you don't get burned doing gradients, Jacobians, etc.
+* I've not done derivatives in ages.  These are so you don't get burned doing gradients, Jacobians, etc.
 
 * Constant rule: the derivative of a constant = 0.
   * Example: $f\left(x\right)\text{ = }8\text{; }f'\left(8\right)\text{ = }0$ .
 * Power Rule: The derivative of $x^n$ is $nx^{n-1}$. For example, if f(x) = $x^3$, then f'(x) = $3x^2$ .
+  * The derivative of a variable to no power (i.e. a power of 1) is 1: $x\text{ = }4u\text{ - }3v^2$ ; $\frac{\partial{x}}{\partial{u}}\text{ = }4$ .
 * Product Rule: If f(x) = u(x) * v(x), then f'(x) = u'(x)v(x) + u(x)v'(x).
   * Example: If we set f(x) = $x^2\text{ + }2$ and g(x) = $3x^3\text{ − }5x$ , then f'(x)=2x and g'(x)=9x2−5 .
   * Thus, p'(x)=f'(x)g(x)+g'(x)f(x)=(2x)(3x3−5x)+(9x2−5)(x2+2).
@@ -796,6 +797,13 @@ Find the determinant.  (You use product of determinants of U; Kahn uses "rule of
   * h`(x) = $-2\left(3x^2\text{ + }1\right)^-3\cdot{6x}\text{ = }\frac{-12}{\left(3x^2\text{ + }1\right)^3}$ .
 * General Power Rule: combines power rule and chain rule. If f(x) = $\text{[u(x)]}^n$ , then f'(x) = $\text{n[u(x)]}^{(n-1)}$ * u'(x) .
 
+### Derivation Notes
+
+* When you take the derivative of a multi-variable clause w/r/t a specific variable, you only keep variables related via multiplication. So:
+  * $x\text{ = }u^2v^3$ ; $\frac{\partial{x}}{\partial{u}}\text{ = }2uv^3$, but
+  * $y\text{ = }u^2\text{ - }4v^2$ ; $\frac{\partial{y}}{\partial{u}}\text{ = }2u$
+* When taking the derivative of a fraction of 2 variables, e.g. $\frac{u}{v}$ , it's easier to derive after you arrange them as a product using negative powers, e.g. $uv^-1$.  But when you return to doing regular math on them, return them to fraction form so that you can spot how they cancel out &c more easily.
+* 
 
 
 
