@@ -433,8 +433,6 @@ $$
 *  $N\left(A^T\right)$ is the orthogonal complement of the column space C(A) (in $R^m$ ).
 *  The columns $q_1......q_n$ are orthonormal if
 
-
-
 $$
 q_i^Tq_j
 \begin{Bmatrix}
