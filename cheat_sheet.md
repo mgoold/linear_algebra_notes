@@ -433,17 +433,18 @@ $$
 *  $N\left(A^T\right)$ is the orthogonal complement of the column space C(A) (in $R^m$ ).
 *  The columns $q_1......q_n$ are orthonormal if
 
+
+
 $$
 q_i^Tq_j
-\left{
-{\begin{matrix}
-{\text{0 for i }\neqj} \\
-{\text{1 for i = }j}  \\
-\end{matrix}}
-\right}
+\begin{Bmatrix}
+\text{0 for i }\neq{j} \\
+\text{1 for i = }j  \\
+\end{Bmatrix}
 $$ 
 
 .  Then $Q^TQ\text{ = }I$ .
+
 * If Q is also square, then $QQ^T\text{ = }I$ and $Q^T\text{ = }Q^{-1}$.  Q is an orthogonal matrix.
 
 ### Independence, Basis, Dimension
