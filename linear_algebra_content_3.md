@@ -1881,18 +1881,18 @@ $$
 $$
 u_1\text{ = }
 \left[
-{\begin{array}
+\begin{matrix}
 \frac{2}{\sqrt{13}} \\
 \frac{3}{\sqrt{13}} \\
-\end{array} }
+\end{matrix}
 \right]
 \text{ corresponds to }\lambda_1\text{, and }
 u_2\text{ = }
 \left[
-{\begin{array}
+\begin{matrix}
 \frac{2}{\sqrt{13}} \\
 \frac{-3}{\sqrt{13}} \\
-\end{array} }
+\end{matrix}
 \right]
 \text{ corresponds to }\lambda_2
 $$
@@ -1902,21 +1902,23 @@ $$
   *  $Au_1\text{ = }\lambda_1u_1$
   *  $Au_1\text{ = }\lambda_1u_1$
 
-  * The left and right sides of these equations have different structures, because the left is a matrix times a vector, while the right is a value times a vector, so you need to put the right side into a matrix format, so that the equations are put into a matrix system like so:
+  * The left and right sides of these equations have different structures, because the left is a matrix times a vector, while the right is a value times a vector, so you need to put the right side lambdas into a matrix format, with the equation becoming a matrix system like so:
  
 $$
 \text{A}
 \left[
 \begin{matrix}
-u_1 \\
-u_2 \\
+\vdots & \vdots \\
+u_1 & u_2 \\
+\vdots & \vdots \\
 \end{matrix}
 \right]
 \text{ = }
 \left[
 \begin{matrix}
-u_1 \\
-u_2 \\
+\vdots & \vdots \\
+u_1 & u_2 \\
+\vdots & \vdots \\
 \end{matrix}
 \right]
 \left[
@@ -1946,13 +1948,13 @@ Note: in this construal, $u_1,u_2$ are both vectors comprising the matrix U.
 
      , where:
        * $\sigma$ is a singular value coefficient,
-       * u is a vector of m rows,
-       * and v is a vector of n columns.
-     * each u and v together make a rank 1 matrix.
+       * u is a vector of m rows (i.e. an mx1 matrix),
+       * and v is a vector of n columns (i.e. an 1xn matrix).
+     * each u and v multiplied together make a rank 1 matrix.
        * A rank 1 matrix is a matrix that can be expressed as the multiplication of a mx1 vector and a 1xm vector.  Usually this is expressed as the multiplication of $uv^T$ .  It sounds kind of like a dot product but the result is a matrix and you don't add the components to get a single number.
-         * interestingly, the reason it is not a single number is that the column in u is multiplying the row in v, so procedurally you get a matrix.  If u and v were reverse in order, you would get a single number.
+         * the reason it is not a single number is that the column in u is multiplying the row in v, so procedurally you get a matrix.  If u and v were reverse in order, you would get a single number.
          * v is the transpose of u.  this is necessary in order to get a square, symmetric matrix
-         * each u,v pair is thus a single row from the original matrix.
+         * each u,v pair is thus made from a single row from the original matrix.
      * these atomic matrices must be linearly independent from each other in order to be summed this way.
    * We can write this summation of atomic matrices in a higher-level matrix form as:
 
@@ -1977,7 +1979,7 @@ $$
   
 where the dimensionality of each matrix is $\Sigma\text{:pxp}$ , and V:pxn .  The multiplication of all the matrices will result in a final matrix of mxn, matching that of the original matrix A .
 
-Just as with eigendecomposition, U will be an orthonormal matrix, and thus V will as well.  Also remember that each column in U is indepdendent.  As a consequence of these facts, $U^TU$ and $V^TV$ will both be identity matrices.  
+Just as with eigendecomposition, U will be an orthonormal matrix, and thus V will as well.  Also remember that each column in U is indepdendent.  As a consequence of these facts, $U^TU$ and $V^TV$ will both be reducible identity matrices.  
 
 All the sigmas are on the diagonal of $\Sigma$ . 
 
