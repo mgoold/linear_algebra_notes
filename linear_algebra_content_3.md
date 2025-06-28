@@ -1812,11 +1812,12 @@ To give an example of computation savings in real numbers, a common case would b
 * MIT: https://www.youtube.com/watch?v=TX_vooSnhm8
 
 ### Introduction
+
 * Singular Value Decomposition, or SVD , can be applied to any matrix.
 * Recall that a matrix A can be decomposed into these forms:
   * $A\text{ = }Q\Lambda{}Q^T$
   * $A\text{ = }S\Lambda{}S^{-1}$
-* SVD uses symmetric positive definite matrices, which are critical because their eigenvectors were orthogonal due to their symmetry, which means that they can be used to produce an orthogonal matrix Q.  Because these matrices are positive definite, the Lambda will be postive.  When the matrix to be decomposed in SVD is symmetric positive definite, we can use the same matrix on both sides of the Lambda diagonal matrix (because of symmetry) for SVD as shown in the first equation.  The first equation $A\text{ = }S\Lambda{}S^{-1}$ by contrast is usually not useful because the eigenvector matrix is usually not orthogonal.
+* SVD uses symmetric positive definite matrices, which are critical because their eigenvectors were orthogonal due to their symmetry, which means that they can be used to produce an orthogonal matrix Q.  Because these matrices are positive definite, the Lambda will be postive.  When the matrix to be decomposed in SVD is symmetric positive definite, we can use the same matrix on both sides of the Lambda diagonal matrix (because of symmetry) for SVD as shown in the equation $A\text{ = }Q\Lambda{}Q^T$.  The equation $A\text{ = }S\Lambda{}S^{-1}$ by contrast is usually not useful because the eigenvector matrix is usually not orthogonal.
 
 When we do singular value decomposition, were are looking for orthogonal vectors that remain orthogonal when taken from the row space to the column spaces (i.e. when A operates on x).  That is, we are looking for a matrix of vectors multiplied by A that will 
 
