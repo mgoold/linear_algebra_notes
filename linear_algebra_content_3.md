@@ -1859,16 +1859,20 @@ $$
 
 $$
 v_1\text{ = }
-\left[{\begin{array}
+\left[
+\begin{matrix}
 2 \\
 3 \\
-\end{array} }\right]
+\end{matrix}
+\right]
 \text{ corresponds to }\lambda_1\text{, and }
 v_2\text{ = }
-\left[{\begin{array}
+\left[
+\begin{matrix}
 2 \\
 -3 \\
-\end{array} }\right]
+\end{matrix}
+\right]
 \text{ corresponds to }\lambda_2
 $$
 
@@ -1893,33 +1897,33 @@ u_2\text{ = }
 \text{ corresponds to }\lambda_2
 $$
 
-* Put the above results into the following format:
+* Put the above results into the following format, which is the same as the $Ax\text{ = }\lambda{x}$ equation:
 
   *  $Au_1\text{ = }\lambda_1u_1$
   *  $Au_1\text{ = }\lambda_1u_1$
 
-  * The left and right sides have different structures, so you need to put the right side into a matrix format, so that the equations are put into a matrix system like so:
+  * The left and right sides of these equations have different structures, because the left is a matrix times a vector, while the right is a value times a vector, so you need to put the right side into a matrix format, so that the equations are put into a matrix system like so:
  
 $$
 \text{A}
 \left[
-{\begin{array}
+\begin{matrix}
 u_1 \\
 u_2 \\
-\end{array}}
+\end{matrix}
 \right]
 \text{ = }
 \left[
-{\begin{array}
+\begin{matrix}
 u_1 \\
 u_2 \\
-\end{array}}
+\end{matrix}
 \right]
 \left[
-{\begin{matrix}
+\begin{matrix}
 \lambda_1 & 0 \\
 0 & \lambda_2 \\
-\end{matrix}}
+\end{matrix}
 \right]      
 $$
 
