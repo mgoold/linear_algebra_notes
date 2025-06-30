@@ -417,7 +417,37 @@ x\text{ = }x_p\text{ + }x_n\text{ = }
 $$
 
 ## Singular Value Decomposition
-* Understand SVD of $A^TA\hat{x}\text{ = }A^Tb$ .
+
+### Facts
+* The SVD produces orthonormal basis of v's and u's for the four fundamental subspaces.
+* Using those bases, A becomes a diagonal matrix $\Sigma$ and $Av_i\text{ = }\sigma_iu_i$ : $\sigma_i$ = singular value.
+* The two-bases diagonalization $A\text{ = }U\SigmaV^T$ often has more information than A = $X\LambdaX^{-1}$ .
+  * U and V are orthonormal; that is why the formula can use the transpose rather than the inverse (which is the same as the inverse in the orthonormal case).  $A\text{ = }U\Sigma{}V^{-1}\text{ = }U\Sigma{}V^T$
+* $U\SigmaV^T$ separates A into rank-1 matrices $\sigma_1u_1v_1^T+\ldots+\sigma_ru_rv_r^T$ , in order -- $\sigma_1u_1v_1^T$ is the largest value.
+* A is $U\Sigma{}V^T$, so $A^T$ is $VU^T\Sigma{}^T$, and $A^TA\text{ = }VU^T\Sigma{}^TU\Sigma{}V^T$ . The sigmas then are eliminated as "I". Similarly, $AA^T$ moves U to the middle for elimination.
+
+* The SVD factors A into $U\SigmaV^T$ , with r singular values $\sigma_1\geq{}\ldots\geq{\sigma_r}>0$ .
+2. The numbers $\sigma_1^2,\ldots,\sigma_r^2$ are the nonzero eigenvalues of $AA^T$ and $A^TA$ .
+3. The orthonormal columns of U and V are eigenvectors of $AA^T$ and $A^TA$ .
+4. Those columns hold orthonormal bases for the four fundamental subspaces of A.
+5. Those bases diagonalize the matrix: $Av_i\text{ = }\sigma_iu_i$ for $i\le{r}$ . This is $AV\text{ = }U\Sigma$ .
+6. A = $\sigma_1u_1v_1^T+\ldots+\sigma_ru_rv_r^T$ ; and $\sigma_1$ is the maximum of the ratio $\|\|Ax\|\|/\|\|x\|\|$ .
+
+### SVD: Review of Basic Activity
+
+Remember that:
+* In V:
+  * $v_1$ up to $v_r$ is an orthonormal basis for the row space.
+  * $v_{r+1}$ up to $v_n$ is an orthonormal basis for the null space. 
+* In U:
+  * $u_1$ up to $u_r$ is an orthonormal basis for the column space.
+  * $u_{r+1}$ up to $u_m$ is an orthonormal basis for the (left) null space of $A^T$ .
+
+-- It is these bases *which make the matrix diagonal* , AND $Av_i\text{ = }\sigma_iu_i$ .
+-- The overall insight about this summary is that it diagonalizes the matrix into its consituent components while correctly accounting for all 4 fundamental subspaces.  
+
+
+
 
 ## Positive Semidefiniteness
 * Relation of projection matrices to positive semidefiniteness.
