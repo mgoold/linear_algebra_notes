@@ -1813,14 +1813,40 @@ To give an example of computation savings in real numbers, a common case would b
 
 ### Introduction
 
-* Singular Value Decomposition, or SVD , can be applied to any matrix.
+* Singular Value Decomposition, or SVD , **can be applied to ANY matrix whatsoever** (whereas eigendecomposition requires a square matrix of full rank).
 * Recall that a matrix A can be decomposed into these forms:
-  * $A\text{ = }Q\Lambda{}Q^T$
-  * $A\text{ = }S\Lambda{}S^{-1}$
-* SVD uses symmetric positive definite matrices, which are critical because their eigenvectors were orthogonal due to their symmetry, which means that they can be used to produce an orthogonal matrix Q.  Because these matrices are positive definite, the Lambda will be postive.  When the matrix to be decomposed in SVD is symmetric positive definite, we can use the same matrix on both sides of the Lambda diagonal matrix (because of symmetry) for SVD as shown in the equation $A\text{ = }Q\Lambda{}Q^T$.  The equation $A\text{ = }S\Lambda{}S^{-1}$ by contrast is usually not useful because the eigenvector matrix is usually not orthogonal.
+  * $A\text{ = }Q\Lambda{}Q^T$ , where Q is a matrix of orthogonal unit vectors.
+  * $A\text{ = }S\Lambda{}S^{-1}$ , where S is a symmetric matrix.
+* SVD uses symmetric positive definite matrices, which are critical because their eigenvectors were orthogonal due to their symmetry, which means that they can be used to produce an orthogonal matrix Q.  Because these matrices are positive definite, the $\Lambda$ will be positive.
+  * When the matrix to be decomposed in SVD is symmetric positive definite, we can use the same matrix Q on both sides of the Lambda diagonal matrix (because of symmetry) for SVD as shown in the equation $A\text{ = }Q\Lambda{}Q^T$.  We don't need a different matrix U and V on left and right sides, as will be shown in the SVD process below.
+  * The equation $A\text{ = }S\Lambda{}S^{-1}$ (S is a "symmetric matrix") by contrast is usually not useful, because the eigenvector matrix is usually not orthogonal.  --This situation will not be used for SVD. What we want instead is **"orthogonal times diagonal times orthogonal"**.  
 
-When we do singular value decomposition, were are looking for orthogonal vectors that remain orthogonal when taken from the row space to the column spaces (i.e. when A operates on x).  That is, we are looking for a matrix of vectors multiplied by A that will 
+When we do singular value decomposition, were are looking for an orthogonal basis that remains orthogonal when taken from the row space to the column spaces (i.e. when A operates on x).  That is, we are looking for a matrix of vectors multiplied by A that remain orthogonal to each other and do not change direction (though they may change extent or reverse direction).  We can easily find the orthogonal basis of a row space using the Graham-Scmidt process.  However, finding an orthogonal basis in the row space is no guarantee that the same vectors will be an orthogonal basis in the column space.  
 
+So far we've not discussed the nullspace (of the rows) in the discussion.  Nullspaces do not present a problem; they will show up on the diagonal of sigma. The difficulty is to find the orthogonal basis in R(A) Rn that remains orthogonal in C(A) Rm. 
+
+Say that the orthogonal vectors in C(A) are "vs".  We can consider this orthogonal relationship from R(A) to C(A) as 
+
+$$
+A
+\left[
+\begin{matrix}
+\vdots & \vdots & \ldots & \vdots \\
+v_1 & v_2 & \ldots & v_r \\
+\vdots & \vdots & \ldots & \vdots \\
+\end{matrix}
+\right]
+$$
+
+.  Notice that the vectors are up to $v_r$ , the basis of A, rather than $v_n$ .  This is in keeping with the assertion that SVD works on any matrix, including those where r < n .  
+
+In this construal, A is multiplying each vector in turn.
+
+We can construe the vectors v in V as unit vectors u in an orthormal matrix U.  Further, when we contextualize this vector u in the equation $Ax\text{ = }\lambda{x}$ , we can change Ax to Av as shown above and we can change $\lambda$ to $\sigma$ to denote this new orthonormal relationship.  The updated formula is then $\sigma_1u_1\text{ = }Av_1$ . Implicitly, sigma is arranged in such a way (e.g. a diagonal matrix) that it can multiply a vector u just as A does v.  This is done for each vector in A in turn, so for example $\sigma_2u_2\text{ = }Av_2$ .  
+
+Note that because U and V are orthonormal, they are **square, orthogonal** matrices.  This is important below.
+
+If we express these processes fully in a matrix equation, we have AV = $U\Sigma$ , where V is the matrix of orthogonal vectors in A's rowspace, and U is the matrix of orthogonal vectors in A's columnspace, and Sigma is the diagonal matrix of sigma values.  Again, our goal is to find an orthogonal basis in the rowspace of A that will still be an orthogonal basis in the column space of U , so that we've sort of diagonalized (aka decomposed) the matrix into its orthogonal and multiplier (sigma) parts.  Note that V can be thought of as a matrix on the left that facilitates the diagonalization of A represented on the right.  Note also that although the bases are said to be orthogonal on both sides of the equation, the differing letters V and U connote that they are *not necessarily identical.*  If the matrix were *orthonormal* on both sides, when we could have just one letter/matrix "Q" in this equation.  
 
 ### Motivation and Meaning of "Singular Values"
 
@@ -1831,13 +1857,20 @@ When we do singular value decomposition, were are looking for orthogonal vectors
     * relative to other singular values for the matrix, the size of the singular values must indicate vector components of A stretch the vector x the most.  This relative size can be taken as an indicator of importance.
     * additionally, a subset of the singular values will account for the majority of the change that happens to the vector x.  The implication is that a sufficient estimate of the effect on x can be had with a smaller set of columns or features, which pays off in computation costs and efficiency.
 
-### Eigendecomposition
+### Preparing for SVD: Eigendecomposition
 
 #### Motivation
+
+*  Note: "eigendecomposition" is also called (e.g. by Strang) "diagonalization".  The latter term is more encompassing, since it can accomodate both eigendecomposition and SVD.
 *  A primary reason for performing eigendecompositions is that they simplify the common data science task of computing a matrix taken to a power.
   *  A basic of linear algebra is that a matrix is multiplied on a vector in order to map it to another vector, or equivalently, to map it into a new space.
   *  In real life, this often involves applying this linear transformation at every step of an algorithm.  This often ends up being equivalent to multiplying a vector by a matrix taken to a power.  Without eigendecomposition, taking a matrix A to the power of p involves $log_2\left(p\right)$ such computations --this fact reflects the max number of pair-wise computational shortcuts you can take without eigendecomposition.
   *  As shown below, eigendecomposition transforms (decomposes) A into $U\Lambda{}U^{-1}$ .  This can then be decomposed into p $u\lambda{u^T}$ computations multiplied times each other.  Any incidence of $uu^T$ can them be factor out as an identity I, leaving the simplification $u\Lambda^pu^{-1}$, which is much easier to compute.
+
+#### Contrast: Eigendecomposition vs SVD
+*  Eigendecomposition can be done only on square matrices; SVD can be done on ANY matrix.
+*  Eigenvalues are used along with eigenvectors in eigendecomp; SVD uses the **square root** of eigenvalues instead of the original eigenvalues themselves; these square roots are called "singular values".
+*  Eigendecomposition does not require that the decomposed matrices be orthonormal; SVD does require that the decomposed matrices be orthormal. 
 
 #### Definition
 *  For a square matrix (only square matrices have Eigenvectors|values), the eigendecomposition is a $U\Lambda{}U^{-1}$ which breaks A into p individual $u\lambda{u^T}$ matrices, requiring only 2 matrix multiplications, regardless of the complexity.
@@ -1979,7 +2012,7 @@ $$
   
 where the dimensionality of each matrix is $\Sigma\text{:pxp}$ , and V:pxn .  The multiplication of all the matrices will result in a final matrix of mxn, matching that of the original matrix A .
 
-Just as with eigendecomposition, U will be an orthonormal matrix, and thus V will as well.  Also remember that each column in U is indepdendent.  As a consequence of these facts, $U^TU$ and $V^TV$ will both be reducible identity matrices.  
+Just as with eigendecomposition, U will be an orthonormal matrix, and thus V will as well.  Also remember that each column in U is indepdendent.  As a consequence of these facts, $U^TU$ and $V^TV$ will both be reducible to identity matrices.  
 
 All the sigmas are on the diagonal of $\Sigma$ . 
 
@@ -2109,18 +2142,257 @@ $$
 
 Let $\lambda^3\text{ - }s_1\lambda^2\text{ + }s_2\lambda\text{ - }s_3\text{ = }0$ be the characteristic equation of $AA^T$ .
 
+### SVD Example 2: Real Numbers
 
+Say we had a 2x2 matrix like 
 
+$$
+A2\text{ = }
+\left[
+\begin{matrix}
+4 & 4 \\
+-3 & 3 \\
+\end{matrix}
+\end]
+$$
 
+... for this matrix, we again want to find that vectors that remain orthonormal from R(A) to C(A).  So we are seeking:
+* $v_1,v_2$ for R(A) in $R^2$ .
+* $u_1,u_2$ for C(A) in $R^2$ .
+* $\sigma_1,\sigma_2$ where both scaling factor values are > 0 .
 
+Vectors v (to each other) and vectors u will be orthonormal as well.  
 
+If there is nullspace in R(A) or C(A), we want to add in the bases for those as well. These are added as [special solutions? 0 vectors?] in U and V, and as off-diagonal 0s in $\Sigma$ .  This fills V out to n and U out to m per the size of the original mxn matrix A.  
 
+Returning to matrix A2 above: it is problematic because it isn't symmetric.  We still want to transform A2 into 
 
+$Av_1\text{ = }\sigma_1u_1$
+$Av_2\text{ = }\sigma_2u_2$
 
+... and arrange them in the matrices $AV\text{ = }U\Sigma$ .  
 
+If we mulltiply both sides of $AV\text{ = }U\Sigma$ we get $A\text{ = }U\Sigma{}V^{-1}$  .  Because V is a square, orthogonal matrix (unlike A, which may not be).  This means that $V^{-1}$ is the same as $V^T$, so we can say that $A\text{ = }U\Sigma{}V^{-1}\text{ = }U\Sigma{}V^T$ .  
 
+There is a problem with this configuration, however, because it contains 2 orthonormal matrices.  In order to solve for their content, it is necessary to isolate them one at a time.  In order to do this, we multiply both sides by $A^T$ -- the left side by $A^T$, and the right side by its re-written form.  A is $U\Sigma{}V^T$, so $A^T$ is $VU^T\Sigma{}^T$, and 
 
+$$A^TA\text{ = }VU^T\Sigma{}^TU\Sigma{}V^T$$
 
+... at first this looks more complicated, but the U terms in the middle reduce to I, leaving $V\Sigma^T\Sigma{}V$ .  The $\Sigma$ matrices are diagonal matrices, so their product is just a diagonal of squared sigmas.  Thus **we have isolated V** , which is the current goal, in the reformulation of $A^T$ :
+
+$$
+A^TA
+\text{ = }
+V
+\left[
+\begin{matrix}
+\sigma_1^2 & {} & {} \\
+{} & \ddots & {} \\
+{} & {} & \sigma_r^2 \\
+\end{matrix}
+\end]
+V^T
+$$
+
+The matrices V are in fact  eigenvectors, and the sigmas (remember) are eigenvalues.  $A^TA$ has actually be turned into $Q\Lambda{}Q$ .  This is possible because $A^TA$ is by definition symmetric positive definite.  
+
+So far we have isolated the V matrices.  To solve for U, we can again multiply the equation above by A-transpose, except now we multiply it as $AA^T$ instead of $A^TA$ .  This will cause the Vs to be in the middle of the right side of the equation, instead of the U matrices.  Then $V^TV$ will drop out as I, and we can solve for the isolated Us via a similar diagonalization/decomposition.
+
+Thus the overall picture is that the Vs are the eigenvectors of $A^TA$, and the U's are the eigenvectors of $AA^T$ .  The $\Sigma$ matrices contain the positive square roots of the eigenvalues.  
+
+Returning to the example matrix above, we will now call "A2" as "A" for convenience:
+
+$$
+A2\text{ = }
+A\text{ = }
+\left[
+\begin{matrix}
+4 & 4 \\
+-3 & 3 \\
+\end{matrix}
+\end]
+$$
+
+$$
+A^TA
+\left[
+\begin{matrix}
+25 & 7 \\
+7 & 25 \\
+\end{matrix}
+\end]
+$$
+
+$$
+\text{The eigenvectors of }
+A^TA
+\text{ are }
+\left[
+\begin{matrix}
+1 \\
+1 \\
+\end{matrix}
+\end]
+\text{ and }
+\left[
+\begin{matrix}
+1 \\
+-1 \\
+\end{matrix}
+\end]
+$$
+
+... this is allegedly clear (says Strang) because if we multiply the matrix by (1,1) we get 32(1,1).  The square root of this eigenvalue will be sigma for $A^TA$ .  
+Because of the trace, the second eigenvalue must be 18.  
+Remembering that we are creating orthonormal matrices, we must also normalize these eigenvectors as $\left(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\right)$ , and $\left(\frac{1}{\sqrt{2}},\frac{-1}{\sqrt{2}}\right)$ .  These normalizations do not change the eigenvalues.
+
+Putting together all these pieces so far, A is :
+
+$$
+A
+\text{ = }
+\left[
+\begin{matrix}
+4 & 4 \\
+-3 & 3 \\
+\end{matrix}
+\end]
+U
+\left[
+\begin{matrix}
+\sqrt{32} & 0 \\
+0 & \sqrt{18} \\
+\end{matrix}
+\end]
+\left[
+\begin{matrix}
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} &  \frac{-1}{\sqrt{2}} \\
+\end{matrix}
+\end]
+$$
+
+To find the U's, we do the following:
+
+$$AA^T\text{ = }U\Sigma{}V^TV\Sigma^TU^T\text{ = }U\Sigma{}\Sigma^TU^T$$
+
+$$
+AA^T
+\text{ = }
+\left[
+\begin{matrix}
+32 & 0 \\
+0 & 18 \\
+\end{matrix}
+\end]
+$$
+
+... luckily, the result is diagonal, so the first eigenvector is (1,0) and the second is (0,1), with eigenvalues of 32 and 18.  Note that the eigenvalues of $A^TA$ and $AA^T$ are the same.  This is a known property: the eigenvalues of AB and BA are identical. 
+The two eigenvectors together make a 2x2 identity matrix. Thus the whole equation is now:
+
+$$
+A
+\text{ = }
+\left[
+\begin{matrix}
+4 & 4 \\
+-3 & 3 \\
+\end{matrix}
+\end]
+\left[
+\begin{matrix}
+1 & 0 \\
+0 & 1 \\
+\end{matrix}
+\end]
+\left[
+\begin{matrix}
+\sqrt{32} & 0 \\
+0 & \sqrt{18} \\
+\end{matrix}
+\end]
+\left[
+\begin{matrix}
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} &  \frac{-1}{\sqrt{2}} \\
+\end{matrix}
+\end]
+$$
+
+... and indeed if you multiply out the right side of this equation, you will get the left side. \[Actually, Strang recorded an error in this equation, but as a method example at least it is correct.\]
+
+### SVD Example 3: Real Numbers, Rank 1 Singular Matrix
+
+Suppose we had a singular matrix:
+
+$$
+A
+\text{ = }
+\left[
+\begin{matrix}
+4 & 3 \\
+8 & 6 \\
+\end{matrix}
+\end]
+$$
+
+... obviously the rows are not independent and r < m, r < n.  Nevertheless, SVD can be done on this matrix.
+
+Given the properties of this matrix, it is clear that the row space is a line extending through multiples of (4,3), while null space will consist of lines perendicular to that line.  The column space is a line going through multiples of (4,8) , and the nullspace of A-transpose is perpendicular to that.  Choosing the orthogonal bases for this matrix is thus no problem
+
+Remember that matrices U and V should be a orthonormal.  For V there is only 1 vector (4,3) to choose from so we make it into a unit vector as $v_1\text{ = }\left(\frac{4}{5},\frac{3}{5}\right)$ or equivalently (.8,.6) .  For $v_2$, the vector is in the nullspace direction, relative to A, so it must be (.6,-.8).
+
+Correspondingly $u_1\text{ = }\left(\frac{1}{\sqrt{5}},\frac{2}{\sqrt{5}}\right)$  .  Again, to complete the nullspace in an orthonormal manner, $u_2\text{ = }\left(\frac{2}{\sqrt{5}},\frac{-1}{\sqrt{5}}\right)$
+
+Because $A^TA$ is a size 2x2 matrix of rank 1, we know that one eigenvalue must be 0.  Its trace is 125, so the other eigenvalue must necessarily be 125.  Sigma is the square root of the eigenvalue, so sigma is $\sqrt{125}$ .
+
+Continuing with the SVD, we put the parts A = $U\SigmaV^T$ together as:
+
+$$
+A
+\text{ = }
+\left[
+\begin{matrix}
+4 & 3 \\
+8 & 6 \\
+\end{matrix}
+\end]
+\text{ = }
+\frac{1}{\sqrt{5}}
+\left[
+\begin{matrix}
+1 & 2 \\
+2 & -1 \\
+\end{matrix}
+\end]
+\left[
+\begin{matrix}
+\sqrt{125} & 0\\
+0 & 0 \\
+\end{matrix}
+\end]
+\left[
+\begin{matrix}
+.8 & .6 \\
+.6 & -.8 \\
+\end{matrix}
+\end]
+$$
+
+... we we abstract the $\frac{1}{\sqrt{5}}$ out of U.  
+
+### SVD: Review of Basic Activity
+
+Remember that:
+* In V:
+  * $v_1$ up to $v_r$ is an orthonormal basis for the row space.
+  * $v_{r+1}$ up to $v_n$ is an orthonormal basis for the null space. 
+* In U:
+  * $u_1$ up to $u_r$ is an orthonormal basis for the column space.
+  * $u_{r+1}$ up to $u_m$ is an orthonormal basis for the (left) null space of $A^T$ .
+
+-- It is these bases *which make the matrix diagonal* , AND $Av_i\text{ = }\sigma_iu_i$ .
+-- The overall insight about this summary is that it diagonalizes the matrix into its consituent components while correctly accounting for all 4 fundamental subspaces.  
 
 
 
