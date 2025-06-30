@@ -446,9 +446,6 @@ Remember that:
 -- It is these bases *which make the matrix diagonal* , AND $Av_i\text{ = }\sigma_iu_i$ .
 -- The overall insight about this summary is that it diagonalizes the matrix into its consituent components while correctly accounting for all 4 fundamental subspaces.  
 
-
-
-
 ## Positive Semidefiniteness
 * Relation of projection matrices to positive semidefiniteness.
 * True: All projection matrices are positive semidefinite.
@@ -695,6 +692,14 @@ E_{-5}\text{ = }c
 $$
 
 ... where c is some scalar.
+
+#### 2x2: Other Methods
+
+* Remember that:
+  * the determinant must be the product of the pivots of U.
+  * the sum of the eigenvalues = the trace.
+  * the product of the eigenvalues = the determinant in the 2x2 case (at least).
+  * there is also the formula that the eigenvalues = $m\pm\sqrt{m^2\text{ - }p}$ , where m = mean of a+d, and p = the determinant (aka the product).
 
 #### 3x3 Case
 
