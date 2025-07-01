@@ -4,6 +4,7 @@
 ## Vectors
 
 ### Vector Facts
+
 * vectors are defined in relation to an origin
 * vectors have inherent direction
 * we can add, subtract, and multiply vectors, but not points
@@ -11,6 +12,7 @@
 ## Unit Vectors, Lengths
 
 ### Facts
+
 * Any value squared could be considered as the squared hypotenuse of a symmetric right triangle.
 * It follows that the dot product (the sum of all of a vector's squared components), noted as $v\cdot{}v$, is then an overall squared "hypotenuse" to its component right triangles.
 * The **length** of a vector is the square root or hypotenuse of that dot product.
@@ -424,7 +426,7 @@ $$
 * The two-bases diagonalization $A\text{ = }U\Sigma{}V^T$ often has more information than A = $X\Lambda{}X^{-1}$ .
   * U and V are orthonormal; that is why the formula can use the transpose rather than the inverse (which is the same as the inverse in the orthonormal case).  $A\text{ = }U\Sigma{}V^{-1}\text{ = }U\Sigma{}V^T$
 * $U\Sigma{V^T}$ separates A into rank-1 matrices $\sigma_1u_1v_1^T+\ldots+\sigma_ru_rv_r^T$ , in order -- $\sigma_1u_1v_1^T$ is the largest value.
-* A is $U\Sigma{V^T}$, so $A^T$ is $VU^T\Sigma{}^T$, and $A^TA\text{ = }VU^T\Sigma{}^TU\Sigma{}V^T$ . The sigmas then are eliminated as "I". Similarly, $AA^T$ moves U to the middle for elimination.
+* A is $U\Sigma{V^T}$, so $A^T$ is $V\Sigma{}^TU^T$, and $A^TA\text{ = }V\Sigma{}^TU^TU\Sigma{}V^T$ . The sigmas then are eliminated as "I". Similarly, $AA^T$ moves U to the middle for elimination.
 
 * The SVD factors A into $U\Sigma{V^T}$ , with r singular values $\sigma_1\geq{}\ldots\geq{\sigma_r}>0$ .
 2. The numbers $\sigma_1^2,\ldots,\sigma_r^2$ are the nonzero eigenvalues of $AA^T$ and $A^TA$ .
