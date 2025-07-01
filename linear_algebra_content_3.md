@@ -1107,7 +1107,6 @@ By convention, people don't write out the G-S transformations.  Rather they say 
 ### Notes:
 * eigenvectors and eigenvalues only come from square matrices
 * the sum of eigenvalues must equal the sum of the diagonal in A, aka the "trace" (not nec. = the pivots in R).
-* 
 
 ## Symmetric Matrices, Eigenvalues, and Eigenvectors
 
@@ -1116,6 +1115,7 @@ By convention, people don't write out the G-S transformations.  Rather they say 
 * A matrix A is symmetric if A = $A^T$ .
 
 #### Symmetric Matrices Have Real Eigenvalues
+
 * As a result of this symmetric matrix structure:
   * eigenvalues of a symmetric matrices, where all the values in A are $\in{\mathbb{R}}$, are real.  The eigenvectors will not be complex as we saw with rotation matrices Q.
     * Why is are the eigenvalues Real?  Consider the canonical equation $Ax\text{ = }\lambda{x}$ :
