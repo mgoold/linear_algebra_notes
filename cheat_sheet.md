@@ -702,6 +702,44 @@ $$
   * the sum of the eigenvalues = the trace.
   * the product of the eigenvalues = the determinant in the 2x2 case (at least).
   * there is also the formula that the eigenvalues = $m\pm\sqrt{m^2\text{ - }p}$ , where m = mean of a+d, and p = the determinant (aka the product).
+  * In the case of a symmetric positive 2x2 matrix, where:
+ 
+$$
+A
+\text{ = det}
+\left(
+\left[
+\begin{matrix}
+{a\text{ - }\lambda} & b \\
+b & {a\text{ - }\lambda} \\
+\end{matrix}
+\right]
+\right)
+\text{ = }0
+$$
+
+...then:
+
+$\rightarrow\left(a\text{ - }\lambda\right)^2\text{ - }b^2\text{ = }0$
+$\rightarrow\left(a\text{ - }\lambda\right)^2\text{ = }b^2\rightarrow{a\left{ - }\lambda}\text{ = }\pm{b}$
+**$\rightarrow\lambda\text{ = }a\pm{b}$**
+
+Example:
+
+$$
+A
+\text{ = det}
+\left(
+\left[
+\begin{matrix}
+25 & 7 \\
+7 & 25 \\
+\end{matrix}
+\right]
+\right)
+$$
+
+$\rightarrow{}\lambda_1\text{ = }25\text{ + }7\text{ =}32$ , so $\lambda_2\text{ = }25\text{ - }7\text{ =}18$ , which is also trace = 50 - 18 .
 
 #### 3x3 Case
 
