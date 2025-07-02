@@ -150,7 +150,6 @@ D \\
 \end{matrix}
 \right]
 \text{; b = }
-A\text{ = }
 \left[
 \begin{matrix}
 \frac{1}{2} \\
