@@ -39,7 +39,7 @@
     3. For each equation, sum the common terms.
     4. You will finally end up with the same equation $A^TA\text{ = }A^Tb$ , which can then be solved in the same way.
 * To fit points $\left(t_1,b_1\right)\text{,...,}\left(t_m,b_m\right)$ by a straight line, A has columns (1,....1) and $\left(t_1\text{,...,}t_m\right)$ .
-  * IN OTHE WORDS, THE MAIN POINT OF THIS: you get 1 term for a constany y intercept, plus one term for each independent variable, to solve for the dependent var b.
+  * IN OTHE WORDS, THE MAIN POINT OF THIS: you get 1 term for a constant y intercept, plus one term for each independent variable, to solve for the dependent var b.
 * In that case $A^TA$ is the 2x2 matrix
 
 $$
